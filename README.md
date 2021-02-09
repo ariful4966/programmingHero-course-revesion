@@ -9,3 +9,5 @@
 - [x] Ankor tag with href atrribute
 - [x] Image tag with src attribute
 - [x] List Tag with List Item
+- [x] W3School HTML Tag List
+- [x] HTML tag structure
