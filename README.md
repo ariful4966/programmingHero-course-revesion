@@ -11,3 +11,4 @@
 - [x] List Tag with List Item
 - [x] W3School HTML Tag List
 - [x] HTML tag structure
+- [x] HTML Semantic Tag
