@@ -5,3 +5,4 @@
 - [x] install VSCode in os
 - [x] Bold or Stong tag
 - [x] Tag starting and ending
+- [x] All Heading Tag
