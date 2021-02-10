@@ -8,5 +8,7 @@
 - [x] width and height
 - [x] font property
 - [x] Using Id Attribute
+- [x] Class Attribute
+- [x] CSS Selectors
 
 
