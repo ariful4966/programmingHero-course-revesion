@@ -11,5 +11,6 @@
 - [x] Class Attribute
 - [x] CSS Selectors
 - [x] Use Span tag
+- [x] Apply Border Property
 
 
