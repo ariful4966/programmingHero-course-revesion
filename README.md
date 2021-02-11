@@ -10,5 +10,6 @@
 - [x] Using Id Attribute
 - [x] Class Attribute
 - [x] CSS Selectors
+- [x] Use Span tag
 
 
