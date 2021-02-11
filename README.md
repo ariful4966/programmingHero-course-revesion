@@ -13,4 +13,7 @@
 - [x] Use Span tag
 - [x] Apply Border Property
 
+01. What is box modal?
+-- if any king of element defind to five css property (border, width, height, margin padding). it's call box modal.
+
 
