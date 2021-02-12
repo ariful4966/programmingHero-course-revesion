@@ -17,5 +17,11 @@
 05. > git add .
 06. > git diff
 
+### Get From Remote Repo
+
+07. >git pull
+
+
+
 
  
