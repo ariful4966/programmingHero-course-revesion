@@ -26,10 +26,14 @@
 
 08. > git branch develop
 
+
 ### Crete Chekout New Branch as that moment
 
 09. > git checkout -b develop
 
+### Delete Git Branch local Repo
+
+10. > git branch -D develop
 
 
  
