@@ -22,6 +22,14 @@
 07. >git pull
 
 
+### Create git brach
+
+08. > git branch develop
+
+### Crete Chekout New Branch as that moment
+
+09. > git checkout -b develop
+
 
 
  
