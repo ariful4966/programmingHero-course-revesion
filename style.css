@@ -6,3 +6,14 @@ h1.special-effect:hover{
     font-size: 60px;
     background-color: lawngreen;
 }
+input:focus{
+    font-weight: 700;
+    color: green;
+    font-size: 20px;
+    width: 200px;
+}
+
+li:last-child{
+    background-color: indianred;
+
+}
