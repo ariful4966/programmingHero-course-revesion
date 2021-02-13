@@ -20,7 +20,7 @@
  06. Simple element Select
 
 
- ### Asigment 
+ ### Asignment 
   * What is Overflow
   * How to use @media
   * How to use animation in css
