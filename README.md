@@ -7,5 +7,6 @@
 - [x] last-child, frist-child, nth-child() Selection
 - [x] Psudo class visited
 - [x] Psudo element Befor and After
+- [x] Element Position Static, Relative, Absodute, Fixed
 
  
