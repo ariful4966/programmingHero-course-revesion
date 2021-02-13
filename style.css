@@ -1,22 +1,10 @@
-
-.container{
-    background-color: lightblue;
-
+#obama{
+    color: darkolivegreen;
 }
-div{
-    height: 100px;
-    width: 100px;
-    background-color: lightcyan;
+.name{
+    color: darkgoldenrod ;
+    font-size: 60px;
 }
-#first{
-    background-color: forestgreen;
-}
-#second{
-    background-color: rgb(167, 230, 85);
-    position: fixed;
-    left: 100px;
-    
-}
-#third{
-    background-color: fuchsia;
+h1{
+    color: cyan;
 }
