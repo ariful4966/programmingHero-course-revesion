@@ -7,91 +7,57 @@ body {
 h1 {
   font-size: 50px;
 }
-h2 {
-  font-size: 35px;
+.profesion{
+    background: url('images/header-bg.png') no-repeat center;
+    background-size: cover;
 }
-.orange-highlight {
-  color: orange;
+.biography{
+    background: url('images/biography-bg.png') no-repeat center ;
+    background-size: cover;
 }
-section {
+.area {
+  width: 80%;
   height: 500px;
-  padding-bottom: 150px;
-}
-.top-banner {
-  background-image: url("images/top-banner.png");
-  background-repeat: no-repeat;
-}
-.dream-area {
-  background: url("images/dream-bg.png") no-repeat right;
+  margin: 0 auto;
+  padding: 100px 0;
 }
 .half-width {
   width: 40%;
+  float:left;
   height: 100%;
-  float: left;
-  margin-left: 5%;
-  padding-left: 2%;
 }
-.half-width img {
-  width: 100%;
-  height: 100%;
-  display: inline-block;
+.half-width img{
+    width: 100%;
+    height: 100%;
+    
+}
+.color-heighlite {
+  color: rgb(238, 34, 102);
 }
 p {
-  color: dimgray;
+  color: rgb(70, 86, 92);
 }
-.link-button {
+.style-button {
   text-decoration: none;
-  background-image: linear-gradient(45deg, lightSalmon, tomato);
   text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(to right, #ff0055, #f700ff);
   padding: 10px 20px;
   border-radius: 10px;
-  color: #fff;
-  font-weight: 700;
+  display: inline-block;
 }
-.experience-area {
-  background: url('images/exp-bg.png') no-repeat left;
+.content{
+   padding: 2% 5%;
 }
-.experience-heading {
-    position: relative;
-    text-align: center; color: blueviolet; font-size: 40px;
+.work_section{
+    width: 100%;
+    height: 100%;
 }
-.experience-heading::before {
-    position: absolute;
-    content: '';
-    width: 200px;
-    height: 10px;
-    background: linear-gradient(to left, red, gray);
-    border-radius: 10px;
-    left: 50%;
-    bottom: -5px;
-    transform: translateX(-50%);
+.work-item{
+    float: left;
+    width: 30%;
 }
-.experience-heading::after {
-    position: absolute;
-    content: '';
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    border-radius: 100%;
-    border: 1px ridge red;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-}
-
-.single-exparience{
-    box-shadow: 4px 2px 10px gray ;
-    height: 70%;
-    border-left: 7px solid;
-    background-color: white;
-    border-radius: 10px;
-}
-
-#full-stack{
-    border-image: linear-gradient(180deg, rgb(235, 209, 199), tomato);
-    border-image-slice: 1;
-}
-#baby-web{
-    border-image: linear-gradient(180deg, rgb(38, 4, 230), rgb(5, 232, 240));
-    border-image-slice: 1;
+img{
+    width: 100%;
 }
