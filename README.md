@@ -3,5 +3,7 @@
 ## Simple Protfolio Website
 
 - [x] Create Simple Index file
-- [x] link the style file
+- [x] Link the style file
 - [x] Included Image
+- [x] Linked Download Button work Done
+
