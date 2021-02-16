@@ -16,5 +16,9 @@
 ## Table
 
 - [x] Table <table>
-- [x] Table Row <tr>
-- [x] Table Data <td>
+- [x] Table row <tr>
+- [x] Table head <th>
+- [x] Table data <td>
+- [x] Table Body <tbody>
+- [x] Table Head <thead>
+- [x] Table Footer <tfooter>
