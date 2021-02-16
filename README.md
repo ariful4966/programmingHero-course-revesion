@@ -40,3 +40,12 @@
 >> 13. `<input type="submit">`
 
 
+## Others
+
+    i. favicon
+    ii. comment
+    iii. title attribute
+    iv. inline css
+    v. data
+    vi. skip html tag closing
+    
