@@ -15,10 +15,11 @@
 
 ## Table
 
-- [x] Table <table>
-- [x] Table row <tr>
-- [x] Table head <th>
-- [x] Table data <td>
-- [x] Table Body <tbody>
-- [x] Table Head <thead>
-- [x] Table Footer <tfooter>
+- [ ] Table `<table>`
+- [ ] Table Row `<tr>`
+- [ ] Table Head `<th>`
+- [ ] Table Data `<td>`
+- [ ] Table Body `<tbody>`
+- [ ] Table Header `<thead>`
+- [ ] Table Footer `<tfoot>`
+
