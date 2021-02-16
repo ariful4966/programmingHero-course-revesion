@@ -23,3 +23,20 @@
 - [ ] Table Header `<thead>`
 - [ ] Table Footer `<tfoot>`
 
+> ## From and Inputs
+
+>> 1. `<from>`
+>> 2. `<label>`
+>> 3. `<fildset>`
+>> 4. `<lagend>`
+>> 5. `<input type="text">`
+>> 6. `<input type="email">`
+>> 7. `<input type="number">`
+>> 8. `<input type="tel">`
+>> 9. `<input type="email">`
+>> 10. `<input type="pasword">`
+>> 11. `<input type="radio">`
+>> 12. `<input type="checkbox">`
+>> 13. `<input type="submit">`
+
+
