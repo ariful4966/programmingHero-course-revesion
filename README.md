@@ -5,3 +5,6 @@
 
 - [x] overflow
     >   hidden, scroll
+
+- [x] svg Images
+    >   customize svg images like width, height, color etc
