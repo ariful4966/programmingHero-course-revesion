@@ -8,3 +8,7 @@
 
 - [x] svg Images
     >   customize svg images like width, height, color etc
+- [x] transform
+    >translate() rotate() scale() etc
+
+    
