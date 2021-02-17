@@ -9,6 +9,7 @@
 - [x] svg Images
     >   customize svg images like width, height, color etc
 - [x] transform
-    >translate() rotate() scale() etc
+    >   translate() rotate() scale() etc
 
-    
+- [x] transition
+    >   transition-property, transition-duration, transition-time
