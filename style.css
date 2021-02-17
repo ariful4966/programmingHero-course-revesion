@@ -1,0 +1,12 @@
+.box{
+    width: 400px;
+    height: 200px;
+    border:2px ridge palegreen;
+    overflow: scroll;
+}
+.box2{
+    width: 400px;
+    height: 200px;
+    border: 2px solid orange;
+    /* visibility: hidden; */
+}
