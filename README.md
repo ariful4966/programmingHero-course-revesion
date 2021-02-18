@@ -17,4 +17,6 @@
 - [x] Animation
     >   animation: name duration timing-function delay iteration-count direction fill-mode;
 
+- [x] Flexbox
+
     
