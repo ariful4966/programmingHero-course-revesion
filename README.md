@@ -9,3 +9,6 @@
  - [ ] background-color
  - [ ] color
  - [ ] Images property
+
+#### Nav
+- [x] nav & nav-link
