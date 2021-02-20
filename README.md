@@ -30,5 +30,6 @@
 - [x] .col-xl-
 - [x] .col-xxl-
 
-#### Botstarp carousel
+#### Bootstarp carousel
 
+#### Bootstarp Flexbox
