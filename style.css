@@ -15,3 +15,25 @@ section{
     color: #fff;
     font-weight: 600;
 }
+
+.categories h1{
+  color: #fff;
+
+}
+.categories img{
+  width: 100px;
+}
+.cat1, .cat2, .cat3{
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+.cat1{
+  background: linear-gradient(to right, rgb(165, 109, 5), rgb(238, 215, 7))
+
+}
+.cat2{
+  background: linear-gradient(to right, #ff136f, rgb(231, 88, 88))
+}
+.cat3{
+  background: linear-gradient(to right, rgb(56, 93, 212), rgb(2, 5, 170))
+}
