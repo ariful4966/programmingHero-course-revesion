@@ -47,9 +47,11 @@ section{
 }
 .subscribe-area{
   height: 300px;
+  border-radius: 10px;
 }
 .subscribe-area h3{
   text-transform: uppercase;
+
 }
 .subscribe-area h6{
   color: gray;

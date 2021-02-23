@@ -11,4 +11,6 @@
 04. Shoes Section Design
 05. Backpack Section Design
 06. Complete Subscribe Area
+07. Complete Footer of this site
+
 
