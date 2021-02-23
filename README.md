@@ -18,3 +18,4 @@
     - [x] Categoris Collections
 
 ### Integrated Bootstrap CSS Framework
+##### Included Favicon of this website
