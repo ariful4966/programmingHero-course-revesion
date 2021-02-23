@@ -45,3 +45,12 @@ section{
   border: none;
   background-color: transparent;
 }
+.subscribe-area{
+  height: 300px;
+}
+.subscribe-area h3{
+  text-transform: uppercase;
+}
+.subscribe-area h6{
+  color: gray;
+}

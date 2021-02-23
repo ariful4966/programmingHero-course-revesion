@@ -10,4 +10,5 @@
 03. Design Category section
 04. Shoes Section Design
 05. Backpack Section Design
+06. Complete Subscribe Area
 
