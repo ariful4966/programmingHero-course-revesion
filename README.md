@@ -9,3 +9,5 @@
 02. BootStrap Carousel Customize
 03. Design Category section
 04. Shoes Section Design
+05. Backpack Section Design
+
