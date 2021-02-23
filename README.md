@@ -1,21 +1,11 @@
 # Programming hero Webdevelopment Course
 
-## Hot Gadget
+## E-School Assignment
 
-- [x] HTML File
-- [x] Custom CSS File
+#### Files
+    - [x] Index HTML
+    - [x] Style CSS for custom css
 
-#### HTML File Structure
-- [ ] Header With Navigation
-- [ ] Slider Area
-- [ ] Product Section\
-    - [x] Smart Phone
-    - [x] Laptop
-- [ ] Categoris
-    - [x] bag
-    - [x] Perfume
-    - [x] Show
-    - [x] Categoris Collections
 
-### Integrated Bootstrap CSS Framework
-##### Included Favicon of this website
+### Desing Step
+- [ ] Header with Navigation and Logo
