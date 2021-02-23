@@ -1,58 +1,18 @@
-section{
-    margin-bottom: 100px;
+#slider{
+  background: url(images/bg-2.png) no-repeat;
+  background-position: left bottom;
 }
-.orange-bg {
-  background: #faeae9;
+.slider_area{
+  background: url(images/bg-1.png) no-repeat center;
+  background-size: 100px 80%;
 }
-.carousel-item {
-  padding: 20px;
+li.slide-item-icon {
+  background: gray;
+  border-radius: 20px;
+  height: 0px;
+  border-bottom: 0
 }
-.price {
-  color: #ff136f;
-}
-.buy-now-button{
-    background-image: linear-gradient(to right , #ff136f, rgb(177, 18, 177));
-    color: #fff;
-    font-weight: 600;
-}
-
-.categories h1{
-  color: #fff;
-
-}
-.categories img{
-  width: 100px;
-}
-.cat1, .cat2, .cat3{
-  padding: 10px 30px;
-  border-radius: 10px;
-}
-.cat1{
-  background: linear-gradient(to right, rgb(165, 109, 5), rgb(238, 215, 7))
-
-}
-.cat2{
-  background: linear-gradient(to right, #ff136f, rgb(231, 88, 88))
-}
-.cat3{
-  background: linear-gradient(to right, rgb(56, 93, 212), rgb(2, 5, 170))
-}
-.card{
-  border: none;
-  box-shadow: 5px 5px 10px lightgray
-}
-.card-footer{
-  border: none;
-  background-color: transparent;
-}
-.subscribe-area{
-  height: 300px;
-  border-radius: 10px;
-}
-.subscribe-area h3{
-  text-transform: uppercase;
-
-}
-.subscribe-area h6{
-  color: gray;
+li.slide-item-icon.active{
+  background:rgb(206, 206, 9);
+  width: 60px
 }

@@ -1,16 +1,10 @@
 # Programming hero Webdevelopment Course
 
-## Panda Commerce 
-- [x] HTML & CSS Design Site
-- [x] Bootstrap CSS Fremwork
+## Hot Gadget
 
-### Website Strcture
-01. Bootstrap Navbar inclueded website logo
-02. BootStrap Carousel Customize
-03. Design Category section
-04. Shoes Section Design
-05. Backpack Section Design
-06. Complete Subscribe Area
-07. Complete Footer of this site
+- [x] HTML File
+- [x] Custom CSS File
 
-
+#### HTML File Structure
+- [ ] Header With Navigation
+- [ ] Slider Area
