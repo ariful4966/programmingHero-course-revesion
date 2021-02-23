@@ -37,3 +37,7 @@ section{
 .cat3{
   background: linear-gradient(to right, rgb(56, 93, 212), rgb(2, 5, 170))
 }
+.card{
+  border: none;
+  box-shadow: 5px 5px 10px lightgray
+}
