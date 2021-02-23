@@ -9,3 +9,4 @@
 
 ### Desing Step
 - [ ] Header with Navigation and Logo
+- [ ] Beautiful Banner 
