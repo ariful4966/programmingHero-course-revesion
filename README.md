@@ -21,4 +21,6 @@
  01. Menu With header
  02. Banner
  03. Book Category
- 
+ 04. Courses
+ 05. Testimonial
+ 06. Footer with single widget
