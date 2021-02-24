@@ -16,3 +16,9 @@
 - [ ] Footer Area
     - [x] Footer Top
     - [x] Footer Buttom for copyright
+
+### Responsive
+ 01. Menu With header
+ 02. Banner
+ 03. Book Category
+ 
