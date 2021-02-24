@@ -7,7 +7,7 @@ a.navbar-brand img {
   width: 200px;
   height: 100%;
 }
-section{
+section, footer{
   padding: 50px 0;
 }
 #header_Banner {
@@ -67,7 +67,7 @@ section{
   background: #fff;
 }
 
-.course_heading {
+.section_heading {
   padding: 0px 0px 30px 0px;
 }
 .course_item {
@@ -89,4 +89,56 @@ section{
 }
 .card-footer h6 {
   font-size: 14px;
+}
+
+
+.section_heading h2 {
+  position: relative;
+  font-weight: 800;
+  color: #8c66f5;
+  text-transform: uppercase;
+}
+.section_heading h2::before {
+  position: absolute;
+  content: '';
+  background: #fff;
+  width: 20%;
+  height: 5px;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  border: 5px ridge #68b773;
+}
+
+.section_heading h2::after {
+  position: absolute;
+  content: '';
+  background: #ffffff;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 5px ridge #68b773;
+  left: 50%;
+  bottom: -22px;
+  transform: translateX(-50%);
+}
+
+footer {
+  background: #301035;
+  color: #fff;
+}
+
+.footer_area {
+  margin-bottom: 50px;
+}
+
+.footer_area ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer_area ul li a {
+  color: #e2dce2;
 }
