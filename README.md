@@ -8,3 +8,5 @@
 02. Photo Position Style
 03. Transform and Transition
 04. CSS Grid Layout
+05. Disply Block, Inline and inline-block
+
