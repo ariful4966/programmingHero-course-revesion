@@ -1,26 +1,8 @@
 # Programming hero Webdevelopment Course
 
-## E-School Assignment
+## Advace CSS Consept
 
-#### Files
-- [x] Index HTML
-- [x] Style CSS for custom css
+#### CSS Positioning
 
-
-### Desing Step
-- [ ] Header with Navigation and Logo
-- [ ] Beautiful Banner 
-- [ ] Added Book Area
-- [ ] Included Online Courses Section
-- [ ] Testimonial Section is done
-- [ ] Footer Area
-    - [x] Footer Top
-    - [x] Footer Buttom for copyright
-
-### Responsive
- 01. Menu With header
- 02. Banner
- 03. Book Category
- 04. Courses
- 05. Testimonial
- 06. Footer with single widget
+01. Box Position Style
+02. Photo Position Style
