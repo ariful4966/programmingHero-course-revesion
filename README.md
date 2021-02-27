@@ -6,3 +6,9 @@
 
 
 
+### HTML Stracture
+-   > Navigation With Logo
+-   > Main Area 
+    - [x] Top Player
+    - [x] Top Blog
+-   >Leatest Course
