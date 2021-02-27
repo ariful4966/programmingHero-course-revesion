@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg_menu ">
             <div class="container">
                 <a class="navbar-brand " href="#">
                     <img class="brand-logo" src="images/icon/logo.png" alt="">
@@ -33,10 +33,10 @@
                             <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
+                            <a class="nav-link" href="#blog">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Courses</a>
+                            <a class="nav-link" href="#courses">Courses</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
@@ -49,7 +49,7 @@
     <main>
         <section class="container">
             <div class=" top-player top">
-                <h3>Top Player</h3>
+                <h3 class="section-heading">Top Player</h3>
                 <div class="row">
                     <div class="col-md-4 col-sm-6 my-3 ">
                         <div class="single-player d-flex align-items-center">
@@ -89,88 +89,96 @@
                     </div>
                 </div>
             </div>
-            <div class="top-blog top">
-                <h3>Top Blog</h3>
+            <div class="top-blog top" id="blog">
+                <h3 class="section-heading">Top Blog</h3>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="single-blog">
                             <div class="card mb-3" ">
                                 <div class=" row no-gutters">
-                                <div class="col-6">
-                                    <img src="images/blog/blog.png" alt="...">
+                                    <div class="col-6">
+                                        <img src="images/blog/blog.png" alt="...">
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card-body">
+                                            <h5 class="card-title">13 of My Favorite UI/UX Goodies</h5>
+                                        </div>
+                                        <div class="card-footer">
+                                            <p class="card-text">By <span>Danny Sapio</span></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="card-body">
-                                        <h5 class="card-title">13 of My Favorite UI/UX Goodies</h5>
-                                        <p class="card-text"><small class="text-muted">By Danny Sapio</small>
-                                        </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="single-blog">
+                            <div class="card mb-3" ">
+                                <div class=" row no-gutters">
+                                    <div class="col-6">
+                                        <img src="images/blog/blog-1.png" alt="...">
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card-body">
+                                            <h5 class="card-title">UI cheat sheet: list vs grids</h5>
+                                        </div>
+                                        <div class="card-footer">
+                                            <p class="card-text">By <span>Tess Gadd</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-lg-6 col-md-6 col-sm-12">
+                        <div class="single-blog">
+                            <div class="card mb-3" ">
+                                <div class=" row no-gutters">
+                                    <div class="col-6">
+                                        <img src="images/blog/blog-2.png" alt="...">
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card-body">
+                                            <h5 class="card-title">7 typography tips for interface design</h5>
+                                        </div>
+                                        <div class="card-footer">
+                                            <p class="card-text">By <span>Jeremiah Lam</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="single-blog">
+                            <div class="card mb-3" ">
+                                <div class=" row no-gutters">
+                                    <div class="col-6">
+                                        <img src="images/blog/blog-3.png" alt="...">
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Your logo is copied</h5>
+                                            
+                                        </div>
+                                        <div class="card-footer">
+                                            <p class="card-text">By <span>Ferdinand Vogler</span></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="single-blog">
-                        <div class="card mb-3" ">
-                            <div class=" row no-gutters">
-                            <div class="col-6">
-                                <img src="images/blog/blog-1.png" alt="...">
-                            </div>
-                            <div class="col-6">
-                                <div class="card-body">
-                                    <h5 class="card-title">UI cheat sheet: list vs grids</h5>
-                                    <p class="card-text"><small class="text-muted">By Tess Gadd</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=" col-lg-4 col-md-6 col-sm-12">
-                <div class="single-blog">
-                    <div class="card mb-3" ">
-                        <div class=" row no-gutters">
-                        <div class="col-6">
-                            <img src="images/blog/blog-2.png" alt="...">
-                        </div>
-                        <div class="col-6">
-                            <div class="card-body">
-                                <h5 class="card-title">7 typography tips for interface design</h5>
-                                <p class="card-text"><small class="text-muted">By Jeremiah Lam</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-blog">
-                    <div class="card mb-3" ">
-                        <div class=" row no-gutters">
-                        <div class="col-6">
-                            <img src="images/blog/blog-3.png" alt="...">
-                        </div>
-                        <div class="col-6">
-                            <div class="card-body">
-                                <h5 class="card-title">Your logo is copied</h5>
-                                <p class="card-text"><small class="text-muted">By Ferdinand Vogler</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            </div>
             </div>
         </section>
         <section id="courses" class="container">
             <div class="course_area ">
-                <h3>Leatest Courses</h3>
+                <h3 class="section-heading">Leatest Courses</h3>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-lg-4 col-sm-12 mb-3">
                         <div class="single-course">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" >
                                 <img src="images/course/course.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">React- The Complete Guide-2021</h5>
@@ -185,19 +193,19 @@
                                             <img src="images/icon/Path_501_1_.png" alt="">
                                             <img src="images/icon/star_blank.png" alt="">
                                         </span>
-                                        <span>4.5</span>
+                                        <span class="px-2">4.5</span>
                                     </div>
                                     <div class="time d-flex align-items-center">
                                         <img src="images/icon/ic_access_time_24px 1.png" alt="">
-                                        <span>01:30 hr</span>
+                                        <span class="px-2">01:30 hr</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-lg-4 col-sm-12 mb-3">
                         <div class="single-course">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" >
                                 <img src="images/course/course-1.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Powerpoint 2021 Master Powerpoint course</h5>
@@ -212,19 +220,19 @@
                                             <img src="images/icon/Path_501_1_.png" alt="">
                                             <img src="images/icon/star_blank.png" alt="">
                                         </span>
-                                        <span>4.5</span>
+                                        <span class="px-2">4.5</span>
                                     </div>
                                     <div class="time d-flex align-items-center">
                                         <img src="images/icon/ic_access_time_24px 1.png" alt="">
-                                        <span>01:30 hr</span>
+                                        <span  class="px-2">01:30 hr</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-lg-4 col-sm-12 mb-3">
                         <div class="single-course">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" >
                                 <img src="images/course/course-2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">The Complete JavaScript Course 2021</h5>
@@ -239,11 +247,11 @@
                                             <img src="images/icon/Path_501_1_.png" alt="">
                                             <img src="images/icon/star_blank.png" alt="">
                                         </span>
-                                        <span>4.5</span>
+                                        <span class="px-2">4.5</span>
                                     </div>
-                                    <div class="time d-flex align-items-center">
+                                    <div class="time d-flex align-items-center ">
                                         <img src="images/icon/ic_access_time_24px 1.png" alt="">
-                                        <span >01:30 hr</span>
+                                        <span class="px-2">01:30 hr</span>
                                     </div>
                                 </div>
                             </div>
@@ -264,5 +272,8 @@
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
         crossorigin="anonymous"></script>
 </body>
+<footer>
+    <p class="text-center">&copy; All Right Reserved By Ariful Islam</p>
+</footer>
 
 </html>
