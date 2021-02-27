@@ -1,7 +1,17 @@
-h2{
-    color: cornflowerblue;
-    background-color: gray;
+.navbar img {
+    width: 51px;
+    height: 51px;
 }
-h3{
-    color:firebrick; background:blueviolet
+body{
+    background-color: #9F9F9F;
+}
+section{
+    background-color: #fff;
+    margin: 20px 0
+}
+img{
+    width: 100%;
+}
+.single-player img{
+    width: 56px;
 }
