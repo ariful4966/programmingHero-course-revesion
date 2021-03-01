@@ -4,5 +4,6 @@
     01. Variable Dicler
     02. Javascrit keyword
     03. Variable Type Number
-    03. Variable Type String
-    03. Variable Type Boolean
+    04. Variable Type String
+    05. Variable Type Boolean
+    06. Meaningfull Variables
