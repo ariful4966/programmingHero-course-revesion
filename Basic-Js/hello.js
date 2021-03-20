@@ -1,8 +1,17 @@
+var price1 = 'Justin';
+var name = 'Bieber';
+var result = price1 +' '+ name
+var price2 = 35;
+// price2 += 1
+// price2 ++
+price2--
 
-var number1 = 0.1
-var number2 = 0.2;
-// number2 = +number2
-// number1 = number1
-var total = number1+number2
-total = total.toFixed(1)
-console.log( total);
+// var total = price2 + price1;
+// var total = price2 - price1;
+// var total = price2 * price1;
+// var total = price2 / price1;
+var total = price2 % price1;
+
+console.log(total);
+
+console.log(result);
