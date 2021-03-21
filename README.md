@@ -8,4 +8,17 @@
     05. Variable Type Boolean
     06. Meaningfull Variables
 
- ## Ariful Islam
+## Mathmetical Oparetion
+    * Plus
+    * Minus
+    * Multiply
+    * Division
+    * Modules
+## Math Method
+    -- Math.abs()
+    -- Math.round()
+    -- Math.ciel()
+    -- Math.floor()
+    -- Math.random()
+
+
