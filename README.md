@@ -12,3 +12,11 @@
 ### Loop
     [x] while Loop
     [x] for Loop
+
+### Conditions
+    [x] if(){}else{}
+    [x] switch case
+
+### Function
+    -- basic
+    -- basic & advance consept

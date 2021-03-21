@@ -1,13 +1,18 @@
-function sayLovYou() { 
-    console.log('Jaan o baby');
-    console.log("Billy Baby....... Koi Tumi");
- }
+function doubeIt(num) {
+    var result = num * 2;
+    return result
+}
 
- sayLovYou()
+var first = doubeIt(5)
+var second = doubeIt(50)
+var third = doubeIt(500)
+var total = first + second + third
 
- var date = 14;
- var place = 'Restaurent';
+// console.log(total);
 
- sayLovYou();
- var hangoutPlace = 'TSC';
- sayLovYou()
+function add(num1, num2) {
+    var result = num1 + num2
+    return result
+}
+var sum = add(15,17)
+console.log(sum);
