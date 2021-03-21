@@ -11,3 +11,4 @@
     [x] array.splice()
 ### Loop
     [x] while Loop
+    [x] for Loop
