@@ -9,3 +9,5 @@
     [x] array.shift()
     [x] array.slice()
     [x] array.splice()
+### Loop
+    [x] while Loop
