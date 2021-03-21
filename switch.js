@@ -1,10 +1,10 @@
 num = 1000;
-switch(num){
+switch (num) {
     case 1000:
         console.log('I am 1000');
         break;
-    
-    case 100: 
+
+    case 100:
         console.log('I am 100');
         break;
 
@@ -12,8 +12,8 @@ switch(num){
     case 10:
         console.log('I am either 10 or 20');
         break;
-    
-    default: 
-    console.log("I don't Know who you are");
+
+    default:
+        console.log("I don't Know who you are");
 
 }
