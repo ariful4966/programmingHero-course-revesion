@@ -7,3 +7,5 @@
     [x] array.length
     [x] array.unshift()
     [x] array.shift()
+    [x] array.slice()
+    [x] array.splice()
