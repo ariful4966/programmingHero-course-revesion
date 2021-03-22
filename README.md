@@ -4,6 +4,7 @@
 - > covert inch to feet
 - > factorial using Whileloop and Forloop
 - > factorial Recursive
+- > fibonacci
 
 ## Variables
 - [x] Constant (const)
