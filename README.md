@@ -4,5 +4,5 @@
 - > covert inch to feet
 
 ## Variables
-[x] Constant (const)
-[x] Letting (let)
+- [x] Constant (const)
+- [x] Letting (let)
