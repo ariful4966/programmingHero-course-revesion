@@ -5,6 +5,8 @@
 - > factorial using Whileloop and Forloop
 - > factorial Recursive
 - > fibonacci
+- > fibonacci Recursive
+- > fibonacci Serice Recursive
 
 ## Variables
 - [x] Constant (const)
