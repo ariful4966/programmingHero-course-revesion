@@ -7,6 +7,7 @@
 - > fibonacci
 - > fibonacci Recursive
 - > fibonacci Serice Recursive
+- > prime number
 
 ## Variables
 - [x] Constant (const)
