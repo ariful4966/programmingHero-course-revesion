@@ -3,6 +3,7 @@
 
 ## Problem Solved
 - [x] Swap
+- [x] arrayMax
 - [x] Math() Method
   - Math.floor()
   - Math.ciel()
