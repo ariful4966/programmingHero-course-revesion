@@ -1,6 +1,11 @@
 var business = 850;
 var minister = 650;
-var sochib = 750;
+var sochib = 950;
+
+var max = Math.max(business, minister, sochib)
+console.log(max);
+
+/*
 
 if (business > minister) {
     if (business > sochib) {
@@ -14,4 +19,4 @@ if (business > minister) {
     } else {
         console.log('Sochib is Bigger');
     }
-}
+}*/

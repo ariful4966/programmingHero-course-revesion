@@ -8,3 +8,4 @@
   - Math.ciel()
   - Math.round()
   - Math.random()
+  - Math.max()
