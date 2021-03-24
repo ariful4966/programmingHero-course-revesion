@@ -9,8 +9,14 @@ b = temp;
 
 var x = 5;
 var y = 7;
-console.log('Befor swap x =', x, 'y =', y);
+// console.log('Befor swap x =', x, 'y =', y);
 x = x + y;
 y = x - y
 x = x - y
-console.log('After swap x =', x, 'y =', y);
+// console.log('After swap x =', x, 'y =', y);
+
+var p = 5;
+var q = 7;
+console.log('Befor swap p =', p, 'q =', q);
+[p, q] = [q, p]
+console.log('After swap p =', p, 'q =', q);
