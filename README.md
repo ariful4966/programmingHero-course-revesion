@@ -2,5 +2,9 @@
 
 
 ## Problem Solved
-[x] Swap
-
+- [x] Swap
+- [x] Math() Method
+  - Math.floor()
+  - Math.ciel()
+  - Math.round()
+  - Math.random()
