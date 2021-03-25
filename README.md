@@ -11,3 +11,6 @@
   - Math.random()
   - Math.max()
 
+- [x] function is get total number of array
+- [x] clean duplicate number of array
+
