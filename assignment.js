@@ -10,13 +10,26 @@ console.log(mile);
 
 function woodCalculator(chear, table, bed) {
 
-    // return toalWood
+    var oneChear = 1;
+    var chears = oneChear * chear
+
+    var oneTable = 3;
+    var tables = oneTable * table
+
+    var oneBed = 5;
+    var beds = oneBed * bed
+
+
+    var totalWood = chears + tables + beds;
+    return totalWood
 }
+var wood = woodCalculator(3, 2, 1)
+console.log(wood);
 
 // 03 function
 
 function brickCalculator() {
-
+    
 }
 
 // 04 function
