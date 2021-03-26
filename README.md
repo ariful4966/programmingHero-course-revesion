@@ -1,18 +1,12 @@
 # Programming hero Webdevelopment Course
 
 
-## Problem Solved
-- [x] Swap
-- [x] arrayMax
-- [x] Math() Method
-  - Math.floor()
-  - Math.ciel()
-  - Math.round()
-  - Math.random()
-  - Math.max()
-
-- [x] function is get total number of array
-- [x] clean duplicate number of array
-- [x] word Count
-- [x] String Reverse
+### Assignment
+01. Feet Convaert Mile
+02. mezerment of wood
+03. per feet 1000 bricks
+    - > 0-10 15feet
+    - > 11-20 12feet
+    - > 21-up 10feet
+04. 
 
