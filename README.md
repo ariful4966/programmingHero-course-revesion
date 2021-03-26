@@ -14,4 +14,5 @@
 - [x] function is get total number of array
 - [x] clean duplicate number of array
 - [x] word Count
+- [x] String Reverse
 
