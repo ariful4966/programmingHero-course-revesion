@@ -45,9 +45,9 @@ function brickCalculator(cieling) {
         return secondLavel
     }
     else {
-        var thirdLavel = oneFeet  * oneTotenCile * 10; //150000
-            thirdLavel  += oneFeet * 10 * elevenToTowenty; //120000
-         thirdLavel += oneFeet * (cieling - 20) * towentyOneup // 100000
+        var thirdLavel = oneFeet * oneTotenCile * 10; //150000
+        thirdLavel += oneFeet * 10 * elevenToTowenty; //120000
+        thirdLavel += oneFeet * (cieling - 20) * towentyOneup // 100000
 
         return thirdLavel
     }
@@ -58,17 +58,15 @@ var totalBricks = brickCalculator(25)
 console.log(totalBricks);
 // 04 function
 
+
 function tinyFriend(name) {
-    var singleName = []
-    for(var i = 0; i< name.length; i++){
-        var element = name[i];
-        var oneName = element.length
-        singleName.push(element)
-    }
 
+    var shorter = (acc, cur) => acc.length <= cur.length ? acc : cur
+    return name.reduce(shorter)
 
-    return singleName
 }
-var name =['Azizul' , 'Asia']
+var name = ['Ariful Islam', 'Johirul Islam', 'Aisa Akter']
 var result = tinyFriend(name);
 console.log(result);
+
+

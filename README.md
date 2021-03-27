@@ -11,5 +11,5 @@
     - > 0-10 15feet
     - > 11-20 12feet
     - > 21-up 10feet
-04. 
+04. find out a small element in array
 
