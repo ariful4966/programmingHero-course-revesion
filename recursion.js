@@ -7,6 +7,7 @@ function factorial(num) {
     return fact
 }
 // 5! = 5*4*3*2*1;
+
 function factorialRecursive(num) {
     if (num == 1) {
         console.log(num);
