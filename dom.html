@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expore DOM</title>
 </head>
+
 <body>
     <main>
         <section>
             <h3>Exploring DOM</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptatum accusamus, tempora accusantium quae reprehenderit voluptas nostrum aliquam rem dolores.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptatum accusamus, tempora accusantium
+                quae reprehenderit</p>
+            <p id="frist"> voluptas nostrum aliquam rem dolores.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </section>
     </main>
 
     <script>
-        console.log(document.body);
+        var first = document.getElementById('frist')
+        first.style.color="green"
+        first.style.fontSize="40px"
+        first.style.background="#696969"
+        first.style.textAlign="center"
+
     </script>
 </body>
+
 </html>
