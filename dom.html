@@ -6,10 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expore DOM</title>
+    <style>
+        article {
+            border: 2px solid tomato;
+            border-radius: 20px;
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
     <main>
+        <section>
+            <h3>Exploring DOM</h3>
+            <article>
+                <h3>article-1</h3>
+                <p class="author">author-1</p>
+                <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id dignissimos hic
+                    ducimus eaque sed dolorum officiis exercitationem in. Ab numquam eaque quaerat maiores odio at,
+                    optio asperiores reprehenderit ipsam fuga.</p>
+            </article>
+            <article>
+                <h3>article-2</h3>
+                <p class="author">author-2</p>
+                <p class="description">Ipsam totam quos corporis cupiditate hic repellendus, magnam est inventore
+                    incidunt possimus iusto! Beatae dolor quia culpa, veritatis doloremque earum, architecto, quisquam
+                    eum rem temporibus itaque repellendus eos mollitia? Ad?</p>
+            </article>
+            <article>
+                <h3>article-3</h3>
+                <p class="author">author-3</p>
+                <p class="description">Debitis, officia totam voluptas a et perferendis, quas quidem, tempora enim ex
+                    mollitia voluptatibus provident dolores reiciendis adipisci aliquam aspernatur quasi harum! Vel
+                    optio aperiam perferendis cum sed, et quia!</p>
+            </article>
+        </section>
         <section>
             <h3>Exploring DOM</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptatum accusamus, tempora accusantium
@@ -17,14 +49,31 @@
             <p id="frist"> voluptas nostrum aliquam rem dolores.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </section>
+        <section>
+            <h3>Exploring DOM</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptatum accusamus, tempora accusantium
+                quae reprehenderit</p>
+            <p> voluptas nostrum aliquam rem dolores.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </section>
     </main>
 
     <script>
         var first = document.getElementById('frist')
-        first.style.color="green"
-        first.style.fontSize="40px"
-        first.style.background="#696969"
-        first.style.textAlign="center"
+        first.style.color = "green"
+        first.style.fontSize = "40px"
+        first.style.background = "#696969"
+        first.style.textAlign = "center"
+
+
+        var authors = document.getElementsByClassName('author');
+        for (var i = 0; i < authors.length; i++) {
+            var element = authors[i]
+            console.log(element.innerHTML);
+            element.innerHTML = 'Lekhok-' + (i + 1)
+            element.style.backgroundColor = 'lightblue';
+            element.style.padding = '20px'
+        }
 
     </script>
 </body>
