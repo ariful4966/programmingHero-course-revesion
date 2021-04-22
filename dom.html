@@ -13,6 +13,10 @@
             margin: 5px;
             padding: 5px;
         }
+        .special{
+
+        }
+       
     </style>
 </head>
 
@@ -27,7 +31,7 @@
                     ducimus eaque sed dolorum officiis exercitationem in. Ab numquam eaque quaerat maiores odio at,
                     optio asperiores reprehenderit ipsam fuga.</p>
             </article>
-            <article>
+            <article class="special">
                 <h3>article-2</h3>
                 <p class="author">author-2</p>
                 <p class="description">Ipsam totam quos corporis cupiditate hic repellendus, magnam est inventore
@@ -42,7 +46,7 @@
                     optio aperiam perferendis cum sed, et quia!</p>
             </article>
         </section>
-        <section>
+        <section class="special">
             <h3>Exploring DOM</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptatum accusamus, tempora accusantium
                 quae reprehenderit</p>
@@ -59,14 +63,10 @@
     </main>
 
     <script>
-        var first = document.getElementById('frist')
-        first.style.color = "green"
-        first.style.fontSize = "40px"
-        first.style.background = "#696969"
-        first.style.textAlign = "center"
+        
+        document.body.style.background="tomato"
 
-
-        var authors = document.getElementsByClassName('author');
+        var authors = document.querySelectorAll('.special h3');
         for (var i = 0; i < authors.length; i++) {
             var element = authors[i]
             console.log(element.innerHTML);
