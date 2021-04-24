@@ -20,10 +20,12 @@
     <script>
         document.getElementById('first').addEventListener('click', function(event){
             console.log('First Item Clicked');
+            
         })
-        // document.getElementById('myList').addEventListener('click', function(event){
-        //     console.log('Ul Clicked');
-        // })
+        document.getElementById('myList').addEventListener('click', function(event){
+            console.log('Ul Clicked');
+            event.stopPropagation();
+        })
         document.getElementById('container').addEventListener('click', function(event){
             console.log('Container Clicked');
         })
