@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="container">
         <h1>My List</h1>
@@ -16,20 +18,35 @@
             <li class="item">Tempore, porro perspiciatis.</li>
             <li class="item">Expedita, in laborum!</li>
         </ul>
+        <button id="addNew">Add New item</button>
     </div>
     <script>
-        document.getElementById('first').addEventListener('click', function(event){
-            console.log('First Item Clicked');
-            
+        // var items = document.getElementsByTagName('li');
+        // for (let i = 0; i < items.length; i++) {
+        //     var item = items[i];
+        //     item.addEventListener('click', function (event) {
+        //         event.target.parentNode.removeChild(event.target)
+        //     })
+        // }
+        document.getElementById('addNew').addEventListener('click', function(e){
+            var itemParent = document.getElementById('myList');
+            var newItem = document.createElement('li');
+            newItem.innerText = 'Brand New Item';
+            itemParent.appendChild(newItem);
         })
+        // document.getElementById('first').addEventListener('click', function(event){
+        //     console.log('First Item Clicked');
+
+        // })
         document.getElementById('myList').addEventListener('click', function(event){
-            console.log('Ul Clicked');
-            event.stopPropagation();
+            console.log(this, event.target);
+            event.target.parentNode.removeChild(event.target)
         })
-        document.getElementById('container').addEventListener('click', function(event){
-            console.log('Container Clicked');
-        })
+        // document.getElementById('container').addEventListener('click', function(event){
+        //     console.log('Container Clicked');
+        // })
 
     </script>
 </body>
+
 </html>
