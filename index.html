@@ -10,7 +10,7 @@
 </head>
 <body>
     
-    <div class="login-area">
+    <div id="login-area">
         <h1 class="text-center">Welcome To Pioneer Bank</h1>
         <div class="submit-area">
             <h4>Login</h4>
@@ -24,7 +24,8 @@
     <script>
         const loginBtn = document.getElementById('login');
         loginBtn.addEventListener("click", function(){
-            console.log("jayona shathi");
+            const loginArea = document.getElementById('login-area');
+            loginArea.style.display ='none'
         })
     </script>
 </body>
