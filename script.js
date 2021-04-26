@@ -85,6 +85,41 @@ caseMinus.addEventListener('click', () => {
 
 })
 
+//Phone Remove
+const phoneRemove = document.querySelector('#phoneRemove')
+phoneRemove.addEventListener('click', ()=>{
+    document.querySelector('#phoneItem').style.display='none';
+
+    const subtotal = priceNumber('#subTotal')
+    const phonePrice = priceNumber('#phonePrice')
+    const subtotalAmount = subTotal(subtotal, -1 * phonePrice)
+
+    //persentage Amount
+    const persent = inputNumber('#persent')
+    const persenTage = persentage(subtotalAmount, persent)
+
+    //Grand Total
+    grandTotal(subtotalAmount, persenTage)
+})
+
+//Casin Remove
+
+const casinRemove = document.querySelector('#casinRemove')
+casinRemove.addEventListener('click', () => {
+    document.querySelector('#casinItem').style.display = 'none';
+
+    const subtotal = priceNumber('#subTotal')
+    const casPrice = priceNumber('#casPrice')
+    const subtotalAmount = subTotal(subtotal, -1 * casPrice)
+
+    //persentage Amount
+    const persent = inputNumber('#persent')
+    const persenTage = persentage(subtotalAmount, persent)
+
+    //Grand Total
+    grandTotal(subtotalAmount, persenTage)
+})
+
 function piceUpdate(id) {
     const phonePice = document.querySelector(id).value++;
     const piceNumber = parseFloat(phonePice);
