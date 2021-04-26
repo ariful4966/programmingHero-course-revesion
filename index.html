@@ -12,7 +12,7 @@
 
 <body>
 
-   <section>
+   <section id="cardArea">
       <div class="container">
          <div class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
@@ -61,7 +61,7 @@
                      <div class="col-md-8">
                         <h5>Subtotal: </h5>
                         <h5>Tax: 5%
-                              <input id="persent"  type="text" class=" text-center" value="5" style="display: none;">
+                           <input id="persent" type="text" class=" text-center" value="5" style="display: none;">
                         </h5>
                         <h5>Total:</h5>
                      </div>
@@ -74,14 +74,39 @@
                   </div>
                </div>
                <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  <button id="checkoutBtn" type="button" class="btn btn-success check-out">Check Out</button>
                </div>
             </div>
          </div>
       </div>
    </section>
-   <section id="checkOut">
-      
+   <section id="checkOut" style="display: none; padding: 50px 0">
+      <div class="container">
+         <h4>Delivary Information</h4>
+         <form>
+            <div class="form-group">
+               <label for="name">Enter Your Name</label>
+               <input type="text" class="form-control" id="name" >
+            </div>
+            <div class="form-group">
+               <label for="exampleInputEmail1">Email address</label>
+               <input type="email" class="form-control" id="exampleInputEmail1" >
+            </div>
+            <div class="form-group">
+               <label for="phone">Phone Number</label>
+               <input type="number" class="form-control" id="phone" >
+            </div>
+            <div class="form-group">
+               <label for="home">Home Address</label>
+               <input type="text" class="form-control" id="home" >
+            </div>
+            <div class="form-group form-check">
+               <input type="checkbox" class="form-check-input" id="exampleCheck1">
+               <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-secondary">Submit</button>
+         </form>
+      </div>
    </section>
 
    <script src="script.js"></script>

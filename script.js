@@ -174,3 +174,9 @@ function grandTotal(subtotal, persenTage) {
     const grandTotal = subtotal + persenTage
     document.querySelector('#grandTotal').innerText = grandTotal.toFixed(2)
 }
+
+
+document.querySelector('#checkoutBtn').addEventListener('click', ()=>{
+    document.querySelector('#cardArea').style.display="none"
+    document.querySelector('#checkOut').style.display="block"
+})
