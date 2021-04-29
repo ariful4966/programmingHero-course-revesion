@@ -1,3 +1,5 @@
 # Programming hero Webdevelopment Course
 
- [x] arguments
+## Calculator
+
+[x] Using javascript
