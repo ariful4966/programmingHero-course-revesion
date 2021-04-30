@@ -112,3 +112,59 @@ input[type="text"]:focus{
     background: hsl(214deg 20% 24%);
     transition: 0s;
 }
+
+.submit-btn {
+    border: none;
+    margin-top: 20px;
+    padding: 10px 120px;
+    border-radius: 5px;
+    background: #495bc3;
+    color: #fff;
+    border-image-source: none !important;
+    transition: 0s 0.1s;
+    font-size: 20px;
+}
+
+.submit-btn:active {background: hsl(231 51% 50% /1);box-shadow: 0 0 0 4px rgba(255 255 255 /6%);transition: 0s;}
+
+.submit-btn:hover {
+    background: hsl(231 51% 50% /1);
+}
+
+.submit-btn:disabled {
+    opacity: 0.5;
+    background: #495bc3;
+}
+
+.action-left {
+    color: #ff3c5f;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.notify-section {
+    width: 35%;
+    margin: 0 auto;
+}
+
+.notify {
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    background: #222436;
+    margin-top: 20px;
+    border-radius: 15px;
+    padding: 5px 20px;
+    transition: 0.3s;
+    transform: translateX(50px);
+    opacity: : 0;
+    display: none; 
+    visibility: hidden; 
+}
+
+.notify.active {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0px);
+}
