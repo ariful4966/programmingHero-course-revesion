@@ -1,0 +1,114 @@
+*{
+    box-sizing:border-box
+}
+body {
+    background: #101;
+    height: 100vh;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.half-width {
+    height: 580px;
+    background: #222436;
+    padding: 30px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.generate-btn {
+    margin: 140px;
+    width: 180px;
+    height: 180px;
+    padding: 20px;
+    border-radius: 50%;
+    border: 8px solid #39458c;
+    background: #495bc3;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    transition: 0s 0.1s;
+}
+
+.generate-btn:focus{
+    outline:none;
+    box-shadow:none
+}
+.generate-btn:active{
+    background:#e0b612;
+    border-color: rgb(255 255 255 /15%);
+   transform: scale(1.01);
+   transition:0s
+}
+input[type="text"]{
+    background: #3d4153;
+    padding:10px 0;
+    color: #fff;
+    width:80%;
+    margin: 0 auto;
+    border: 2px solid #858299;
+    height: 50px;
+    padding: 10px;
+    text-align:center;
+}
+
+input[type="text"]:focus{
+    background:#2f3241;
+    color: #fff;
+    font-size:20px;
+    box-shadow:none
+}
+
+.pin-generator .form-control:disabled, .input-section .form-control:disabled {
+    background: #2f3241;
+    border-color: #565b76;
+}
+.pin-generator .form-control.active{
+    font-size: 20px;
+    color: #fff;
+}
+.numbers {
+    margin: 30px 0;
+}
+
+.calc-body {
+    margin-top: 20px;
+    font-size: 45px;
+    text-align: center;
+    color: #fff;
+}
+
+.calc-button-row {
+    width: 100%;
+}
+
+.btn {
+    width: 20%;
+    color: #fff;
+    background: #425062;
+    padding: 20px 0;
+    margin: 5px;
+    display: inline-block;
+    font-size: 25px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: -4px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    transition: 0s 0.1s;
+}
+
+.btn:hover {
+    background: #585858;
+    color: #fff;
+}
+
+.btn:active {
+    box-shadow: 0 0 0 3px rgba(255 255 255 / 6%);
+    background: hsl(214deg 20% 24%);
+    transition: 0s;
+}
