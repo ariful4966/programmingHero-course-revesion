@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handler</title>
+</head>
+
+<body>
+    <ul>
+        <li>Lorem, ipsum.</li>
+        <li>Sapiente, quasi?</li>
+        <li>Provident, illo!</li>
+        <li onclick="this.innerText='some one click'">Possimus, nihil?</li>
+        <li onclick="itemClickHandler(event)">Eveniet, aliquam!</li>
+        <li id="last-person">Architecto, laudantium?</li>
+    </ul>
+    <script>
+        function itemClickHandler(e) {
+            console.log(e.target.innerText);
+        }
+        document.getElementById('last-person').addEventListener('click', itemClickHandler)
+    </script>
+</body>
+
+</html>
