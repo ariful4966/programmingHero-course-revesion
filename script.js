@@ -17,6 +17,9 @@ depositBtn.addEventListener('click', function () {
         updateSpanText('currentDeposit', depositeNumber)
         updateSpanText('current-balance', depositeNumber)
     }
+    else{
+        alert('Deposit Number Cannot be negative')
+    }
 
     document.getElementById('deposit-amount').value = '';
 })
@@ -49,3 +52,8 @@ function updateSpanText(id, depositeNumber) {
 
     document.getElementById(id).innerText = total;
 }
+
+// confirm('Are you comming in the picnic');
+
+
+// prompt('What is your name');
