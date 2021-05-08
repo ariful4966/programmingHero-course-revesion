@@ -7,3 +7,4 @@
  - > prompt('some input from user')
  - > location
  - > history
+ - > cookies
