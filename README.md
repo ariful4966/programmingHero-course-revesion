@@ -8,3 +8,5 @@
  - > location
  - > history
  - > cookies
+ - > session storage
+ - > local storage
