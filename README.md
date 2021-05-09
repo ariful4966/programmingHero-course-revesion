@@ -2,3 +2,6 @@
 
 ### Javascript Debug
 
+#### Chrome Inspact
+- [x] Responsiveness
+- [x] Selector
