@@ -7,3 +7,4 @@
 - [x] Selector
 - [x] ctrl+shift+o for js source code
 - [x] source tab
+- [x] chrome devtool console api
