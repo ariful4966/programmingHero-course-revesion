@@ -15,6 +15,11 @@
             background-size: cover;
             height: 100vh;
         }
+
+        img#icon {
+            width: 100px;
+            height: 100px;
+        }
     </style>
 </head>
 
@@ -26,26 +31,56 @@
                 <div class="input-group-append">
                     <button onclick="getCityName()" type="button" class="btn btn-danger">Search</button>
                 </div>
+
             </div>
+            <p id="err" style="color: red; font-size: 30px;"></p>
         </form>
         <div class="weather-status text-white text-center">
-            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1>Dhaka</h1>
+            <img id="icon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1 id="name">Dhaka, BD</h1>
             <h3><span>38.06</span>&deg;C</h3>
             <h1 class="lead">Clouds</h1>
         </div>
     </div>
     <script>
-        function getCityName(){
+
+        function getCityName() {
             const cityName = document.querySelector('#cityName').value;
-            
             fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=8623f448915e97b091cd2bfbdfa4b293`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
+                .then(res => res.json())
+                .then(data => {
+                    setData(data);
+                })
+                .catch(e => {
+                    // console.log(e.message);
+
+                })
+            // }
+
+
         }
-        getCityName()
+        function setData(data) {
+            if (data.message) {
+                document.querySelector('#err').innerText = data.message;
+                setTimeout(() => {
+                    document.querySelector('#cityName').value = '';
+                    document.querySelector('#err').remove()
+                }, 5000);
+            } 
+                document.querySelector('#name').innerText = data.name + ", " + data.sys.country;
+                document.querySelector('.lead').innerText = data.weather[0].main;
+                const img = document.querySelector('#icon')
+                img.src = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+                const celcius = parseFloat(data.main.temp) - 273.15;
+                document.querySelector('span').innerText = celcius.toFixed(2);
+
+                setTimeout(() => {
+                    document.querySelector('#cityName').value = '';
+                }, 5000);
+            
+
+
+        }
     </script>
 </body>
 
