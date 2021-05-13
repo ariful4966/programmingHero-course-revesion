@@ -1,29 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun With API</title>
+    <title>Temperature Hot</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(images/bg-image.jpg) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id="activity"></h1>
-    <h3>Learn From: <a href="" id="explore_link">Visit This Place</a></h3>
-
+    <div class="container">
+        <form class="col-md-6 m-auto py-5">
+            <div class="input-group mb-3">
+                <input id="cityName" type="text" class="form-control" placeholder="Enter a location for Weather ...">
+                <div class="input-group-append">
+                    <button onclick="getCityName()" type="button" class="btn btn-danger">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="weather-status text-white text-center">
+            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1>Dhaka</h1>
+            <h3><span>38.06</span>&deg;C</h3>
+            <h1 class="lead">Clouds</h1>
+        </div>
+    </div>
     <script>
-        function doSomeThing() {
-            fetch('http://www.boredapi.com/api/activity/')
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('activity').innerText = data.activity
-                })
+        function getCityName(){
+            const cityName = document.querySelector('#cityName').value;
+            
+            fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=8623f448915e97b091cd2bfbdfa4b293`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
         }
-        doSomeThing()
-        setInterval(() => {
-            doSomeThing()
-        }, 10000);
+        getCityName()
     </script>
 </body>
 
