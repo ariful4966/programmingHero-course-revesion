@@ -1,7 +1,7 @@
 # Programming Hero Course Revision
 
-## Wather API
+## Issue Tracker 
+- [x] Bug Fixing Practice
 
-- [x] [Tasks Borad Activity API](http://www.boredapi.com/api/activity/)
-- [x] [Random User API](https://randomuser.me/api/?results=50)
-8623f448915e97b091cd2bfbdfa4b293
+### Bugresolved
+- [1] line No 26 main.js
