@@ -1,9 +1,3 @@
-const issues =JSON.parse(localStorage.getItem('issues'));
-document.getElementById('countIssues').innerText = issues.length;
-const closed = issues.filter(issues => issues.status === 'Closed');
-document.getElementById('closedCount').innerText = closed.length;
-const open = issues.filter(issues => issues.status === 'Open');
-document.getElementById('openCount').innerText = open.length;
 
 
 document.getElementById('issueInputForm').addEventListener('submit', submitIssue);
@@ -40,9 +34,10 @@ const closeIssue = id => {
 
 const deleteIssue = id => {
   const issues = JSON.parse(localStorage.getItem('issues'));
-  const remainingIssues = issues.filter(issue => issue.id !== id);
+  const remainingIssues = issues.filter(issue => issue.id != id);
   console.log(remainingIssues);
   localStorage.setItem('issues', JSON.stringify(remainingIssues));
+  fetchIssues();
 }
 
 const fetchIssues = () => {
@@ -64,3 +59,12 @@ const fetchIssues = () => {
                               </div>`;
   }
 }
+
+  const issues = JSON.parse(localStorage.getItem('issues'));
+  document.getElementById('countIssues').innerText = issues.length;
+  const closed = issues.filter(issue => issue.status === 'Closed');
+  document.getElementById('closedCount').innerText = closed.length;
+  const open = issues.filter(issue => issue.status === 'Open');
+  document.getElementById('openCount').innerText = open.length;
+
+
