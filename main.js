@@ -1,70 +1,65 @@
+function searchLyric() {
+    const search = document.querySelector('#searchLyrics').value;
 
+    fetch(`https://api.lyrics.ovh/suggest/${search}`)
+        .then(res => res.json())
+        .then(data => {
+            const songInfo = data.data.slice(0,10)
+            showLyrics(songInfo)
+        })
+  document.querySelector('#searchLyrics').value = '';
 
-document.getElementById('issueInputForm').addEventListener('submit', submitIssue);
+}
+async function showLyricsDetails(singur, song, id) {
+    const url = `https://api.lyrics.ovh/v1/${singur}/${song}`
+    try {
+        const res = await fetch(url)
+        const data = await res.json();
+        const strId = `'${id}'`
 
+       if(data.lyrics){
+        document.getElementById(strId).innerHTML=`
+        <pre style="color: #fff;">${data.lyrics}</pre>
+        <bold style="cursor:pointer">❌</bold>
+        `;
+       }else{
+        document.getElementById(strId).innerHTML=`
+        <pre style="color: #fff;">This singer have no lyrics Here</pre>
+        <bold style="cursor:pointer">❌</bold>
+        `;  
+       }
+        hideLyrics(strId)
+    } catch (e) {
+        console.log(e.message);
+    }
 
-function submitIssue(e) {
-  const getInputValue = id => document.getElementById(id).value;
-  const description = getInputValue('issueDescription');
-  const severity = getInputValue('issueSeverity');
-  const assignedTo = getInputValue('issueAssignedTo');
-  const id = Math.floor(Math.random() * 100000000) + '';
-  const status = 'Open';
-
-  const issue = { id, description, severity, assignedTo, status };
-  let issues = [];
-  if (localStorage.getItem('issues')) {
-    issues = JSON.parse(localStorage.getItem('issues'));
-  }
-  issues.push(issue);
-  localStorage.setItem('issues', JSON.stringify(issues));
-
-  document.getElementById('issueInputForm').reset();
-  fetchIssues();
-  e.preventDefault();
+}
+function hideLyrics(id){
+    document.getElementById(id).addEventListener('click', function(){
+        document.getElementById(id).innerText= ''
+    })
 }
 
-const closeIssue = id => {
-  const issues = JSON.parse(localStorage.getItem('issues'));
-  const currentIssue = issues.find(issue => issue.id == id)
-  currentIssue.status = 'Closed';
-  localStorage.setItem('issues', JSON.stringify(issues));
-  fetchIssues();
+function showLyrics(data) {
+    for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+        document.querySelector('.search-result').innerHTML += `
+        <div>
+        <div class="single-result row align-items-center my-3 p-3">
+                <div class="col-md-9">
+                    <h3 class="lyrics-name">${element.title}</h3>
+                    <p class="author lead">Album by <span>${element.artist.name}</span></p>
+                    <audio controls>
+                        <source src="${element.preview}" type="audio/mpeg"
+                    </audio>
+                </div>
+                <div class="col-md-3 text-md-right text-center">
+                    <button class="btn btn-success" onclick="showLyricsDetails('${element.artist.name}', '${element.title}', '${element.id}')" data-toggle="collapse" data-target="#'${element.id}'">Get Lyrics</button>
+                </div>
+            </div>
+            <p id="'${element.id}'" class="show-lyric"></p>
+           </div> 
+    `
+    }
+
 }
-
-const deleteIssue = id => {
-  const issues = JSON.parse(localStorage.getItem('issues'));
-  const remainingIssues = issues.filter(issue => issue.id != id);
-  console.log(remainingIssues);
-  localStorage.setItem('issues', JSON.stringify(remainingIssues));
-  fetchIssues();
-}
-
-const fetchIssues = () => {
-  const issues = JSON.parse(localStorage.getItem('issues'));
-  const issuesList = document.getElementById('issuesList');
-  issuesList.innerHTML = '';
-
-  for (var i = 0; i < issues.length; i++) {
-    const { id, description, severity, assignedTo, status } = issues[i];
-
-    issuesList.innerHTML += `<div class="well">
-                              <h6>Issue ID: ${id} </h6>
-                              <p><span class="label label-info"> ${status} </span></p>
-                              <h3> ${description} </h3>
-                              <p><span class="glyphicon glyphicon-time"></span> ${severity}</p>
-                              <p><span class="glyphicon glyphicon-user"></span> ${assignedTo}</p>
-                              <a href="#" onclick="closeIssue(${id})" class="btn btn-warning">Close</a>
-                              <a href="#" onclick="deleteIssue(${id})" class="btn btn-danger">Delete</a>
-                              </div>`;
-  }
-}
-
-  const issues = JSON.parse(localStorage.getItem('issues'));
-  document.getElementById('countIssues').innerText = issues.length;
-  const closed = issues.filter(issue => issue.status === 'Closed');
-  document.getElementById('closedCount').innerText = closed.length;
-  const open = issues.filter(issue => issue.status === 'Open');
-  document.getElementById('openCount').innerText = open.length;
-
-
