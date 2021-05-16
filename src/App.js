@@ -2,32 +2,30 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  var person = {
-    name: "Dr. Mahfuz",
-    job: "Singer"
-  }
-  var person2 = {
-    name: 'Eva Rahman',
-    job: 'Kokil Konthi'
-  }
-  var style ={
-    color:'red',
-    background: 'yellow'
-  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit done <code>src/App.js</code> and save to reload.
-        </p>
-        <h1 style={style}> {person.name + ' ' + person.job}</h1>
-        <h3 style={{color: 'saddlebrown', background: 'gray'}}> {person2.name + ' ' + person2.job}</h3>
-        <p>My frist react Pragraph</p>
 
+        <p>I am React Person</p>
+        <Person />
+        <Person />
+        <Person />
       </header>
     </div>
   );
+}
+function Person() {
+  const personStyle =
+  {
+    border: '2px solid red', margin: '10px'
+  }
+  return (
+    <div style={personStyle}>
+      <h1>Name: Sakib Al Hassan</h1>
+      <h3>Hero of the Year</h3>
+    </div>
+  )
 }
 
 export default App;
