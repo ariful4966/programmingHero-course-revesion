@@ -33,11 +33,14 @@ function App() {
     </div>
   );
 }
-function Counter(){
+function Counter() {
   const [count, setCount] = useState(10);
-  return(
+  const handleIncrease = () => setCount(count + 1);
+  return (
     <div>
       <h1>Count: {count}</h1>
+      <button onMouseMove={() => setCount(count - 1)}>Decrease</button>
+      <button onMouseUp={() => setCount(count + 1)}>Increase</button>
     </div>
   )
 }
