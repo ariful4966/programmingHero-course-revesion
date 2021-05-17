@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import './App.css';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-
+        <Counter></Counter>
         <p>I am React Person</p>
         <ul>
           {
@@ -32,7 +33,14 @@ function App() {
     </div>
   );
 }
-
+function Counter(){
+  const [count, setCount] = useState(10);
+  return(
+    <div>
+      <h1>Count: {count}</h1>
+    </div>
+  )
+}
 function Product(props) {
   const productStyle = {
     border: '1px solid gray',
