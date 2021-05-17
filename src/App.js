@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Counter></Counter>
+        <Users></Users>
         <p>I am React Person</p>
         <ul>
           {
@@ -33,6 +34,28 @@ function App() {
     </div>
   );
 }
+function Users() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const url = 'https://jsonplaceholder.typicode.com/users'
+    async function data(url) {
+      const res = await fetch(url)
+      const data = await res.json()
+      setUsers(data)
+    }
+    data(url)
+  }, [])
+  return (
+    <div>
+      <h3>Dynamic Users: {users.length}</h3>
+      <ul>
+        {
+          users.map(user => <li>{user.email}</li>)
+        }
+      </ul>
+    </div>
+  )
+}
 function Counter() {
   const [count, setCount] = useState(10);
   const handleIncrease = () => setCount(count + 1);
@@ -44,6 +67,7 @@ function Counter() {
     </div>
   )
 }
+
 function Product(props) {
   const productStyle = {
     border: '1px solid gray',
