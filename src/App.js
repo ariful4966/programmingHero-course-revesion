@@ -2,22 +2,31 @@
 import './App.css';
 
 function App() {
-  // const nayoks = ['Anwar', 'Jafor', 'Alomgir', 'Salman']
+  const nayoks = ['Anwar', 'Jafor', 'Salman', 'Sakib', 'Shuvo']
   const products = [
-    {name: 'Photoshop', price: '$90.99'},
-    {name: 'Illustrator', price: '$60.99'},
-    {name: 'PDF Reader', price: '$6.99'},
+    { name: 'Photoshop', price: '$90.99' },
+    { name: 'Illustrator', price: '$60.99' },
+    { name: 'PDF Reader', price: '$6.99' },
+    { name: 'Premiere El', price: '$249.99' },
 
-]
+  ];
+
   return (
     <div className="App">
       <header className="App-header">
 
         <p>I am React Person</p>
-        <Product product={products[0]}></Product>
-        <Product product={products[1]}></Product>
-        <Person name="Munna" job="football"></Person>
-        <Person name="Masum" job="Dorshok"></Person>
+        <ul>
+          {
+            nayoks.map(nayok => <li>{nayok}</li>)
+          }
+          {
+            products.map(product => <li>{product.name}</li>)
+          }
+        </ul>
+        {
+          products.map(product => <Product product={product}></Product>)
+        }
         <Person></Person>
       </header>
     </div>
@@ -33,12 +42,11 @@ function Product(props) {
     width: '200px',
     float: 'left'
   }
-  const {name, price}=props.product;
-  console.log(name, price);
+  const { name, price } = props.product;
   return (
     <div style={productStyle}>
       <h2>{name}</h2>
-      <h1>{price}</h1>
+      <h5>{price}</h5>
       <button>Buy Now</button>
     </div>
   )
