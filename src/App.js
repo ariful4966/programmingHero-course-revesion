@@ -1,14 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const nayoks = [{name:'Jasim', age: 56}, {name:'DeepJol', age: 61}, {name: 'BappaRaz', age: 30}, {name:'Omar Sani', age: 35}, {name:'Alomgir', age: 67}]
+  // const nayoks = [{name:'Jasim', age: 56}, {name:'DeepJol', age: 61}, {name: 'BappaRaz', age: 30}, {name:'Omar Sani', age: 35}, {name:'Alomgir', age: 67}]
+  const [nayoks, setNayoks] = useState([])
+  useEffect(() => {
+    fetch('https://randomuser.me/api/?results=15')
+      .then(res => res.json())
+      .then(data => {
+        setNayoks(data.results)
+      })
+  }, [])
   return (
     <div className="App">
       <MovieCounter />
       {
-        nayoks.map(nk=><Nayok name={nk.name} age={nk.age}></Nayok>)
+        nayoks.map((nk, id) => <Nayok key={id} name={nk.name} phone={nk.cell}></Nayok>)
       }
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -38,14 +46,15 @@ function MovieDisplay(props) {
 }
 
 function Nayok(props) {
+  const { title, first, last } = props.name;
   const nayokStyle = {
     border: '2px solid purple',
     margin: '20px'
   }
   return (
     <div style={nayokStyle}>
-      <h1>Ami Nayok {props.name}</h1>
-      <h3>I have done five movies in {props.age || 30} year</h3>
+      <h1> {title} {first} {last}</h1>
+      <h3>Phone Number {props.phone}</h3>
     </div>
   )
 }

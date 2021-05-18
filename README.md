@@ -2,6 +2,9 @@
 
 ## Basic React Concepts Recap
 
+- [x] useState
+- [x] useEffect
+
 ### How React work
 - [x] Virtual DOM
 - [x] Rerender
