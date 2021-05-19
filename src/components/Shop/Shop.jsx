@@ -10,6 +10,10 @@ const Shop = () => {
         const first10 = fakeData.slice(0, 10)
         setProducts(first10)
     },[])
+
+    const handleAddProduct = (product)=>{
+        console.log('Product Added', product);
+    }
     
     
     console.log(products);
@@ -18,7 +22,11 @@ const Shop = () => {
             <div className="product-container">
             <ul>
                 {
-                    products.map((product, id)=><Product key={id} product={product}></Product>)
+                    products.map((product, id)=><Product
+                     key={id} 
+                     product={product} 
+                     handleAddProduct={handleAddProduct}
+                     ></Product>)
                 }
             </ul>
             </div>

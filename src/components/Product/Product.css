@@ -8,3 +8,20 @@
 .product-name h4{
     color: #1b44df;
 }
+.main-btn {
+    width: 150px;
+    height: 30px;
+    background: goldenrod;
+    border-radius: 5px;
+    color: #002edb;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid darkslateblue;
+}
+
+.product img {
+    width: 250px;
+    height: 100%;
+    margin-right: 20px;
+}
