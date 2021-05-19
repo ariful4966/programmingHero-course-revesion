@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import fakeData from '../../fakeData'
+import fakeData from '../../fakeData';
+import './Shop.css'
 
 const Shop = () => {
     
@@ -12,14 +13,17 @@ const Shop = () => {
     
     console.log(products);
     return (
-        <div>
-            <h1>This is Shop</h1>
-            <h3>{products.length}</h3>
+        <div className="shop-container">
+            <div className="product-container">
             <ul>
                 {
                     products.map((product, id)=><li key={id}>{product.name}</li>)
                 }
             </ul>
+            </div>
+           <div className="card-container">
+               <h3>This cart container</h3>
+           </div>
         </div>
     )
 }
