@@ -24,8 +24,10 @@ function App() {
   }
   return (
     <div className="App">
+      <div style={{display:'flex', justifyContent:'space-around'}}>
       <h1>Countries Loaded {countries.length}</h1>
       <SelectCountry selectCountry={selectCountry}></SelectCountry>
+      </div>
       {
         countries.map((country, i) => <Country
           key={i}

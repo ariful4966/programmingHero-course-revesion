@@ -1,9 +1,7 @@
 .country {
     display: flex;
     justify-content: space-evenly;
-    width: 80%;
     margin: 10px;
-    margin: 0 auto;
     
 }
 
@@ -11,7 +9,37 @@
     width: 60%;
     text-align: left;
 }
+.country-info h1 {
+    color: darkred;
+    font-family: revert;
+    font-size: 45px;
+}
+.single-country {
+    display: flex;
+    justify-content: space-around;
+}
+.btn-country {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 40px;
+    background: #5c9c0c;
+    color: #face11;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: #face11;
+    border-width: 2px;
+    border-style: ridge;
+}
+.capital {
+    font-size: 30px;
+    color: #65b165;
+}
 
+.capital strong {
+    color: #c92486;
+}
 .country-flag {
     width: 40%;
 }
