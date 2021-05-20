@@ -1,0 +1,22 @@
+.country {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 10px;
+    margin: 0 auto;
+    
+}
+
+.country-info {
+    width: 60%;
+    text-align: left;
+}
+
+.country-flag {
+    width: 40%;
+}
+
+.country-flag img {
+    width: 100%;
+    border: 1px solid gray;
+}
