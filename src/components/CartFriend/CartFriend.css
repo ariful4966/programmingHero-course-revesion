@@ -1,0 +1,33 @@
+.single-cart {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: green;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+}
+.cart-img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+.cart-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+.cart-name h4 {
+    margin: 0;
+    padding: 5px;
+    color: #fff91b;
+}
+.cart-info h2 {
+    color: #957808;
+}
+
+.cart-info p {
+    font-family: fantasy;
+}
