@@ -1,10 +1,8 @@
 import React from 'react';
 import { Button, Carousel, Col, Container, Row } from 'react-bootstrap';
-import SliderItem from './SliderItem';
 import './Slider.css'
 
-const Slider = ({ courses }) => {
-    console.log(courses);
+const Slider = ({ courses, handleEnrollCourse }) => {
     return (
         <Carousel fade>
             {
@@ -19,7 +17,7 @@ const Slider = ({ courses }) => {
                                             <h4>{slide.title}</h4>
                                             <p>{slide.body}</p>
                                             <h2>Course Price: ${slide.price}</h2>
-                                            <Button>Enroll Now</Button>
+                                            <Button onClick={()=>handleEnrollCourse(slide)}>Enroll Now</Button>
                                         </div>
                                     </div>
                                 </Col>

@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.courses-area {
+  margin: 50px 0;
+}

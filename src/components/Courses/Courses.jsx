@@ -2,12 +2,13 @@ import './Courses.css'
 import { Card, CardGroup, Col, Container, Row } from 'react-bootstrap';
 import SingleCourse from './SingleCourse';
 
-const Courses = ({ courses }) => {
+const Courses = ({ courses, handleEnrollCourse}) => {
+   
     return (
         <Container>
             <CardGroup >
                 {
-                    courses.map((course, i) => <SingleCourse key={i} course={course}></SingleCourse>)
+                    courses.map((course, i) => <SingleCourse key={i} course={course} handleEnrollCourse={handleEnrollCourse}></SingleCourse>)
                 }
             </CardGroup>
         </Container>

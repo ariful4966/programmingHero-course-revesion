@@ -1,8 +1,7 @@
 import { Button, Card, Col, Nav } from 'react-bootstrap'
 
-const SingleCourse = ({ course }) => {
+const SingleCourse = ({ course, handleEnrollCourse }) => {
     const { name, title, body, price, picture } = course;
-    console.log(course);
     return (
         <Col md={4}>
             <Card>
@@ -14,7 +13,7 @@ const SingleCourse = ({ course }) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Button>Enroll Now</Button>
+                    <Button onClick={()=>handleEnrollCourse(course)}>Enroll Now</Button>
                     <Nav.Link href="/" type="button" variant="info">View Details</Nav.Link>
                 </Card.Footer>
             </Card>
