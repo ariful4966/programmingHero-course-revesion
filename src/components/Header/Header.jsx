@@ -4,7 +4,7 @@ import { Button, Container, Form, FormControl, Nav, NavDropdown } from 'react-bo
 
 const Header = ({ courses }) => {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="secondary" expand="lg" variant="secondary">
             <Container>
                 <Navbar.Brand href="/">Load uPdate</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -12,7 +12,7 @@ const Header = ({ courses }) => {
                     <Nav className="mr-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/">All Courses</Nav.Link>
-                        <Nav.Link href="/">{courses.length}</Nav.Link>
+                        
                         
                     </Nav>
                     <Form inline>

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Courses from './components/Courses/Courses';
 import Header from './components/Header/Header';
+import Slider from './components/Slider/Slider';
 import courseData from './data/index'
 
 function App() {
@@ -15,8 +16,8 @@ function App() {
   }, [])
   return (
     <div >
-      <h1>All Course: {courses.length}</h1>;
       <Header courses={courses} />
+      <Slider courses={courses} />
       <Courses courses={courses} />
     </div>
   );

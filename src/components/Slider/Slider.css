@@ -1,0 +1,17 @@
+.carousel-item img {
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+.slide {
+    background: #0e2355;
+    color: #fff
+}
+.carousel-item{
+    color:#fff
+}
+.slide-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
