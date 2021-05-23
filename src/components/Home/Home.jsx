@@ -9,7 +9,7 @@ const Home = ({ courses, handleEnrollCourse }) => {
             <Slider courses={courses} handleEnrollCourse={handleEnrollCourse}/>
            <div className="courses-area">
                <h2 className="text-center">Our Courses</h2>
-               <Courses courses={courseObj} handleEnrollCourse={handleEnrollCourse}/>
+               <Courses courses={courseObj.reverse()} handleEnrollCourse={handleEnrollCourse}/>
            </div>
         </>
     );

@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Courses from './components/Courses/Courses';
+import CoursesDetails from './components/Courses/CoursesDetails';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Slider from './components/Slider/Slider';
@@ -30,19 +31,25 @@ function App() {
   }
 
   return (
-    <Router >
+    <>
       <Header courses={addCourse} />
-      <Switch>
-        <Route path="/courses">
-          <div className="courses-area">
-            <Courses courses={courses} handleEnrollCourse={handleEnrollCourse}></Courses>
-          </div>
-        </Route>
-        <Route path="/">
-          <Home courses={courses} handleEnrollCourse={handleEnrollCourse}></Home>
-        </Route>
-      </Switch>
-    </Router>
+      <Router >
+
+        <Switch>
+          <Route path="/courses/:crId">
+            <CoursesDetails courses={courses}></CoursesDetails>
+          </Route>
+          <Route path="/courses">
+            <div className="courses-area">
+              <Courses courses={courses} handleEnrollCourse={handleEnrollCourse}></Courses>
+            </div>
+          </Route>
+          <Route path="/">
+            <Home courses={courses} handleEnrollCourse={handleEnrollCourse}></Home>
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
