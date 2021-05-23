@@ -5,24 +5,29 @@ import { useParams } from 'react-router-dom';
 const CoursesDetails = ({ courses }) => {
     let { crId } = useParams();
     const course = courses.find(cor => cor.id == crId);
-    //  const {name, picture} = course
+
 
     if (!course) {
         return <h1>Loading.....</h1>
     }
     if (course) {
+        const { name, picture, title, body, price } = course
         return (
-        <Container>
-            <Row>
+            <Container>
+
                 <div className="course-detail">
-                    <h1>{course.name}</h1>
-                    <Col md={6}>
-                        <img src={course.picture} alt="" />
-                    </Col>
-                    <Col md={6}></Col>
+                    <h1>{name}</h1>
+                    <Row>
+                        <Col md={8}>
+                            <img src={picture} alt="" />
+                        </Col>
+                        <Col md={4}>
+                            <h2>{title}</h2>
+                            <p>{body}</p>
+                        </Col>
+                    </Row>
                 </div>
-            </Row>
-        </Container>)
+            </Container>)
     }
 
 };

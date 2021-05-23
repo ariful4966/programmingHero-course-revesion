@@ -14,3 +14,6 @@
     transition: .5s ease all;
     box-shadow: 0 5px 5px 5px #617482;
 }
+.course-detail img {
+    width: 100%;
+}
