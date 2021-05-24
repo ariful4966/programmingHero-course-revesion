@@ -3,7 +3,7 @@ import './CartModal.css';
 
 function CartModal({ setShow, show, enroll }) {
 
-
+    const enrolledBalance = enroll.reduce((total, course) => total + course.price, 0)
     const handleClose = () => setShow(false);
 
 
@@ -16,20 +16,18 @@ function CartModal({ setShow, show, enroll }) {
                 </Modal.Header>
                 <Modal.Body>
                     {
-                        enroll.map(course => 
-                        <div key={course.id} className="course-list">
-                            <h4>{course.name}</h4>
-                            <img src={course.picture} alt="" />
-                        </div>)
+                        enroll.map(course =>
+                            <div key={course.id} className="course-list">
+                                <h5>{course.name}</h5>
+                                <img src={course.picture} alt="" />
+                            </div>)
                     }
                 </Modal.Body>
                 <Modal.Footer>
+                    <span className="mr-auto"> Total Courses Price: <strong>${enrolledBalance}</strong></span>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
-            </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-            </Button>
+                </Button>
                 </Modal.Footer>
             </Modal>
         </>

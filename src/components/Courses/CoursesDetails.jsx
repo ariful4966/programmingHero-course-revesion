@@ -24,6 +24,7 @@ const CoursesDetails = ({ courses }) => {
                         <Col md={4}>
                             <h2>{title}</h2>
                             <p>{body}</p>
+                            <p>Course Price: ${price}</p>
                         </Col>
                     </Row>
                 </div>

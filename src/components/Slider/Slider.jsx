@@ -26,10 +26,6 @@ const Slider = ({ courses, handleEnrollCourse }) => {
                                         src={slide.picture}
                                         alt="First slide"
                                     />
-                                    <Carousel.Caption>
-                                        <h3>First slide label</h3>
-                                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                    </Carousel.Caption>
                                 </Col>
                             </Row>
                         </Container>

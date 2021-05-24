@@ -6,6 +6,6 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px dashed #ddd;
     padding: 5px;
 }
