@@ -2,12 +2,21 @@
 import './App.css';
 import { useEffect, useState } from 'react'
 import User from './components/Users/User';
+import Teem from './components/Teem/Teem';
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [mobile, setMobile] = useState('');
+  const [teem, setTeem] = useState([])
 
-  const showPhoneNumber = (number)=>setMobile(number)
+  const addTeemMember = (member) => {
+
+
+    const existMember = teem.find(usr => usr.email === member.email);
+    if (!existMember && teem.length < 3) {
+      setTeem([...teem, member])
+    }
+
+  }
 
   useEffect(() => {
     fetch('https://randomuser.me/api/?results=25')
@@ -18,14 +27,16 @@ function App() {
   }, [])
   return (
     <div className="container">
-      <h2>This user: {users.length}</h2>
+      <h2>Total user: {users.length}</h2>
       <div className="users-area">
         <div className="user-info">
           {
-            users.map((m, idx) => <User key={idx} user={m}></User>)
+            users.map((m, idx) => <User key={idx} user={m} addTeemMember={addTeemMember}></User>)
           }
         </div>
-        <div className="cart-info"></div>
+        <div className="cart-info">
+          <Teem teem={teem} setTeem={setTeem}></Teem>
+        </div>
       </div>
     </div>
   );

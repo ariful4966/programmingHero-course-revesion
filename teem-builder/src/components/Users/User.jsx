@@ -2,12 +2,13 @@ import { useState } from 'react';
 import './User.css'
 
 const User = (props) => {
+    const addTeemMember = props.addTeemMember;
     const [mobile, setMobile] = useState('');
+
 
   const showPhoneNumber = (number)=>setMobile(number)
     const {name, picture, email, gender, phone} = props.user;
     const fullName = `${name.title} ${name.first} ${name.last}`
-    console.log(props);
     return (
         <div className="single-user">
             <div className="photo">
@@ -22,7 +23,7 @@ const User = (props) => {
                 </p>
 
                 <button onClick={()=>showPhoneNumber(phone)}>Show Phone Number</button>
-                <button>Add Teem</button>
+                <button onClick={()=>addTeemMember(props.user)}>Add Teem</button>
             </div>
         </div>
     );

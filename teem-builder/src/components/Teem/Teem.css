@@ -1,0 +1,13 @@
+.teemMember {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+    padding: 10px;
+    background: powderblue;
+    border-radius: 10px;
+}
+
+.memPhoto img {
+    border-radius: 50%;
+}
