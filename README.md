@@ -1,13 +1,7 @@
 # Programming Hero Course Revision
 
-## Ema-John
-**Simple SPA**
+## React Bootstrap
+- [x] Use Bootstrap cdn in index.html file
+- [x] import Bootstrap css file in index.js
+- [x] Install react-bootstrap dependency
 
-## SPA Component
-- [x] Header
-- [x] Shop
-- [x] Product
-- [x] Cart
-
-## Editor Setup
- - [x] React Extension Pack 
