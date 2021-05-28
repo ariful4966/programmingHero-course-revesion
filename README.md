@@ -2,9 +2,12 @@
 
 ## Braking News Application 
 
-### Practice CSS Fremwork
+### Practice CSS Framework
 - [x] React Bootstrap
 - [x] Material ui
 
-### Charting Fremwork
+### Charting Rramework
 - [x] Reachart
+
+### Data Loading Framework
+- [x] Axios
