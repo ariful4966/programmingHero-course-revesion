@@ -21,6 +21,7 @@ const Shop = (props) => {
                 {
                     products.map((product, id) => <Product
                         key={id}
+                        showBtn={true}
                         product={product}
                         handleAddProduct={handleAddProduct}
                     ></Product>)

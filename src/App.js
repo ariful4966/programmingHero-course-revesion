@@ -13,6 +13,7 @@ import fakeData from './fakeData';
 import Review from './components/Review/Review';
 import ManageInventory from './components/ManageInventory/ManageInventory';
 import NotFound from './components/NotFound/NotFound';
+import ProductDetail from './components/ProductDetail/ProductDetail';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -35,6 +36,9 @@ function App() {
         </Route>
         <Route path="/manage">
           <ManageInventory />
+        </Route>
+        <Route path="/product/:pdKey">
+          <ProductDetail cart={cart} products={products} setCart={setCart}/>
         </Route>
         <Route exact path="/">
           <Shop cart={cart} products={products} setCart={setCart} />
