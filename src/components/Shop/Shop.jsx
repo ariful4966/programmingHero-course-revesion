@@ -1,19 +1,12 @@
-import { useEffect, useState } from 'react';
-import fakeData from '../../fakeData';
+
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
 const Shop = (props) => {
-    const { cart, setCart } = props;
+    const { cart, setCart, products } = props;
 
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        const first10 = fakeData.slice(0, 10)
-        setProducts(first10)
-    }, [])
-
+    
     const handleAddProduct = (product) => {
 
         const newCart = [...cart, product];
@@ -23,7 +16,7 @@ const Shop = (props) => {
 
 
     return (
-        <div className="shop-container">
+        <div className="shop-container container">
             <div className="product-container">
                 {
                     products.map((product, id) => <Product

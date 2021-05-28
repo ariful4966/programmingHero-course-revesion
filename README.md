@@ -3,11 +3,8 @@
 ## Ema-John
 **Simple SPA**
 
-## SPA Component
-- [x] Header
-- [x] Shop
-- [x] Product
-- [x] Cart
+## SPA Router
 
-## Editor Setup
- - [x] React Extension Pack 
+- [x] Router Path
+- [x] Exact Path
+- [x] No Match Path
