@@ -4,10 +4,11 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
-const Shop = () => {
+const Shop = (props) => {
+    const { cart, setCart } = props;
 
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([])
+
     useEffect(() => {
         const first10 = fakeData.slice(0, 10)
         setProducts(first10)
