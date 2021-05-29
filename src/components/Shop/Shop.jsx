@@ -1,4 +1,5 @@
 
+import { addToDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
@@ -6,11 +7,14 @@ import './Shop.css'
 const Shop = (props) => {
     const { cart, setCart, products } = props;
 
-    
+
     const handleAddProduct = (product) => {
 
         const newCart = [...cart, product];
-        setCart(newCart)
+        setCart(newCart);
+        const sameProduct = newCart.filter(pd => pd.key === product.key);
+        const count = sameProduct.length;
+        addToDatabaseCart(product.key, count);
 
     }
 
