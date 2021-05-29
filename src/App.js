@@ -32,7 +32,7 @@ function App() {
           <Shop cart={cart} products={products} setCart={setCart} />
         </Route>
         <Route path="/review">
-          <Review />
+          <Review products={fakeData}/>
         </Route>
         <Route path="/manage">
           <ManageInventory />
