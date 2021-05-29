@@ -7,10 +7,7 @@ const ProductDetail = (props) => {
     const { pdKey } = useParams();
     const product = products.find(pd => pd.key === pdKey)
 
-    const handleRemoveProduct = (pdKey) => {
-        const newCart = cart.filter(pd=>pd.key !== pdKey );
-        setCart(newCart)
-    }
+   
 
     return (
         <div className="container">

@@ -9,7 +9,6 @@ const Header = () => {
     useEffect(()=>{
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
-
         setCart(productKeys);
     }, [])
     return (
@@ -20,7 +19,7 @@ const Header = () => {
                 <a href="/review">Order Review</a>
                 <a href="/manage">Manage Inventory</a>
             </nav>
-            <SearchArea cart={cart}  />
+            <SearchArea cart={cart }  />
         </div>
     )
 }

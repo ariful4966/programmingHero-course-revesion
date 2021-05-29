@@ -1,8 +1,9 @@
 
-import { addToDatabaseCart } from '../../utilities/databaseManager';
-import Cart from '../Cart/Cart';
+import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
+
 import Product from '../Product/Product';
-import './Shop.css'
+import './Shop.css';
+import Cart from '../Cart/Cart';
 
 const Shop = (props) => {
     const { cart, setCart, products } = props;
@@ -11,12 +12,24 @@ const Shop = (props) => {
     const handleAddProduct = (product) => {
 
         const newCart = [...cart, product];
-        setCart(newCart);
+
         const sameProduct = newCart.filter(pd => pd.key === product.key);
         const count = sameProduct.length;
         addToDatabaseCart(product.key, count);
+        setCart(newCart);
 
     }
+    // useEffect(() => {
+    //     const savedCart = getDatabaseCart();
+    //     const productsKeys = Object.keys(savedCart);
+    //     const cartProducts = productsKeys.map(key => {
+    //         const product = products.find(pd => pd.key === key);
+    //         product.quantity = savedCart[key]
+    //         return product
+    //     })
+    //     // setCart(cartProducts);
+    //     console.log(cartProducts);
+    // }, [])
 
 
     return (

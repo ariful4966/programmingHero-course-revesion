@@ -18,11 +18,12 @@ const Product = (props) => {
                 <p><small>by: {seller}</small></p>
                 <p> {
                         removeBtn && `Quantity: ${quantity}`
-                    }</p>
-                <p>${price}</p>
+                    }
+                </p>
+                <p>Price: ${price}</p>
                 <p><small>Only {stock} left in  stock - Order Soon</small></p>
-                { showBtn && 
-                    removeBtn ? <button className="main-btn">Remove</button> : <button onClick={() => handleAddProduct(product)} className="main-btn"> <FontAwesomeIcon icon={faShoppingCart} /> Add to cart</button>
+                { 
+                showBtn && (removeBtn ? <button className="main-btn" onClick={()=>handleRemoveProduct(key)}>Remove</button> : <button onClick={() => handleAddProduct(product)} className="main-btn"> <FontAwesomeIcon icon={faShoppingCart} /> Add to cart</button>)
                 }
                     
             </div>
