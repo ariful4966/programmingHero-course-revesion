@@ -4,6 +4,7 @@ import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseMana
 import Product from '../Product/Product';
 import './Shop.css';
 import Cart from '../Cart/Cart';
+import { useEffect } from 'react';
 
 const Shop = (props) => {
     const { cart, setCart, products } = props;
@@ -11,12 +12,23 @@ const Shop = (props) => {
 
     const handleAddProduct = (product) => {
 
-        const newCart = [...cart, product];
 
-        const sameProduct = newCart.filter(pd => pd.key === product.key);
-        const count = sameProduct.length;
-        addToDatabaseCart(product.key, count);
+
+        const sameProduct = cart.find(pd => pd.key === product.key);
+        let count = 1;
+        let newCart;
+        if (sameProduct) {
+            count = sameProduct.quantity + 1;
+            sameProduct.quantity = count;
+            const others = cart.filter(pd => pd.key !== product.key )
+            newCart = [...others, sameProduct]
+        }else{
+            product.quantity =1;
+            newCart=[...cart, product]
+        }
         setCart(newCart);
+        addToDatabaseCart(product.key, count);
+        
 
     }
     // useEffect(() => {
