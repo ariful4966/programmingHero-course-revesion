@@ -18,11 +18,10 @@ import ProductDetail from './components/ProductDetail/ProductDetail';
 function App() {
   const [products, setProducts] = useState([]);
 
-
   const [cart, setCart] = useState([])
   useEffect(() => {
-    // const first10 = fakeData.slice(0, 10)
-    setProducts(fakeData)
+    const first10 = fakeData.slice(0, 10)
+    setProducts(first10)
   }, [])
   return (
     <Router >
@@ -32,13 +31,13 @@ function App() {
           <Shop cart={cart} products={products} setCart={setCart} />
         </Route>
         <Route path="/review">
-          <Review products={fakeData}/>
+          <Review products={fakeData} />
         </Route>
         <Route path="/manage">
           <ManageInventory />
         </Route>
         <Route path="/product/:pdKey">
-          <ProductDetail cart={cart} products={products} setCart={setCart}/>
+          <ProductDetail cart={cart} products={products} setCart={setCart} />
         </Route>
         <Route exact path="/">
           <Shop cart={cart} products={products} setCart={setCart} />

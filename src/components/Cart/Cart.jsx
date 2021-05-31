@@ -35,9 +35,9 @@ const Cart = (props) => {
                 <p><span>Shipping Cost:</span> <span> ${formateNumber(shipping)}</span></p>
                 <p><span>Tax + VAT: </span><span>${formateNumber(tax)}</span></p>
                 <p className="total-price"><span>Total Price :</span> <span>${formateNumber(total + shipping + tax)}</span></p>
-                <Link to="/review">
-                    <button className={cart ? 'main-btn cart-btn' : 'main-btn'}>Order Preview</button>
-                </Link>
+                {
+                    props.children
+                }
             </div>
         </>
     );

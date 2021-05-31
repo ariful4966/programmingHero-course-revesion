@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
+import happyImg from '../../images/giphy.gif'
 
 const Review = (props) => {
     const [cart, setCart] = useState([])
+    const [oderPlaced, setOrderPlaced] = useState(false)
     const { products } = props;
+
+    const handlePlaceOrder =()=>{
+        setCart([])
+        setOrderPlaced(true)
+        processOrder()
+    }
 
     // console.log(products);
     useEffect(() => {
@@ -24,6 +32,7 @@ const Review = (props) => {
         setCart(newCart)
         removeFromDatabaseCart(key)
     }
+    const thankyou = <img src={happyImg} alt="" />
     return (
         <div className="shop-container container"> 
             <div className="product-container">
@@ -36,9 +45,14 @@ const Review = (props) => {
                         product={pd}
                     ></Product>)
                 }
+                {
+                    oderPlaced && thankyou
+                }
             </div>
             <div className="card-container">
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart}>
+                <button className='main-btn cart-btn' onClick={handlePlaceOrder}>Place Order</button>
+                </Cart>
             </div>
         </div>
     );
