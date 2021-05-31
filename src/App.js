@@ -21,8 +21,8 @@ function App() {
 
   const [cart, setCart] = useState([])
   useEffect(() => {
-    const first10 = fakeData.slice(0, 10)
-    setProducts(first10)
+    // const first10 = fakeData.slice(0, 10)
+    setProducts(fakeData)
   }, [])
   return (
     <Router >

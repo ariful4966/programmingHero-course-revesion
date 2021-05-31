@@ -2,7 +2,7 @@
 import './Search.css';
 
 const SearchArea = (props) => {
-   console.log(props);
+//    console.log(props);
     return (
         <div className="search-bg">
             <div className="search-section">

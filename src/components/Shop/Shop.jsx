@@ -9,10 +9,19 @@ import { useEffect } from 'react';
 const Shop = (props) => {
     const { cart, setCart, products } = props;
 
+    useEffect(() => {
+        const savedCart = getDatabaseCart();
+        const productKeys = Object.keys(savedCart);
+        const previousCart = productKeys.map(existingKey => {
+            const product = products.find(pd => pd.key === existingKey)
+            product.quantity = savedCart[existingKey];
+            return product
+        })
+        console.log(previousCart); 
+    }, []) 
+
 
     const handleAddProduct = (product) => {
-
-
 
         const sameProduct = cart.find(pd => pd.key === product.key);
         let count = 1;
@@ -20,35 +29,25 @@ const Shop = (props) => {
         if (sameProduct) {
             count = sameProduct.quantity + 1;
             sameProduct.quantity = count;
-            const others = cart.filter(pd => pd.key !== product.key )
+            const others = cart.filter(pd => pd.key !== product.key)
             newCart = [...others, sameProduct]
-        }else{
-            product.quantity =1;
-            newCart=[...cart, product]
+        } else {
+            product.quantity = 1;
+            newCart = [...cart, product]
         }
         setCart(newCart);
         addToDatabaseCart(product.key, count);
-        
+
 
     }
-    // useEffect(() => {
-    //     const savedCart = getDatabaseCart();
-    //     const productsKeys = Object.keys(savedCart);
-    //     const cartProducts = productsKeys.map(key => {
-    //         const product = products.find(pd => pd.key === key);
-    //         product.quantity = savedCart[key]
-    //         return product
-    //     })
-    //     // setCart(cartProducts);
-    //     console.log(cartProducts);
-    // }, [])
+
 
 
     return (
         <div className="shop-container container">
             <div className="product-container">
                 {
-                    products.map((product, id) => <Product
+                    products.slice(0, 10).map((product, id) => <Product
                         key={id}
                         showBtn={true}
                         product={product}
