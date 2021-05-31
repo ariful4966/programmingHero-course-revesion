@@ -1,10 +1,16 @@
-import React from 'react';
-import Nested from './components/Nested-Route'
+import React, { useState } from 'react';
+import Nested from './components/Nested-Route';
+import Condition from './components/Conditional-Renadring'
 
 const App = () => {
+  const [familiar, setFamiliar] = useState(false)
+  const handleToggle = () => {
+    setFamiliar(!familiar)
+  }
   return (
     <div>
-      <Nested/>
+      <Nested />
+      <Condition handleToggle={handleToggle} familiar={familiar} />
     </div>
   );
 };
