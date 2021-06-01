@@ -8,23 +8,27 @@ import {
 } from "react-router-dom";
 
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import Friend from './components/Friend';
+
+import Home from './components/Home/Home';
+import NoMatch from './components/NoMatch/NoMatch';
 
 function App() {
-  const [friends, setFriends]=useState([])
 
-  useEffect(()=>{
-    axios('https://jsonplaceholder.typicode.com/users')
-    .then(data=>setFriends(data.data))
-  },[])
   return (
-    <div>
-      <h2>All Friends: {friends.length}</h2>
-      {
-        friends.map((friend, idex)=><Friend key={idex} friend={friend}></Friend>)
-      }
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/home">
+          <Home/>
+        </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="*">
+          <NoMatch/>
+        </Route>
+      </Switch>
+
+    </Router>
   );
 }
 
