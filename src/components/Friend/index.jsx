@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Friend = (props) => {
     const { name, email , id} = props.friend;
@@ -9,11 +9,16 @@ const Friend = (props) => {
         padding: '20px',
         borderRadius: '10px'
     }
+    const history = useHistory()
+    const handleClick = (id)=>{
+        history.push(`/friend/${id}`)
+    }
     return (
         <div style={friendsStyle}>
             <h2>Name: {name}</h2>
             <p>Email: {email}</p>
-            <p>id: <Link to={`/friend/${id}`}>Show Detail of Id: {id}</Link></p>
+            <Link to={`/friend/${id}`}>Show Detail of Id: {id}</Link>
+            <button onClick={()=>handleClick(id)}>Click Me</button>
         </div>
     );
 };
