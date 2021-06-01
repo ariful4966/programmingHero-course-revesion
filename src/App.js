@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
-import Nested from './components/Nested-Route';
-import Condition from './components/Conditional-Renadring'
+import logo from './logo.svg';
+import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-const App = () => {
-  const [familiar, setFamiliar] = useState(false)
-  const handleToggle = () => {
-    setFamiliar(!familiar)
-  }
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Friend from './components/Friend';
+
+function App() {
+  const [friends, setFriends]=useState([])
+
+  useEffect(()=>{
+    axios('https://jsonplaceholder.typicode.com/users')
+    .then(data=>setFriends(data.data))
+  },[])
   return (
     <div>
-      <Nested />
-      <Condition handleToggle={handleToggle} familiar={familiar} />
+      <h2>All Friends: {friends.length}</h2>
+      {
+        friends.map((friend, idex)=><Friend key={idex} friend={friend}></Friend>)
+      }
     </div>
   );
-};
+}
 
 export default App;
