@@ -1,9 +1,11 @@
 import React from 'react';
+import Categories from '../Catagories/Catagories';
 
-const Home = ({count}) => {
+const Home = ({ count }) => {
     return (
-        <div>
+        <div style={{ border: '1px solid purple' }}>
             <h1>This is Home :{count}</h1>
+            <Categories count={count}></Categories>
         </div>
     );
 };
