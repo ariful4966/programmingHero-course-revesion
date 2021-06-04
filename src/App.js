@@ -1,52 +1,47 @@
-
-import { useState, useEffect } from 'react';
-import './App.css';
-import Header from './components/Header/Header'
-import Shop from './components/Shop/Shop'
+import { createContext, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-import fakeData from './fakeData';
-import Review from './components/Review/Review';
-import ManageInventory from './components/ManageInventory/ManageInventory';
-import NotFound from './components/NotFound/NotFound';
-import ProductDetail from './components/ProductDetail/ProductDetail';
+import './App.scss';
+import About from "./components/About/About";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+import PostDetail from "./components/PostDetail/PostDetail";
+import Posts from "./components/Posts/Posts";
 
+export const DataProvide = createContext()
 function App() {
-  const [products, setProducts] = useState([]);
-
-  const [cart, setCart] = useState([])
+  const [posts, setPosts] = useState([]);
+  const url = `https://jsonplaceholder.typicode.com/posts`;
   useEffect(() => {
-    const first10 = fakeData.slice(0, 10)
-    setProducts(first10)
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        setPosts(data);
+      })
   }, [])
   return (
-    <Router >
-      <Header cart={cart} products={products} />
-      <Switch>
-        <Route path="/shop">
-          <Shop cart={cart} products={products} setCart={setCart} />
-        </Route>
-        <Route path="/review">
-          <Review products={fakeData} />
-        </Route>
-        <Route path="/manage">
-          <ManageInventory />
-        </Route>
-        <Route path="/product/:pdKey">
-          <ProductDetail cart={cart} products={products} setCart={setCart} />
-        </Route>
-        <Route exact path="/">
-          <Shop cart={cart} products={products} setCart={setCart} />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
+    <DataProvide.Provider value={posts}>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/post/:id">
+            <PostDetail/>
+          </Route>
+          <Route path="/posts">
+            <Posts />
+          </Route>
+          <Route path="/about">
+            <About/>
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </DataProvide.Provider >
   );
 }
 
