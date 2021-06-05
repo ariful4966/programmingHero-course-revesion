@@ -1,3 +1,1 @@
-# Programming Hero Course Revision 
-
-## JSON Placeholder Show Posts
+# Programming Hero Course Revision

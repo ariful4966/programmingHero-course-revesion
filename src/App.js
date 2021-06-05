@@ -1,47 +1,31 @@
-import { createContext, useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import './App.scss';
-import About from "./components/About/About";
-import Header from "./components/Header/Header";
-import Home from "./components/Home/Home";
-import PostDetail from "./components/PostDetail/PostDetail";
-import Posts from "./components/Posts/Posts";
+import logo from './logo.svg';
+import './App.css';
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import { useState } from 'react';
 
-export const DataProvide = createContext()
+
 function App() {
-  const [posts, setPosts] = useState([]);
-  const url = `https://jsonplaceholder.typicode.com/posts`;
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setPosts(data);
-      })
-  }, [])
+  const [isLike, setIsLike] = useState(' ');
   return (
-    <DataProvide.Provider value={posts}>
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/post/:id">
-            <PostDetail/>
-          </Route>
-          <Route path="/posts">
-            <Posts />
-          </Route>
-          <Route path="/about">
-            <About/>
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
-    </DataProvide.Provider >
+    <div className="App">
+      <AccessAlarmIcon  />
+      <ThumbUpAltIcon onClick={()=>setIsLike(isLike ? '' : 'primary')} color={isLike} />
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
