@@ -5,7 +5,7 @@ import "firebase/auth";
 import firebaseConfig from './firebase.config';
 
 import './App.css';
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [user, setUser] = useState({
@@ -20,7 +20,7 @@ function App() {
   const handleSignIn = () => {
     firebase.auth()
       .signInWithPopup(provider)
-      .then(res => {
+      .then((res) => {
         const { displayName, photoURL, email } = res.user;
         const signedInUser = {
           isSignedIn: true,
@@ -31,7 +31,7 @@ function App() {
         setUser(signedInUser)
 
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.message);
       })
   }
@@ -53,6 +53,14 @@ function App() {
         console.log(err.message);
       })
   }
+
+  const handleSubmit = () => {
+
+  }
+  const handleBlur = (event) => {
+    
+    console.log(event.target.name, event.target.value);
+  }
   return (
     <div className="App">
       {
@@ -69,6 +77,14 @@ function App() {
           <img src={user.photo} alt="Photo" />
         </div>
       }
+      <h1>Our Own Authentication</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="email" onBlur={handleBlur} name="email" placeholder="Your Email Address" required /><br />
+        <input type="password" onBlur={handleBlur} name="password" placeholder="Your Password" required />
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+
     </div>
   );
 }
