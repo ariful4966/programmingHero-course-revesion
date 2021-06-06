@@ -1,9 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
-import { useState } from 'react';
+
+import './App.css';
 firebase.initializeApp(firebaseConfig)
 
 function App() {
@@ -34,11 +35,34 @@ function App() {
         console.log(err.message);
       })
   }
+  const handleSignOut = () => {
+    firebase.auth()
+      .signOut()
+      .then(res => {
+        const signOutUser = {
+          isSignedIn: false,
+          name: '',
+          email: '',
+          photo: ''
+
+        }
+        setUser(signOutUser)
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
+  }
   return (
     <div className="App">
-      <button onClick={handleSignIn}>🇬 Sign in</button>
       {
-        user.isSignedIn && 
+        user.isSignedIn ?
+          <button onClick={handleSignOut}>Sign out</button> :
+          <button onClick={handleSignIn}> 🇬 Sign in</button>
+
+      }
+      {
+        user.isSignedIn &&
         <div>
           <p>Welcome, {user.name}</p>
           <p>Your Email: {user.email}</p>
