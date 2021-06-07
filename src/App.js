@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
-import firebaseConfig from './firebase.config';
+import firebaseConfig from './firebase.config.js';
 
 import './App.css';
 firebase.initializeApp(firebaseConfig);
@@ -20,10 +20,11 @@ function App() {
   const [newUser, setnewUser] = useState(false)
 
 
-  const provider = new firebase.auth.GoogleAuthProvider()
+  const googleProvider = new firebase.auth.GoogleAuthProvider()
+  const fbProvider = new firebase.auth.FacebookAuthProvider();
   const handleSignIn = () => {
     firebase.auth()
-      .signInWithPopup(provider)
+      .signInWithPopup(googleProvider)
       .then((res) => {
         const { displayName, photoURL, email } = res.user;
         const signedInUser = {
@@ -136,6 +137,24 @@ function App() {
       console.log(error);
     });
   }
+  const handleFbSignIn = () => {
+    firebase
+      .auth().signInWithPopup(fbProvider)
+      .then(res => {
+        const { displayName, email, photoURL} = res.user;
+        const newUser ={
+          ...user,
+          name:displayName,
+          email:email,
+          photo:photoURL,
+          isSignedIn: true
+        }
+        setUser(newUser)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
   return (
     <div className="App">
       {
@@ -143,7 +162,8 @@ function App() {
           <button onClick={handleSignOut}>Sign out</button> :
           <button onClick={handleSignIn}> 🇬 Sign in</button>
 
-      }
+      } <br />
+      <button onClick={handleFbSignIn}>Sign in Using Facebook</button>
       {
         user.isSignedIn &&
         <div>

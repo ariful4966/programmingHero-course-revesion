@@ -2,15 +2,18 @@
 
 # dependencies
 /node_modules
+
 /.pnp
 .pnp.js
-/src/firebase.config.js
+
+
 
 # testing
 /coverage
 
 # production
 /build
+/src/firebase.config.js
 
 # misc
 .DS_Store
