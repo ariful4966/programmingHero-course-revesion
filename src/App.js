@@ -13,7 +13,9 @@ function App() {
     name: '',
     email: '',
     password: '',
-    photo: ''
+    photo: '',
+    error: '',
+    success: false
   })
 
 
@@ -56,24 +58,43 @@ function App() {
       })
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (e) => {
+    
+    if (user.name && user.password) {
+      firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+        .then(res => {
+          const newUserInfo = { ...user }
+          newUserInfo.error = '';
+          newUserInfo.success = true;
+          setUser(newUserInfo)
+          
+        })
+        .catch(err => {
+          const newUserInfo = {
+            ...user
+          }
+          newUserInfo.error = err.message;
+          newUserInfo.success = false;
+          setUser(newUserInfo)
+          
+        })
+    }
+    e.preventDefault()
   }
   const handleBlur = (event) => {
 
-    let isFormValid = true;
+    let isFieldValid = true;
     if (event.target.name === 'email') {
-      isFormValid = /\S+@\S+\.\S+/.test(event.target.value);
+      isFieldValid = /\S+@\S+\.\S+/.test(event.target.value);
       //regular expression
-      console.log(isFormValid);
     }
     if (event.target.name === 'password') {
       const isPasswordValid = event.target.value.length > 6;
       const passwordHasNumber = /\d{1}/.test(event.target.value)
       //Regular expression
-      isFormValid = (isPasswordValid && passwordHasNumber);
+      isFieldValid = (isPasswordValid && passwordHasNumber);
     }
-    if (isFormValid) {
+    if (isFieldValid) {
       const newUserInfo = {
         ...user
       }
@@ -98,9 +119,7 @@ function App() {
         </div>
       }
       <h1>Our Own Authentication</h1>
-      <p>Name: {user.name}</p>
-      <p>Email: {user.email}</p>
-      <p>Password: {user.password}</p>
+
       <form onSubmit={handleSubmit}>
         <input type="text" name="name" onBlur={handleBlur} placeholder="Your Name" /><br />
         <input type="email" onBlur={handleBlur} name="email" placeholder="Your Email Address" required /><br />
@@ -108,6 +127,10 @@ function App() {
         <br />
         <input type="submit" value="Submit" />
       </form>
+      <p style={{ color: 'red' }}>{user.error}</p>
+      {
+        user.success && <p style={{color:'green'}}>User Created Successfully</p>
+      }
 
     </div>
   );
