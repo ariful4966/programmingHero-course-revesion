@@ -17,7 +17,7 @@ function App() {
     error: '',
     success: false
   })
-  const [toggle, setToggle] = useState(false)
+  const [newUser, setnewUser] = useState(false)
 
 
   const provider = new firebase.auth.GoogleAuthProvider()
@@ -61,13 +61,14 @@ function App() {
 
   const handleSubmit = (e) => {
 
-    if (toggle && (user.name && user.password)) {
+    if (newUser && (user.name && user.password)) {
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
         .then(res => {
           const newUserInfo = { ...user }
           newUserInfo.error = '';
           newUserInfo.success = true;
           setUser(newUserInfo)
+          updateUserName(user.name)
 
         })
         .catch(err => {
@@ -80,24 +81,28 @@ function App() {
 
         })
     }
-    if (!toggle && user.email && user.password) {
+    if (!newUser && user.email && user.password) {
       firebase.auth().signInWithEmailAndPassword(user.email, user.password)
         .then(res => {
           const newUserInfo = { ...user }
           newUserInfo.error = '';
           newUserInfo.success = true;
-          setUser(newUserInfo)
+          setUser(newUserInfo);
+          console.log('login', res);
+
         })
-        .cath(err => {
+        .catch(err => {
           const newUserInfo = {
             ...user
           }
           newUserInfo.error = err.message;
           newUserInfo.success = false;
           setUser(newUserInfo)
+          console.log(err);
         })
     }
     e.preventDefault()
+
   }
   const handleBlur = (event) => {
 
@@ -120,7 +125,17 @@ function App() {
       setUser(newUserInfo)
     }
   }
+  const updateUserName = (name) => {
+    const user = firebase.auth().currentUser;
 
+    user.updateProfile({
+      displayName: name
+    }).then(function () {
+      console.log('User Name update successfully');
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
   return (
     <div className="App">
       {
@@ -138,22 +153,22 @@ function App() {
         </div>
       }
       <h1>Our Own Authentication</h1>
-      <input type="checkbox" name="newUser" onChange={() => setToggle(!toggle)} id="newUser" />
+      <input type="checkbox" name="newUser" onChange={() => setnewUser(!newUser)} id="newUser" />
       <label htmlFor="newUser">New User Sign Up</label> <br />
       <form onSubmit={handleSubmit}>
         {
-          toggle && <input type="text" name="name" onBlur={handleBlur} placeholder="Your Name" />
+          newUser && <input type="text" name="name" onBlur={handleBlur} placeholder="Your Name" />
         }
         <br />
         <input type="email" onBlur={handleBlur} name="email" placeholder="Your Email Address" required />
         <br />
         <input type="password" onBlur={handleBlur} name="password" placeholder="Your Password" required />
         <br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value={newUser ? 'Sign up' : 'Sign in'} />
       </form>
       <p style={{ color: 'red' }}>{user.error}</p>
       {
-        user.success && <p style={{ color: 'green' }}>User {toggle ? 'Created': 'Logged in'} Successfully</p>
+        user.success && <p style={{ color: 'green' }}>User {newUser ? 'Created' : 'Logged in'} Successfully</p>
       }
 
     </div>
