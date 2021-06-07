@@ -12,6 +12,7 @@ function App() {
     isSignedIn: false,
     name: '',
     email: '',
+    password: '',
     photo: ''
   })
 
@@ -43,6 +44,7 @@ function App() {
           isSignedIn: false,
           name: '',
           email: '',
+          password: '',
           photo: ''
 
         }
@@ -59,17 +61,24 @@ function App() {
   }
   const handleBlur = (event) => {
 
-    console.log(event.target.name, event.target.value);
+    let isFormValid = true;
     if (event.target.name === 'email') {
-      const isEmailValid = /\S+@\S+\.\S+/.test(event.target.value);
+      isFormValid = /\S+@\S+\.\S+/.test(event.target.value);
       //regular expression
-      console.log(isEmailValid);
+      console.log(isFormValid);
     }
     if (event.target.name === 'password') {
       const isPasswordValid = event.target.value.length > 6;
       const passwordHasNumber = /\d{1}/.test(event.target.value)
       //Regular expression
-      console.log(isPasswordValid && passwordHasNumber);
+      isFormValid = (isPasswordValid && passwordHasNumber);
+    }
+    if (isFormValid) {
+      const newUserInfo = {
+        ...user
+      }
+      newUserInfo[event.target.name] = event.target.value
+      setUser(newUserInfo)
     }
   }
   return (
@@ -89,7 +98,11 @@ function App() {
         </div>
       }
       <h1>Our Own Authentication</h1>
+      <p>Name: {user.name}</p>
+      <p>Email: {user.email}</p>
+      <p>Password: {user.password}</p>
       <form onSubmit={handleSubmit}>
+        <input type="text" name="name" onBlur={handleBlur} placeholder="Your Name" /><br />
         <input type="email" onBlur={handleBlur} name="email" placeholder="Your Email Address" required /><br />
         <input type="password" onBlur={handleBlur} name="password" placeholder="Your Password" required />
         <br />
