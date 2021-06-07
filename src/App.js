@@ -17,6 +17,7 @@ function App() {
     error: '',
     success: false
   })
+  const [toggle, setToggle] = useState(false)
 
 
   const provider = new firebase.auth.GoogleAuthProvider()
@@ -59,15 +60,15 @@ function App() {
   }
 
   const handleSubmit = (e) => {
-    
-    if (user.name && user.password) {
+
+    if (toggle && (user.name && user.password)) {
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
         .then(res => {
           const newUserInfo = { ...user }
           newUserInfo.error = '';
           newUserInfo.success = true;
           setUser(newUserInfo)
-          
+
         })
         .catch(err => {
           const newUserInfo = {
@@ -76,7 +77,24 @@ function App() {
           newUserInfo.error = err.message;
           newUserInfo.success = false;
           setUser(newUserInfo)
-          
+
+        })
+    }
+    if (!toggle && user.email && user.password) {
+      firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+        .then(res => {
+          const newUserInfo = { ...user }
+          newUserInfo.error = '';
+          newUserInfo.success = true;
+          setUser(newUserInfo)
+        })
+        .cath(err => {
+          const newUserInfo = {
+            ...user
+          }
+          newUserInfo.error = err.message;
+          newUserInfo.success = false;
+          setUser(newUserInfo)
         })
     }
     e.preventDefault()
@@ -102,6 +120,7 @@ function App() {
       setUser(newUserInfo)
     }
   }
+
   return (
     <div className="App">
       {
@@ -119,17 +138,22 @@ function App() {
         </div>
       }
       <h1>Our Own Authentication</h1>
-
+      <input type="checkbox" name="newUser" onChange={() => setToggle(!toggle)} id="newUser" />
+      <label htmlFor="newUser">New User Sign Up</label> <br />
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" onBlur={handleBlur} placeholder="Your Name" /><br />
-        <input type="email" onBlur={handleBlur} name="email" placeholder="Your Email Address" required /><br />
+        {
+          toggle && <input type="text" name="name" onBlur={handleBlur} placeholder="Your Name" />
+        }
+        <br />
+        <input type="email" onBlur={handleBlur} name="email" placeholder="Your Email Address" required />
+        <br />
         <input type="password" onBlur={handleBlur} name="password" placeholder="Your Password" required />
         <br />
         <input type="submit" value="Submit" />
       </form>
       <p style={{ color: 'red' }}>{user.error}</p>
       {
-        user.success && <p style={{color:'green'}}>User Created Successfully</p>
+        user.success && <p style={{ color: 'green' }}>User {toggle ? 'Created': 'Logged in'} Successfully</p>
       }
 
     </div>
