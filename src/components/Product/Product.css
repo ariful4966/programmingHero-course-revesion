@@ -24,6 +24,8 @@
     text-align: center;
     font-weight: 500;
     border: 1px solid darkslateblue;
+    display: block;
+    line-height: 30px;
 }
 
 .product img {

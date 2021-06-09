@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import { getDatabaseCart } from '../../utilities/databaseManager';
 import SearchArea from '../Search/Search';
@@ -15,10 +16,10 @@ const Header = ({cart}) => {
         <div className="header">
             <a href="/"><img src={logo} alt="LOGO" /></a>
             <nav>
-                <a href="/shop">Shop</a>
-                <a href="/review">Order Review</a>
-                <a href="/manage">Manage Inventory</a>
-                <a href="/login">Login</a>
+                <Link to="/shop">Shop</Link>
+                <Link to="/review">Order Review</Link>
+                <Link to="/manage">Manage Inventory</Link>to
+                <Link to="/login">Login</Link>
             </nav>
             <SearchArea cart={cart }  />
         </div>
