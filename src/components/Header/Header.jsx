@@ -8,7 +8,7 @@ import SearchArea from '../Search/Search';
 import './Header.css'
 const Header = ({ cart }) => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
+    console.log(loggedInUser.name);
     return (
         <div className="header">
             <a href="/"><img src={logo} alt="LOGO" /></a>
@@ -16,10 +16,8 @@ const Header = ({ cart }) => {
                 <Link to="/shop">Shop</Link>
                 <Link to="/review">Order Review</Link>
                 <Link to="/manage">Manage Inventory</Link>
-                { loggedInUser &&
-                    <Link onClick={()=>{setLoggedInUser({})}}>Sign Out</Link>
-                }
-                    
+                <Link onClick={() => { setLoggedInUser({}) }}>Sign Out</Link>
+
             </nav>
             <SearchArea cart={cart} />
         </div>
