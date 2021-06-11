@@ -4,7 +4,6 @@ import { useReducer, useState } from 'react';
 const initialState = { count: 0 }
 
 const reducer = (state, action) => {
-    console.log(state, action);
     switch (action.type) {
         case 'INCREMENT':
             return { count: state.count + 1 };
