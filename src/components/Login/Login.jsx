@@ -12,7 +12,7 @@ const Login = () => {
     const [user, setUser] = useState({
         name: '',
         email: '',
-        phone: '',
+        phone: null,
         password: '',
         confirmPassword: '',
         photo: '',

@@ -14,7 +14,6 @@ const Shipment = () => {
   console.log(loggedInUser);
     return (
       <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
-        <input defaultValue="test" {...register("example")} />
         
         <input defaultValue={loggedInUser.displayName} {...register("name", { required: true })} placeholder="Your Name"/>
         {errors.name && <span className="error">This field is required</span>}
@@ -22,10 +21,10 @@ const Shipment = () => {
         {errors.email && <span className="error">This field is required</span>}
         <input {...register("address", { required: true })} placeholder="Your Address"/>
         {errors.address && <span className="error">This field is required</span>}
-        <input {...register("phone", { required: true })} placeholder="Your Phone Number"/>
+        <input defaultValue={loggedInUser.phoneNumber} {...register("phone", { required: true })} placeholder="Your Phone Number"/>
         {errors.phone && <span className="error">This field is required</span>}
         
-        <input type="submit" />
+        <input type="submit" className="shipment-btn" />
       </form>
     );
 };

@@ -112,7 +112,7 @@ export const singInWithEmailAndPassword = (user) => {
 }
 const updateProfile = (newUser) => {
     var user = firebase.auth().currentUser;
-
+    console.log(newUser);
     user.updateProfile({
         displayName: newUser.name,
         phoneNumber: newUser.phone

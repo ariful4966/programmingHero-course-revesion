@@ -16,7 +16,7 @@ const SignupForm = ({ userState }) => {
                 </div>
                 <div>
                     <label htmlFor="phone">Your Phone</label>
-                    <input type="tel" name="phone" onBlur={handleBlur} id="phone" />
+                    <input type="phone" name="phone" onBlur={handleBlur} id="phone" />
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
