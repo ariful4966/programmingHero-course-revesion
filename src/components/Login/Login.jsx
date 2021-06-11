@@ -29,27 +29,28 @@ const Login = () => {
     const googleSignIn = () => {
         handleGoogleLogin(user)
             .then(res => { 
-                setUser(res)
-                setLoggedInUser(res)
-                history.replace(from);
+                handleResponse(res, true)
              })
     }
     const facebookSignIn = ()=>{
         handleFacebookLogin(user)
         .then(res=>{
-            setUser(res)
-            setLoggedInUser(res)
-            history.replace(from);
+            handleResponse(res, true)
         })
     }
     const logOut =()=>{
         handleLogout(user)
         .then(res=>{
-            setUser(res)
-            setLoggedInUser(res)
-            history.replace(from);
+            handleResponse(res, false)
 
         })
+    }
+    const handleResponse = (res, redirect)=>{
+        setUser(res)
+        setLoggedInUser(res)
+        if(redirect){
+            history.replace(from);
+        }
     }
 
     const handleBlur = (e) => {
@@ -80,18 +81,14 @@ const Login = () => {
         if (newUser && user.email && user.confirmPassword) {
             createUserWithEmailAndPassword(user)
             .then(res=>{
-                setUser(res)
-                setLoggedInUser(res)
-                history.replace(from);
+                handleResponse(res, true)
             })
         }
 
         if (!newUser && user.email && user.password) {
             singInWithEmailAndPassword(user)
             .then(res=>{
-                setUser(res)
-                setLoggedInUser(res)
-                history.replace(from)
+                handleResponse(res, true)
             })
         }
         e.preventDefault();

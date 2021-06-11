@@ -76,7 +76,7 @@ export const handleLogout = (user) => {
 export const createUserWithEmailAndPassword = (user) => {
     return firebase.auth().createUserWithEmailAndPassword(user.email, user.confirmPassword)
         .then(res => {
-            const newUserInfo = { ...user }
+            const newUserInfo = res.user
             newUserInfo.error = "";
             newUserInfo.success = true
             updateProfile(user)
@@ -84,10 +84,9 @@ export const createUserWithEmailAndPassword = (user) => {
             
         })
         .catch((error) => {
-            const newUserInfo = { ...user }
+            const newUserInfo = {  }
             newUserInfo.error = error.message;
             newUserInfo.success = false
-            updateProfile(user)
             return newUserInfo
         });
 }
@@ -95,20 +94,18 @@ export const createUserWithEmailAndPassword = (user) => {
 export const singInWithEmailAndPassword = (user) => {
     return firebase.auth().signInWithEmailAndPassword(user.email, user.password)
         .then(res => {
-            const newUserInfo = { ...user }
+            const newUserInfo = res.user
             newUserInfo.error = "";
             newUserInfo.success = true;
             newUserInfo.isLogin = true;
-            updateProfile(newUserInfo)
             return newUserInfo
             
         })
         .catch((error) => {
-            const newUserInfo = { ...user }
+            const newUserInfo = {}
             newUserInfo.error = error.message;
             newUserInfo.success = false;
             newUserInfo.isLogin = false;
-            updateProfile(newUserInfo)
             return newUserInfo
             
         });
@@ -122,6 +119,6 @@ const updateProfile = (newUser) => {
     }).then(res => {
         console.log(res);
     }).catch(function (error) {
-        // An error happened.
+        console.log(error.message);
     });
 }
