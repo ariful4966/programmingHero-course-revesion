@@ -89,6 +89,7 @@ const Login = () => {
             singInWithEmailAndPassword(user)
             .then(res=>{
                 handleResponse(res, true)
+                console.log(res);
             })
         }
         e.preventDefault();
@@ -97,7 +98,6 @@ const Login = () => {
     const userState = [newUser, setNewUser, user, setUser, handleBlur, handleSubmit, googleSignIn, facebookSignIn]
     return (
         <div className="container">
-            <button onClick={logOut}>Logout</button>
             {
                 user.success && <p style={{ color: 'green' }}>User {newUser ? 'Create' : 'Logged in'} Successfully</p>
             }

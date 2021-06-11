@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 import logo from '../../images/logo.png';
 import { getDatabaseCart } from '../../utilities/databaseManager';
 import SearchArea from '../Search/Search';
 
 import './Header.css'
-const Header = ({cart}) => {
-    // const [cart, setCart] = useState([])
-    // useEffect(()=>{
-    //     const savedCart = getDatabaseCart();
-    //     const productKeys = Object.keys(savedCart);
-    //     setCart(productKeys);
-    // }, [])
+const Header = ({ cart }) => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
     return (
         <div className="header">
             <a href="/"><img src={logo} alt="LOGO" /></a>
             <nav>
                 <Link to="/shop">Shop</Link>
                 <Link to="/review">Order Review</Link>
-                <Link to="/manage">Manage Inventory</Link>to
-                <Link to="/login">Login</Link>
+                <Link to="/manage">Manage Inventory</Link>
+                { loggedInUser &&
+                    <Link onClick={()=>{setLoggedInUser({})}}>Sign Out</Link>
+                }
+                    
             </nav>
-            <SearchArea cart={cart }  />
+            <SearchArea cart={cart} />
         </div>
     )
 }
