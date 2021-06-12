@@ -15,22 +15,26 @@ import NotMatch from './components/NotMatch/NotMatch';
 import RoomDetail from './components/Room/RoomDetail';
 import { createContext, useEffect, useState } from 'react';
 import { roomsData } from './data'
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 
 
 export const RoomData = createContext();
 
 function App() {
-
+  const [loggedInUser, setLoggedInUser] = useState({})
   const [rooms, setRooms] = useState([]);
   const [bookRoom, setBookRoom] = useState([])
   useEffect(() => {
     const data = roomsData;
     setRooms(data)
   }, []);
-  const data = [rooms, bookRoom, setBookRoom]
+  const data = [rooms, bookRoom, setBookRoom, loggedInUser, setLoggedInUser];
+
 
   return (
+    
     <RoomData.Provider value={data}>
+      <p>Name: {loggedInUser.name}</p>
       <Router>
         <Header />
         <Container>
@@ -42,9 +46,9 @@ function App() {
             <Route path="/room/:id">
               <RoomDetail></RoomDetail>
             </Route>
-            <Route path="/book/:bedType">
+            <PrivateRoute path="/book/:bedType">
               <Book />
-            </Route>
+            </PrivateRoute>
             <Route path="/book">
               <Book />
             </Route>
