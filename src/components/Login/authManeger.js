@@ -21,6 +21,6 @@ export const googleSignIn = () => {
         .then((result) => {
             return result.user
         }).catch((error) => {
-            console.log(error);
+            return error.message
         });
 }

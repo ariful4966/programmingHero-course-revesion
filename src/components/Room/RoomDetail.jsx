@@ -32,16 +32,17 @@ export default function RoomDetail() {
         return <CircularProgress />    
     }
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} className="main-card">
             <CardActionArea className="card-info">
-                <CardMedia
+                <CardMedia 
                     component='img'
                     alt="Contemplative Reptile"
                     height="500"
                     image={view.imgUrl}
                     title="Contemplative Reptile"
+                    className="card-image"
                 />
-                <CardContent>
+                <CardContent className="card-detail">
                     <Typography gutterBottom variant="h5" component="h2">
                         {view.title}
                     </Typography>

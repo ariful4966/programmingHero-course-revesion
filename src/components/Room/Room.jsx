@@ -15,6 +15,7 @@ import LocalHotelIcon from '@material-ui/icons/LocalHotel';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { useHistory } from 'react-router-dom';
+import './Room.css'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: red[500],
     },
 }));
+
 
 export default function Room({ room }) {
     const { title, description, imgUrl, bed, capacity, bedType, avatar, price, id } = room;
