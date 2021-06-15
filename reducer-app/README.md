@@ -1,3 +1,0 @@
-# Reducer Practice
-
-## useReducer
