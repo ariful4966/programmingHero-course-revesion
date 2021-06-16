@@ -3,23 +3,20 @@ import { connect } from 'react-redux';
 import { addToCart } from '../../redux/actions/cartActions';
 import Product from '../Product/Product';
 
-const Shop = () => {
-    const products = [
-        { name: 'Lenovo Laptop', id: 1 },
-        { name: 'Asus Laptop', id: 2 },
-        { name: 'Dell Laptop', id: 3 },
-        { name: 'HP Laptop', id: 4 },
-        { name: 'Toshiba Laptop', id: 5 }
-    ]
+const Shop = (props) => {
+    console.log(props);
+    const { products, addToCart } = props
     return (
         <div>
             <h2>This is Shop</h2>
             {
-                products.map(pd => <Product key={pd.id} product={pd}></Product>)
+                products.map(pd => <Product key={pd.id} addToCart={addToCart} product={pd}></Product>)
             }
         </div>
     );
 };
+
+//connect to redux
 
 const mapStateToProps = state => {
     return {
