@@ -9,9 +9,9 @@ const Cart = (props) => {
         <div>
             <h4>This is Cart: {cart.length}</h4>
             {
-                cart.map(id => 
-                    <li key={id}>{id}
-                        <button onClick={() => removeFormCart(id)}>X</button></li>
+                cart.map(item => 
+                    <li key={item.cartId}>{item.name}
+                        <button onClick={() => removeFormCart(item.cartId)}>X</button></li>
                 )
             }
         </div>
