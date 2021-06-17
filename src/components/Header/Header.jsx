@@ -15,7 +15,7 @@ const Header = ({ cart }) => {
             <nav>
                 <Link to="/shop">Shop</Link>
                 <Link to="/review">Order Review</Link>
-                <Link to="/manage">Manage Inventory</Link>
+                <Link to="/orders">Order History</Link>
                 <Link onClick={() => { setLoggedInUser({}) }}>Sign Out</Link>
 
             </nav>

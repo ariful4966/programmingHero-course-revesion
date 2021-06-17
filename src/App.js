@@ -41,7 +41,7 @@ function App() {
         <Route path="/review">
           <Review products={fakeData} />
         </Route>
-        <PrivateRoute path="/manage">
+        <PrivateRoute path="/orders">
           <ManageInventory />
         </PrivateRoute>
         <Route path="/login">
@@ -50,7 +50,7 @@ function App() {
         <PrivateRoute path="/shipment">
           <Shipment/>
         </PrivateRoute>
-        <Route path="/manage">
+        <Route path="/orders">
           <ManageInventory />
         </Route>
         <Route path="/product/:pdKey">
