@@ -1,0 +1,42 @@
+section.banner_area {
+    background: url("../../images/bannerbackground.png") no-repeat center;
+    height: 450px;
+    .banner-content {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        h1 {
+            font-size: 60px;
+            font-family: 'Roboto', sans-serif;
+            color: #696969;
+        }
+        .search_area form input {
+            flex-direction: revert;
+            display: inline-block;
+            border: none;
+            padding: 0 10px;
+            outline: none;
+        }
+        
+        input[type="search"] {
+            width: 70%;
+            height: 100%;
+            background: none;
+        }
+        
+        input[type="submit"] {
+            width: 30%;
+            height: 100%;
+        }
+        
+        form {
+            width: 70%;
+            margin: 0 auto;
+            height: 30px;
+            background: #fff;
+            border-radius: 30px;
+        }
+    }
+}

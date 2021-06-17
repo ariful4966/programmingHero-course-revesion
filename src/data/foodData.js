@@ -24,6 +24,7 @@ export const foodData = [
   {
     "id": 1,
     "title": "Yeast Freee",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
     "category": "lunch",
     "price": 13,
@@ -35,6 +36,7 @@ export const foodData = [
   }, {
     "id": 2,
     "title": "Mixture of Six Standardized Grasses",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
     "category": "lunch",
     "price": 88,
@@ -46,6 +48,7 @@ export const foodData = [
   }, {
     "id": 3,
     "title": "Potassium Chloride",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
     "category": "lunch",
     "price": 16,
@@ -57,6 +60,7 @@ export const foodData = [
   }, {
     "id": 4,
     "title": "ANTISEPTIC SKIN CLEANSER",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
     "category": "lunch",
     "price": 75,
@@ -68,6 +72,7 @@ export const foodData = [
   }, {
     "id": 5,
     "title": "lisinopril",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
     "category": "lunch",
     "price": 82,
@@ -79,6 +84,7 @@ export const foodData = [
   }, {
     "id": 6,
     "title": "Ketoconazole",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
     "category": "lunch",
     "price": 26,
@@ -90,6 +96,7 @@ export const foodData = [
   }, {
     "id": 7,
     "title": "CardinalHealth personal cleansing cloth with dimethicone",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
     "category": "breakfast",
     "price": 27,
@@ -101,6 +108,7 @@ export const foodData = [
   }, {
     "id": 8,
     "title": "Fentanyl",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
     "category": "breakfast",
     "price": 67,
@@ -112,6 +120,7 @@ export const foodData = [
   }, {
     "id": 9,
     "title": "HES CLEAN",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
     "category": "breakfast",
     "price": 38,
@@ -123,6 +132,7 @@ export const foodData = [
   }, {
     "id": 10,
     "title": "Mens Rogaine",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
     "category": "breakfast",
     "price": 56,
@@ -134,6 +144,7 @@ export const foodData = [
   }, {
     "id": 11,
     "title": "Clorazepate Dipotassium",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
     "category": "breakfast",
     "price": 53,
@@ -145,6 +156,7 @@ export const foodData = [
   }, {
     "id": 12,
     "title": "Mixture of Four Standardized Grasses",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Fusce consequat. Nulla nisl. Nunc nisl.",
     "category": "breakfast",
     "price": 22,
@@ -156,6 +168,7 @@ export const foodData = [
   }, {
     "id": 13,
     "title": "Avocado Antibacterial Hand Wash",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
     "category": "dinner",
     "price": 75,
@@ -167,6 +180,7 @@ export const foodData = [
   }, {
     "id": 14,
     "title": "BZK Towelette",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
     "category": "dinner",
     "price": 65,
@@ -178,6 +192,7 @@ export const foodData = [
   }, {
     "id": 15,
     "title": "ANTIBACTERIAL HAND SP WITH LIGHT MOISTURIZERS",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
     "category": "dinner",
     "price": 33,
@@ -189,6 +204,7 @@ export const foodData = [
   }, {
     "id": 16,
     "title": "AMOREPACIFIC",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
     "category": "dinner",
     "price": 78,
@@ -200,6 +216,7 @@ export const foodData = [
   }, {
     "id": 17,
     "title": "diner",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
     "category": "dinner",
     "price": 49,
@@ -211,6 +228,7 @@ export const foodData = [
   }, {
     "id": 18,
     "title": "Foaming Antimicrobial",
+    "shotTitle":"lorem ipsum doler set epsum",
     "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
     "category": "dinner",
     "price": 85,

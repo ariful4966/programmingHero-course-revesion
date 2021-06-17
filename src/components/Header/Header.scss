@@ -1,0 +1,21 @@
+@import '../../App.scss';
+section {
+
+    &.header_area {
+        background: $bg-color;
+        min-height: 50px;
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .logo {
+                a {
+                    img {
+                        height: 70px;
+                    }
+                }
+            };
+        }
+    }
+}
