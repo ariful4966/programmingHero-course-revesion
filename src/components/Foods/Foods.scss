@@ -1,7 +1,25 @@
-.food_menu ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
+@import '../../App.scss';
+section.food_area {
+    
+    .food_menu {
+        padding: 0 0 40px 0;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+    }
+.checkout_btn {
+        .btn {
+            width: 300px;
+            margin: 0 auto;
+            color: #fff;
+            border-radius: 10px;
+    }
 }
+    
+    
+}
+

@@ -1,21 +1,50 @@
+
 import { foodData } from "../data/foodData";
-import { ADD_TO_CART, BRAKFAST_FOOD, DINNER_FOOD, LUNCH_FOOD, REMOVE_FROM_CART } from "./actions";
+import { ADD_TO_CART, BRAKFAST_FOOD, DINNER_FOOD, LUNCH_FOOD, QUANTITY_DICREMENT, QUANTITY_INCREMENT, REMOVE_FROM_CART, SHOW_DETAIL } from "./actions";
 
 const initialState = {
     cart: [],
     products: foodData,
     lunch: foodData.filter(ln => ln.category === 'lunch'),
     brakfast: [],
-    dinner: []
+    dinner: [],
+    // product:{}
 }
 
 
 const foodReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            return state;
+            const item = action.id;
+            const cartItem = state.products.find(pd => pd.id === item);
+            return {
+                ...state,
+                cart: [...state.cart, cartItem]
+            }
+
+
+
         case REMOVE_FROM_CART:
             return state;
+        case QUANTITY_INCREMENT:
+            const pdId = action.id;
+            const product = state.products.find(pd => pd.id === pdId)
+            let pdQuan = product.quantity + 1
+            product.quantity = pdQuan
+            return { ...state, products: [...state.products, product] }
+        case QUANTITY_DICREMENT:
+            const dicPdId = action.id;
+            const dicProduct = state.products.find(pd => pd.id === dicPdId)
+            let dicQuan;
+            if (dicProduct.quantity > 1) {
+                dicQuan = dicProduct.quantity - 1
+                dicProduct.quantity = dicQuan
+            }
+            return { ...state, products: [...state.products, dicProduct] }
+        case SHOW_DETAIL:
+            const fdId = action.id;
+
+            return state
         case LUNCH_FOOD:
             const lunch = action.category;
             const lunchFood = state.products.filter(pd => pd.category === lunch);

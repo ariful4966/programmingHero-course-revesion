@@ -4,6 +4,28 @@ $btn-bg: #e4514c;
     margin: 0;
     padding: 0;
 }
+.section-padding{
+    padding: 50px 0;
+}
+button {
+    background: none;
+    font-size: 20px;
+    font-family: 'Roboto';
+    padding: 10px 0;
+}
+
+
+
+.btn-tab::before {
+    position: absolute;
+    width: 70%;
+    height: 3px;
+    content: '';
+    background: red;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
 .btn {
     border-radius: 25px;
     width: 100px;
@@ -11,8 +33,17 @@ $btn-bg: #e4514c;
     display: block;
     line-height: 20px;
     text-align: center;
+    border: none;
 }
 .btn-bg{
     background-color: $btn-bg;
     color:#fff;
 }
+.btn-gray{
+    background-color: gray;
+}
+.btn-tab {
+    color: red;
+    position: relative;
+}
+

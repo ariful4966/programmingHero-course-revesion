@@ -5,6 +5,7 @@ import {
   Link
 } from "react-router-dom";
 import './App.scss';
+import FoodDetail from "./components/FoodDetail/FoodDetail";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 
@@ -13,6 +14,9 @@ function App() {
     <Router>
       <Header/>
       <Switch>
+        <Route path="/food/:fdId">
+          <FoodDetail/>
+        </Route>
         <Route path="/">
           <Home/>
         </Route>
