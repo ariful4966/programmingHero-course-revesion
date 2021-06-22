@@ -1,17 +1,38 @@
 import { Container, Grid } from '@material-ui/core';
-import { connect } from 'react-redux';
-import { brakfastFood, dinnerFood, lunchFood } from '../../redux/actions';
 import './Foods.scss';
 import FoodItem from '../FoodItem/FoodItem';
 import { useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import { Dataprovid } from '../../App';
 
-const Foods = (props) => {
+const Foods = () => {
+    const value = useContext(Dataprovid);
+    const { data, setData } = useContext(Dataprovid);
+    const { food, cart } = data;
+    console.log(value);
+
+    let { lunch, brakfast, dinner } = data;
+
+    const brakfastFood = (morning) => {
+        const brakfast = food.filter(fd => fd.category === morning);
+        setData({ ...data, brakfast: brakfast, dinner:[], lunch: [] })
+    }
+    const lunchFood = (noon) => {
+        const lunch = food.filter(fd => fd.category === noon);
+        setData({ ...data, lunch: lunch, dinner: [], brakfast: [] })
+    }
+    const dinnerFood = (night) => {
+        const dinner = food.filter(fd => fd.category === night);
+        setData({ ...data, dinner: dinner, lunch: [], brakfast: [] })
+    }
     const history = useHistory()
     const showDetail = (id) => {
         history.push(`/food/${id}`);
 
     }
-    const { products, cart, brakfastFood, dinnerFood, lunchFood, lunch, brakfast, dinner } = props;
+    if(!data){
+        return <h1>Loading...</h1>
+    }
     return (
         <section className="food_area section-padding" >
             <Container>
@@ -41,19 +62,6 @@ const Foods = (props) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        products: state.products,
-        cart: state.cart,
-        lunch: state.lunch,
-        brakfast: state.brakfast,
-        dinner: state.dinner
-    }
-}
-const mapDispatchToProps = {
-    lunchFood: lunchFood,
-    dinnerFood: dinnerFood,
-    brakfastFood: brakfastFood
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Foods);
+
+export default Foods;

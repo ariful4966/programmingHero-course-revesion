@@ -239,3 +239,5 @@ export const foodData = [
     }
   }
 ];
+
+export default foodData;

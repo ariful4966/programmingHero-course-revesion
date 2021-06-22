@@ -1,23 +1,44 @@
 import { Container, Grid } from '@material-ui/core';
 import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
-import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addToCart, quantityDicrement, quantityIncrement } from '../../redux/actions';
+import { Dataprovid } from '../../App';
 import './FoodDetail.scss'
 
-const FoodDetail = (props) => {
-
-    const { products, addToCart, quantityIncrement, quantityDicrement } = props;
+const FoodDetail = () => {
+    const { data, setData } = useContext(Dataprovid)
     const { fdId } = useParams();
-    const product = products.find(pd => pd.id == fdId);
+    const product = data.food.find(pd => pd.id == fdId);
     const { id, title, description, price, img, quantity } = product;
     const { img1, img2 } = img;
 
     const [image, setImage] = useState(true);
 
-    console.log(props);
+    const addToCart = (id) => {
+        console.log(id);
+
+        const foodItem = data.food.find(fd => fd.id === id);
+        const cartItem = data.cart.find(ct => ct.id === foodItem.id);
+        console.log(foodItem, cartItem);
+        // setData({ ...data, cart: [...data.cart, cartItem] })
+        if (data.cart.length <=0 ) {
+            setData({ ...data, cart: [...data.cart, foodItem] })
+        }
+
+        if (!cartItem) {
+            setData({ ...data, cart: [...data.cart, foodItem] })
+        } else {
+            setData({ ...data })
+        }
+
+
+
+
+
+    }
+
     return (
         <section className="food_detail section-padding">
             <Container>
@@ -29,15 +50,15 @@ const FoodDetail = (props) => {
                                 <p>{description}</p>
                                 <h1 className="price">${price}
                                     <span className="btn-increment">
-                                        <button onClick={()=>{quantityDicrement(id)}}>-</button>
+                                        <button >-</button>
                                         <span>{quantity}</span>
-                                        <button onClick={()=>{quantityIncrement(id)}}>+</button>
+                                        <button >+</button>
                                     </span>
                                 </h1>
-                                <button className="btn btn-bg" onClick={()=>{addToCart(id)}}><AddShoppingCart /> Add</button>
+                                <button className="btn btn-bg" onClick={() => addToCart(id)}><AddShoppingCart /> Add</button>
                                 <div className="images_content">
-                                    <img src={img1} alt="Brackfast" onClick={() => setImage(true)} />
-                                    <img src={img2} alt="Brackfast" onClick={() => setImage(false)} />
+                                    <img src={img1} alt="Brackfast" />
+                                    <img src={img2} alt="Brackfast" />
                                 </div>
                             </div>
                         </article>
@@ -45,7 +66,7 @@ const FoodDetail = (props) => {
                     <Grid item md={6}>
                         <div className="show_img">
                             {
-                                image ? <img src={img1} alt={product.category}/>: <img src={img2} alt={product.category}/>
+                                image ? <img src={img1} alt={product.category} /> : <img src={img2} alt={product.category} />
                             }
                         </div>
                     </Grid>
@@ -55,16 +76,6 @@ const FoodDetail = (props) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        products: state.products,
-        cart: state.cart
-    }
-}
-const mapDispatchToProps = {
-    addToCart: addToCart,
-    quantityIncrement: quantityIncrement,
-    quantityDicrement: quantityDicrement
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(FoodDetail);
+
+export default FoodDetail;

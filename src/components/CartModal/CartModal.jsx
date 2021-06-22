@@ -8,6 +8,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import './CartModal.scss'
 
 const styles = (theme) => ({
   root: {
@@ -50,39 +51,40 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 export default function CartModal(props) {
-    const {cart, modal, setModal} = props;
- 
+  const { cart, modal, setModal } = props;
+
   const handleClose = () => {
     setModal(!modal)
   };
-  console.log(cart);
+
 
   return (
-    
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" >
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Modal title
-        </DialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          </Typography>
-          <Typography gutterBottom>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.
-          </Typography>
-          <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.
-          </Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Save changes
-          </Button>
-        </DialogActions>
-      </Dialog>
+    <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={modal}>
+      <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+        Added Carts {cart.length}
+      </DialogTitle>
+      <DialogContent dividers>
+        <div className="add_all_cart">
+          {
+            cart && cart.map(ct =>
+              <div className="add_cart" key={ct.id}>
+                <div className="cart_info">
+                  <h4>{ct.title}</h4>
+                  <button className="btn btn-bg btn-cart">Remove</button>
+                </div>
+                <div className="cart-img">
+                  <img src={ct.img.img1} alt="" />
+                </div>
+              </div>
+            )
+          }
+        </div>
+      </DialogContent>
+      <DialogActions>
+        <Button autoFocus onClick={handleClose} color="primary">
+          Save changes
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }

@@ -1,0 +1,25 @@
+
+
+.cart-img {
+    width: 100px;
+    height: 100px;
+    img {width: 100%;}
+}
+
+.add_cart {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    .btn-cart {
+        font-size: 14px;
+        padding: 0px 0;
+    }
+    
+    .cart_info h4 {
+        font-size: 18px;
+        margin: 10px;
+    }
+
+}
