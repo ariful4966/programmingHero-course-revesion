@@ -1,0 +1,68 @@
+.auth {
+    width: 40%;
+    height: auto;
+    padding-top: 20px;
+    background: #fff;
+}
+
+.auth img {
+    width: 100%;
+}
+
+.auth_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+.auth_section{
+    background: url(../../images/bannerbackground.png) top no-repeat;
+    
+}
+
+.auth_logo {
+    width: 50%;
+    margin: 0 auto 46px auto;
+}
+
+
+.auth {input {
+    width: 100%;
+    border: none;
+    background: #cfcfcf;
+    margin: 10px 0;
+    font-size: 20px;
+    padding: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 5%;
+    }
+    input[type="submit"]{
+        background-color: red;
+    }
+}
+
+
+.auth form {
+    padding: 10px;
+}
+.other_log button {
+    background: #ddd;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
+.other_log img {
+    width: 50px;
+}
+
+.other_log {
+    /* display: flex; */
+}
+
