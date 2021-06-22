@@ -15,7 +15,7 @@ const Foods = () => {
 
     const brakfastFood = (morning) => {
         const brakfast = food.filter(fd => fd.category === morning);
-        setData({ ...data, brakfast: brakfast, dinner:[], lunch: [] })
+        setData({ ...data, brakfast: brakfast, dinner: [], lunch: [] })
     }
     const lunchFood = (noon) => {
         const lunch = food.filter(fd => fd.category === noon);
@@ -30,7 +30,10 @@ const Foods = () => {
         history.push(`/food/${id}`);
 
     }
-    if(!data){
+    const handleCheckout = () => {
+        history.push(`/shipment`)
+    }
+    if (!data) {
         return <h1>Loading...</h1>
     }
     return (
@@ -55,7 +58,11 @@ const Foods = () => {
                     }
                 </Grid>
                 <div className="checkout_btn section-padding">
-                    <button className={cart.length > 0 ? "btn btn-bg" : "btn btn-gray"}>Checkout You Food</button>
+                    {
+                        cart.length > 0 ?
+                            <button className="btn btn-bg" onClick={handleCheckout}>Checkout You Food</button> :
+                            <button className="btn btn-gray" disabled >Checkout You Food</button>
+                    }
                 </div>
             </Container>
         </section>

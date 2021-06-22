@@ -17,13 +17,10 @@ const FoodDetail = () => {
     const [image, setImage] = useState(true);
 
     const addToCart = (id) => {
-        console.log(id);
 
         const foodItem = data.food.find(fd => fd.id === id);
         const cartItem = data.cart.find(ct => ct.id === foodItem.id);
-        console.log(foodItem, cartItem);
-        // setData({ ...data, cart: [...data.cart, cartItem] })
-        if (data.cart.length <=0 ) {
+        if (data.cart.length <= 0) {
             setData({ ...data, cart: [...data.cart, foodItem] })
         }
 
@@ -34,10 +31,23 @@ const FoodDetail = () => {
         }
 
 
-
-
-
     }
+    const incrementQuantity = (id) => {
+        const product = data.food.find(fd => fd.id === id);
+        let count = product.quantity + 1;
+        product.quantity = count
+        setData({ ...data, food: [...data.food, product] })
+    }
+    const decrimentQuantiry = (id) => {
+        const product = data.food.find(fd => fd.id === id);
+        if (product.quantity > 1) {
+            let count = product.quantity - 1;
+            product.quantity = count
+            setData({ ...data, food: [...data.food, product] })
+        }
+    }
+
+
 
     return (
         <section className="food_detail section-padding">
@@ -50,15 +60,15 @@ const FoodDetail = () => {
                                 <p>{description}</p>
                                 <h1 className="price">${price}
                                     <span className="btn-increment">
-                                        <button >-</button>
+                                        <button onClick={() => decrimentQuantiry(id)}>-</button>
                                         <span>{quantity}</span>
-                                        <button >+</button>
+                                        <button onClick={() => incrementQuantity(id)}>+</button>
                                     </span>
                                 </h1>
                                 <button className="btn btn-bg" onClick={() => addToCart(id)}><AddShoppingCart /> Add</button>
                                 <div className="images_content">
-                                    <img src={img1} alt="Brackfast" />
-                                    <img src={img2} alt="Brackfast" />
+                                    <img src={img1} alt="Brackfast" onClick={() => setImage(true)} />
+                                    <img src={img2} alt="Brackfast" onClick={() => setImage(false)} />
                                 </div>
                             </div>
                         </article>

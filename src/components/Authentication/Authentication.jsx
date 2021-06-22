@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 import logo from '../../images/logo2.png';
 import './Login.scss'
 import SignUp from './SignUp';
 import Login from './Login';
 import OthersLogin from './OthersLogin';
-import { firebaseInstalizationFramwork } from './AuthenticationManager';
-import { connect } from 'react-redux';
+import { googleSignIn, signOut } from './AuthenticationManager';
+import { useContext } from 'react';
+import { Dataprovid } from '../../App';
 
-const Authentication = (props) => {
+const Authentication = () => {
     const [page, setPage] = useState(false)
+    const { data, setData } = useContext(Dataprovid);
+    const history = useHistory()
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } }
-    console.log(props)
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(res => {
+                console.log(res);
+                const { name, email, photo } = data.user;
+                const getUser = {
+                    name: res.displayName,
+                    email: res.email,
+                    photo: res.photoURL
+                }
+
+                setData({ ...data, user: { ...data.user, ...getUser, isLogedIn: true } })
+
+                history.replace(from);
+            })
+    }
+
     return (
         <div className="auth_section">
             <Container>
@@ -27,12 +46,15 @@ const Authentication = (props) => {
                                 <SignUp /> :
                                 <Login />
                             }
-                            <p style={{ color: 'red', textAlign: 'center' }} onClick={() => setPage(!page)}>Alrady Have An Account</p>
+                            {
+                                page ? <p style={{ color: 'red', textAlign: 'center' }} onClick={() => setPage(false)}>Alrady Have An Account</p> :
+                                    <p style={{ color: 'red', textAlign: 'center' }} onClick={() => setPage(true)}>Create New Account</p>
+                            }
 
 
                         </form>
                         {
-                            !page && <OthersLogin />
+                            !page && <OthersLogin handleGoogleSignIn={handleGoogleSignIn} />
                         }
                     </div>
                 </div>
@@ -40,13 +62,6 @@ const Authentication = (props) => {
         </div>
     );
 };
-const mapStateToProps = state => {
-    return {
-        auth: state.auth
-    }
-}
-const mapDispatchToProps = {
 
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Authentication);
+export default Authentication;

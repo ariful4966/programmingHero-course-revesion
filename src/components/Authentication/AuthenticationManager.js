@@ -8,12 +8,22 @@ export const firebaseInstalizationFramwork = () => {
     }
 }
 firebaseInstalizationFramwork()
-export const handleGoogoleSignIn = () => {
+export const googleSignIn = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(googleProvider)
         .then((res) => {
             return res.user
         }).catch((error) => {
+            return error
+        });
+}
+export const signOut = (data, setData) => {
+    return firebase.auth()
+        .signOut()
+        .then(res => {
+            return res
+        })
+        .catch((error) => {
             return error
         });
 }

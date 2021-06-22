@@ -11,7 +11,10 @@ import './App.scss';
 import FoodDetail from "./components/FoodDetail/FoodDetail";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
+import Shipment from "./components/Shipment/Shipment";
 import foodData from "./data/foodData";
+import Authentication from "./components/Authentication/Authentication";
+import { PrivateRoute } from "./components/Authentication/PrivateRoute";
 
 
 export const Dataprovid = createContext()
@@ -26,6 +29,7 @@ function App() {
       name: '',
       email: '',
       password: '',
+      photo: '',
       confirmPassword: '',
       isLogedIn: false,
       isSuccess: false,
@@ -44,6 +48,12 @@ function App() {
       <Router>
         <Header />
         <Switch>
+          <PrivateRoute path="/shipment">
+            <Shipment/>
+          </PrivateRoute>
+            <Route path="/login">
+              <Authentication/>
+            </Route>
           <Route path="/food/:fdId">
             <FoodDetail />
           </Route>

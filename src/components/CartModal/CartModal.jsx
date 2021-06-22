@@ -70,6 +70,7 @@ export default function CartModal(props) {
               <div className="add_cart" key={ct.id}>
                 <div className="cart_info">
                   <h4>{ct.title}</h4>
+                  <h5>Quantity: {ct.quantity}</h5>
                   <button className="btn btn-bg btn-cart">Remove</button>
                 </div>
                 <div className="cart-img">
