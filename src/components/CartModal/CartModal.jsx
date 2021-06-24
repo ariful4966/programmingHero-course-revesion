@@ -71,7 +71,7 @@ export default function CartModal(props) {
                 <div className="cart_info">
                   <h4>{ct.title}</h4>
                   <h5>Quantity: {ct.quantity}</h5>
-                  <button className="btn btn-bg btn-cart">Remove</button>
+                  <h2>$ {(ct.price * ct.quantity).toFixed(2)}</h2>
                 </div>
                 <div className="cart-img">
                   <img src={ct.img.img1} alt="" />

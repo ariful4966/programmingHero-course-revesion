@@ -10,6 +10,9 @@ section.food_area {
             display: flex;
             justify-content: center;
         }
+        li {
+            margin: 0 10px;
+        }
     }
 .checkout_btn {
         .btn {

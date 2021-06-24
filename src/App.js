@@ -16,6 +16,7 @@ import foodData from "./data/foodData";
 import Authentication from "./components/Authentication/Authentication";
 import { PrivateRoute } from "./components/Authentication/PrivateRoute";
 import LocationOrder from "./components/LocationOrder/LocationOrder";
+import Footer from "./components/Footer/Footer";
 
 
 export const Dataprovid = createContext()
@@ -75,6 +76,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        <Footer/>
       </Router>
     </Dataprovid.Provider>
   );

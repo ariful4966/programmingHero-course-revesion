@@ -68,9 +68,13 @@
         
     }
     button {
-    width: 100%;
-    margin: 20px 0;
-}
+        width: 100%;
+        margin: 20px 0;
+        border: none;
+        outline: none;
+        color: #fff;
+        border-radius: 5px;
+    }
 .d-cart {
     display: flex;
     justify-content: space-between;
