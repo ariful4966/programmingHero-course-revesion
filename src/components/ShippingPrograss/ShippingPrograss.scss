@@ -1,0 +1,122 @@
+
+
+.shipping_area {
+    padding: 20px;
+    background: #ddd;
+    border-radius: 10px;
+    .shipping_img {
+        width: 100px;
+        img {
+            width: 100%;
+        }
+        
+    }
+    .google_map {
+        position: relative;
+        width: 100%;
+        height: 500px;
+    }
+    
+    .shipping_img {
+        width: 100px;
+        padding: 10px 40px;
+    }
+    
+    .shipping_img img {
+        width: 100%;
+    }
+    
+    .shipping_area {
+        padding: 20px;
+        background: #ddd;
+        border-radius: 10px;
+    }
+    
+    .bar_item {
+        margin: 40px 0;
+        position: relative;
+        padding-left: 25px;
+    }
+    
+    .shipping_prograss_bar {
+        background: #f4f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+    }
+    
+    .bar_item h4 {
+        font-size: 20px;
+    }
+    
+    .bar_item{
+        & ::after {
+        position: absolute;
+        background: #cf2f2f;
+        width: 15px;
+        height: 15px;
+        left: 0;
+        top: 5px;
+        content: '';
+        border-radius: 50%;
+    }
+    &:first-child::before {
+        position: absolute;
+        content: '';
+        background: #b8b5b5;
+        width: 2px;
+        height: 100%;
+        left: 6px;
+        top: 20px;
+        margin: 0;
+        padding: 15px 0;
+    }
+   
+
+}
+    .delivery_man {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: #f4f0f0;
+    border-radius: 5px;
+    margin: 20px 0;
+    .delivery_man_img {
+        width: 15%;
+        padding: 10px;
+        display: inline-block;
+        img {
+            border: 1px solid #c2bcbc;
+            border-radius: 50%;
+        }
+    }
+    
+    
+    
+    .delivery_man_name {
+        padding: 0 10px;
+        h3 {
+            font-size: 20px;
+            color: #696969;
+        }
+    }
+    
+}
+
+
+
+small {
+    color: gray;
+}  
+.delivary_time {
+    margin: 10px 0;
+    padding: 20px;
+    h2 {
+        font-size: 50px;
+    }
+}
+
+
+    
+   
+}

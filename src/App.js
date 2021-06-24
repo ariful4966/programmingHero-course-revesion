@@ -15,6 +15,7 @@ import Shipment from "./components/Shipment/Shipment";
 import foodData from "./data/foodData";
 import Authentication from "./components/Authentication/Authentication";
 import { PrivateRoute } from "./components/Authentication/PrivateRoute";
+import LocationOrder from "./components/LocationOrder/LocationOrder";
 
 
 export const Dataprovid = createContext()
@@ -34,6 +35,16 @@ function App() {
       isLogedIn: false,
       isSuccess: false,
       error: ''
+    },
+    shipment:{
+      name:'',
+      email: '',
+      phone:'',
+      village:'',
+      city:'',
+      state:'',
+      message: '',
+      isDone: false
     }
   });
   // console.log(data);
@@ -50,6 +61,9 @@ function App() {
         <Switch>
           <PrivateRoute path="/shipment">
             <Shipment/>
+          </PrivateRoute>
+          <PrivateRoute path="/location">
+            <LocationOrder/>
           </PrivateRoute>
             <Route path="/login">
               <Authentication/>

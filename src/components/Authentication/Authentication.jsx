@@ -6,7 +6,7 @@ import './Login.scss'
 import SignUp from './SignUp';
 import Login from './Login';
 import OthersLogin from './OthersLogin';
-import { googleSignIn, signOut } from './AuthenticationManager';
+import { googleSignIn} from './AuthenticationManager';
 import { useContext } from 'react';
 import { Dataprovid } from '../../App';
 
@@ -20,7 +20,6 @@ const Authentication = () => {
         googleSignIn()
             .then(res => {
                 console.log(res);
-                const { name, email, photo } = data.user;
                 const getUser = {
                     name: res.displayName,
                     email: res.email,

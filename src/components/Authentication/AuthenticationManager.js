@@ -17,7 +17,7 @@ export const googleSignIn = () => {
             return error
         });
 }
-export const signOut = (data, setData) => {
+export const signOut = () => {
     return firebase.auth()
         .signOut()
         .then(res => {

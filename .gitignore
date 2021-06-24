@@ -2,8 +2,10 @@
 
 # dependencies
 /node_modules
+/src/components/Authentication/firebase.config.js
 /.pnp
 .pnp.js
+
 
 # testing
 /coverage
