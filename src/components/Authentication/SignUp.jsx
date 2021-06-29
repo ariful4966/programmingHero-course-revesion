@@ -1,12 +1,12 @@
 import React from 'react';
 
-const SignUp = () => {
+const SignUp = ({handleBlr}) => {
     return (
         <>
-            <input type="text" name="name" placeholder="Your Name" />
-            <input type="email" name="email" placeholder="Email Address" />
-            <input type="password" name="password" placeholder="Password" />
-            <input type="password" name="confirmPassword" placeholder="Confirm Password" />
+            <input type="text" name="name" placeholder="Your Name" onBlur={handleBlr}/>
+            <input type="email" name="email" placeholder="Email Address" onBlur={handleBlr}/>
+            <input type="password" name="password" placeholder="Password" onBlur={handleBlr} />
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" onBlur={handleBlr}/>
             <input type="submit" className="btn-bg" value="Sign Up" />
         </>
     );

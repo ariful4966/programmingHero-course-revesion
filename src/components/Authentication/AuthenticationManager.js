@@ -17,6 +17,29 @@ export const googleSignIn = () => {
             return error
         });
 }
+
+export const createUser = (email, password, name) => {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((res) => {
+            const newUser = res.user
+            updateUserName(name)
+            return newUser
+        })
+        .catch((error) => {
+            return error
+        });
+}
+
+export const loginUser = (email, password) => {
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((res) => {
+            return res.user
+        })
+        .catch((error) => {
+            return error
+        });
+}
+
 export const signOut = () => {
     return firebase.auth()
         .signOut()
@@ -26,4 +49,18 @@ export const signOut = () => {
         .catch((error) => {
             return error
         });
+}
+
+const updateUserName = (name) => {
+    const user = firebase.auth().currentUser;
+
+    user.updateProfile({
+        displayName: name
+    }).then(() => {
+        // Update successful
+        // ...
+    }).catch((error) => {
+        // An error occurred
+        // ...
+    });
 }
