@@ -6,10 +6,8 @@ import { useContext } from 'react';
 import { Dataprovid } from '../../App';
 
 const Foods = () => {
-    const value = useContext(Dataprovid);
     const { data, setData } = useContext(Dataprovid);
     const { food, cart } = data;
-    console.log(value);
 
     let { lunch, brakfast, dinner } = data;
 

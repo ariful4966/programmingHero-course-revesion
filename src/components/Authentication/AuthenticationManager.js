@@ -17,7 +17,19 @@ export const googleSignIn = () => {
             return error
         });
 }
+export const facebookSignIn = () => {
+    const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
+   return firebase
+        .auth()
+        .signInWithPopup(facebookProvider)
+        .then((result) => {
+            return result.user
+        })
+        .catch((error) => {
+           console.log(error);
+        });
+}
 export const createUser = (email, password, name) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((res) => {

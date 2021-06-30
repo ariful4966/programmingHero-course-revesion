@@ -3,11 +3,11 @@ import google from '../../images/google.png'
 import facebook from '../../images/facebook.png'
 
 const OthersLogin = (props) => {
-    const { handleGoogleSignIn } = props;
+    const { handleGoogleSignIn, handleFacebookSignIn  } = props;
     return (
         <div className="other_log">
             <button className="btn" onClick={handleGoogleSignIn}> <img src={google} alt="" /> <span>Login With Google</span></button>
-            <button className="btn"> <img src={facebook} alt="" /> <span>Login With Facebook</span></button>
+            <button className="btn" onClick={handleFacebookSignIn }> <img src={facebook} alt="" /> <span>Login With Facebook</span></button>
         </div>
     );
 };

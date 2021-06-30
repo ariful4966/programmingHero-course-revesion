@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Redirect, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 import logo from '../../images/logo2.png';
 import './Login.scss'
 import SignUp from './SignUp';
 import Login from './Login';
 import OthersLogin from './OthersLogin';
-import { createUser, googleSignIn, loginUser } from './AuthenticationManager';
+import { createUser, facebookSignIn, googleSignIn, loginUser } from './AuthenticationManager';
 import { useContext } from 'react';
 import { Dataprovid } from '../../App';
 
@@ -18,6 +18,21 @@ const Authentication = () => {
     const { from } = location.state || { from: { pathname: "/" } }
     const handleGoogleSignIn = () => {
         googleSignIn()
+            .then(res => {
+                console.log(res);
+                const getUser = {
+                    name: res.displayName,
+                    email: res.email,
+                    photo: res.photoURL
+                }
+
+                setData({ ...data, user: { ...data.user, ...getUser, isLogedIn: true } })
+
+                history.replace(from);
+            })
+    }
+    const handleFacebookSignIn = () => {
+        facebookSignIn()
             .then(res => {
                 console.log(res);
                 const getUser = {
@@ -56,7 +71,7 @@ const Authentication = () => {
 
     const handleCreateAccount = (e) => {
 
-        if (page && data.user.email && data.user.confirmPassword ) {
+        if (page && data.user.email && data.user.confirmPassword) {
             createUser(data.user.email, data.user.confirmPassword, data.user.name)
                 .then(res => {
                     console.log(res);
@@ -71,7 +86,7 @@ const Authentication = () => {
                 })
         }
         e.preventDefault();
-        
+
     }
 
     return (
@@ -95,7 +110,7 @@ const Authentication = () => {
 
                         </form>
                         {
-                            !page && <OthersLogin handleGoogleSignIn={handleGoogleSignIn} />
+                            !page && <OthersLogin handleGoogleSignIn={handleGoogleSignIn} handleFacebookSignIn={handleFacebookSignIn} />
                         }
                     </div>
                 </div>
