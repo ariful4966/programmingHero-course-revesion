@@ -16,7 +16,18 @@ const Header = ({ cart }) => {
                 <Link to="/shop">Shop</Link>
                 <Link to="/review">Order Review</Link>
                 <Link to="/orders">Order History</Link>
-                <Link onClick={() => { setLoggedInUser({}) }}>Sign Out</Link>
+                {
+                    loggedInUser.isLogin ? 
+                    <>
+                        <span>{loggedInUser.name}</span>
+                        <Link onClick={() => { setLoggedInUser({}) }}>Sign Out</Link>
+                        <Link to="/login">Login</Link>
+                    </>
+                    :
+                    <>
+                        <Link to="/login">Login</Link>
+                    </>
+                }
 
             </nav>
             <SearchArea cart={cart} />

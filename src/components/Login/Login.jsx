@@ -28,27 +28,27 @@ const Login = () => {
 
     const googleSignIn = () => {
         handleGoogleLogin(user)
-            .then(res => { 
+            .then(res => {
                 handleResponse(res, true)
-             })
+            })
     }
-    const facebookSignIn = ()=>{
+    const facebookSignIn = () => {
         handleFacebookLogin(user)
-        .then(res=>{
-            handleResponse(res, true)
-        })
+            .then(res => {
+                handleResponse(res, true)
+            })
     }
-    const logOut =()=>{
+    const logOut = () => {
         handleLogout(user)
-        .then(res=>{
-            handleResponse(res, false)
+            .then(res => {
+                handleResponse(res, false)
 
-        })
+            })
     }
-    const handleResponse = (res, redirect)=>{
+    const handleResponse = (res, redirect) => {
         setUser(res)
         setLoggedInUser(res)
-        if(redirect){
+        if (redirect) {
             history.replace(from);
         }
     }
@@ -80,20 +80,27 @@ const Login = () => {
     const handleSubmit = (e) => {
         if (newUser && user.email && user.confirmPassword) {
             createUserWithEmailAndPassword(user)
-            .then(res=>{
-                handleResponse(res, true)
-            })
+                .then(res => {
+                    handleResponse(res, true)
+                })
         }
 
         if (!newUser && user.email && user.password) {
             singInWithEmailAndPassword(user)
-            .then(res=>{
-                handleResponse(res, true)
-                console.log(res);
-            })
+                .then(res => {
+                    handleResponse(res, true)
+                })
         }
         e.preventDefault();
     }
+
+    // const verifyEmail = () => {
+    //     firebase.auth().currentUser.sendEmailVerification()
+    //         .then(() => {
+    //             // Email verification sent!
+    //             // ...
+    //         });
+    // }
 
     const userState = [newUser, setNewUser, user, setUser, handleBlur, handleSubmit, googleSignIn, facebookSignIn]
     return (

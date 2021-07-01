@@ -20,3 +20,6 @@ nav a:hover{
     background: #fff;
     color: #000;
 }
+.header nav span {
+    color: #31c3f4;
+}
