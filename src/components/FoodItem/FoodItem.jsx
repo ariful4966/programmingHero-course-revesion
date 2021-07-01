@@ -23,10 +23,10 @@ const useStyles = makeStyles({
  function FoodItem(props) {
     const classes = useStyles();
     const {food, showDetail}=props;
-    const { id, title, img, shotTitle, price } = food;
+    const {key, title, img, shotTitle, price } = food;
     return (
         <Grid item md={4}>
-            <Card className={classes.root} onClick={()=>showDetail(id)}>
+            <Card className={classes.root} onClick={()=>showDetail(key)}>
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}

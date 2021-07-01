@@ -1,7 +1,9 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Dataprovid } from '../../App';
+import { getDatabaseCart } from '../../utilities/databaseManager';
 import './Calculation.scss'
 
 const Calculation = () => {
@@ -38,18 +40,22 @@ const Calculation = () => {
         const cartItem = data.food.find(ct => ct.id === id);
         const count = cartItem.quantity + 1;
         cartItem.quantity = count;
-        setData({...data, food:[...data.food,cartItem ]})
-        
+        setData({ ...data, food: [...data.food, cartItem] })
+
     }
     const handleDecriment = (id) => {
         const cartItem = data.food.find(ct => ct.id === id);
         cartItem.quantity = cartItem.quantity - 1;
-        setData({...data, food:[...data.food,cartItem ]})
-        
+        setData({ ...data, food: [...data.food, cartItem] })
+
     }
-    const orderComplate=()=>{
+    const orderComplate = () => {
+        setData({ ...data, cart: [] })
         history.push('/location')
     }
+    useEffect(() => {
+        getDatabaseCart()
+    }, [])
     return (
         <div className="added_cart_area">
             <p>From <strong>Gulshan Plaza Restura GPR</strong></p> <br />
@@ -68,9 +74,9 @@ const Calculation = () => {
                                 <small>Dilevary free</small>
                             </div>
                             <div className="cart_quantity">
-                                <button onClick={()=>handleDecriment(ct.id)}>-</button>
+                                <button onClick={() => handleDecriment(ct.id)}>-</button>
                                 <strong>{ct.quantity}</strong>
-                                <button onClick={()=>handleIncrement(ct.id)}>+</button>
+                                <button onClick={() => handleIncrement(ct.id)}>+</button>
                             </div>
                         </div>
                     )

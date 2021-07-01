@@ -69,7 +69,7 @@ function App() {
             <Route path="/login">
               <Authentication/>
             </Route>
-          <Route path="/food/:fdId">
+          <Route path="/food/:fdKey">
             <FoodDetail />
           </Route>
           <Route path="/">
