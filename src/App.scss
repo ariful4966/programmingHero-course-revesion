@@ -5,3 +5,18 @@ img{
   width: $w100;
   height: $h100;
 }
+.bg-banner{
+  background: url('./placeData//Image/Rectangle\ 1.png') center no-repeat;
+  z-index: 1;
+  position: relative;
+}
+.bg-banner::after {
+  position: absolute;
+  width: $w100;
+  height: $h100;
+  content: '';
+  background: rgba(0,0,0,.5);
+  z-index: -1;
+  left: 0;
+  top: 0;
+}

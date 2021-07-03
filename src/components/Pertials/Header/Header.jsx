@@ -16,6 +16,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import { Container } from '@material-ui/core';
 import logo from '../../../placeData/Logo.png'
 import { Link } from 'react-router-dom';
+import './Header.scss'
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -34,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
         width: '200px',
         height: ' 60px'
 
+    },
+    logoImg: {
+        width: `100%`,
+        height: `100%`,
+        filter: 'invert(0.9)',
     },
     search: {
         position: 'relative',
@@ -81,13 +87,7 @@ const useStyles = makeStyles((theme) => ({
         },
 
     },
-    menuItem: {
-        color: '#2b2b2b',
-        textDecoration: 'none',
-        margin: '0 10px',
-        padding: '10px',
-        fontWeight: '500'
-    },
+
     sectionMobile: {
         display: 'flex',
         [theme.breakpoints.up('md')]: {
@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Header = () => {
+const Header = ({ bgWhit }) => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -180,45 +180,45 @@ const Header = () => {
 
     return (
         <div className={classes.grow}>
-                <Container>
-                    <Toolbar>
-                        <Typography className={classes.title && classes.logo} variant="h6" noWrap  >
-                            <img src={logo} alt="" />
-                        </Typography>
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <SearchIcon />
-                            </div>
-                            <InputBase
-                                placeholder="Search…"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
+            <Container>
+                <Toolbar>
+                    <Typography className={classes.logo} variant="h6" noWrap  >
+                        <img src={logo} alt="" className={bgWhit && classes.logoImg} />
+                    </Typography>
+                    <div className={classes.search}>
+                        <div className={classes.searchIcon}>
+                            <SearchIcon />
                         </div>
-                        <div className={classes.grow} />
-                        <div className={classes.sectionDesktop}>
-                            <Link className={classes.menuItem} to="/news">News</Link>
-                            <Link className={classes.menuItem} to="/destination">Destination</Link>
-                            <Link className={classes.menuItem} to="/blog">Blog</Link>
-                            <Link className={classes.menuItem} to="/contact">Contact</Link>
-                            <Link className={classes.menuItem} to="/login">Login</Link>
-                        </div>
-                        <div className={classes.sectionMobile}>
-                            <IconButton
-                                aria-label="show more"
-                                aria-controls={mobileMenuId}
-                                aria-haspopup="true"
-                                onClick={handleMobileMenuOpen}
-                                color="inherit"
-                            >
-                                <MoreIcon />
-                            </IconButton>
-                        </div>
-                    </Toolbar>
-                </Container>
+                        <InputBase
+                            placeholder="Search…"
+                            classes={{
+                                root: classes.inputRoot,
+                                input: classes.inputInput,
+                            }}
+                            inputProps={{ 'aria-label': 'search' }}
+                        />
+                    </div>
+                    <div className={classes.grow} />
+                    <div className={classes.sectionDesktop}>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/news">News</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/destination">Destination</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/blog">Blog</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/contact">Contact</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/login">Login</Link>
+                    </div>
+                    <div className={classes.sectionMobile}>
+                        <IconButton
+                            aria-label="show more"
+                            aria-controls={mobileMenuId}
+                            aria-haspopup="true"
+                            onClick={handleMobileMenuOpen}
+                            color="inherit"
+                        >
+                            <MoreIcon />
+                        </IconButton>
+                    </div>
+                </Toolbar>
+            </Container>
             {renderMobileMenu}
             {renderMenu}
         </div>
