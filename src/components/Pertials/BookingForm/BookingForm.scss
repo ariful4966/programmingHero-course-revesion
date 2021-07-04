@@ -1,0 +1,30 @@
+.booking-form {
+    background: rgb(255 255 255 / 80%);
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+     .MuiGrid-container {
+        flex-wrap: nowrap;
+    }
+    .MuiFormControl-root{
+        display: inline-block;
+        width: 97%;
+        outline: none;
+        box-sizing: border-box;
+
+    }
+   
+    .MuiInput-underline:before {
+         border-bottom: none
+    }
+    .MuiInputBase-root {
+        background: gray;
+        display: flex;
+        
+    }
+    button{
+        margin:  10px auto;
+        display:  block;
+    }
+}

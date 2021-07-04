@@ -1,15 +1,23 @@
 $w100:100%;
 $h100:100%;
-
+body, html{
+  height: $h100;
+  margin: 0;
+  box-sizing: border-box;
+}
+#root{
+  height: $h100;
+}
 img{
   width: $w100;
   height: $h100;
 }
 .bg-banner{
-  background: url('./placeData//Image/Rectangle\ 1.png') center no-repeat;
+  background: url('./placeData//Image/Rectangle\ 1.png') center center no-repeat fixed;
   z-index: 1;
   position: relative;
   background-size: cover;
+  height: $h100;
 }
 .bg-banner::after {
   position: absolute;

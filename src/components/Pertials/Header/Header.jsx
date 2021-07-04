@@ -204,11 +204,11 @@ const Header = ({ bgWhit }) => {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/news">News</Link>
-                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/destination">Destination</Link>
-                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/blog">Blog</Link>
-                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/contact">Contact</Link>
-                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menItem'} to="/login">Login</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/news">News</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/destination">Destination</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/blog">Blog</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/contact">Contact</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/login">Login</Link>
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton

@@ -10,7 +10,10 @@ const initialState = {
 const bookingReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_BOOK:
-            return state;
+            console.log(action);
+            const bookId = action.id;
+            const booked = state.data.find(pl => pl.id === bookId)
+            return {...state, book: booked};
         case REMOVE_FORM_BOOK:
             return state;
         case DATA_FILTER:

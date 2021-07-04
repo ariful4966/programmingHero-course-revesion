@@ -23,7 +23,7 @@ const Booking = (props) => {
                     </Grid>
                         <Grid item md="6">
                             <div className="booking-form">
-                                <BookingForm/>
+                                <BookingForm dataFilter={dataFilter}/>
                             </div>
                         </Grid>
                     </Grid>
