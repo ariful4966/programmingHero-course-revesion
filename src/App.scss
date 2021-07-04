@@ -9,6 +9,7 @@ img{
   background: url('./placeData//Image/Rectangle\ 1.png') center no-repeat;
   z-index: 1;
   position: relative;
+  background-size: cover;
 }
 .bg-banner::after {
   position: absolute;

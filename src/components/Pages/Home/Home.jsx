@@ -2,6 +2,7 @@ import { Container, Grid } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToBook } from '../../../redux/actions/bookingActions';
+import './Home.scss';
 import Header from '../../Pertials/Header/Header';
 import Slider from '../../Pertials/Slider/Slider';
 

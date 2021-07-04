@@ -8,10 +8,11 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import { Grid  } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import './Slider.scss'
 import { addDataFilter, addToBook, dataFilter } from '../../../redux/actions/bookingActions';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const AutoPlaySwipeableViews = SwipeableViews
 //  autoPlay(SwipeableViews);
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         height: 50,
         paddingLeft: theme.spacing(4),
-        backgroundColor: theme.palette.background.default,
+        // backgroundColor: theme.palette.background.default,
     },
     img: {
         height: '300px',
@@ -45,6 +46,7 @@ const Slider = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
+    const history = useHistory()
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -57,6 +59,9 @@ const Slider = (props) => {
     const handleStepChange = (step) => {
         setActiveStep(step);
     };
+    const bookingPage = (id)=>{
+        history.push(`/booking/${id}`)
+    }
 
     return (
         <div className={classes.root}>
@@ -75,14 +80,14 @@ const Slider = (props) => {
                                 <div className="slideInfo">
                                     <Typography variant="h2">{dataFilter.title}</Typography>
                                     <Typography paragraph="true">{dataFilter.body.slice(0, 350)}</Typography>
-                                    <Button variant="contained" className="btn-flex" onClick={()=>addToBook(dataFilter.id)}>Booking →</Button>
+                                    <Button variant="contained" className="btn-flex" onClick={() => bookingPage(dataFilter.id)}>Booking →</Button>
                                 </div>
                             </Grid>
                             <Grid item md={7} container className="allSlideImg">
 
                                 {data.map(item =>
                                     <Grid item md={4} key={item.id}>
-                                        <div className="sliderImg">
+                                        <div className={dataFilter.id === item.id ? 'sliderImg activeImg' : 'sliderImg'}>
                                             <img className={classes.img} onClick={() => addDataFilter(item.id)} src={item.photo} alt={item.title} />
                                         </div>
                                     </Grid>

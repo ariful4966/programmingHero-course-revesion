@@ -15,7 +15,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Container } from '@material-ui/core';
 import logo from '../../../placeData/Logo.png'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Header.scss'
 
 const useStyles = makeStyles((theme) => ({
@@ -177,12 +177,16 @@ const Header = ({ bgWhit }) => {
             </MenuItem>
         </Menu>
     );
+    const history = useHistory()
+    const homePage = ()=>{
+        history.push('/')
+    }
 
     return (
         <div className={classes.grow}>
             <Container>
                 <Toolbar>
-                    <Typography className={classes.logo} variant="h6" noWrap  >
+                    <Typography className={classes.logo} variant="h6" noWrap onClick={homePage} >
                         <img src={logo} alt="" className={bgWhit && classes.logoImg} />
                     </Typography>
                     <div className={classes.search}>
