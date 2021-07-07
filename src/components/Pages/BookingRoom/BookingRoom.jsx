@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import './BookingRoom.scss';
 
 import Header from '../../Pertials/Header/Header';
-import PlaceMap from '../../Pertials/PlaceMap/PlaceMap';
 import RoomCard from '../../Pertials/RoomCard/RoomCard';
+import SimpleMap from '../../Pertials/PlaceMap/PlaceMap';
 
 
 const BookingRoom = (props) => {
@@ -14,7 +14,7 @@ const BookingRoom = (props) => {
     return (
         <div>
             <Header />
-            <Container className="bookingRoom_page">
+            <Container className="bookingRoom_page page_area">
                 <Grid container>
                     <Grid md={8}>
                         <Typography variant="h5">Stay in {title}</Typography>
@@ -23,7 +23,7 @@ const BookingRoom = (props) => {
                         }
                     </Grid>
                     <Grid md={4}>
-                        <PlaceMap />
+                       <SimpleMap/>
                     </Grid>
                 </Grid>
             </Container>

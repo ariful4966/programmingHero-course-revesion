@@ -89,6 +89,7 @@ const Slider = (props) => {
                                     <Grid item md={4} key={item.id}>
                                         <div className={dataFilter.id === item.id ? 'sliderImg activeImg' : 'sliderImg'}>
                                             <img className={classes.img} onClick={() => addDataFilter(item.id)} src={item.photo} alt={item.title} />
+                                            <Typography variant="h5">{item.title}</Typography>
                                         </div>
                                     </Grid>
                                 )}
