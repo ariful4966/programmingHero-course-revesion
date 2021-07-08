@@ -208,7 +208,7 @@ const Header = ({ bgWhit }) => {
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/destination">Destination</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/blog">Blog</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/contact">Contact</Link>
-                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/login">Login</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/auth">Login</Link>
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton

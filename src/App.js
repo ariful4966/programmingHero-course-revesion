@@ -4,6 +4,7 @@ import {
   Route
 } from "react-router-dom";
 import './App.scss';
+import Auth from "./components/Pages/Auth/Auth";
 import Booking from "./components/Pages/Booking/Booking";
 import BookingRoom from "./components/Pages/BookingRoom/BookingRoom";
 import Home from "./components/Pages/Home/Home";
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path="/place/:title">
           <BookingRoom/>
+        </Route>
+        <Route path="/auth">
+          <Auth/>
         </Route>
         <Route exact path="/">
           <Home />

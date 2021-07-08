@@ -10,8 +10,8 @@ const initialState = {
 const bookingReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_BOOK:
-            console.log(action);
-            return state;
+            const data = action.data
+            return {...state, book: {...data, isBook: true}};
         case REMOVE_FORM_BOOK:
             return state;
         case DATA_FILTER:
