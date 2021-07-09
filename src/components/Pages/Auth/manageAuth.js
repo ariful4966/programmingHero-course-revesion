@@ -35,13 +35,14 @@ export const facebookSign = () => {
         });
 }
 
-export const createAccount = (email, password) => {
+export const createAccount = (email, password, name) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((res) => {
+            updateName(name)
             return res.user
         })
         .catch((error) => {
-            console.log(error);
+            return error
         });
 }
 export const loginAccount = (email, password) => {
@@ -50,15 +51,27 @@ export const loginAccount = (email, password) => {
             return res.user
         })
         .catch((error) => {
-            console.log(error);
+            return error
         });
+}
+const updateName = (name) => {
+    const user = firebase.auth().currentUser;
+    user.updateProfile({
+        displayName: name,
+    }).then(() => {
+        // Update successful
+        // ...
+    }).catch((error) => {
+        // An error occurred
+        // ...
+    });
 }
 
 export const signOut = () => {
     firebase.auth().signOut()
-    .then((res) => {
-       console.log(res);
-    }).catch((error) => {
-        console.log(error);
-    });
+        .then((res) => {
+            console.log(res);
+        }).catch((error) => {
+            console.log(error);
+        });
 }

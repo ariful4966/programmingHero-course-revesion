@@ -1,4 +1,4 @@
-import { ACCOUNT_CREATE, SIGNIN_WITH_EMAIL_PASSWORD, SIGNIN_WITH_FACEBOOK, SIGNIN_WITH_GOOGLE, SIGN_OUT } from "../actions/authAction"
+import { ACCOUNT_CREATE, LOGIN_ACCOUNT, SIGNIN_WITH_EMAIL_PASSWORD, SIGNIN_WITH_FACEBOOK, SIGNIN_WITH_GOOGLE, SIGN_OUT } from "../actions/authAction"
 
 
 const initialState = {
@@ -49,15 +49,32 @@ const authReducer = (state = initialState, action) => {
                 error: ''
 
             };
-            return  {...outUser};
-            case ACCOUNT_CREATE:
-                const newData = action.result;
-                const newAcc = {
-                    name: newData.displayName,
-                    email: newData.email,
-                    photo: newData.photoURL
-                }
-                return {...state, ...newAcc}
+            return { ...outUser };
+        case ACCOUNT_CREATE:
+            const newData = action.res;
+            console.log(action);
+            if(action.res.message){
+                return{...state, error:action.res.message}
+            }
+            const newAcc = {
+                name: newData.displayName,
+                email: newData.email,
+                photo: newData.photoURL
+            }
+            return { ...state, ...newAcc }
+        case LOGIN_ACCOUNT:
+            console.log(action);
+            const loginUser = action.res
+            if(action.res.message){
+                return{...state, error:action.res.message}
+            }
+            const loggedUser = {
+                name: loginUser.displayName,
+                email: loginUser.email,
+                photo: loginUser.photoURL,
+                isLogin: true
+            }
+            return {...state, ...loggedUser}
         default:
             return state
     }

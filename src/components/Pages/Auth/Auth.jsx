@@ -18,7 +18,7 @@ import { FIELD_BLUR, SIGNIN_WITH_FACEBOOK, SIGNIN_WITH_GOOGLE } from '../../../r
 
 const Auth = (props) => {
     console.log(props);
-    const [isLogin, setIsLogin] = useState(false)
+    const [isLogin, setIsLogin] = useState(true)
     const { auth, dispatch } = props
     const history = useHistory();
     const location = useLocation()
@@ -56,12 +56,18 @@ const Auth = (props) => {
             <Header />
             <Container className="page_area bookingRoom_page">
                 <div className="authentication-form">
+                    {
+                        auth.error && <p style={{color: 'red', textAlign:'center'}}>{auth.error}</p>
+                    }
                     <div className="formElement">
                         <h1>{isLogin ? "Login" : "Create Account"}</h1>
                         {
                             isLogin ? <LoginForm /> : <SigninForm />
                         }
-                        <Typography variant="paragraph">Don't Have an Account ? <Link onClick={() => setIsLogin(!isLogin)}>Create an Account</Link></Typography>
+                        {
+                            isLogin ? <Typography variant="paragraph">Don't Have an Account ? <Link onClick={() => setIsLogin(false)}>Create an Account</Link></Typography>:
+                            <Typography variant="paragraph">Have an Account ? <Link onClick={()=>setIsLogin(true)}>Login</Link></Typography>
+                        }
                     </div>
                     {
                         !isLogin && <OtherAuth handleGoogleSignIn={handleGoogleSignIn} handleFacebookSignIn={handleFacebookSignIn} />

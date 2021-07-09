@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { connect } from 'react-redux';
 import { ACCOUNT_CREATE } from '../../../redux/actions/authAction';
 import { createAccount } from './manageAuth';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,18 +19,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SigninForm = (props) => {
+    console.log(props);
+    const { auth } = props;
+    const history = useHistory();
+    const location = useLocation()
+    let { from } = location.state || { from: { pathname: "/" } };
     const { dispatch } = props;
     const classes = useStyles();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
-        createAccount(data.email, data.confirmPassword)
-        .then(res=>{
-            const result = res.user
-            dispatch({ type:ACCOUNT_CREATE, result})
-        })
+        const { firstName, lastName, email, confirmPassword } = data;
+        const updateName = firstName + ' ' + lastName;
+        createAccount(email.toLowerCase(), confirmPassword, updateName)
+            .then(res => {
+                dispatch({ type: ACCOUNT_CREATE, res })
+                if (res) {
+                    history.push('/auth')
+                }
+            })
     };
     return (
         <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+           
             <div>
                 <TextField
                     id="standard-password-input"
@@ -81,9 +92,11 @@ const SigninForm = (props) => {
         </form>
     );
 }
-
+const mapStateToProps = state => {
+    return { auth: state.authReducer }
+}
 const mapDispatchToProps = dispatch => ({
     dispatch
 })
 
-export default connect(mapDispatchToProps)(SigninForm)
+export default connect(mapStateToProps, mapDispatchToProps)(SigninForm)

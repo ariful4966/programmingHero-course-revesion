@@ -219,7 +219,8 @@ const Header = (props) => {
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/destination">Destination</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/blog">Blog</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/contact">Contact</Link>
-                        <Link className={bgWhit ? 'menuItem colorWhite color_bg' : 'menuItem color_bg'} to="/auth" onClick={signOutUser}>{auth.isLogin ? "SignOut": "Login"}</Link>
+                        { !auth.isLogin ? <Link className={bgWhit ? 'menuItem colorWhite color_bg' : 'menuItem color_bg'} to="/auth" >Login</Link>:
+                        <Link className={bgWhit ? 'menuItem colorWhite color_bg' : 'menuItem color_bg'} onClick={signOutUser} >SignOut</Link>}
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton
