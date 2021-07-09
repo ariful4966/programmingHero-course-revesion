@@ -16,7 +16,7 @@ const RoomCard = (props) => {
                 <div className="roomDetail">
                     <Typography variant='h5'>{title}</Typography>
                     <div>
-                        <Box>
+                        <Box color="text.primary"  >
                             <span>{room.gaust} Gaust</span>
                             <span>{room.bedroom} Bedrooms</span>
                             <span>{room.bed} Beds</span>
@@ -24,7 +24,7 @@ const RoomCard = (props) => {
                         </Box>
                     </div>
                     <Typography paragraph="true">{body.slice(0, 100)}</Typography>
-                    <div >
+                    <div className="ratingStar">
                         <div className="star">
                             <img src={star} alt="" />
                             <span>{rating.star}</span>

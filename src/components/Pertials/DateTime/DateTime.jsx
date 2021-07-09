@@ -4,13 +4,12 @@ import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
-    KeyboardTimePicker,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 import './DateTime.scss';
 export default function DateTime() {
     // The first commit of Material-UI
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [selectedDate, setSelectedDate] = React.useState(new Date('2021-08-18T21:11:54'));
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
