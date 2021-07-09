@@ -19,7 +19,7 @@ export const googleSign = () => {
         .then((result) => {
             return result.user
         }).catch((error) => {
-            console.log(error);
+            return error
         });
 }
 export const facebookSign = () => {
@@ -31,7 +31,7 @@ export const facebookSign = () => {
             return result.user
         })
         .catch((error) => {
-            console.log(error);
+            return error;
         });
 }
 

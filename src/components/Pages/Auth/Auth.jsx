@@ -17,7 +17,6 @@ import authReducer from '../../../redux/reducers/authReducer';
 import { FIELD_BLUR, SIGNIN_WITH_FACEBOOK, SIGNIN_WITH_GOOGLE } from '../../../redux/actions/authAction';
 
 const Auth = (props) => {
-    console.log(props);
     const [isLogin, setIsLogin] = useState(true)
     const { auth, dispatch } = props
     const history = useHistory();
@@ -29,7 +28,7 @@ const Auth = (props) => {
         googleSign().then(res => {
 
             dispatch({ type: SIGNIN_WITH_GOOGLE, res });
-            if (res) {
+            if (!res.message) {
                 history.replace(from)
             }
 
@@ -42,7 +41,7 @@ const Auth = (props) => {
             .then(res => {
 
                 dispatch({ type: SIGNIN_WITH_FACEBOOK, res });
-                if (res) {
+                if (!res.message) {
                     history.replace(from)
                 }
 

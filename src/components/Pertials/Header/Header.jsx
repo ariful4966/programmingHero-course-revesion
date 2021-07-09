@@ -101,7 +101,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = (props) => {
     const {bgWhit, auth, dispatch}=props
-    console.log(props);
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);

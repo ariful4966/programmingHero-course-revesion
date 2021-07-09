@@ -18,6 +18,9 @@ const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SIGNIN_WITH_GOOGLE:
             const user = action.res
+            if(action.res.message){
+                return {...state, error: user.message}
+            }
             const googleUser = {
                 name: user.displayName,
                 email: user.email,
@@ -27,6 +30,9 @@ const authReducer = (state = initialState, action) => {
             return { ...state, ...googleUser };
         case SIGNIN_WITH_FACEBOOK:
             const fbUser = action.res
+            if(action.res.message){
+                return {...state, error: fbUser.message}
+            }
             const facebookUser = {
                 name: fbUser.displayName,
                 email: fbUser.email,
@@ -34,8 +40,6 @@ const authReducer = (state = initialState, action) => {
                 isLogin: true
             }
             return { ...state, ...facebookUser };
-        case SIGNIN_WITH_EMAIL_PASSWORD:
-            return state;
         case SIGN_OUT:
             const outUser = {
                 firstName: '',
