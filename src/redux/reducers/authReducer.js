@@ -1,20 +1,20 @@
-import { SIGNIN_WITH_EMAIL_PASSWORD, SIGNIN_WITH_FACEBOOK, SIGNIN_WITH_GOOGLE, SIGN_OUT } from "../actions/authAction"
+import { ACCOUNT_CREATE, SIGNIN_WITH_EMAIL_PASSWORD, SIGNIN_WITH_FACEBOOK, SIGNIN_WITH_GOOGLE, SIGN_OUT } from "../actions/authAction"
 
 
 const initialState = {
     firstName: '',
     lastName: '',
     name: '',
-    email:'',
+    email: '',
     photo: '',
-    password:'',
-    confirmPassword:'',
+    password: '',
+    confirmPassword: '',
     isLogin: false,
     error: ''
 
 }
 
- const authReducer = (state=initialState, action) => {
+const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SIGNIN_WITH_GOOGLE:
             const user = action.res
@@ -24,7 +24,7 @@ const initialState = {
                 photo: user.photoURL,
                 isLogin: true
             }
-            return {...state, ...googleUser };
+            return { ...state, ...googleUser };
         case SIGNIN_WITH_FACEBOOK:
             const fbUser = action.res
             const facebookUser = {
@@ -33,11 +33,31 @@ const initialState = {
                 photo: fbUser.photoURL,
                 isLogin: true
             }
-            return {...state, ...facebookUser };
+            return { ...state, ...facebookUser };
         case SIGNIN_WITH_EMAIL_PASSWORD:
             return state;
         case SIGN_OUT:
-            return state;
+            const outUser = {
+                firstName: '',
+                lastName: '',
+                name: '',
+                email: '',
+                photo: '',
+                password: '',
+                confirmPassword: '',
+                isLogin: false,
+                error: ''
+
+            };
+            return  {...outUser};
+            case ACCOUNT_CREATE:
+                const newData = action.result;
+                const newAcc = {
+                    name: newData.displayName,
+                    email: newData.email,
+                    photo: newData.photoURL
+                }
+                return {...state, ...newAcc}
         default:
             return state
     }

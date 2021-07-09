@@ -18,6 +18,8 @@ import logo from '../../../placeData/Logo.png'
 import { Link, useHistory } from 'react-router-dom';
 import './Header.scss'
 import { connect } from 'react-redux';
+import { signOut } from '../../Pages/Auth/manageAuth';
+import { SIGN_OUT } from '../../../redux/actions/authAction';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -98,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = (props) => {
-    const {bgWhit, auth}=props
+    const {bgWhit, auth, dispatch}=props
     console.log(props);
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -184,6 +186,11 @@ const Header = (props) => {
     const homePage = ()=>{
         history.push('/')
     }
+    const signOutUser = ()=>{
+        signOut()
+        dispatch({type: SIGN_OUT})
+        
+    }
 
     return (
         <div className={classes.grow}>
@@ -212,7 +219,7 @@ const Header = (props) => {
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/destination">Destination</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/blog">Blog</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/contact">Contact</Link>
-                        <Link className={bgWhit ? 'menuItem colorWhite color_bg' : 'menuItem color_bg'} to="/auth">{auth.isLogin ? "SignOut": "Login"}</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite color_bg' : 'menuItem color_bg'} to="/auth" onClick={signOutUser}>{auth.isLogin ? "SignOut": "Login"}</Link>
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton
@@ -235,5 +242,8 @@ const Header = (props) => {
 const maptStateToProps = state=>{
     return {auth:state.authReducer}
 }
+const mapDispatchToProps = dispatch=>({
+     dispatch
+})
 
-export default connect(maptStateToProps)(Header);
+export default connect(maptStateToProps, mapDispatchToProps)(Header);

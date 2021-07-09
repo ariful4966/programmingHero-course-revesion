@@ -1,9 +1,14 @@
 .booking-form {
-    background: rgb(255 255 255 / 80%);
     width: 90%;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
+    .form_area {
+        background: #fff;
+        padding: 50px;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
      .MuiGrid-container {
         flex-wrap: nowrap;
     }
@@ -19,7 +24,6 @@
          border-bottom: none
     }
     .MuiInputBase-root {
-        background: gray;
         display: flex;
         
     }

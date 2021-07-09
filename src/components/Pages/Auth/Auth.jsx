@@ -14,12 +14,12 @@ import './Auth.scss';
 import { facebookSign, googleSign, initializeLoginFramwork } from './manageAuth';
 import { connect } from 'react-redux';
 import authReducer from '../../../redux/reducers/authReducer';
-import { SIGNIN_WITH_FACEBOOK, SIGNIN_WITH_GOOGLE } from '../../../redux/actions/authAction';
+import { FIELD_BLUR, SIGNIN_WITH_FACEBOOK, SIGNIN_WITH_GOOGLE } from '../../../redux/actions/authAction';
 
 const Auth = (props) => {
     console.log(props);
     const [isLogin, setIsLogin] = useState(false)
-    const {auth, dispatch}=props
+    const { auth, dispatch } = props
     const history = useHistory();
     const location = useLocation()
     let { from } = location.state || { from: { pathname: "/" } };
@@ -27,16 +27,29 @@ const Auth = (props) => {
 
     const handleGoogleSignIn = () => {
         googleSign().then(res => {
-            dispatch({type: SIGNIN_WITH_GOOGLE, res})
+
+            dispatch({ type: SIGNIN_WITH_GOOGLE, res });
+            if (res) {
+                history.replace(from)
+            }
+
         })
+
 
     }
     const handleFacebookSignIn = () => {
         facebookSign()
             .then(res => {
-                dispatch({type: SIGNIN_WITH_FACEBOOK, res})
+
+                dispatch({ type: SIGNIN_WITH_FACEBOOK, res });
+                if (res) {
+                    history.replace(from)
+                }
+
             })
+
     }
+  
 
     return (
         <div>
@@ -59,7 +72,7 @@ const Auth = (props) => {
     );
 };
 const mapStateToProps = state => {
-    return {auth:state.authReducer}
+    return { auth: state.authReducer }
 }
 const mapDisptchToProps = dispatch => ({
     dispatch

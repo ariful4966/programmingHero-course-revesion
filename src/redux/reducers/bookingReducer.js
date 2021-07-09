@@ -1,3 +1,4 @@
+
 import placeData from "../../placeData/data";
 import { ADD_TO_BOOK, DATA_FILTER, REMOVE_FORM_BOOK } from "../actions/bookingActions";
 
@@ -11,7 +12,9 @@ const bookingReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_BOOK:
             const data = action.data
-            return {...state, book: {...data, isBook: true}};
+
+            return { ...state, book: { ...data, isBook: true } };
+            
         case REMOVE_FORM_BOOK:
             return state;
         case DATA_FILTER:

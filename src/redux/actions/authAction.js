@@ -5,6 +5,8 @@ export const SIGNIN_WITH_EMAIL_PASSWORD = 'SIGNIN_WITH_EMAIL_PASSWORD';
 
 export const SIGN_OUT = 'SIGN_OUT';
 
+export const ACCOUNT_CREATE ='ACCOUNT_CREATE';
+
 export const signinWithGoogle = (res) => {
     return { type: SIGNIN_WITH_GOOGLE, res }
 }
