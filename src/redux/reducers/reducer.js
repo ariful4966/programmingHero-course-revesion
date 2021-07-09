@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import cartReducer from "./cartReducer";
 import bookingReducer from "./bookingReducer";
+import authReducer from "./authReducer";
 
 const reducer = combineReducers({
     cartReducer,
-    bookingReducer
+    bookingReducer,
+    authReducer,
 })
 
 export default reducer

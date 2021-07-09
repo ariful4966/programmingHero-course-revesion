@@ -17,6 +17,7 @@ import { Container } from '@material-ui/core';
 import logo from '../../../placeData/Logo.png'
 import { Link, useHistory } from 'react-router-dom';
 import './Header.scss'
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -96,7 +97,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Header = ({ bgWhit }) => {
+const Header = (props) => {
+    const {bgWhit, auth}=props
+    console.log(props);
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -204,11 +207,12 @@ const Header = ({ bgWhit }) => {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
+                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'}>{auth.name && auth.name}</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/news">News</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/destination">Destination</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/blog">Blog</Link>
                         <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/contact">Contact</Link>
-                        <Link className={bgWhit ? 'menuItem colorWhite' : 'menuItem'} to="/auth">Login</Link>
+                        <Link className={bgWhit ? 'menuItem colorWhite color_bg' : 'menuItem color_bg'} to="/auth">{auth.isLogin ? "SignOut": "Login"}</Link>
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton
@@ -228,5 +232,8 @@ const Header = ({ bgWhit }) => {
         </div>
     );
 }
+const maptStateToProps = state=>{
+    return {auth:state.authReducer}
+}
 
-export default Header;
+export default connect(maptStateToProps)(Header);

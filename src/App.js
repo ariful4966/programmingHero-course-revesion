@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import './App.scss';
 import Auth from "./components/Pages/Auth/Auth";
+import PrivateRoute from "./components/Pages/Auth/PrivateRoute";
 import Booking from "./components/Pages/Booking/Booking";
 import BookingRoom from "./components/Pages/BookingRoom/BookingRoom";
 import Home from "./components/Pages/Home/Home";
@@ -13,9 +14,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/booking/:bkId">
+        <PrivateRoute path="/booking/:bkId">
           <Booking />
-        </Route>
+        </PrivateRoute>
         <Route path="/place/:title">
           <BookingRoom/>
         </Route>
