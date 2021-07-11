@@ -24,7 +24,10 @@ app.get('/users/:id', (req, res)=>{
 
 // post
 app.post('/addUser', (req, res)=>{
-    console.log(req.body);
+    // save to database
+    const user = req.body;
+    user.id = 55;
+    res.send(req.body)
 })
 
 app.listen(4200, () => console.log('Listenting to port 4200'))
