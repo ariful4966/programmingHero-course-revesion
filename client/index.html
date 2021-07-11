@@ -14,7 +14,7 @@
     <p id="userName"></p>
 
     <script>
-        fetch('http://localhost:4200/users/0')
+        fetch('http://localhost:4200/users/2')
         .then(res=>res.json())
         .then(data=>{
             document.getElementById('userName').innerText = data.name
