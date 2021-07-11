@@ -1,21 +1,22 @@
 {
-  "name": "mongo",
+  "name": "node-mongo",
   "version": "1.0.0",
   "description": " NodeJS Starting",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com-ariful4966:ariful4966/programmingHero-course-revesion.git"
   },
-  "author": "Ariful",
+  "author": "Ariful Islam",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.10"
   }
 }
