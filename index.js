@@ -17,6 +17,14 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 client.connect(err => {
   const collection = client.db("organicdb").collection("products");
+
+  app.get('/products', (req, res) => {
+    collection.find({})
+      .toArray((error, documents) => {
+        res.send(documents)
+      })
+  })
+
   app.post('/addProduct', (req, res) => {
     const product = req.body;
     collection.insertOne(product)

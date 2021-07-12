@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,10 @@
     <title>Mongodb</title>
 
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
+
 <body>
     <h1>Look mom, I have a mongo database!!!</h1>
     <form action="/addProduct" method="POST">
@@ -17,5 +20,25 @@
         <input type="text" placeholder="quantity" name="quantity">
         <button type="submit">Add Product</button>
     </form>
+
+    <div id="products"></div>
+
+
+    <script>
+        function loadProducts() {
+            fetch('/products')
+                .then(res => res.json())
+                .then(data => {
+                    const container = document.getElementById('products');
+                    data.forEach(product => {
+                        const item = document.createElement('p');
+                        item.innerHTML = `<strong>${product.name}</strong> price: ${product.price} quantity: ${product.quantity}`;
+                        container.appendChild(item)
+                    })
+                })
+        }
+        loadProducts();
+    </script>
 </body>
+
 </html>
