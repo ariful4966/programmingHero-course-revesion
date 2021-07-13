@@ -1,5 +1,5 @@
 const express = require('express');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 
@@ -32,6 +32,13 @@ client.connect(err => {
         console.log('data added successfully');
         res.send('success')
       })
+  })
+
+  app.delete('/delete/:id', (req, res)=>{
+    collection.deleteOne({_id: ObjectId(req.params.id)})
+    .then((result)=>{
+      console.log(result);
+    })
   })
 });
 

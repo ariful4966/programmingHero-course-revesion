@@ -32,12 +32,24 @@
                     const container = document.getElementById('products');
                     data.forEach(product => {
                         const item = document.createElement('p');
-                        item.innerHTML = `<strong>${product.name}</strong> price: ${product.price} quantity: ${product.quantity}`;
+                        item.innerHTML = `<strong>${product.name}</strong> -- price: ${product.price} quantity: ${product.quantity}
+                        <button onclick="deleteProduct('${product._id}')">delete</button>
+                        `;
                         container.appendChild(item)
                     })
                 })
         }
         loadProducts();
+
+        function deleteProduct(id){
+            fetch(`/delete/${id}`, {
+                method: 'DELETE'
+            })
+            .then(res=> res.json())
+            .then(result=>{
+                console.log('deleted successfully');
+            })
+        }
     </script>
 </body>
 
