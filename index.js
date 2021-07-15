@@ -25,11 +25,11 @@ client.connect(err => {
       })
   })
 
-  app.get('/product/:id', (req, res)=>{
-    collection.find({_id:ObjectId(req.params.id)})
-    .toArray((err, document)=>{
-      res.send(document[0])
-    })
+  app.get('/product/:id', (req, res) => {
+    collection.find({ _id: ObjectId(req.params.id) })
+      .toArray((err, document) => {
+        res.send(document[0])
+      })
   })
 
   app.post('/addProduct', (req, res) => {
@@ -40,12 +40,20 @@ client.connect(err => {
         res.send('success')
       })
   })
-
-  app.delete('/delete/:id', (req, res)=>{
-    collection.deleteOne({_id: ObjectId(req.params.id)})
-    .then((result)=>{
-      console.log(result.deletedCount);
+  app.patch('/update/:id', (req, res) => {
+    collection.updateOne({ _id: ObjectId(req.params.id) }, {
+      $set: { price: req.body.price, quantity: req.body.quantity }
     })
+    .then(result=>{
+      console.log(result.modifiedCount);
+    })
+  })
+
+  app.delete('/delete/:id', (req, res) => {
+    collection.deleteOne({ _id: ObjectId(req.params.id) })
+      .then((result) => {
+        console.log(result.deletedCount);
+      })
   })
 });
 
