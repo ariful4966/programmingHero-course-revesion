@@ -34,7 +34,6 @@ function App() {
   return (
     
     <RoomData.Provider value={data}>
-      <p>Name: {loggedInUser.name}</p>
       <Router>
         <Header />
         <Container>
@@ -49,9 +48,6 @@ function App() {
             <PrivateRoute path="/book/:bedType">
               <Book />
             </PrivateRoute>
-            <Route path="/book">
-              <Book />
-            </Route>
             <Route exact path="/">
               <Home />
             </Route>
