@@ -31,11 +31,12 @@
                 .then(res => res.json())
                 .then(data => {
                     const container = document.getElementById('products');
+                    container.innerHTML = ''
                     data.forEach(product => {
                         const item = document.createElement('p');
                         item.innerHTML = `<strong>${product.name}</strong> -- price: ${product.price} quantity: ${product.quantity}
                         <button onclick="loadProduct('${product._id}')">update</button>
-                        <button onclick="deleteProduct('${product._id}')">delete</button>
+                        <button onclick="deleteProduct(event, '${product._id}')">delete</button>
                         `;
                         container.appendChild(item)
                     })
@@ -64,21 +65,27 @@
             const product = { id, price, quantity }
             fetch(`/update/${id}`, {
                 method: 'PATCH',
-                headers: {'Content-type': 'application/json; charset=UTF-8'},
+                headers: { 'Content-type': 'application/json; charset=UTF-8' },
                 body: JSON.stringify(product)
             })
-            .then(res=>res.json)
-            .then(data=>console.log('update', data))
+                .then(res => res.json)
+                .then(data => {
+                    if (data) {
+                        loadAllProducts();
+                        document.getElementById('productUpdate').innerHTML = ''
+
+                    }
+                })
         }
 
 
-        function deleteProduct(id) {
+        function deleteProduct(event, id) {
             fetch(`/delete/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log('deleted successfully');
+                    event.target.parentNode.style.display = "none"
                 })
         }
     </script>
