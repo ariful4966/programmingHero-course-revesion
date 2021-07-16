@@ -13,7 +13,7 @@ import { useState } from 'react';
 
 const Book = () => {
     const { bedType } = useParams();
-    const [rooms, loggedInUser, setLoggedInUser] = useContext(RoomData);
+    const [rooms, , , loggedInUser, setLoggedInUser] = useContext(RoomData);
     const matchRooms = rooms.filter(rm => rm.bedType === bedType)
     const [selectedDate, setSelectedDate] = useState({
         checkIn: new Date(),
@@ -33,7 +33,16 @@ const Book = () => {
     };
 
     const handleBooking = () => {
-        console.log('Booking....');
+        const newBooking = { ...loggedInUser, ...selectedDate }
+        fetch('http://localhost:5000/addBooking', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+              },
+            body: JSON.stringify(newBooking)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
 
 

@@ -1,6 +1,14 @@
+require('dotenv').config()
 const express = require('express')
 const { MongoClient } = require('mongodb');
-const app = express()
+const cors = require('cors');
+const bodyParser = require('body-parser')
+
+
+const app = express();
+app.use(cors())
+app.use(bodyParser.json())
+
 const port = 5000
 
 
@@ -16,6 +24,17 @@ client.connect(err => {
   app.get('/', (req, res) => {
     res.send('Hello World!')
   })
+
+  app.post('/addBooking', (req, res) => {
+    const newBooking = req.body;
+    collection.insertOne(newBooking)
+    .then(result=>{
+      res.send(result)
+    })
+    console.log(newBooking);
+  })
+
+
 });
 
 
