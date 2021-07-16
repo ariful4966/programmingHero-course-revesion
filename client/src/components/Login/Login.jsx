@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { RoomData } from '../../App';
-import { googleSignIn, instalizationLoginFramwork } from './authManeger';
+import { getAuthToken, googleSignIn, instalizationLoginFramwork } from './authManeger';
 import './Login.css'
 
 const Login = () => {
@@ -17,8 +17,13 @@ const Login = () => {
                 const { displayName, email } = res;
                 const signedInUser = { name: displayName, email }
                 setLoggedInUser(signedInUser);
+                storeAuthToken()
                 history.replace(from);
             })
+    }
+    const storeAuthToken = ()=>{
+        getAuthToken()
+        .then(res=>console.log(res))
     }
 
 

@@ -21,9 +21,9 @@ client.connect(err => {
   console.log('Database Connection Succefully');
 
 
-  // app.get('/', (req, res) => {
-  //   res.send('Hello World!')
-  // })
+  app.get('/', (req, res) => {
+    res.send('Hello World!')
+  })
 
   app.post('/addBooking', (req, res) => {
     const newBooking = req.body;
@@ -35,8 +35,8 @@ client.connect(err => {
   })
 
   app.get('/bookings', (req, res) => {
-
-    collection.find({email: req.query.email})
+      console.log(req.headers.authorization);
+    collection.find({  })
       .toArray((err, documents) => {
         res.send(documents)
       })

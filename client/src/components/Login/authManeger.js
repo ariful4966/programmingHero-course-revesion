@@ -7,8 +7,8 @@ import firebaseConfig from "./firebase.config";
 
 
 
-export const instalizationLoginFramwork = ()=>{
-    if(firebase.apps.length === 0){
+export const instalizationLoginFramwork = () => {
+    if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
     }
 }
@@ -22,5 +22,14 @@ export const googleSignIn = () => {
             return result.user
         }).catch((error) => {
             return error.message
+        });
+}
+
+export const getAuthToken = () => {
+    return firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+        .then(function (idToken) {
+            sessionStorage.setItem('token', idToken)
+        }).catch(function (error) {
+            // Handle error
         });
 }
