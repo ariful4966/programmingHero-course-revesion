@@ -21,17 +21,25 @@ client.connect(err => {
   console.log('Database Connection Succefully');
 
 
-  app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
+  // app.get('/', (req, res) => {
+  //   res.send('Hello World!')
+  // })
 
   app.post('/addBooking', (req, res) => {
     const newBooking = req.body;
     collection.insertOne(newBooking)
-    .then(result=>{
-      res.send(result)
-    })
+      .then(result => {
+        res.send(result)
+      })
     console.log(newBooking);
+  })
+
+  app.get('/bookings', (req, res) => {
+
+    collection.find({email: req.query.email})
+      .toArray((err, documents) => {
+        res.send(documents)
+      })
   })
 
 
