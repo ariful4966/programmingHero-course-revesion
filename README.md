@@ -6,5 +6,7 @@
 ##  Backend
 ***Node Server***
 - [x] Database Connected
+- [x] JWT Token Varification
+- [x] Un-authorization
 
 ### Firebase Authentication

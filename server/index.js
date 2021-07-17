@@ -56,24 +56,22 @@ client.connect(err => {
         .then((decodedToken) => {
           const tokenEmail = decodedToken.email;
           const queryEmail = req.query.email;
-          console.log(tokenEmail, queryEmail);
-          if (tokenEmail == req.query.email) {
-            collection.find({email: req.query.email})
+          if (tokenEmail == queryEmail) {
+            collection.find({ email: queryEmail })
               .toArray((err, documents) => {
-                res.send(documents) 
+                res.status(200).send(documents)
               })
+          } else {
+            res.status(401).send('un-authrize access')
           }
         })
         .catch((error) => {
-          // Handle error
+          res.status(401).send('un-authrize access')
         });
+    } else {
+      res.status(401).send('un-authrize access')
     }
-
-
-
   })
-
-
 });
 
 
