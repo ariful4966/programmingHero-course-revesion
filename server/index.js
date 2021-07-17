@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const { MongoClient } = require('mongodb');
+const admin = require('firebase-admin');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 
@@ -8,6 +9,16 @@ const bodyParser = require('body-parser')
 const app = express();
 app.use(cors())
 app.use(bodyParser.json())
+
+
+
+
+const serviceAccount = require("./burj-al-arab-2773e-firebase-adminsdk-1kumo-967f651b55.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 
 const port = 5000
 
@@ -35,11 +46,31 @@ client.connect(err => {
   })
 
   app.get('/bookings', (req, res) => {
-      console.log(req.headers.authorization);
-    collection.find({  })
-      .toArray((err, documents) => {
-        res.send(documents)
-      })
+    const bearer = req.headers.authorization
+    if (bearer && bearer.startsWith('Bearer ')) {
+      const idToken = bearer.split(' ')[1];
+
+      admin
+        .auth()
+        .verifyIdToken(idToken)
+        .then((decodedToken) => {
+          const tokenEmail = decodedToken.email;
+          const queryEmail = req.query.email;
+          console.log(tokenEmail, queryEmail);
+          if (tokenEmail == req.query.email) {
+            collection.find({email: req.query.email})
+              .toArray((err, documents) => {
+                res.send(documents) 
+              })
+          }
+        })
+        .catch((error) => {
+          // Handle error
+        });
+    }
+
+
+
   })
 
 

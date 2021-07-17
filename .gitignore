@@ -12,6 +12,7 @@
 # production
 /client/build
 /client/src/components/Login/firebase.config.js
+/server/burj-al-arab-2773e-firebase-adminsdk-1kumo-967f651b55.json
 /server/.env
 
 # misc
