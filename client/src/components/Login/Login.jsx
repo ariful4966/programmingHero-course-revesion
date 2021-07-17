@@ -18,12 +18,15 @@ const Login = () => {
                 const signedInUser = { name: displayName, email }
                 setLoggedInUser(signedInUser);
                 storeAuthToken()
-                history.replace(from);
+
             })
     }
-    const storeAuthToken = ()=>{
+    const storeAuthToken = () => {
         getAuthToken()
-        .then(res=>console.log(res))
+            .then(res => { 
+                history.replace(from);
+            
+            })
     }
 
 
