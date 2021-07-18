@@ -21,7 +21,6 @@ const Header = ({ cart }) => {
                     <>
                         <span>{loggedInUser.name}</span>
                         <Link onClick={() => { setLoggedInUser({}) }}>Sign Out</Link>
-                        <Link to="/login">Login</Link>
                     </>
                     :
                     <>
