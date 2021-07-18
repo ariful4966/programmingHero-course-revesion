@@ -20,20 +20,25 @@ client.connect(err => {
   const collection = client.db("emaJohnStore").collection("products");
   console.log('Ema-John-Store database connected successfully');
 
-
-  app.get('/', (req, res) => {
-    res.send('Hello ema watson!')
+  app.get('/', (req,res)=>{
+    res.send("Hello World");
+  })
+  app.get('/products', (req, res) => {
+    collection.find({})
+    .toArray((err,document)=>{
+      res.send(document)
+    })
   });
 
-  app.post('/addProduct', (req, res) => {
-    const products = req.body
+  // app.post('/addProduct', (req, res) => {
+  //   const products = req.body
     
-    collection.insertMany(products)
-      .then(result => {
-        console.log(result.insertedCount);
-        res.send(result.insertedCount)
-      })
-  })
+  //   collection.insertMany(products)
+  //     .then(result => {
+  //       console.log(result.insertedCount);
+  //       res.send(result.insertedCount)
+  //     })
+  // })
 
 
 })

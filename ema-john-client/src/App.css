@@ -5,3 +5,10 @@
 a{
   text-decoration: none;
 }
+
+button {
+  width: 200px;
+  text-align: center;
+  margin: 10px auto;
+  display: block;
+}

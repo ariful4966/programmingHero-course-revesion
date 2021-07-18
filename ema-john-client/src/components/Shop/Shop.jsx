@@ -13,15 +13,23 @@ const Shop = (props) => {
 
 
     useEffect(() => {
-        const getData = fakeData
-        const savedCart = getDatabaseCart();
-        const productKeys = Object.keys(savedCart);
-        const previousCart = productKeys.map(existingKey => {
-            const product = getData.find(pd => pd.key === existingKey)
-            product.quantity = savedCart[existingKey];
-            return product
-        })
-        setCart(previousCart);
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => {
+                if (data.length) {
+                    const getData = data
+                    const savedCart = getDatabaseCart();
+                    const productKeys = Object.keys(savedCart);
+                    const previousCart = productKeys.map(existingKey => {
+                        const product = getData.find(pd => pd.key === existingKey)
+                        product.quantity = savedCart[existingKey];
+                        return product
+                    })
+                    setCart(previousCart);
+                }
+                
+            })
+
 
     }, [])
 

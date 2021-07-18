@@ -39,7 +39,7 @@ button img {
     margin-right: 10px;
 }
 
-button {
+.btn-login {
     width: 100%;
     font-size: 25px;
     line-height: 40px;

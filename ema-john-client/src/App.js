@@ -22,47 +22,61 @@ export const UserContext = createContext()
 
 function App() {
   const [products, setProducts] = useState([]);
-  const[loggedInUser, setLoggedInUser]=useState({})
+  const [loggedInUser, setLoggedInUser] = useState({})
 
   const [cart, setCart] = useState([])
   useEffect(() => {
-    const first10 = fakeData.slice(0, 10)
-    setProducts(first10)
+    fetch('http://localhost:5000/products')
+      .then(res => res.json())
+      .then(data => {
+
+        const shuffle = a => {
+          for (let i = a.length; i; i--) {
+            let j = Math.floor(Math.random() * i);
+            [a[i - 1], a[j]] = [a[j], a[i - 1]];
+          }
+        }
+
+        shuffle(data);
+        setProducts(data)
+      })
+
   }, [])
+  const product10 = products.slice(0, 10)
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-    <Router >
-      <Header cart={cart} products={products} />
-      <Switch>
-        <Route path="/shop">
-          <Shop cart={cart} products={products} setCart={setCart} />
-        </Route>
-        <Route path="/review">
-          <Review products={fakeData} />
-        </Route>
-        <PrivateRoute path="/orders">
-          <ManageInventory />
-        </PrivateRoute>
-        <Route path="/login">
-          <Login></Login>
-        </Route>
-        <PrivateRoute path="/shipment">
-          <Shipment/>
-        </PrivateRoute>
-        <Route path="/orders">
-          <ManageInventory />
-        </Route>
-        <Route path="/product/:pdKey">
-          <ProductDetail cart={cart} products={products} setCart={setCart} />
-        </Route>
-        <Route exact path="/">
-          <Shop cart={cart} products={products} setCart={setCart} />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
+      <Router >
+        <Header cart={cart} products={products} />
+        <Switch>
+          <Route path="/shop">
+            <Shop cart={cart} products={product10} setCart={setCart} />
+          </Route>
+          <Route path="/review">
+            <Review products={fakeData} />
+          </Route>
+          <PrivateRoute path="/orders">
+            <ManageInventory />
+          </PrivateRoute>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+          <PrivateRoute path="/shipment">
+            <Shipment />
+          </PrivateRoute>
+          <Route path="/orders">
+            <ManageInventory />
+          </Route>
+          <Route path="/product/:pdKey">
+            <ProductDetail cart={cart} products={products} setCart={setCart} />
+          </Route>
+          <Route exact path="/">
+            <Shop cart={cart} products={product10} setCart={setCart} />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </Router>
     </UserContext.Provider>
   );
 }
