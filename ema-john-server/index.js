@@ -30,15 +30,15 @@ client.connect(err => {
     })
   });
 
-  // app.post('/addProduct', (req, res) => {
-  //   const products = req.body
+  app.post('/addProduct', (req, res) => {
+    const product = req.body
     
-  //   collection.insertMany(products)
-  //     .then(result => {
-  //       console.log(result.insertedCount);
-  //       res.send(result.insertedCount)
-  //     })
-  // })
+    collection.insertOne(product)
+      .then(result => {
+        console.log(result.insertedCount);
+        res.send(result.insertedCount)
+      })
+  })
 
 
 })

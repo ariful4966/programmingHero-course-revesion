@@ -1,21 +1,33 @@
 import React from 'react';
-import fakeData from '../../fakeData';
 
 const ManageInventory = () => {
-    const handleAddProducts = () => {
-        fetch('http://localhost:5000/addProduct', {
-            method: 'POST',
-            body: JSON.stringify(fakeData),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((response) => response.json())
-            .then((json) => console.log(json));
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const product = {}
+        console.log(e.target.name = e.target.vaule);
+
+        // fetch('http://localhost:5000/addProduct', {
+        //     method: 'POST',
+        //     body: JSON.stringify(product),
+        //     headers: {
+        //         'Content-type': 'application/json; charset=UTF-8',
+        //     },
+        // })
+        //     .then((response) => response.json())
+        //     .then((json) => console.log(json));
     }
     return (
         <div className="container">
-            <button onClick={handleAddProducts}>Add Product</button>
+            <form action="" onSubmit={handleSubmit}>
+                <p><span>Name: </span><input type="text" name="name" /></p>
+                <p><span>Price: </span><input type="text" name="price" /></p>
+                <p><span>Quantity: </span><input type="text" name="quantity" /></p>
+                <p><span>Products Image:</span><input type="file" name="img" /></p>
+                <button type="submit">Add Product</button>
+            </form>
+
         </div>
     );
 };
