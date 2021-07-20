@@ -16,7 +16,6 @@ export const handleGoogleLogin = (user) => {
         .then(res => {
             const { displayName, email, photoURL } = res.user;
             const getUser = {
-                ...user,
                 name: displayName,
                 email: email,
                 photo: photoURL,
@@ -37,7 +36,6 @@ export const handleFacebookLogin = (user) => {
         .then(res => {
             const { displayName, email, photoURL } = res.user;
             const getUser = {
-                ...user,
                 name: displayName,
                 email: email,
                 photo: photoURL,
@@ -55,7 +53,6 @@ export const handleLogout = (user) => {
         .then(res => {
 
             const emptyUser = {
-                ...user,
                 name: '',
                 email: '',
                 phone: '',
@@ -76,13 +73,15 @@ export const handleLogout = (user) => {
 export const createUserWithEmailAndPassword = (user) => {
     return firebase.auth().createUserWithEmailAndPassword(user.email, user.confirmPassword)
         .then(res => {
+            
+            updateProfile(user)
             const { displayName, email, photoURL } = res.user;
             const newUserInfo = {
                 name: displayName,
                 email: email,
-                photo: photoURL
+                photo: photoURL,
+                isSuccess: true
             }
-            updateProfile(user)
             verifyEmail()
             return newUserInfo
 
@@ -102,7 +101,9 @@ export const singInWithEmailAndPassword = (user) => {
             const newUserInfo = {
                 name: displayName,
                 email,
-                photo:photoURL
+                photo:photoURL,
+                isLogin: true,
+                isSuccess: true
             }
             return newUserInfo
 
@@ -137,7 +138,7 @@ export const resetPassword = (email) => {
         });
 }
 const updateProfile = (newUser) => {
-    var user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser;
     console.log(newUser);
     user.updateProfile({
         displayName: newUser.name,

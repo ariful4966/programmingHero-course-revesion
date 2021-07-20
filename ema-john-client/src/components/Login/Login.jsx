@@ -25,6 +25,7 @@ const Login = () => {
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    console.log(loggedInUser);
 
     const googleSignIn = () => {
         handleGoogleLogin(user)
@@ -47,14 +48,7 @@ const Login = () => {
     }
     const handleResponse = (res, redirect) => {
         setUser(res)
-        const newUser = {
-            name: res.name,
-            email: res.email,
-            photo: res.photo,
-            isLogin: true,
-            isSuccess:true
-        }
-        setLoggedInUser(newUser)
+        setLoggedInUser(res)
         if (redirect) {
             history.replace(from);
         }
