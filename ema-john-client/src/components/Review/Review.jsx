@@ -7,12 +7,18 @@ import { useHistory } from 'react-router';
 
 const Review = (props) => {
     const [cart, setCart] = useState([])
-    const [oderPlaced, setOrderPlaced] = useState(false)
     const { products } = props;
     const history = useHistory()
 
-    const handleProceedCheckout =()=>{
-        history.push('/shipment')
+    const handleProceedCheckout = () => {
+        if (cart.length === 0) {
+            alert('Your Not add any products in your cart');
+            history.push('/')
+        } else {
+            history.push('/shipment')
+        }
+
+
     }
 
     // console.log(products);
@@ -34,7 +40,7 @@ const Review = (props) => {
     }
     const thankyou = <img src={happyImg} alt="" />
     return (
-        <div className="shop-container container"> 
+        <div className="shop-container container">
             <div className="product-container">
                 {
                     cart.map((pd, idx) => <Product
@@ -45,13 +51,10 @@ const Review = (props) => {
                         product={pd}
                     ></Product>)
                 }
-                {
-                    oderPlaced && thankyou
-                }
             </div>
             <div className="card-container">
                 <Cart cart={cart}>
-                <button className='main-btn cart-btn' onClick={handleProceedCheckout}>Proceed Checkout</button>
+                    <button className='main-btn cart-btn' onClick={handleProceedCheckout}>Proceed Checkout</button>
                 </Cart>
             </div>
         </div>

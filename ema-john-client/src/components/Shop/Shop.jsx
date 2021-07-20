@@ -5,7 +5,7 @@ import Product from '../Product/Product';
 import './Shop.css';
 import Cart from '../Cart/Cart';
 import { useEffect } from 'react';
-import fakeData from '../../fakeData';
+
 import { Link } from 'react-router-dom';
 
 const Shop = (props) => {

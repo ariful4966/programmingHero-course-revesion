@@ -17,14 +17,15 @@ app.use(bodyParser.json())
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.nine7.mongodb.net/emaJohnStore?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-  const collection = client.db("emaJohnStore").collection("products");
+  const productsCollection = client.db("emaJohnStore").collection("products");
+  const ordersCollection = client.db("emaJohnStore").collection("orders");
   console.log('Ema-John-Store database connected successfully');
 
   app.get('/', (req,res)=>{
     res.send("Hello World");
   })
   app.get('/products', (req, res) => {
-    collection.find({})
+    productsCollection.find({})
     .toArray((err,document)=>{
       res.send(document)
     })
@@ -33,13 +34,21 @@ client.connect(err => {
   app.post('/addProduct', (req, res) => {
     const product = req.body
     
-    collection.insertOne(product)
+    productsCollection.insertOne(product)
       .then(result => {
         console.log(result.insertedCount);
         res.send(result.insertedCount)
       })
   })
 
+  //Order Infor
+  app.post('/addOrder', (req, res) => {
+    const order = req.body
+    ordersCollection.insertOne(order)
+      .then(result => {
+        res.send(result)
+      })
+  })
 
 })
 

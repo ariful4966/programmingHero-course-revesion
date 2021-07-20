@@ -76,11 +76,11 @@ export const handleLogout = (user) => {
 export const createUserWithEmailAndPassword = (user) => {
     return firebase.auth().createUserWithEmailAndPassword(user.email, user.confirmPassword)
         .then(res => {
+            const { displayName, email, photoURL } = res.user;
             const newUserInfo = {
-                ...res.user,
-                name: res.user.displayName,
-                error: "",
-                success: true
+                name: displayName,
+                email: email,
+                photo: photoURL
             }
             updateProfile(user)
             verifyEmail()
@@ -98,12 +98,11 @@ export const createUserWithEmailAndPassword = (user) => {
 export const singInWithEmailAndPassword = (user) => {
     return firebase.auth().signInWithEmailAndPassword(user.email, user.password)
         .then(res => {
+            const { displayName, email, photoURL } = res.user;
             const newUserInfo = {
-                ...res.user,
-                name: res.user.displayName,
-                error: "",
-                success: true,
-                isLogin: true
+                name: displayName,
+                email,
+                photo:photoURL
             }
             return newUserInfo
 
