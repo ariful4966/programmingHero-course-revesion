@@ -8,7 +8,7 @@ const ManageInventory = () => {
         const product = {}
         console.log(e.target.name = e.target.vaule);
 
-        // fetch('http://localhost:5000/addProduct', {
+        // fetch('https://ema-john-server4082.herokuapp.com/addProduct', {
         //     method: 'POST',
         //     body: JSON.stringify(product),
         //     headers: {

@@ -15,7 +15,7 @@ const Shipment = () => {
     }
     const ordersDetails = { ...loggedInUser, products: savedCart, shipment: data, orderTime: dateTime };
 
-   fetch('http://localhost:5000/addOrder', {
+   fetch('https://ema-john-server4082.herokuapp.com/addOrder', {
             method: 'POST',
             body: JSON.stringify(ordersDetails),
             headers: {

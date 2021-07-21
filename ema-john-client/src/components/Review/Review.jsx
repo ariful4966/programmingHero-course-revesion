@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
-import happyImg from '../../images/giphy.gif'
 import { useHistory } from 'react-router';
 
 const Review = (props) => {
@@ -15,6 +14,7 @@ const Review = (props) => {
             alert('Your Not add any products in your cart');
             history.push('/')
         } else {
+            processOrder()
             history.push('/shipment')
         }
 
@@ -38,7 +38,6 @@ const Review = (props) => {
         setCart(newCart)
         removeFromDatabaseCart(key)
     }
-    const thankyou = <img src={happyImg} alt="" />
     return (
         <div className="shop-container container">
             <div className="product-container">

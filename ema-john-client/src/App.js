@@ -26,7 +26,7 @@ function App() {
 
   const [cart, setCart] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/products')
+    fetch('https://ema-john-server4082.herokuapp.com/products')
       .then(res => res.json())
       .then(data => {
 
