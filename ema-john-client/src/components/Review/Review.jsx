@@ -14,7 +14,6 @@ const Review = (props) => {
             alert('Your Not add any products in your cart');
             history.push('/')
         } else {
-            processOrder()
             history.push('/shipment')
         }
 
