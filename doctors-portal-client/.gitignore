@@ -1,11 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-doctors-portal-client/src/firebase.config.js
-doctors-portal-client/node_modules
-doctors-portal-client/build
-doctors-portal-server/node_modules
-doctors-portal-server/.env
+/node_modules
 /.pnp
 .pnp.js
 
