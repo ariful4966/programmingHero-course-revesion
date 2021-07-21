@@ -12,9 +12,10 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+const user = process.env.DB_USER;
+const pass = process.env.DB_PASS;
 
-
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.nine7.mongodb.net/emaJohnStore?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${user}:${pass}@cluster0.nine7.mongodb.net/emaJohnStore?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const productsCollection = client.db("emaJohnStore").collection("products");
