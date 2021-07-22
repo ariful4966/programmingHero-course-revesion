@@ -12,6 +12,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import './Header.scss'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -67,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
+      zIndex:'1',
     },
   },
   sectionMobile: {
@@ -174,25 +176,13 @@ export default function Header() {
           </Typography>
 
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton color="inherit">
+          <div className={classes.sectionDesktop} id="header_menu">
               <Link to="/">Home</Link>
-            </IconButton>
-            <IconButton color="inherit">
               <Link to="/about">About</Link>
-            </IconButton>
-            <IconButton color="inherit">
               <Link to="/doctors-service">Doctors Service</Link>
-            </IconButton>
-            <IconButton color="inherit">
               <Link to="/reviews">Reviews</Link>
-            </IconButton>
-            <IconButton color="inherit">
               <Link to="/blog">Blog</Link>
-            </IconButton>
-            <IconButton color="inherit">
               <Link to="/contact">Contact us</Link>
-            </IconButton>
           </div>
         </Toolbar>
       </Container>

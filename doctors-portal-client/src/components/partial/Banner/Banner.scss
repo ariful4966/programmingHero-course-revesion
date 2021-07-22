@@ -1,0 +1,13 @@
+.banner_area {
+    .MuiGrid-container {
+        padding: 100px 0;
+    }
+    .banner_img {
+        z-index: 1;
+    }
+    .banner_info {
+        h2 {
+            font-weight: 800;
+        }
+    }
+}

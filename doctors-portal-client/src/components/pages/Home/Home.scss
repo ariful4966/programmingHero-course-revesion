@@ -1,0 +1,16 @@
+.banner_container{
+    background: url('../../../images/Mask\ Group\ 2.png') no-repeat center;
+    background-size: cover;
+    position: relative;
+    
+    &::before {
+        position: absolute;
+        content: '';
+        background: #00012f;
+        width: 35%;
+        height: 100%;
+        left: 65%;
+        top: 0;
+        z-index: 1;
+    }
+}
