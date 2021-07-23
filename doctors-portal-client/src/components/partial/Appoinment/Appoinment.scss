@@ -1,0 +1,37 @@
+.appinment_doc_area {
+    background: url("../../../images/Mask\ Group\ 4.png") no-repeat center;
+    margin: 100px 0;
+    padding: 50px 0;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    &::before {
+        position: absolute;
+        content: "";
+        background: #020d2cc9;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+    .appinment_doc_img {
+        position: relative;
+        height: 100%;
+        img {
+            position: absolute;
+            height: 180%;
+            top: -65.77%;
+        }
+    }
+    .appoinment_doc_detail {
+        padding: 50px 0;
+        .section_heading {
+            text-align: left;
+            padding: 0;
+            h3 {
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,17 +1,21 @@
+import teath from '../images/tooth.png';
+import treatment from '../images/001-dental.png'
+import cavity from '../images/tooth (1).png'
 const service = [{
     "key": "service1",
     "title": "Fluoride Treatment",
-    "body": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\n\nCurabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-    "img": "http://dummyimage.com/157x100.png/5fa2dd/ffffff"
+    "body": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt fuga perferendis ducimus recusandae accusamus non dolores eveniet velit minima est magni delectus labore doloremque illo rem, distinctio eaque assumenda aliquid?",
+    "img": `${treatment}`
   }, {
     "key": "service2",
     "title": "Cavity Filling",
-    "body": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
-    "img": "http://dummyimage.com/239x100.png/dddddd/000000"
+    "body": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt fuga perferendis ducimus recusandae accusamus non dolores eveniet velit minima est magni delectus labore doloremque illo rem, distinctio eaque assumenda aliquid?",
+    "img": `${cavity}`
   }, {
     "key": "service3",
     "title": "Teath Whitenig",
-    "body": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
-    "img": "http://dummyimage.com/238x100.png/dddddd/000000"
+    "body": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt fuga perferendis ducimus recusandae accusamus non dolores eveniet velit minima est magni delectus labore doloremque illo rem, distinctio eaque assumenda aliquid?",
+    "img": `${teath}`
   }];
   export default service;
+  

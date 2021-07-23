@@ -14,3 +14,32 @@
     text-transform: uppercase;
     padding: 10px;
 }
+
+.service_container {
+    text-align: center;
+    transition: .5s;
+    &:hover{
+        box-shadow: 0 0 10px #ddd;
+    }
+    .service_info_details {
+        padding: 20px;
+        color: #021532;
+    }
+    .service_info_image {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+       
+       
+
+        img {
+            width: 40%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    }
+}
