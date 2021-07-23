@@ -13,11 +13,13 @@ const PortalInfo = () => {
                 <Grid container spacing={6}>
                     {
                         portalInfo.map(pi =>
-                            <Grid item md={4} key={pi.key}>
+                            <Grid item md={4} key={pi.key} className="pl_container">
                                 <div className="single_pI">
-                                    <Grid container spacing={6}>
+                                    <Grid container spacing={4}>
                                     <Grid item md={3} >
-                                       <img src={pi.img} alt="" />
+                                     {
+                                         pi.key === 'opening' && <AccessTimeIcon/> || pi.key === 'location' && <RoomIcon/> || pi.key ==='contact' && <PhonePausedIcon/>
+                                     }
                                     </Grid>
                                     <Grid item md={9}>
                                         <Typography variant="h6">{pi.title}</Typography>
