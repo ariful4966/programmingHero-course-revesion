@@ -15,7 +15,7 @@ import './Home.scss';
 const Home = () => {
     return (
         <div className="potalInfor_area ">
-            <div className="banner_container">
+            <div className="banner_container banner_overlay">
                 <Header />
                 <Banner />
                 <PortalInfo/>
