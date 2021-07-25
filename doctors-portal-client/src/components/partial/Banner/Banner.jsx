@@ -1,18 +1,22 @@
 import { Button, Container, Grid, Typography } from '@material-ui/core';
+import { connect } from 'react-redux';
 import dentalChear from '../../../images/Mask Group 1.png';
 
-import './Banner.scss'
+import { categoryByDate } from '../../../redux/action/action'
 import BannerCalender from './BannerCalender';
 import BannerInfo from './BannerInfo';
+import './Banner.scss'
 
-const Banner = ({ appoin}) => {
+
+const Banner = (props) => {
+    const { appoin } = props;
     return (
         <div className="banner_area">
             <Container>
                 <Grid container spacing={6}>
                     <Grid item md={6}>
                         {
-                            appoin? <BannerCalender/>: <BannerInfo/>
+                            appoin ? <BannerCalender /> : <BannerInfo />
                         }
                     </Grid>
                     <Grid item md={6} className="banner_img">
@@ -23,5 +27,11 @@ const Banner = ({ appoin}) => {
         </div>
     );
 };
+const mapStateToProps = state => {
+    return state
+}
+const mapDispachToProps = {
+    categoryByDate
+}
 
-export default Banner;
+export default connect(mapStateToProps, mapDispachToProps)(Banner);

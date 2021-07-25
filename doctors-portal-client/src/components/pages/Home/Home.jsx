@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Appoinment from '../../partial/Appoinment/Appoinment';
 import Banner from '../../partial/Banner/Banner';
 import Blog from '../../partial/Blog/Blog';
@@ -11,25 +11,39 @@ import Service from '../../partial/Service/Service';
 import Testimonial from '../../partial/Testimonial/Testimonial';
 import Footer from '../../partial/Footer/Footer'
 import './Home.scss';
+import { connect } from 'react-redux';
+import { GET_CATEGORY_DATA } from '../../../redux/action/action';
+import dentalCategory from '../../../data/dentalCategory';
 
-const Home = () => {
+const Home = (props) => {
+    console.log(props);
+    const {  dispatch } = props;
+    useEffect(()=>{
+        dispatch({type: GET_CATEGORY_DATA, dentalCategory })
+    },[])
     return (
         <div className="potalInfor_area ">
             <div className="banner_container banner_overlay">
                 <Header />
                 <Banner />
-                <PortalInfo/>
+                <PortalInfo />
             </div>
-            <Service/>
-            <DentalCare/>
-            <Appoinment/>
-            <Testimonial/>
-            <Blog/>
-            <Doctors/>
-            <Contact/>
-            <Footer/>
+            <Service />
+            <DentalCare />
+            <Appoinment />
+            <Testimonial />
+            <Blog />
+            <Doctors />
+            <Contact />
+            <Footer />
         </div>
     );
 };
+const mapStateToProps = state => {
+    return state;
+}
+const mapDispachToProps = dispatch => (
+    { dispatch }
+)
 
-export default Home;
+export default connect(mapStateToProps, mapDispachToProps)(Home);

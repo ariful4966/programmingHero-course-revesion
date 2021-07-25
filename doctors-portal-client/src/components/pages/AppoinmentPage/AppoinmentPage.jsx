@@ -1,5 +1,7 @@
 import React from 'react';
 import Banner from '../../partial/Banner/Banner';
+import DentalCategory from '../../partial/DentalCategory/DentalCategory';
+import Footer from '../../partial/Footer/Footer';
 import Header from '../../partial/Header/Header';
 
 const AppoinmentPage = () => {
@@ -9,6 +11,8 @@ const AppoinmentPage = () => {
                 <Header />
                 <Banner appoin />
             </div>
+            <DentalCategory/>
+            <Footer/>
         </div>
     );
 };
