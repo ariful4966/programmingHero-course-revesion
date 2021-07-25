@@ -12,6 +12,7 @@ import DoctorService from './components/pages/DoctorService/DoctorService';
 import Review from './components/pages/Review/Review';
 import Blog from './components/pages/Blog/Blog';
 import Contact from './components/pages/Contact/Contact';
+import AppoinmentPage from './components/pages/AppoinmentPage/AppoinmentPage';
 
 function App() {
   
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route path="/about">
           <About/>
+        </Route>
+        <Route path="/appoinment">
+          <AppoinmentPage/>
         </Route>
         <Route exact path="/">
           <Home/>
