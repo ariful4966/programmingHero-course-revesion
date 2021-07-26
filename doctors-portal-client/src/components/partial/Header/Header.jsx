@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     display: 'none',
+    fontWeight:'800',
+    color: '#02023b',
+    textShadow: '2px 5px 5px #0a3d06', 
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -68,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
-      zIndex:'1',
+      zIndex: '1',
     },
   },
   sectionMobile: {
@@ -79,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function Header({ home }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -163,26 +166,19 @@ export default function Header() {
     <div className={classes.grow}>
       <Container>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+         
+          <Typography className={classes.title} variant="h4" noWrap>
             Doctors-Portal
           </Typography>
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop} id="header_menu">
-              <Link to="/">Home</Link>
-              <Link to="/about">About</Link>
-              <Link to="/doctors-service">Doctors Service</Link>
-              <Link to="/reviews">Reviews</Link>
-              <Link to="/blog">Blog</Link>
-              <Link to="/contact">Contact us</Link>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/doctors-service">Doctors Service</Link>
+            <Link className={home && 'menu'} to="/reviews">Reviews</Link>
+            <Link className={home && 'menu'} to="/blog">Blog</Link>
+            <Link className={home && 'menu'} to="/contact">Contact us</Link>
           </div>
         </Toolbar>
       </Container>

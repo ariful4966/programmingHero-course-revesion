@@ -1,9 +1,15 @@
 import { Button, Container, Grid, Typography } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import docAppoinment from '../../../data/docAppoinment';
 import './Appoinment.scss'
 
 const Appoinment = () => {
-    const {id, title, body, img}= docAppoinment[0]
+    const history = useHistory()
+    const {id, title, body, img}= docAppoinment[0];
+
+    const getAppoinment = ()=>{
+        history.push('/appoinment')
+    }
     return (
         <div className="appinment_doc_area ">
             <Container>
@@ -21,7 +27,7 @@ const Appoinment = () => {
                                     <Typography variant='h3' className="main_heading">{title}</Typography>
                                 </div>
                                 <Typography paragraph={true}>{body}</Typography>
-                                <Button variant="contained" id="gradient_btn">Learn More</Button>
+                                <Button variant="contained" id="gradient_btn" onClick={getAppoinment}>Learn More</Button>
                             </div>
                         </Grid>
                     </Grid>

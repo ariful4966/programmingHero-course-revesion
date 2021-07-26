@@ -24,7 +24,7 @@ const Home = (props) => {
     return (
         <div className="potalInfor_area ">
             <div className="banner_container banner_overlay">
-                <Header />
+                <Header home />
                 <Banner />
                 <PortalInfo />
             </div>

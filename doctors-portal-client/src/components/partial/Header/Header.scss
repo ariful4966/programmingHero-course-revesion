@@ -1,6 +1,13 @@
-#header_menu a {
-    padding: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 12px;
+#header_menu {
+    a {
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 10px;
+        color: #02023b;
+        text-transform: uppercase;
+    }
+    .menu {
+        color: #fff;
+    }
 }

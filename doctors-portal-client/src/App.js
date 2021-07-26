@@ -13,6 +13,7 @@ import Review from './components/pages/Review/Review';
 import Blog from './components/pages/Blog/Blog';
 import Contact from './components/pages/Contact/Contact';
 import AppoinmentPage from './components/pages/AppoinmentPage/AppoinmentPage';
+import Auth from './components/pages/Auth/Auth';
 
 function App() {
   
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route path="/appoinment">
           <AppoinmentPage/>
+        </Route>
+        <Route path="/login">
+          <Auth/>
         </Route>
         <Route exact path="/">
           <Home/>
