@@ -14,6 +14,7 @@ import Blog from './components/pages/Blog/Blog';
 import Contact from './components/pages/Contact/Contact';
 import AppoinmentPage from './components/pages/AppoinmentPage/AppoinmentPage';
 import Auth from './components/pages/Auth/Auth';
+import PrivateRoute  from './components/pages/Auth/authManeger';
 
 function App() {
   
@@ -35,9 +36,9 @@ function App() {
         <Route path="/about">
           <About/>
         </Route>
-        <Route path="/appoinment">
+        <PrivateRoute path="/appoinment">
           <AppoinmentPage/>
-        </Route>
+        </PrivateRoute>
         <Route path="/login">
           <Auth/>
         </Route>
