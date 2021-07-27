@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from '@material-ui/core';
+import {  Container, Grid,  } from '@material-ui/core';
 import { connect } from 'react-redux';
 import dentalChear from '../../../images/Mask Group 1.png';
 
@@ -7,9 +7,10 @@ import BannerCalender from './BannerCalender';
 import BannerInfo from './BannerInfo';
 import './Banner.scss'
 
-
 const Banner = (props) => {
-    const { appoin } = props;
+    const { appoin, user } = props;
+
+    
     return (
         <div className="banner_area">
             <Container>

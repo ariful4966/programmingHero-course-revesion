@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -6,12 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import UserMenu from '../UserMenu/UserMenu';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './Header.scss'
 
 const useStyles = makeStyles((theme) => ({
@@ -23,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     display: 'none',
-    fontWeight:'800',
+    fontWeight: '800',
     color: '#02023b',
-    textShadow: '2px 5px 5px #0a3d06', 
+    textShadow: '2px 5px 5px #0a3d06',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -82,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({ home }) {
+function Header({ home, user }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -162,14 +166,75 @@ export default function Header({ home }) {
     </Menu>
   );
 
+  //For Name Section Start
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = useRef(open);
+  useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
+  //For Name Section End
+
+
   return (
     <div className={classes.grow}>
       <Container>
         <Toolbar>
-         
+
           <Typography className={classes.title} variant="h4" noWrap>
             Doctors-Portal
           </Typography>
+          {
+            user.isLogin && <div className="nameSection">
+              <Typography variant="h6">{user.name}</Typography>
+              {
+                open ?
+                  <ExpandLessIcon ref={anchorRef}
+                    aria-controls={open ? 'menu-list-grow' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleToggle} /> :
+                  <ExpandMoreIcon ref={anchorRef}
+                    aria-controls={open ? 'menu-list-grow' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleToggle} />
+              }
+              {
+                open && <div className="toogle_menu">
+                  <UserMenu
+                    open={open}
+                    handleListKeyDown={handleListKeyDown}
+                    handleClose={handleClose}
+                    anchorRef={anchorRef}
+                  />
+                </div>
+              }
+            </div>
+          }
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop} id="header_menu">
@@ -187,3 +252,7 @@ export default function Header({ home }) {
     </div>
   );
 }
+const mapStateToProps = state => {
+  return { user: state.user }
+}
+export default connect(mapStateToProps)(Header);

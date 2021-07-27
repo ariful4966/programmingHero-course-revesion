@@ -1,0 +1,14 @@
+.sitebar_area {
+    background: linear-gradient(-10deg, #00e2ff, #17f49e);
+    .menu_btn button {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+    .menu_btn svg {
+        font-size: 35px;
+        color: #fff;
+        text-shadow: 0 0 10px black;
+    }
+}

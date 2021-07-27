@@ -15,6 +15,7 @@ import Contact from './components/pages/Contact/Contact';
 import AppoinmentPage from './components/pages/AppoinmentPage/AppoinmentPage';
 import Auth from './components/pages/Auth/Auth';
 import PrivateRoute  from './components/pages/Auth/authManeger';
+import Dashboard from './components/pages/Dashboard/Dashboard';
 
 function App() {
   
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <PrivateRoute path="/appoinment">
           <AppoinmentPage/>
+        </PrivateRoute>
+        <PrivateRoute path="/dashboard">
+          <Dashboard/>
         </PrivateRoute>
         <Route path="/login">
           <Auth/>
