@@ -1,6 +1,7 @@
+import { signOut } from "../../components/pages/Auth/authManeger";
 import dentalCategory from "../../data/dentalCategory";
-import { DENTAL_CATEGORY, GET_CATEGORY_DATA, NEWUSER_TRUE_FALSE, SUBMIT_USER_INFO,  UPDATE_USER_INFO } from "../action/action"
-
+import { DASHBOARD_TAB, DENTAL_CATEGORY, GET_CATEGORY_DATA, NEWUSER_TRUE_FALSE, SIGN_OUT, SUBMIT_USER_INFO, UPDATE_USER_INFO } from "../action/action"
+import appoinments from "../../data/appoinments";
 
 
 const initialState = {
@@ -15,7 +16,9 @@ const initialState = {
         isLogin: false,
         error: ''
     },
-    newUser: false
+    newUser: false,
+    appoinments: appoinments,
+    dashBoardTab: 'dashboard'
 }
 const dentalReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -31,9 +34,15 @@ const dentalReducer = (state = initialState, action) => {
             return { ...state, user: { ...state.user, [event.name]: event.value } }
         case SUBMIT_USER_INFO:
             const userData = action.data;
-             return {...state, user: userData};
+            return { ...state, user: userData };
         case NEWUSER_TRUE_FALSE:
-            return { ...state, newUser: action.bool }
+            return { ...state, newUser: action.bool };
+        case SIGN_OUT:
+            signOut();
+            return { ...state, user: initialState.user };
+        case DASHBOARD_TAB:
+            const tabStr = action.str;
+            return { ...state, dashBoardTab: tabStr }
         default:
             return state
     }

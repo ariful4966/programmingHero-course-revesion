@@ -36,6 +36,14 @@ export const signInUserWithEmailPassword = (user) => {
 
 }
 
+export const signOut = () => {
+    return firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+    }).catch((error) => {
+        // An error happened.
+    });
+}
+
 const updateUserName = (name) => {
     const user = firebase.auth().currentUser;
 
@@ -50,7 +58,7 @@ const updateUserName = (name) => {
     });
 }
 
- function PrivateRoute({user, children, ...rest }) {
+function PrivateRoute({ user, children, ...rest }) {
     console.log(user);
 
     return (

@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import './DailogBox.scss';
 
 import { useForm } from "react-hook-form";
+import { connect } from 'react-redux';
 
 const styles = (theme) => ({
     root: {
@@ -53,7 +54,7 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 
-export default function DailogBox({ open, toggleBtn, category }) {
+ function DailogBox({ open, toggleBtn, category, user }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
 
@@ -69,13 +70,13 @@ export default function DailogBox({ open, toggleBtn, category }) {
                         <input defaultValue={category.startTime} type="time" min={category.startTime} max={category.endTime} {...register("time", { required: true })} />
                         {errors.time && <span>This field is required</span>}
 
-                        <input {...register("name", { required: true })} />
+                        <input {...register("name", { required: true })} defaultValue={user.name}/>
                         {errors.name && <span>This field is required</span>}
 
-                        <input {...register("phone", { required: true })} />
+                        <input {...register("phone", { required: true })} placeholder="Your Phone"/>
                         {errors.phone && <span>This field is required</span>}
 
-                        <input {...register("email", { required: true })} />
+                        <input {...register("email", { required: true })} defaultValue={user.email}/>
                         {errors.email && <span>This field is required</span>}
 
                         <input defaultValue={category.date} {...register("date", { required: true })} />
@@ -83,7 +84,7 @@ export default function DailogBox({ open, toggleBtn, category }) {
 
                         <DialogActions>
                             <Button autoFocus  type="submit" variant="contained" id="gradient_btn" color="primary">
-                                Save changes
+                                Send
                             </Button>
                         </DialogActions>
                     </form>
@@ -93,3 +94,10 @@ export default function DailogBox({ open, toggleBtn, category }) {
         </div>
     );
 }
+const mapStateToProps = state=>{
+    return {user: state.user}
+}
+const mapDispachToProps={
+
+}
+export default connect(mapStateToProps, mapDispachToProps)(DailogBox)
