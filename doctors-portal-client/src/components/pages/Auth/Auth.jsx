@@ -22,20 +22,40 @@ const Auth = (props) => {
         if (newUser) {
             createUserWithEmailPassWord(user)
                 .then(res => {
-                    handleLoginSignupForm(false)
-                    submitUserInfo(res)
+                    if (res.message) {
+                        let currUser = {
+                            ...user,
+                            error: res.message
+                        }
+                        submitUserInfo(currUser)
+                    } else {
+                        
+                        handleLoginSignupForm(false)
+                        submitUserInfo(res.user)
+                    }
+
                 })
         } else {
             signInUserWithEmailPassword(user)
                 .then(res => {
-                    const { displayName, email } = res;
-                    const newAddedUser = {
-                        name: displayName,
-                        email,
-                        isLogin: true
+                    if (res.message) {
+                        const errorUser = {
+                            ...user,
+                            error: res.message
+                        }
+                        submitUserInfo(errorUser)
+                    } else {
+                        const { displayName, email } = res.user;
+                        const newAddedUser = {
+                            name: displayName,
+                            email,
+                            isLogin: true
+                        }
+
+                        submitUserInfo(newAddedUser)
+                        history.replace(from); 
                     }
-                    submitUserInfo(newAddedUser)
-                    history.replace(from);
+
                 })
         }
     }
@@ -44,6 +64,7 @@ const Auth = (props) => {
         <div className="auth_area">
             <Header />
             <Container>
+                {user.error && <Typography variant="h5" style={{ color: 'red' }}>{user.error}</Typography>}
                 <Grid container spacing={3}>
                     <Grid item md={5} className="auth_align">
                         <div className="authentication">

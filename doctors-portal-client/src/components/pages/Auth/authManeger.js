@@ -17,10 +17,10 @@ export const createUserWithEmailPassWord = (user) => {
     return firebase.auth().createUserWithEmailAndPassword(email, confirmPassword)
         .then((res) => {
             updateUserName(user.name)
-            return res.user
+            return res
         })
         .catch((error) => {
-            console.log(error);
+            return error
         });
 }
 
@@ -28,10 +28,10 @@ export const signInUserWithEmailPassword = (user) => {
     const { email, password } = user;
     return firebase.auth().signInWithEmailAndPassword(email, password)
         .then((res) => {
-            return res.user
+            return res
         })
         .catch((error) => {
-            console.log((error));
+            return error;
         });
 
 }

@@ -33,7 +33,28 @@ const dentalReducer = (state = initialState, action) => {
             return { ...state, treatmentByDate: selectByDate, setDate: selectDate }
         case UPDATE_USER_INFO:
             const event = action.e.target;
-            return { ...state, user: { ...state.user, [event.name]: event.value } }
+            let isFieldValid = true;
+            if (event.name === 'email') {
+                isFieldValid = /\S+@\S+\.\S+/.test(event.value);
+                if (!isFieldValid) { return { ...state, user: {...state.user, errorEmail: 'Plese Provide Valid Email Address' } } }
+            }
+            if (event.name === 'password') {
+                const passwordValidation = state.user.password.length < 6;
+                const passwordHashNumber = /\d{1}/.test(event.value)
+                isFieldValid = (passwordValidation && passwordHashNumber)
+                if (!isFieldValid) { return { ...state, user: {...state.user, passError: 'Plese Type Valid Password "Lenth 6 Charecter"' } } }
+            }
+            if (event.name === 'confirmPassword') {
+                const confirmPasswordValidation = (event.value === state.user.password);
+                isFieldValid = confirmPasswordValidation;
+                if (!isFieldValid) { return { ...state, user: {...state.user, confirmPassError: "Password Dosen't Match" } } }
+            }
+
+            if (isFieldValid) {
+                
+                return { ...state, user: { ...state.user, [event.name]: event.value } }
+            }
+            return state;
         case SUBMIT_USER_INFO:
             const userData = action.data;
             return { ...state, user: userData };
