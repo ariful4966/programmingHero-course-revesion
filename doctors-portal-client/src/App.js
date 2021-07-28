@@ -15,7 +15,7 @@ import Contact from './components/pages/Contact/Contact';
 import AppoinmentPage from './components/pages/AppoinmentPage/AppoinmentPage';
 import Auth from './components/pages/Auth/Auth';
 import PrivateRoute  from './components/pages/Auth/authManeger';
-import Dashboard from './components/pages/Dashboard/Dashboard';
+import Dashboard from './components/pages/Dashboard';
 
 function App() {
   

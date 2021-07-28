@@ -20,7 +20,7 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { connect } from 'react-redux';
-import { Button } from '@material-ui/core';
+import { Button, Icon } from '@material-ui/core';
 
 function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
@@ -73,10 +73,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-    const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-    const createSortHandler = (property) => (event) => {
-        onRequestSort(event, property);
-    };
+    const { headCells } = props;
 
     return (
         <TableHead>
@@ -121,7 +118,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
     const classes = useToolbarStyles();
-    const { numSelected } = props;
+    const { numSelected, title, appoinments, apDashbod} = props;
 
     return (
         <Toolbar
@@ -131,13 +128,17 @@ const EnhancedTableToolbar = (props) => {
         >
 
             <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-                Recent Appoinments
+                {title}
             </Typography>
 
             <Tooltip title="Filter list">
+                {
+                    apDashbod ? <IconButton>{appoinments.length > 0 && appoinments[0].date }</IconButton>: 
+                
                 <IconButton aria-label="filter list">
                     <EventIcon />
                 </IconButton>
+                }
             </Tooltip>
 
         </Toolbar>
@@ -157,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(2),
     },
     table: {
-        minWidth: 750,
+        minWidth: '100%',
     },
     visuallyHidden: {
         border: 0,
@@ -172,7 +173,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function AppoinmentTable({ appoinments }) {
+function AppoinmentTable({ appoinments, headCells, apDashbod, main, title }) {
     console.log(appoinments);
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
@@ -217,7 +218,7 @@ function AppoinmentTable({ appoinments }) {
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                <EnhancedTableToolbar numSelected={selected.length} title={title} apDashbod appoinments={appoinments} />
                 <TableContainer>
                     <Table
                         className={classes.table}
@@ -232,7 +233,8 @@ function AppoinmentTable({ appoinments }) {
                             orderBy={orderBy}
                             onSelectAllClick={handleSelectAllClick}
                             onRequestSort={handleRequestSort}
-                            rowCount={rows.length}
+                            rowCount={appoinments.length}
+                            headCells={headCells}
                         />
                         <TableBody>
                             {stableSort(appoinments, getComparator(order, orderBy))
@@ -241,19 +243,35 @@ function AppoinmentTable({ appoinments }) {
 
                                     return (
                                         <TableRow>
-                                            <TableCell >
-                                                {index + 1}
-                                            </TableCell>
-                                            <TableCell >{row.date}</TableCell>
-                                            <TableCell >{row.time}</TableCell>
-                                            <TableCell >{row.name}</TableCell>
-                                            <TableCell >{row.phone}</TableCell>
-                                            <TableCell >
-                                                <Button variant="contained">View</Button>
-                                            </TableCell>
-                                            <TableCell >
-                                                <Button variant="contained">painding</Button>
-                                            </TableCell>
+                                            {
+                                                apDashbod &&
+                                                <>
+                                                    <TableCell>{row.name}</TableCell>
+                                                    <TableCell>{row.time}</TableCell>
+                                                    <TableCell>
+                                                        <Button variant="contained">painding</Button>
+                                                    </TableCell>
+                                                </>
+                                            }
+                                            {
+                                                main &&
+                                                <>
+                                                    <TableCell >
+                                                        {index + 1}
+                                                    </TableCell>
+                                                    <TableCell >{row.date}</TableCell>
+                                                    <TableCell >{row.time}</TableCell>
+                                                    <TableCell >{row.name}</TableCell>
+                                                    <TableCell >{row.phone}</TableCell>
+                                                    <TableCell >
+                                                        <Button variant="contained">View</Button>
+                                                    </TableCell>
+                                                    <TableCell >
+                                                        <Button variant="contained">painding</Button>
+                                                    </TableCell>
+                                                </>
+                                            }
+
                                         </TableRow>
                                     );
                                 })}
@@ -282,7 +300,6 @@ function AppoinmentTable({ appoinments }) {
         </div>
     );
 }
-const mapStateToProps = state => {
-    return { appoinments: state.appoinments }
-}
-export default connect(mapStateToProps)(AppoinmentTable)
+
+
+export default AppoinmentTable;
