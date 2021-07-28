@@ -5,7 +5,7 @@ import service from '../../../data/service';
 const Service = () => {
 
     return (
-        <section className="service_area">
+        <section className="service_area" id="service">
             <Container>
                 <div className="section_heading">
                     <Typography variant="h5" className="heading_top">Our Services</Typography>

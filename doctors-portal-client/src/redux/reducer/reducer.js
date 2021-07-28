@@ -2,6 +2,7 @@ import { signOut } from "../../components/pages/Auth/authManeger";
 import dentalCategory from "../../data/dentalCategory";
 import { DASHBOARD_TAB, DENTAL_CATEGORY, GET_CATEGORY_DATA, NEWUSER_TRUE_FALSE, SIGN_OUT, SUBMIT_USER_INFO, UPDATE_USER_INFO } from "../action/action"
 import appoinments from "../../data/appoinments";
+import patients from "../../data/patients";
 
 
 const initialState = {
@@ -18,7 +19,8 @@ const initialState = {
     },
     newUser: false,
     appoinments: appoinments,
-    dashBoardTab: 'dashboard'
+    dashBoardTab: 'dashboard',
+    patients: patients
 }
 const dentalReducer = (state = initialState, action) => {
     switch (action.type) {

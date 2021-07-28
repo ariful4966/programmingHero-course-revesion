@@ -5,7 +5,7 @@ import './Contact.scss'
 
 const Contact = () => {
     return (
-        <div className="conatct_area">
+        <div className="conatct_area" id="contact">
             <Container>
                 <div className="section_heading">
                     <Typography variant='h5' className="heading_top">Contact Us</Typography>

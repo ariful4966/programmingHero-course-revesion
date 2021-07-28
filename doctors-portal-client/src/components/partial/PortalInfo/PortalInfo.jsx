@@ -18,7 +18,7 @@ const PortalInfo = () => {
                                     <Grid container spacing={4}>
                                     <Grid item md={3} >
                                      {
-                                         pi.key === 'opening' && <AccessTimeIcon/> || pi.key === 'location' && <RoomIcon/> || pi.key ==='contact' && <PhonePausedIcon/>
+                                         (pi.key === 'opening' && <AccessTimeIcon/>) || (pi.key === 'location' && <RoomIcon/>) || (pi.key ==='contact' && <PhonePausedIcon/>)
                                      }
                                     </Grid>
                                     <Grid item md={9}>

@@ -11,8 +11,7 @@ import { signOutUser, dashboardTab } from '../../../redux/action/action';
 import userImg from '../../../images/user.jpg'
 import { useHistory } from 'react-router';
 
-const SideBar = ({ user, signOutUser, dashboardTab, state }) => {
-    console.log(state);
+const SideBar = ({ user, signOutUser, dashboardTab }) => {
     const history = useHistory()
     const homeBack = () => {
         history.push('/')
@@ -56,7 +55,7 @@ const SideBar = ({ user, signOutUser, dashboardTab, state }) => {
 };
 
 const mapStateToProps = state => {
-    return { state, user: state.user }
+    return {  user: state.user }
 }
 const mapDispachToProps = {
     signOutUser,

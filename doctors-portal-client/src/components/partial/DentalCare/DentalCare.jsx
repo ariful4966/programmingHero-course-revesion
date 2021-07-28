@@ -5,7 +5,7 @@ import './DentalCare.scss'
 const DentalCare = () => {
     const {id, title, body, img}=dentalCare[0]
     return (
-        <div className="dental_care section-padding">
+        <div className="dental_care section-padding" >
             <Container>
                 <Grid container spacing={6}>
                     <Grid item md={5}>

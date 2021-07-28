@@ -4,7 +4,7 @@ import './Blog.scss'
 
 const Blog = () => {
     return (
-        <div className="blog_area ">
+        <div className="blog_area " id="blog">
             <Container>
                 <div className="blog_container">
                     <div className="section_heading">

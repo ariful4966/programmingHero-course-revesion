@@ -16,7 +16,6 @@ import { GET_CATEGORY_DATA } from '../../../redux/action/action';
 import dentalCategory from '../../../data/dentalCategory';
 
 const Home = (props) => {
-    console.log(props);
     const {  dispatch } = props;
     useEffect(()=>{
         dispatch({type: GET_CATEGORY_DATA, dentalCategory })

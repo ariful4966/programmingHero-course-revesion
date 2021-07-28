@@ -1,6 +1,6 @@
 import { Paper, Typography } from '@material-ui/core';
 import React from 'react';
-import AppoinmentTable from '../../pages/Dashboard/AppoinmentTable';
+import AppoinmentTable from '../DashboardPartials/AppoinmentTable';
 
 const DashboardShowData = ({appoinments}) => {
     const headCells = [

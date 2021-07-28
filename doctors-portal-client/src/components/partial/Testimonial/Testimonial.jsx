@@ -4,11 +4,11 @@ import './Testimonial.scss'
 
 const Testimonial = () => {
     return (
-        <div className="testimonial_area ">
+        <div className="testimonial_area" id="review">
             <Container>
                 <div className="testimonial_container">
                     <div className="section_heading">
-                        <Typography variant='h5' className="heading_top">Appoinment</Typography>
+                        <Typography variant='h5' className="heading_top">Testimonial</Typography>
                         <Typography variant='h3' className="main_heading">What's Our Patient's Say</Typography>
                     </div>
                     <div className="testimonial_content">

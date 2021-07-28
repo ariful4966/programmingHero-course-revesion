@@ -17,30 +17,15 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import DeleteIcon from '@material-ui/icons/Delete';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import { connect } from 'react-redux';
-import { Button, Icon } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import Patients from './Patients';
+import Prescriptions from './Prescriptions';
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Donut', 452, 25.0, 51, 4.9),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Honeycomb', 408, 3.2, 87, 6.5),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Jelly Bean', 375, 0.0, 94, 0.0),
-    createData('KitKat', 518, 26.0, 65, 7.0),
-    createData('Lollipop', 392, 0.2, 98, 0.0),
-    createData('Marshmallow', 318, 0, 81, 2.0),
-    createData('Nougat', 360, 19.0, 9, 37.0),
-    createData('Oreo', 437, 18.0, 63, 4.0),
-];
+
+
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -68,9 +53,7 @@ function stableSort(array, comparator) {
     return stabilizedThis.map((el) => el[0]);
 }
 
-const headCells = [
-    'Sr.No', 'Date', 'Time', 'Name', 'Contact', 'Prescription', 'Action'
-];
+
 
 function EnhancedTableHead(props) {
     const { headCells } = props;
@@ -118,7 +101,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
     const classes = useToolbarStyles();
-    const { numSelected, title, appoinments, apDashbod} = props;
+    const { numSelected, title, appoinments, apDashbod } = props;
 
     return (
         <Toolbar
@@ -130,16 +113,18 @@ const EnhancedTableToolbar = (props) => {
             <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
                 {title}
             </Typography>
-
-            <Tooltip title="Filter list">
-                {
-                    apDashbod ? <IconButton>{appoinments.length > 0 && appoinments[0].date }</IconButton>: 
-                
-                <IconButton aria-label="filter list">
-                    <EventIcon />
-                </IconButton>
-                }
-            </Tooltip>
+            {
+                apDashbod ?
+                    <Tooltip title="Filter list">
+                        <IconButton>{appoinments.length > 0 && appoinments[0].date}</IconButton>
+                    </Tooltip>
+                    :
+                    <Tooltip title="Filter list">
+                        <IconButton aria-label="filter list">
+                            <FilterListIcon />
+                        </IconButton>
+                    </Tooltip>
+            }
 
         </Toolbar>
     );
@@ -173,8 +158,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function AppoinmentTable({ appoinments, headCells, apDashbod, main, title }) {
-    console.log(appoinments);
+function AppoinmentTable({ appoinments, headCells, apDashbod, main, title, patient, prescription }) {
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
@@ -191,7 +175,7 @@ function AppoinmentTable({ appoinments, headCells, apDashbod, main, title }) {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelecteds = rows.map((n) => n.name);
+            const newSelecteds = appoinments.map((n) => n.name);
             setSelected(newSelecteds);
             return;
         }
@@ -270,6 +254,12 @@ function AppoinmentTable({ appoinments, headCells, apDashbod, main, title }) {
                                                         <Button variant="contained">painding</Button>
                                                     </TableCell>
                                                 </>
+                                            }
+                                            {
+                                                patient && <Patients row={row} index={index} />
+                                            }
+                                            {
+                                                prescription && <Prescriptions row={row} index={index} />
                                             }
 
                                         </TableRow>

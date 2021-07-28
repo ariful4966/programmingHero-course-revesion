@@ -2,7 +2,7 @@ import { Container, Grid, Popper, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
-import AppoinmentTable from './AppoinmentTable';
+import AppoinmentTable from '../../partial/DashboardPartials/AppoinmentTable';
 
 const AppoinmentDashboard = ({appoinments}) => {
     const [value, setValue] = useState(new Date())
@@ -13,7 +13,7 @@ const AppoinmentDashboard = ({appoinments}) => {
         <div className="appoinment_section">
             <Typography variant="h2">Appoinment</Typography>
             <Container>
-                <Grid container spacing={6}>
+                <Grid container spacing={6} alignItems="center">
                     <Grid item md={6}>
                         <div className="appoinment_sec_calender">
                             

@@ -10,7 +10,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Container } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import UserMenu from '../UserMenu/UserMenu';
@@ -239,11 +239,11 @@ function Header({ home, user }) {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop} id="header_menu">
             <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/doctors-service">Doctors Service</Link>
-            <Link className={home && 'menu'} to="/reviews">Reviews</Link>
-            <Link className={home && 'menu'} to="/blog">Blog</Link>
-            <Link className={home && 'menu'} to="/contact">Contact us</Link>
+            <a href="#about">About</a>
+            <a href="#service">Doctors Service</a>
+            <a className={home && 'menu'} href="#review">Reviews</a>
+            <a className={home && 'menu'} href='#blog'>Blog</a>
+            <a className={home && 'menu'} href="#contact">Contact us</a>
           </div>
         </Toolbar>
       </Container>

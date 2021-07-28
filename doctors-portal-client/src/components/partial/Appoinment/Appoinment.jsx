@@ -11,7 +11,7 @@ const Appoinment = () => {
         history.push('/appoinment')
     }
     return (
-        <div className="appinment_doc_area ">
+        <div className="appinment_doc_area " >
             <Container>
                 <div className="appoinment_doc_container">
                     <Grid container spacing={6}>
