@@ -54,9 +54,26 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 
- function DailogBox({ open, toggleBtn, category, user }) {
+function DailogBox({ open, toggleBtn, category, user }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        const apData = {
+            ...data,
+            treatment: category.title,
+            action: null,
+            prescription: null
+        }
+
+        fetch('http://localhost:4000/appoinment', {
+            method: 'POST',
+            body: JSON.stringify(apData),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+    };
 
     return (
         <div className="dailogBox_area">
@@ -70,20 +87,20 @@ const DialogActions = withStyles((theme) => ({
                         <input defaultValue={category.startTime} type="time" min={category.startTime} max={category.endTime} {...register("time", { required: true })} />
                         {errors.time && <span>This field is required</span>}
 
-                        <input {...register("name", { required: true })} defaultValue={user.name}/>
+                        <input {...register("name", { required: true })} defaultValue={user.name} />
                         {errors.name && <span>This field is required</span>}
 
-                        <input {...register("phone", { required: true })} placeholder="Your Phone"/>
+                        <input {...register("phone", { required: true })} placeholder="Your Phone" />
                         {errors.phone && <span>This field is required</span>}
 
-                        <input {...register("email", { required: true })} defaultValue={user.email}/>
+                        <input {...register("email", { required: true })} defaultValue={user.email} />
                         {errors.email && <span>This field is required</span>}
 
                         <input defaultValue={category.date} {...register("date", { required: true })} />
                         {errors.date && <span>This field is required</span>}
 
-                        <DialogActions>
-                            <Button autoFocus  type="submit" variant="contained" id="gradient_btn" color="primary">
+                        <DialogActions onClose={toggleBtn}>
+                            <Button autoFocus type="submit" variant="contained" id="gradient_btn" color="primary" >
                                 Send
                             </Button>
                         </DialogActions>
@@ -94,10 +111,10 @@ const DialogActions = withStyles((theme) => ({
         </div>
     );
 }
-const mapStateToProps = state=>{
-    return {user: state.user}
+const mapStateToProps = state => {
+    return { user: state.user }
 }
-const mapDispachToProps={
+const mapDispachToProps = {
 
 }
 export default connect(mapStateToProps, mapDispachToProps)(DailogBox)
