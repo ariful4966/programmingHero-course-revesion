@@ -34,6 +34,7 @@ export default function DentalCategoryItem({ categoy }) {
         setDailog(!dailog)
         // new Date().toTimeString
     };
+    console.log(categoy);
 
     return (
         <Card className={classes.root}>
@@ -42,7 +43,7 @@ export default function DentalCategoryItem({ categoy }) {
                     {categoy.title}
                 </Typography>
                 <Typography className={classes.pos} color="standard" variant="h6">
-                    <strong>{categoy.startTime}</strong> - <strong>{categoy.endTime}</strong>
+                    <strong>{categoy.startIme}</strong> - <strong>{categoy.endTime}</strong>
                 </Typography>
                 <Typography variant="body2" component="p" color="textSecondary">
                     {categoy.avilableSpaces === null ? 'No' : categoy.avilableSpaces} Spaces Avilable

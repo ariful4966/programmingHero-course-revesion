@@ -1,4 +1,6 @@
 
+
+export const ALL_CATEGORY = 'ALL_CATEGORY'
 export const GET_CATEGORY_DATA = 'GET_CATEGORY_DATA';
 
 export const DENTAL_CATEGORY = 'DENTAL_CATEGORY';
@@ -10,6 +12,9 @@ export const SUBMIT_USER_INFO = 'SUBMIT_USER_INFO';
 export const NEWUSER_TRUE_FALSE = 'NEWUSER_TRUE_FALSE';
 
 
+export const allCategoris = (cat) => {
+    return { type: ALL_CATEGORY, cat }
+}
 
 export const categoryByDate = (date) => {
     return { type: DENTAL_CATEGORY, date }
@@ -34,6 +39,6 @@ export const signOutUser = () => {
 }
 
 export const DASHBOARD_TAB = 'DASHBOARD_TAB';
-export const dashboardTab = (str)=>{
-    return {type: DASHBOARD_TAB, str}
+export const dashboardTab = (str) => {
+    return { type: DASHBOARD_TAB, str }
 }

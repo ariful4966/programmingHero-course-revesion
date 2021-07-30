@@ -1,6 +1,20 @@
 const dentalCategory =
-  [{ "key": "1", "title": "Software Consultant", "startTime": "10:31", "endTime": "21:49", "avilableSpaces": 8, "date": "7/26/2021" },
-  { "key": "5", "title": "Accounting Assistant IV", "startTime": "20:15", "endTime": "22:49", "avilableSpaces": 10, "date": "8/30/2021" },
+  [{
+    "key": "1",
+    "title": "Software Consultant",
+    "startTime": "10:31",
+    "endTime": "21:49",
+    "avilableSpaces": 8,
+    "date": "7/26/2021"
+  },
+  {
+    "key": "5",
+     "title": "Accounting Assistant IV",
+    "startTime": "20:15",
+    "endTime": "22:49",
+    "avilableSpaces": 10,
+    "date": "8/30/2021"
+  },
   { "key": "0", "title": "Senior Developer", "startTime": "9:29", "endTime": "21:07", "avilableSpaces": 5, "date": "8/12/2021" },
   { "key": "368", "title": "Assistant Manager", "startTime": "19:51", "endTime": "21:35", "avilableSpaces": 7, "date": "8/7/2021" },
   { "key": "245", "title": "Tax Accountant", "startTime": "22:04", "endTime": "14:00", "avilableSpaces": 7, "date": "8/28/2021" },

@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 
@@ -18,6 +18,7 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const appoinmentsCollection = client.db(`${process.env.DB_NAME}`).collection('appoinments');
+  const apCategorisCollection = client.db(`${process.env.DB_NAME}`).collection('appoinmentCategoris');
 
   console.log('Database Connected Successfully...');
 
@@ -28,6 +29,13 @@ client.connect(err => {
         res.send(result)
       })
   });
+  // app.post('/categoris', (req, res) => {
+  //   const category = req.body;
+  //   apCategorisCollection.insertMany(category)
+  //     .then(result => {
+  //       res.send(result)
+  //     })
+  // })
 
 
   app.get('/appoinments', (req, res) => {
@@ -35,6 +43,12 @@ client.connect(err => {
       .toArray((error, document) => {
         res.send(document)
       })
+  })
+  app.get('/categoris', (req, res)=>{
+    apCategorisCollection.find()
+    .toArray((err, document)=>{
+      res.send(document)
+    })
   })
 });
 

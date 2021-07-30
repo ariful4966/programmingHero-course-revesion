@@ -9,32 +9,50 @@ import Home from './components/pages/Home/Home';
 import NotFound from './components/pages/NotFound/NotFound';
 import AppoinmentPage from './components/pages/AppoinmentPage/AppoinmentPage';
 import Auth from './components/pages/Auth/Auth';
-import PrivateRoute  from './components/pages/Auth/authManeger';
+import PrivateRoute from './components/pages/Auth/authManeger';
 import Dashboard from './components/pages/Dashboard';
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { allCategoris } from './redux/action/action';
 
-function App() {
-  
+function App(props) {
+  console.log(props);
+  const { allCategoris }=props;
+  useEffect(() => {
+    fetch('http://localhost:4000/categoris')
+      .then(res => res.json())
+      .then(data => {
+        allCategoris(data)
+      })
+  }, [])
   return (
     <Router>
       <Switch>
         <PrivateRoute path="/appoinment">
-          <AppoinmentPage/>
+          <AppoinmentPage />
         </PrivateRoute>
         <PrivateRoute path="/dashboard">
-          <Dashboard/>
+          <Dashboard />
         </PrivateRoute>
         <Route path="/login">
-          <Auth/>
+          <Auth />
         </Route>
         <Route exact path="/">
-          <Home/>
+          <Home />
         </Route>
-        <Route path="*"> 
-          <NotFound/>
+        <Route path="*">
+          <NotFound />
         </Route>
       </Switch>
     </Router>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return state
+}
+const mapDispatchToProps = {
+  allCategoris
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

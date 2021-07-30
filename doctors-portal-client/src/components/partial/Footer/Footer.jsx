@@ -1,12 +1,27 @@
-import { Container, Grid, Typography } from '@material-ui/core';
+import { Button, Container, Grid, Typography } from '@material-ui/core';
 import FooterWidget from './FooterWidget';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GTranslateIcon from '@material-ui/icons/GTranslate';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './Footer.scss'
 import { Link } from 'react-router-dom';
+import { dentalCategory } from '../../../data/Mongodb/dentalCategory'
 
 const Footer = () => {
+
+    const apCategoris = () => {
+        const ctDate = dentalCategory
+
+        fetch('http://localhost:4000/categoris', {
+            method: 'POST',
+            body: JSON.stringify(ctDate),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
     return (
         <footer className="footer_area">
             <Container>
@@ -14,19 +29,19 @@ const Footer = () => {
                     <Grid item md={3}>
                         <div className="footer_widget">
                             <Typography variant="h6" className="textColor">Treatments</Typography>
-                            <FooterWidget/>
+                            <FooterWidget />
                         </div>
                     </Grid>
                     <Grid item md={3}>
                         <div className="footer_widget ">
                             <Typography variant="h6" className="textColor">Service</Typography>
-                            <FooterWidget/>
+                            <FooterWidget />
                         </div>
                     </Grid>
                     <Grid item md={3}>
                         <div className="footer_widget">
                             <Typography variant="h6" className="textColor">Oral Helth</Typography>
-                            <FooterWidget/>
+                            <FooterWidget />
                         </div>
                     </Grid>
                     <Grid item md={3}>
@@ -35,11 +50,15 @@ const Footer = () => {
                             <Typography>New Youk -1010101 Hudson Yards</Typography>
                             <div className="comunicat_link">
                                 <ul>
-                                    <Link to="/"><FacebookIcon/></Link>
-                                    <Link to="/"><GTranslateIcon/></Link>
-                                    <Link to="/"><TwitterIcon/></Link>
+                                    <Link to="/"><FacebookIcon /></Link>
+                                    <Link to="/"><GTranslateIcon /></Link>
+                                    <Link to="/"><TwitterIcon /></Link>
                                 </ul>
                             </div>
+
+                            <Typography variant="body1">
+                                <Button variant="contained" onClick={apCategoris}>Appoinment Category</Button>
+                            </Typography>
                         </div>
                     </Grid>
                 </Grid>

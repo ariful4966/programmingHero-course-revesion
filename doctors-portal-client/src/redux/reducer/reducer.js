@@ -1,13 +1,15 @@
 import { signOut } from "../../components/pages/Auth/authManeger";
 import dentalCategory from "../../data/dentalCategory";
-import { DASHBOARD_TAB, DENTAL_CATEGORY, GET_CATEGORY_DATA, NEWUSER_TRUE_FALSE, SIGN_OUT, SUBMIT_USER_INFO, UPDATE_USER_INFO } from "../action/action"
+import { ALL_CATEGORY, DASHBOARD_TAB, DENTAL_CATEGORY, GET_CATEGORY_DATA, NEWUSER_TRUE_FALSE, SIGN_OUT, SUBMIT_USER_INFO, UPDATE_USER_INFO } from "../action/action"
 import appoinments from "../../data/appoinments";
 import patients from "../../data/patients";
 
 
+
+
 const initialState = {
-    treatmentCategory: dentalCategory,
-    treatmentByDate: dentalCategory.filter(df => df.date === new Date().toLocaleDateString('en-US')),
+    treatmentCategory: [],
+    treatmentByDate: [],
     setDate: new Date().toLocaleDateString('en-US'),
     user: {
         name: '',
@@ -22,13 +24,18 @@ const initialState = {
     dashBoardTab: 'dashboard',
     patients: patients
 }
+
+
 const dentalReducer = (state = initialState, action) => {
     switch (action.type) {
+        case ALL_CATEGORY:
+            const cat = action.cat
+            return { ...state, treatmentCategory: cat };
         case GET_CATEGORY_DATA:
             const getCategory = action.dentalCategory;
             return { ...state, treatmentCategory: getCategory }
         case DENTAL_CATEGORY:
-            const selectDate = action.date.toLocaleDateString('en-US');
+            const selectDate =  action.date.toLocaleDateString('en-US') ;
             const selectByDate = state.treatmentCategory.filter(td => td.date === selectDate)
             return { ...state, treatmentByDate: selectByDate, setDate: selectDate }
         case UPDATE_USER_INFO:
@@ -36,22 +43,22 @@ const dentalReducer = (state = initialState, action) => {
             let isFieldValid = true;
             if (event.name === 'email') {
                 isFieldValid = /\S+@\S+\.\S+/.test(event.value);
-                if (!isFieldValid) { return { ...state, user: {...state.user, errorEmail: 'Plese Provide Valid Email Address' } } }
+                if (!isFieldValid) { return { ...state, user: { ...state.user, errorEmail: 'Plese Provide Valid Email Address' } } }
             }
             if (event.name === 'password') {
                 const passwordValidation = state.user.password.length < 6;
                 const passwordHashNumber = /\d{1}/.test(event.value)
                 isFieldValid = (passwordValidation && passwordHashNumber)
-                if (!isFieldValid) { return { ...state, user: {...state.user, passError: 'Plese Type Valid Password "Lenth 6 Charecter"' } } }
+                if (!isFieldValid) { return { ...state, user: { ...state.user, passError: 'Plese Type Valid Password "Lenth 6 Charecter"' } } }
             }
             if (event.name === 'confirmPassword') {
                 const confirmPasswordValidation = (event.value === state.user.password);
                 isFieldValid = confirmPasswordValidation;
-                if (!isFieldValid) { return { ...state, user: {...state.user, confirmPassError: "Password Dosen't Match" } } }
+                if (!isFieldValid) { return { ...state, user: { ...state.user, confirmPassError: "Password Dosen't Match" } } }
             }
 
             if (isFieldValid) {
-                
+
                 return { ...state, user: { ...state.user, [event.name]: event.value } }
             }
             return state;
