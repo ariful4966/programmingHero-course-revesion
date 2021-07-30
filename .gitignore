@@ -2,7 +2,8 @@
 
 # dependencies
 doctors-portal-client/src/firebase.config.js
-doctors-portal-client/node_modules
+doctors-portal-client/node_modules/
+doctors-portal-client/.firebase/
 doctors-portal-client/build
 doctors-portal-server/node_modules
 doctors-portal-server/.env
