@@ -64,7 +64,7 @@ function DailogBox({ open, toggleBtn, category, user }) {
             prescription: null
         }
 
-        fetch('http://localhost:4000/appoinment', {
+        fetch('https://doctors-portal-server82.herokuapp.com/appoinment', {
             method: 'POST',
             body: JSON.stringify(apData),
             headers: {
