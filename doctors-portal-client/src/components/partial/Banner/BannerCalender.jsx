@@ -1,5 +1,4 @@
 import { Typography } from '@material-ui/core';
-import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { connect } from 'react-redux';
@@ -7,8 +6,8 @@ import { categoryByDate } from '../../../redux/action/action';
 
 const BannerCalender = (props) => {
     const { categoryByDate } = props
-    const [value, setValue] = useState(new Date());
-    
+    const value = new Date();
+
     return (
         <div>
             <Typography variant="h2">Appoinment</Typography>

@@ -3,7 +3,7 @@ import dentalCare from '../../../data/dentalCare';
 import './DentalCare.scss'
 
 const DentalCare = () => {
-    const {id, title, body, img}=dentalCare[0]
+    const { title, body, img}=dentalCare[0]
     return (
         <div className="dental_care section-padding" >
             <Container>

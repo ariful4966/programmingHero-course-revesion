@@ -5,7 +5,7 @@ import './Appoinment.scss'
 
 const Appoinment = () => {
     const history = useHistory()
-    const {id, title, body, img}= docAppoinment[0];
+    const { title, body, img}= docAppoinment[0];
 
     const getAppoinment = ()=>{
         history.push('/appoinment')

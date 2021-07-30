@@ -1,7 +1,6 @@
 import { signOut } from "../../components/pages/Auth/authManeger";
 import { ALL_APPOINMENT, ALL_CATEGORY, ALL_PATIENT, DASHBOARD_TAB, DENTAL_CATEGORY, GET_CATEGORY_DATA, NEWUSER_TRUE_FALSE, SIGN_OUT, SUBMIT_USER_INFO, UPDATE_USER_INFO } from "../action/action"
 
-import patients from "../../data/patients";
 
 
 

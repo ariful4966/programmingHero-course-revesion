@@ -1,4 +1,4 @@
-import { Container, Grid, Popper, Typography } from '@material-ui/core';
+import { Container, Grid, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import { connect } from 'react-redux';

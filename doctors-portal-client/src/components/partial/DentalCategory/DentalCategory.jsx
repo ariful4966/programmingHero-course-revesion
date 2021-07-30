@@ -1,7 +1,4 @@
 import { Container, Grid, Typography, } from '@material-ui/core';
-import { CircularProgress } from '@material-ui/core';
-
-import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import DentalCategoryItem from '../DentalCategoryItem/DentalCategoryItem';
 // import { categoryByDate } from '../../../redux/action/action';

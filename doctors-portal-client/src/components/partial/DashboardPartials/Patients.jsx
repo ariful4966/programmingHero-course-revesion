@@ -1,4 +1,4 @@
-import { Button, TableCell } from '@material-ui/core';
+import { TableCell } from '@material-ui/core';
 import React from 'react';
 
 const Patients = ({row, index}) => {

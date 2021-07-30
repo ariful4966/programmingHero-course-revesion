@@ -55,7 +55,7 @@ const DialogActions = withStyles((theme) => ({
 
 
 function DailogBox({ open, toggleBtn, category, user }) {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit,  formState: { errors } } = useForm();
     const onSubmit = data => {
         const apData = {
             ...data,

@@ -1,10 +1,10 @@
-import { TextField, TextareaAutosize, Button } from "@material-ui/core";
+import {  Button } from "@material-ui/core";
 import React from "react";
 import { useForm } from "react-hook-form";
 import './ContactForm.scss'
 
 export default function ContactForm() {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit,  formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
   return (

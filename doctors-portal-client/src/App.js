@@ -18,17 +18,17 @@ import { allAppoinment, allCategoris, allPatient } from './redux/action/action';
 function App(props) {
   const { allCategoris, allAppoinment, setDate, user, dashBoardTab, allPatient } = props;
   useEffect(() => {
-    fetch('http://localhost:4000/categoris')
+    fetch('https://doctors-portal-server82.herokuapp.com/categoris')
       .then(res => res.json())
       .then(data => {
         allCategoris(data)
       })
 
-    fetch('http://localhost:4000/appoinments')
+    fetch('https://doctors-portal-server82.herokuapp.com/appoinments')
       .then(res => res.json())
       .then(data => allAppoinment(data))
 
-    fetch('http://localhost:4000/patients')
+    fetch('https://doctors-portal-server82.herokuapp.com/patients')
       .then(res => res.json())
       .then(data => allPatient(data))
 

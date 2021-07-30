@@ -8,7 +8,7 @@ import BannerInfo from './BannerInfo';
 import './Banner.scss'
 
 const Banner = (props) => {
-    const { appoin, user } = props;
+    const { appoin} = props;
 
     
     return (

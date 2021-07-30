@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+
 import Appoinment from '../../partial/Appoinment/Appoinment';
 import Banner from '../../partial/Banner/Banner';
 import Blog from '../../partial/Blog/Blog';
