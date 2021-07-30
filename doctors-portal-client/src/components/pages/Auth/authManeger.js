@@ -59,7 +59,6 @@ const updateUserName = (name) => {
 }
 
 function PrivateRoute({ user, children, ...rest }) {
-    console.log(user);
 
     return (
         <Route

@@ -6,7 +6,7 @@ import DashboardShowData from '../../partial/DashboardMain/DashboardShowData';
 const Dashboard = ({appoinments}) => {
     return (
         <div className="dashboard_section">
-            <Typography variant="h2">Dashboard</Typography>
+            <Typography variant="h2" className="dashHeading">Dashboard</Typography>
             <DashboardMain appoinments={appoinments}/>
             <DashboardShowData appoinments={appoinments}/>
         </div>

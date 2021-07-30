@@ -42,3 +42,14 @@ export const DASHBOARD_TAB = 'DASHBOARD_TAB';
 export const dashboardTab = (str) => {
     return { type: DASHBOARD_TAB, str }
 }
+
+export const ALL_APPOINMENT = 'ALL_APPOINMENT';
+export const allAppoinment = (appo) => {
+    return { type: ALL_APPOINMENT, appo }
+}
+
+
+export const ALL_PATIENT = 'ALL_PATIENT';
+export const allPatient = (patient) => {
+    return { type: ALL_PATIENT, patient }
+}

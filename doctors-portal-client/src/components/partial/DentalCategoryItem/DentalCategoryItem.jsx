@@ -34,7 +34,8 @@ export default function DentalCategoryItem({ categoy }) {
         setDailog(!dailog)
         // new Date().toTimeString
     };
-    console.log(categoy);
+    // const start = (categoy.startIme).toLocaleTimeString('en-US')
+    // console.log(start);
 
     return (
         <Card className={classes.root}>

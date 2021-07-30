@@ -72,7 +72,9 @@ function DailogBox({ open, toggleBtn, category, user }) {
             },
         })
             .then((response) => response.json())
-            .then((json) => console.log(json));
+            .then((json) => {
+                toggleBtn()
+            });
     };
 
     return (
@@ -99,7 +101,7 @@ function DailogBox({ open, toggleBtn, category, user }) {
                         <input defaultValue={category.date} {...register("date", { required: true })} />
                         {errors.date && <span>This field is required</span>}
 
-                        <DialogActions onClose={toggleBtn}>
+                        <DialogActions >
                             <Button autoFocus type="submit" variant="contained" id="gradient_btn" color="primary" >
                                 Send
                             </Button>

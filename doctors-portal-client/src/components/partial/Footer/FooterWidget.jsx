@@ -6,7 +6,7 @@ const FooterWidget = () => {
     return (
         <List component="nav">
             {
-                footerData.map(lk => <ListItem><Link to={lk.path}>{lk.name}</Link></ListItem>)
+                footerData.map((lk, index) => <ListItem key={index}><Link to={lk.path}>{lk.name}</Link></ListItem>)
             }
         </List>
     );

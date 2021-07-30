@@ -7,6 +7,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signOutUser } from '../../../redux/action/action';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserMenu({open, handleListKeyDown, handleClose, anchorRef}) {
+function UserMenu({ open, handleListKeyDown, handleClose, anchorRef, signOutUser }) {
   const classes = useStyles();
   const history = useHistory()
-    const sendDashboard = ()=>{
-        history.push('/dashboard')
-    }
+  const sendDashboard = () => {
+    history.push('/dashboard')
+  }
 
   return (
     <div className={classes.root}>
@@ -38,7 +40,7 @@ export default function UserMenu({open, handleListKeyDown, handleClose, anchorRe
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     <MenuItem onClick={sendDashboard}>Dashboard</MenuItem>
                     <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <MenuItem onClick={signOutUser}>Logout</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
@@ -49,3 +51,11 @@ export default function UserMenu({open, handleListKeyDown, handleClose, anchorRe
     </div>
   );
 }
+
+const mapStateToProps = state => {
+  return state
+}
+const mapDispachToProps = {
+  signOutUser
+}
+export default connect(mapStateToProps, mapDispachToProps)(UserMenu);

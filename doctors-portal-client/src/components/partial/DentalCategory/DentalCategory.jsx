@@ -11,8 +11,6 @@ const DentalCategory = (props) => {
     const showDate = new Date(setDate).toDateString();
     const compareDate = new Date(setDate).toLocaleDateString('en-US');
     const defaultCategory = treatmentCategory.filter(tc => tc.date === compareDate)
-    console.log(defaultCategory);
-
 
     return ((treatmentByDate.length > 0 || defaultCategory.length > 0) ?
         <div className="dental_Category">

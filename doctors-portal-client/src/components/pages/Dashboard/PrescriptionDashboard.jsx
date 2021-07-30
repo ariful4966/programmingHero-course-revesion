@@ -8,7 +8,7 @@ const PrescriptionDashboard = ({ patients }) => {
     const prescriptionData = patients.filter(pt => pt.prescription !== '');
     return (
         <div className="patient_section">
-            <Typography variant="h2">Prescription</Typography>
+            <Typography variant="h2" className="dashHeading">Prescription</Typography>
             <Container>
                 <AppoinmentTable appoinments={prescriptionData} headCells={headCells} apDashbod={false} prescription title="All Prescriptions" />
             </Container>

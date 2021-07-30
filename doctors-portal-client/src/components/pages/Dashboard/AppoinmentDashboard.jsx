@@ -11,7 +11,7 @@ const AppoinmentDashboard = ({appoinments}) => {
     const headCells = ['Name', 'Shedule', 'Action']
     return (
         <div className="appoinment_section">
-            <Typography variant="h2">Appoinment</Typography>
+            <Typography variant="h2" className="dashHeading">Appoinment</Typography>
             <Container>
                 <Grid container spacing={6} alignItems="center">
                     <Grid item md={6}>

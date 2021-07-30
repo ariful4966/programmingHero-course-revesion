@@ -29,9 +29,14 @@ const Auth = (props) => {
                         }
                         submitUserInfo(currUser)
                     } else {
+                        const crtUser = {
+                            ...user,
+                            name: res.user.displayName,
+                            email: res.user.email
+                        }
                         
                         handleLoginSignupForm(false)
-                        submitUserInfo(res.user)
+                        submitUserInfo(crtUser)
                     }
 
                 })

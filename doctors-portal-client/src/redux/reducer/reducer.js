@@ -1,7 +1,6 @@
 import { signOut } from "../../components/pages/Auth/authManeger";
-import dentalCategory from "../../data/dentalCategory";
-import { ALL_CATEGORY, DASHBOARD_TAB, DENTAL_CATEGORY, GET_CATEGORY_DATA, NEWUSER_TRUE_FALSE, SIGN_OUT, SUBMIT_USER_INFO, UPDATE_USER_INFO } from "../action/action"
-import appoinments from "../../data/appoinments";
+import { ALL_APPOINMENT, ALL_CATEGORY, ALL_PATIENT, DASHBOARD_TAB, DENTAL_CATEGORY, GET_CATEGORY_DATA, NEWUSER_TRUE_FALSE, SIGN_OUT, SUBMIT_USER_INFO, UPDATE_USER_INFO } from "../action/action"
+
 import patients from "../../data/patients";
 
 
@@ -20,9 +19,9 @@ const initialState = {
         error: ''
     },
     newUser: false,
-    appoinments: appoinments,
+    appoinments: [],
     dashBoardTab: 'dashboard',
-    patients: patients
+    patients: []
 }
 
 
@@ -35,7 +34,7 @@ const dentalReducer = (state = initialState, action) => {
             const getCategory = action.dentalCategory;
             return { ...state, treatmentCategory: getCategory }
         case DENTAL_CATEGORY:
-            const selectDate =  action.date.toLocaleDateString('en-US') ;
+            const selectDate = action.date.toLocaleDateString('en-US');
             const selectByDate = state.treatmentCategory.filter(td => td.date === selectDate)
             return { ...state, treatmentByDate: selectByDate, setDate: selectDate }
         case UPDATE_USER_INFO:
@@ -72,7 +71,13 @@ const dentalReducer = (state = initialState, action) => {
             return { ...state, user: initialState.user };
         case DASHBOARD_TAB:
             const tabStr = action.str;
-            return { ...state, dashBoardTab: tabStr }
+            return { ...state, dashBoardTab: tabStr };
+        case ALL_APPOINMENT:
+            const appoints = action.appo;
+            return { ...state, appoinments: appoints }
+        case ALL_PATIENT:
+            const patient = action.patient;
+            return { ...state, patients: patient }
         default:
             return state
     }

@@ -13,18 +13,26 @@ import PrivateRoute from './components/pages/Auth/authManeger';
 import Dashboard from './components/pages/Dashboard';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
-import { allCategoris } from './redux/action/action';
+import { allAppoinment, allCategoris, allPatient } from './redux/action/action';
 
 function App(props) {
-  console.log(props);
-  const { allCategoris }=props;
+  const { allCategoris, allAppoinment, setDate, user, dashBoardTab, allPatient } = props;
   useEffect(() => {
     fetch('http://localhost:4000/categoris')
       .then(res => res.json())
       .then(data => {
         allCategoris(data)
       })
-  }, [])
+
+    fetch('http://localhost:4000/appoinments')
+      .then(res => res.json())
+      .then(data => allAppoinment(data))
+
+    fetch('http://localhost:4000/patients')
+      .then(res => res.json())
+      .then(data => allPatient(data))
+
+  }, [user, setDate, dashBoardTab])
   return (
     <Router>
       <Switch>
@@ -52,7 +60,9 @@ const mapStateToProps = state => {
   return state
 }
 const mapDispatchToProps = {
-  allCategoris
+  allCategoris,
+  allAppoinment,
+  allPatient
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

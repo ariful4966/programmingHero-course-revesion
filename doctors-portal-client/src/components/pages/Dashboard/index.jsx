@@ -1,12 +1,13 @@
 import { Grid } from '@material-ui/core';
 import Dashboard from './Dashboard';
 import SideBar from '../../partial/SideBar/SideBar';
-import './Dashboard.scss';
+
 import { connect } from 'react-redux';
 import AppoinmentDashboard from './AppoinmentDashboard';
 import PatientDashboard from './PatientDashboard';
 import PrescriptionDashboard from './PrescriptionDashboard';
 import Settings from './Settings';
+import './Dashboard.scss';
 
 const Index = ({ dashBoardTab, appoinments }) => {
     return (

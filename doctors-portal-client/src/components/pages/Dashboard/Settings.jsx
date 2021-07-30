@@ -1,9 +1,10 @@
+import { Typography } from '@material-ui/core';
 import React from 'react';
 
 const Settings = () => {
     return (
-        <div>
-            <h1>Settion page comming soon</h1>
+        <div className="setting_section">
+            <Typography variant="h2" className="dashHeading">Settings</Typography>
         </div>
     );
 };
