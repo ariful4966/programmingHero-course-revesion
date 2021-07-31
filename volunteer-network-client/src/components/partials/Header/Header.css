@@ -1,0 +1,13 @@
+.logo {
+    width: 250px;
+}
+
+header nav .navbar-nav a {
+    margin: 0 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #000;
+    padding: 20px;
+}
