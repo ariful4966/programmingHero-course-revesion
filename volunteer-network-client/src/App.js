@@ -8,15 +8,21 @@ import {
 
 import './App.css';
 import Home from './components/pages/Home/Home';
+import Registation from './components/pages/Registation/Registation';
 import Header from './components/partials/Header/Header';
 
 function App() {
   return (
     <Router>
-      <div >
         <Header />
-        <Home />
-      </div>
+        <Switch>
+          <Route path="/registation">
+            <Registation/>
+          </Route>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+        </Switch>
     </Router>
   );
 }

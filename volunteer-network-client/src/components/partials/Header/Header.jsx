@@ -2,11 +2,15 @@
 import React from 'react';
 import { Container, Navbar, Nav, Button } from 'react-bootstrap';
 import logo from '../../../images/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import './Header.css'
 
 const Header = () => {
+    const history = useHistory();
+    const registationPage = ()=>{
+        history.push('/registation')
+    }
     return (
         <header>
             <Navbar bg="light" expand="lg">
@@ -19,7 +23,7 @@ const Header = () => {
                             <Link to="/">Donation</Link>
                             <Link to="/">Events</Link>
                             <Link to="/">Blog</Link>
-                            <Button className="m-3">Registation</Button>
+                            <Button className="m-3" onClick={registationPage}>Registation</Button>
                             <Button className="m-3" variant="secondary">Admin</Button>
                         </Nav>
                     </Navbar.Collapse>

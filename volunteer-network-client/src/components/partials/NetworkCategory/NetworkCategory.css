@@ -1,0 +1,19 @@
+.bg {
+    background-color: brown;
+}
+
+.singleCategory .card-body {
+    height: 100px;
+}
+
+.singleCategory .card {
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.category_area {
+    margin: 50px 0 100px 0;
+}
