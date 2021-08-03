@@ -1,15 +1,16 @@
-import React, { useReducer } from 'react';
+
 import { Col, Container, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import logo from '../../../images/logo.png'
-import { handleBlur } from '../../../Reducer/actions';
-import { initialState, reducer } from '../../../Reducer/reactReducer';
 import RegistationForm from '../../partials/RegistationForm/RegistationForm';
 import './Registation.css'
 
-const Registation = () => {
+const Registation = (props) => {
+    const { categoris } = props
+    const { catKey } = useParams();
+    const paramCategory = categoris.find(ct => ct._id === catKey)
 
-    const [state, dispatch] = useReducer(reducer, initialState);
-    console.log(state);
     return (
         <div className="registation_area">
             <Container>
@@ -23,7 +24,7 @@ const Registation = () => {
                                 <div className="reg_form_heading">
                                     <h2>Registation as Volunteer</h2>
                                 </div>
-                                <RegistationForm dispatch={dispatch} handleBlur={handleBlur} />
+                                <RegistationForm  paramCategory={paramCategory}/>
                             </div>
                         </div>
                     </Col>
@@ -33,4 +34,8 @@ const Registation = () => {
     );
 };
 
-export default Registation;
+const mapStateToProps = state => {
+    return state
+}
+
+export default connect(mapStateToProps)(Registation);

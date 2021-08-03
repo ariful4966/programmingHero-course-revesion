@@ -1,6 +1,6 @@
-import { ALL_CATEGORIS, DATA_BLUR } from "./actions";
+import { ALL_CATEGORIS, ALL_RERISTATIONS, DATA_BLUR } from "./actions";
 
-export const initialState = {
+const initialState = {
     count: 0,
     categoris: [],
     colors: ["#ff8c00", "#e9c206", "#0ec0ee", "blue"],
@@ -16,10 +16,11 @@ export const initialState = {
         email: '',
         password: '',
         confirmPassword: ''
-    }
+    },
+    registations: []
 };
 
-export function reducer(state, action) {
+export function reducer(state = initialState, action) {
     switch (action.type) {
         case 'increment':
             return { ...state, count: state.count + 1 };
@@ -31,6 +32,9 @@ export function reducer(state, action) {
         case DATA_BLUR:
             const event = action.e
             return { ...state, registation: { ...state.registation, [event.target.name]: event.target.value } };
+        case ALL_RERISTATIONS:
+            const resData = action.resData
+            return { ...state, registations: resData }
         default:
             return state;
     }

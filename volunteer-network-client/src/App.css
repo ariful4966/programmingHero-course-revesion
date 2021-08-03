@@ -3,3 +3,7 @@ img{
   height: 100%;
   display: block;
 }
+
+div#root {
+  background: #dfdff0;
+}

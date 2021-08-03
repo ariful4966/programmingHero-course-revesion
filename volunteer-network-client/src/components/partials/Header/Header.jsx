@@ -13,7 +13,7 @@ const Header = () => {
     }
     return (
         <header>
-            <Navbar bg="light" expand="lg">
+            <Navbar  expand="lg">
                 <Container>
                     <Navbar.Brand href="#home"><img src={logo} alt="LOGO" className="logo" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -21,7 +21,7 @@ const Header = () => {
                         <Nav className="ms-auto align-items-center">
                             <Link to="/">Home</Link>
                             <Link to="/">Donation</Link>
-                            <Link to="/">Events</Link>
+                            <Link to="/events">Events</Link>
                             <Link to="/">Blog</Link>
                             <Button className="m-3" onClick={registationPage}>Registation</Button>
                             <Button className="m-3" variant="secondary">Admin</Button>

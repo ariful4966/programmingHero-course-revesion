@@ -1,13 +1,10 @@
 
 
-import React, { useReducer } from 'react';
 import { useHistory } from 'react-router';
 import { Card, Col } from 'react-bootstrap';
-import { initialState, reducer } from '../../../Reducer/reactReducer';
 
-const CategoryItem = ({ ct }) => {
-    const [state, dispatch] = useReducer(reducer, initialState)
-    const random = state.colors[Math.floor(Math.random() * state.colors.length)];
+const CategoryItem = ({ ct , colors}) => {
+    const random = colors[Math.floor(Math.random() * colors.length)];
     const history = useHistory()
 
     const ragistation = (id) => {
