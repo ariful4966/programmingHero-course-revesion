@@ -3,13 +3,18 @@ const express = require("express");
 const { MongoClient, ObjectId } = require('mongodb');
 const bodyPerser = require('body-parser')
 const cors = require('cors')
+const admin = require('firebase-admin');
 
 const app = express();
 
 app.use(cors())
 app.use(bodyPerser.json())
 
+const serviceAccount = require('./volunteer-network-2bbc0-firebase-adminsdk-wqv2d-7fe5864da9.json');
 
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.nine7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -44,17 +49,70 @@ client.connect(err => {
     })
 
     app.get('/registation', (req, res) => {
-        registationCollection.find({})
-            .toArray((err, document) => {
-                res.send(document)
-            })
+
+        const bearer = req.headers.authorization;
+        if (bearer && bearer.startsWith('Bearer ')) {
+            const idToken = bearer.split(' ')[1];
+
+            admin
+                .auth()
+                .verifyIdToken(idToken)
+                .then((decodedToken) => {
+                    console.log(decodedToken);
+                    const tokenEmail = decodedToken.email;
+                    const usrEmail = req.query.email;
+                    if (tokenEmail == usrEmail) {
+                        registationCollection.find({ email: usrEmail })
+                            .toArray((err, document) => {
+                                res.send(document)
+                            })
+                    }
+                })
+
+        }
+
+
     })
+
+    app.get('/registations', (req, res) => {
+        const email = req.query.email;
+        const userMail = `ariful4966@gmail.com`
+        if (email === userMail) {
+
+            const bearer = req.headers.authorization;
+            if (bearer && bearer.startsWith('Bearer ')) {
+                const idToken = bearer.split(' ')[1];
+
+                admin
+                    .auth()
+                    .verifyIdToken(idToken)
+                    .then((decodedToken) => {
+                        console.log(decodedToken);
+                        const tokenEmail = decodedToken.email;
+                        const usrEmail = req.query.email;
+                        if (tokenEmail == usrEmail) {
+                            registationCollection.find({ })
+                                .toArray((err, document) => {
+                                    res.send(document)
+                                })
+                        }
+                    })
+
+            }
+        }
+    })
+
+
+
+
+
+
 
     app.delete('/events/:id', (req, res) => {
         registationCollection.deleteOne({ _id: ObjectId(req.params.id) })
-        .then(result=>{
-            res.send(result) 
-        })
+            .then(result => {
+                res.send(result)
+            })
     })
 
 });
@@ -62,4 +120,4 @@ client.connect(err => {
 
 app.listen(2400, () => {
     console.log("Server started at port 2400");
-});  
+});
