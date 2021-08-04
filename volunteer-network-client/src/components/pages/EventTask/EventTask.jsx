@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { allRegistations } from '../../../redux/actions';
 import './EventTask.css'
 import SingleEvent from '../../partials/SingleEvent/SingleEvent';
+import Header from '../../partials/Header/Header';
 
 const EventTask = ({ allRegistations, registations }) => {
 
@@ -40,6 +41,8 @@ const EventTask = ({ allRegistations, registations }) => {
     console.log(registations);
 
     return (
+        <>
+        <Header/>
         < div className="eventTask_area" >
             <Container>
                 <Row>
@@ -49,6 +52,7 @@ const EventTask = ({ allRegistations, registations }) => {
                 </Row>
             </Container>
         </div >
+        </>
     )
 
 

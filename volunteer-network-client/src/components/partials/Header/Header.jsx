@@ -1,19 +1,23 @@
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Container, Navbar, Nav, Button } from 'react-bootstrap';
 import logo from '../../../images/logo.png'
 import { Link, useHistory } from 'react-router-dom'
 
 import './Header.css'
+import { connect } from 'react-redux';
 
-const Header = () => {
+const Header = ({ user }) => {
     const history = useHistory();
-    const registationPage = ()=>{
-        history.push('/registation')
+    const registationPage = () => {
+        history.push('/login')
+    }
+    const addminPage = ()=>{
+        history.push('/admin')
     }
     return (
         <header>
-            <Navbar  expand="lg">
+            <Navbar expand="lg">
                 <Container>
                     <Navbar.Brand href="#home"><img src={logo} alt="LOGO" className="logo" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -23,8 +27,13 @@ const Header = () => {
                             <Link to="/">Donation</Link>
                             <Link to="/events">Events</Link>
                             <Link to="/">Blog</Link>
-                            <Button className="m-3" onClick={registationPage}>Registation</Button>
-                            <Button className="m-3" variant="secondary">Admin</Button>
+                            {
+                                user.isLogin ? <strong>{user.name}</strong> :
+                                    <Fragment>
+                                        <Button className="m-3" onClick={registationPage}>Registation</Button>
+                                        <Button className="m-3" variant="secondary" onClick={addminPage}>Admin</Button>
+                                    </Fragment>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -32,5 +41,12 @@ const Header = () => {
         </header>
     );
 };
+const mapStateToProps = state => {
+    return state
+}
 
-export default Header;
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

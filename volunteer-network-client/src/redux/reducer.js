@@ -1,4 +1,6 @@
-import { ALL_CATEGORIS, ALL_RERISTATIONS, DATA_BLUR } from "./actions";
+
+import { signInWithGoogle } from "../components/pages/Login/LoginManager";
+import { ALL_CATEGORIS, ALL_RERISTATIONS, DATA_BLUR, GOOGLE_SIGN_IN, SIDE_BAR_NAV } from "./actions";
 
 const initialState = {
     count: 0,
@@ -15,9 +17,13 @@ const initialState = {
         name: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        isLogin: false,
+        error: '',
+        isAdmin: false
     },
-    registations: []
+    registations: [],
+    sidebar: 'volunteer'
 };
 
 export function reducer(state = initialState, action) {
@@ -35,6 +41,17 @@ export function reducer(state = initialState, action) {
         case ALL_RERISTATIONS:
             const resData = action.resData
             return { ...state, registations: resData }
+        case GOOGLE_SIGN_IN:
+            const newUser = action.res;
+            const currUser = {
+                ...state.user,
+                ...newUser
+            }
+
+            return { ...state, user: currUser }
+        case SIDE_BAR_NAV:
+            const sidebar = action.menu;
+            return {...state, sidebar: sidebar}
         default:
             return state;
     }

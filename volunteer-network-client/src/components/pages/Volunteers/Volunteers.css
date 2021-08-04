@@ -1,0 +1,31 @@
+.volunteers_area .row {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.volunteers_area {
+    height: 100%;
+}
+
+.volunteer_content {
+    background: #fff;
+}
+
+.volunteer_content .sec_content {
+    background: #e0e7ec;
+    height: 80%;
+}
+
+.volunteer_sec_content {
+    height: 100%;
+}
+
+.volunteer_sec_content .sec_header {
+    padding: 10px 40px;
+}
+
+.volunteer_sec_content .sec_header h1 {
+    font-weight: 700;
+    font-family: arial;
+    font-size: 40px;
+}

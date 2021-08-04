@@ -5,16 +5,18 @@ import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import './App.css';
 import EventTask from './components/pages/EventTask/EventTask';
 import Home from './components/pages/Home/Home';
+import Login from './components/pages/Login/Login';
 import Registation from './components/pages/Registation/Registation';
 import Header from './components/partials/Header/Header';
 import { allCategory } from './redux/actions';
+import PrivateRoute from './components/pages/Login/LoginManager';
+import Volunteers from './components/pages/Volunteers/Volunteers';
 
 function App({ allCategory }) {
 
@@ -31,13 +33,19 @@ function App({ allCategory }) {
 
   return (
     <Router>
-      <Header />
+      
       <Switch>
-        <Route path="/registation/:catKey">
+        <PrivateRoute path="/registation/:catKey">
           <Registation />
+        </PrivateRoute>
+        <Route path="/login">
+          <Login/>
         </Route>
-        <Route path="/events">
+        <PrivateRoute path="/events">
           <EventTask/>
+        </PrivateRoute>
+        <Route path="/admin">
+          <Volunteers/>
         </Route>
         <Route exact path="/">
           <Home />

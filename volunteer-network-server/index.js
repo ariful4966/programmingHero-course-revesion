@@ -53,7 +53,7 @@ client.connect(err => {
     app.delete('/events/:id', (req, res) => {
         registationCollection.deleteOne({ _id: ObjectId(req.params.id) })
         .then(result=>{
-            res.send(result)
+            res.send(result) 
         })
     })
 
@@ -62,4 +62,4 @@ client.connect(err => {
 
 app.listen(2400, () => {
     console.log("Server started at port 2400");
-});
+});  

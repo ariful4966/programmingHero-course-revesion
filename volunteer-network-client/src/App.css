@@ -4,6 +4,7 @@ img{
   display: block;
 }
 
-div#root {
+#root {
   background: #dfdff0;
+  height: 100%;
 }

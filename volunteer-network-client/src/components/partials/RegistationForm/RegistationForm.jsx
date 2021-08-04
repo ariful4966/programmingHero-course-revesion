@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { handleBlur } from '../../../redux/actions';
 
 const RegistationForm = (props) => {
-    const { handleBlur, paramCategory, registation } = props;
+    const { handleBlur, paramCategory, registation , user} = props;
     const history = useHistory()
 
     const handleSubmit = (e)=>{
@@ -26,10 +26,10 @@ const RegistationForm = (props) => {
     return (
         <Form  onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Control type="text" name="name" placeholder="Fullname" onBlur={handleBlur} />
+                <Form.Control type="text" name="name" placeholder="Fullname" onBlur={handleBlur} defaultValue={user.name} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Control type="email" name="email" placeholder="Username & Email" onBlur={handleBlur} />
+                <Form.Control type="email" name="email" placeholder="Username & Email" onBlur={handleBlur} defaultValue={user.email} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Control type="date" name="date"  onBlur={handleBlur} defaultValue={new Date()}/>

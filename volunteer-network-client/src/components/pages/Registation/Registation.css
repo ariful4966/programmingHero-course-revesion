@@ -2,6 +2,7 @@
 .reg_form_area {
     border: 1px solid #000;
     padding: 50px;
+    border-radius: 10px;
 }
 
 .reg_form_area form input, .reg_form_area form textarea {
@@ -15,7 +16,7 @@
     box-shadow: none;
 }
 
-.registation_logo img {
+.registation_logo img, .Login_logo img {
     width: 300px;
     margin: 0 auto;
     padding: 20px;

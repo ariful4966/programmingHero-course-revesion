@@ -1,7 +1,7 @@
 
 import { Col, Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import logo from '../../../images/logo.png'
 import RegistationForm from '../../partials/RegistationForm/RegistationForm';
 import './Registation.css'
@@ -18,7 +18,7 @@ const Registation = (props) => {
                     <Col md={{ span: 6, offset: 3 }}>
                         <div className="registation_section">
                             <div className="registation_logo">
-                                <img src={logo} alt="" />
+                                <Link to="/"><img src={logo} alt="" /></Link>
                             </div>
                             <div className="reg_form_area">
                                 <div className="reg_form_heading">
