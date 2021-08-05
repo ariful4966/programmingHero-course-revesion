@@ -1,12 +1,29 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import EventAdd from '../../partials/EventAdd/EventAdd';
 import Sidebar from '../../partials/Sidebar/Sidebar';
 import VolunteerList from '../../partials/VolunteerList/VolunteerList';
+import { allRegistations } from '../../../redux/actions';
 import './Volunteers.css'
 
-const Volunteers = ({sidebar}) => {
+const Volunteers = ({sidebar, user, allRegistations, registations}) => {
+
+    useEffect(() => {
+        axios.get('http://localhost:2400/registations?email=' + user.email, {
+            headers: {
+                authorization: `Bearer ${sessionStorage.getItem('token')}`,
+                isAdmin: user.isAdmin
+            }
+        })
+            .then(res => {
+                allRegistations(res.data);
+            })
+    }, [registations]);
+
+    
+
     return (
         <div className="volunteers_area">
             <Row>
@@ -15,7 +32,7 @@ const Volunteers = ({sidebar}) => {
                 </Col>
                 <Col md={9} className="volunteer_content">
                     {
-                        sidebar === 'volunteer'&& <VolunteerList></VolunteerList> 
+                        sidebar === 'volunteer'&& <VolunteerList registations={registations}></VolunteerList> 
                     }
                     {
                         sidebar === 'addEvent' && <EventAdd/>
@@ -28,5 +45,8 @@ const Volunteers = ({sidebar}) => {
 const mapStateToProps = state=>{
     return state
 }
+const mapDispatchToProps = {
+    allRegistations
+}
 
-export default connect(mapStateToProps)(Volunteers);
+export default connect(mapStateToProps, mapDispatchToProps)(Volunteers);

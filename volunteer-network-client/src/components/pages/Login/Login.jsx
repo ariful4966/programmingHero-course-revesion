@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import logo from '../../../images/logo.png'
 import './Login.css'
-import { googleSignIn, GOOGLE_SIGN_IN } from '../../../redux/actions';
+import { GOOGLE_SIGN_IN } from '../../../redux/actions';
 import googleLogo from '../../../images/google.png';
-import { firebaseInitilizationFremwork, signInWithGoogle } from './LoginManager';
+import { firebaseInitilizationFremwork, getAuthToken, signInWithGoogle } from './LoginManager';
 
 const Login = (props) => {
     const location = useLocation()
@@ -14,22 +14,23 @@ const Login = (props) => {
     firebaseInitilizationFremwork()
 
     let { from } = location.state || { from: { pathname: "/" } };
-    const { user, dispatch} = props
-    
-    const handleSignIn = ()=>{
+    const { user, dispatch } = props
+
+    const handleSignIn = () => {
 
         signInWithGoogle()
-        .then(res=>{
-            dispatch({type: GOOGLE_SIGN_IN, res})
-        })
-        
-    }
-        if (user.isLogin) {
-            history.replace(from)
-        }
-    
+            .then(res => {
+                dispatch({ type: GOOGLE_SIGN_IN, res })
+                getAuthToken()
+            })
 
-    
+    }
+    if (user.isLogin) {
+        history.replace(from)
+    }
+
+
+
 
     console.log(props);
 
@@ -48,9 +49,9 @@ const Login = (props) => {
                                     <div className="reg_form_heading">
                                         <h2>Login as with</h2>
                                     </div>
-                                    <div className="login_btn_area" >
+                                    <div className="login_btn_area" onClick={handleSignIn}>
                                         <img src={googleLogo} alt="GOOGLE ICON" />
-                                        <Button variant="default" onClick={handleSignIn} >Continue With Google</Button>
+                                        <Button variant="default"  >Continue With Google</Button>
                                     </div>
                                     <p>Do you have an account? <Link target="_blank" to="google.com">Create an Account</Link></p>
                                 </div>
@@ -66,8 +67,8 @@ const Login = (props) => {
 const mapStateToProps = state => {
     return state
 }
-const mapDispatchToProps = dispatch =>({
-     dispatch
+const mapDispatchToProps = dispatch => ({
+    dispatch
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

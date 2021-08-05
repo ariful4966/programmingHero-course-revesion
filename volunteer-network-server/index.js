@@ -87,11 +87,10 @@ client.connect(err => {
                     .auth()
                     .verifyIdToken(idToken)
                     .then((decodedToken) => {
-                        console.log(decodedToken);
                         const tokenEmail = decodedToken.email;
                         const usrEmail = req.query.email;
                         if (tokenEmail == usrEmail) {
-                            registationCollection.find({ })
+                            registationCollection.find({})
                                 .toArray((err, document) => {
                                     res.send(document)
                                 })
@@ -112,6 +111,18 @@ client.connect(err => {
         registationCollection.deleteOne({ _id: ObjectId(req.params.id) })
             .then(result => {
                 res.send(result)
+            })
+    })
+
+
+
+    app.get('/search', (req, res) => {
+
+        const search = req.query.filter;
+
+        categoryCollection.find({ name: { $regex: search } })
+            .toArray((err, document) => {
+                res.send(document)
             })
     })
 

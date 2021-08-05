@@ -6,6 +6,7 @@ volunteer-network-client/node_modules/
 volunteer-network-client/.firebase/
 volunteer-network-client/build
 volunteer-network-server/node_modules
+volunteer-network-server/volunteer-network-2bbc0-firebase-adminsdk-wqv2d-7fe5864da9.json
 volunteer-network-server/.env
 /.pnp
 .pnp.js

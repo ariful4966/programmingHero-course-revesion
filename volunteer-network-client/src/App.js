@@ -13,12 +13,13 @@ import EventTask from './components/pages/EventTask/EventTask';
 import Home from './components/pages/Home/Home';
 import Login from './components/pages/Login/Login';
 import Registation from './components/pages/Registation/Registation';
-import Header from './components/partials/Header/Header';
 import { allCategory } from './redux/actions';
 import PrivateRoute from './components/pages/Login/LoginManager';
+// import AdminRoute from './components/pages/Login/LoginManager'
 import Volunteers from './components/pages/Volunteers/Volunteers';
+import NoMatch from './components/pages/NoMatch/NoMatch';
 
-function App({ allCategory }) {
+function App({ allCategory, organizations }) {
 
   useEffect(() => {
     axios.get('http://localhost:2400/')
@@ -29,26 +30,29 @@ function App({ allCategory }) {
       .catch(err => {
         console.log(err);
       })
-  }, [])
+  }, [organizations])
 
   return (
     <Router>
-      
+
       <Switch>
         <PrivateRoute path="/registation/:catKey">
           <Registation />
         </PrivateRoute>
         <Route path="/login">
-          <Login/>
+          <Login />
         </Route>
         <PrivateRoute path="/events">
-          <EventTask/>
+          <EventTask />
         </PrivateRoute>
-        <Route path="/admin">
-          <Volunteers/>
-        </Route>
+        <PrivateRoute path="/admin">
+          <Volunteers />
+        </PrivateRoute>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route path="*">
+          <NoMatch></NoMatch>
         </Route>
       </Switch>
     </Router>

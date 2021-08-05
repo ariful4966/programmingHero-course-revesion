@@ -13,7 +13,7 @@ const Sidebar = (props) => {
     return (
         <aside>
             <div className="sidebar-logo">
-                <Link><img src={siteLogo} alt="" /></Link>
+                <Link to="/"><img src={siteLogo} alt="" /></Link>
             </div>
             <nav>
                 <Button variant="default" onClick={() => sidebarNav('volunteer')} >

@@ -1,6 +1,6 @@
 
 import React, { Fragment } from 'react';
-import { Container, Navbar, Nav, Button } from 'react-bootstrap';
+import { Container, Navbar, Nav, Button, NavDropdown } from 'react-bootstrap';
 import logo from '../../../images/logo.png'
 import { Link, useHistory } from 'react-router-dom'
 
@@ -12,14 +12,23 @@ const Header = ({ user }) => {
     const registationPage = () => {
         history.push('/login')
     }
-    const addminPage = ()=>{
+    const addminPage = () => {
         history.push('/admin')
+    }
+    const homePage = () => {
+        history.push('/')
+    }
+    const dashboardPage = () => {
+        history.push('/admin')
+
     }
     return (
         <header>
             <Navbar expand="lg">
                 <Container>
-                    <Navbar.Brand href="#home"><img src={logo} alt="LOGO" className="logo" /></Navbar.Brand>
+                    <Navbar.Brand onClick={homePage} >
+                        <img src={logo} alt="LOGO" className="logo" />
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto align-items-center">
@@ -28,10 +37,22 @@ const Header = ({ user }) => {
                             <Link to="/events">Events</Link>
                             <Link to="/">Blog</Link>
                             {
-                                user.isLogin ? <strong>{user.name}</strong> :
+                                user.isLogin ?
+                                    <Fragment>
+                                        {
+                                            user.isAdmin ?
+                                                <NavDropdown title={user.name} id="nav-dropdown">
+                                                    <NavDropdown.Item eventKey="4.1" onClick={dashboardPage}>Dashboard</NavDropdown.Item>
+                                                </NavDropdown>
+                                                :
+                                                <strong>{user.name}</strong>
+
+                                        }
+                                    </Fragment>
+                                    :
                                     <Fragment>
                                         <Button className="m-3" onClick={registationPage}>Registation</Button>
-                                        <Button className="m-3" variant="secondary" onClick={addminPage}>Admin</Button>
+                                        <Button className="m-3" variant="secondary" onClick={addminPage} disabled>Admin</Button>
                                     </Fragment>
                             }
                         </Nav>

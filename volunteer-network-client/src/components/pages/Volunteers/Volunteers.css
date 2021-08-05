@@ -29,3 +29,13 @@
     font-family: arial;
     font-size: 40px;
 }
+
+article.sec_content img {
+    width: 30px;
+}
+article.sec_content img {
+    width: 30px;
+    background: rgb(255 13 13 / 90%);
+    border-radius: 5px;
+    padding: 3px;
+}

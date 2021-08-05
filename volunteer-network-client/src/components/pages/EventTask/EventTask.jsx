@@ -7,16 +7,24 @@ import './EventTask.css'
 import SingleEvent from '../../partials/SingleEvent/SingleEvent';
 import Header from '../../partials/Header/Header';
 
-const EventTask = ({ allRegistations, registations }) => {
+const EventTask = ({ allRegistations, registations, user }) => {
+
 
     useEffect(() => {
-        axios.get('http://localhost:2400/registation')
-            .then(res => {
-                allRegistations(res.data)
+
+        axios.get('http://localhost:2400/registation?email=' + user.email,
+            {
+                headers: {
+                    authorization: `Bearer ${sessionStorage.getItem('token')}`
+                }
             })
-            .catch(err => {
-                console.log(err);
+            .then(response => {
+                // If request is good...
+                allRegistations(response.data);
             })
+            .catch((error) => {
+                console.log('error ' + error);
+            });
 
     }, []);
 
@@ -25,7 +33,7 @@ const EventTask = ({ allRegistations, registations }) => {
         axios.delete(`http://localhost:2400/events/${id}`)
             .then(res => {
                 if (res.data.deletedCount > 0) {
-                    axios.get('http://localhost:2400/registation')
+                    axios.get('http://localhost:2400/registation?email=' + user.email)
                         .then(res => {
                             allRegistations(res.data)
                         })
@@ -38,20 +46,20 @@ const EventTask = ({ allRegistations, registations }) => {
                 console.log(err);
             })
     }
-    console.log(registations);
+
 
     return (
         <>
-        <Header/>
-        < div className="eventTask_area" >
-            <Container>
-                <Row>
-                    {   registations.length === 0 ? <h1>There is No Event</h1> :
-                        registations.map(event => <SingleEvent key={event._id} event={event} eventDelete={eventDelete}></SingleEvent>)
-                    }
-                </Row>
-            </Container>
-        </div >
+            <Header />
+            < div className="eventTask_area" >
+                <Container>
+                    <Row>
+                        {registations.length === 0 ? <h1>There is No Event</h1> :
+                            registations.map(event => <SingleEvent key={event._id} event={event} eventDelete={eventDelete}></SingleEvent>)
+                        }
+                    </Row>
+                </Container>
+            </div >
         </>
     )
 
