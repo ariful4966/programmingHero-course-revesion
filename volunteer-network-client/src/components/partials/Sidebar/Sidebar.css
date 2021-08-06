@@ -28,3 +28,6 @@
     width: 20px;
     margin-right: 5px;
 }
+.sidebar_active {
+    color: blue;
+}

@@ -126,6 +126,19 @@ client.connect(err => {
             })
     })
 
+    app.post('/addEvent', (req, res) => {
+        const email = req.query.email;
+        const eventData = req.body
+
+        categoryCollection.insertOne(eventData)
+            .then(result => {
+                res.send(result)
+            })
+        // if (email === 'ariful4966@gmail.com') {
+
+        // }
+    })
+
 });
 
 

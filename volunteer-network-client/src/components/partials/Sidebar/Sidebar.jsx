@@ -9,18 +9,18 @@ import plusIcon from '../../../images/plus 1.png';
 import userIcon from '../../../images/users-alt 1.png';
 
 const Sidebar = (props) => {
-    const { sidebarNav } = props;
+    const { sidebarNav, sidebar } = props;
     return (
         <aside>
             <div className="sidebar-logo">
                 <Link to="/"><img src={siteLogo} alt="" /></Link>
             </div>
             <nav>
-                <Button variant="default" onClick={() => sidebarNav('volunteer')} >
+                <Button variant="default" onClick={() => sidebarNav('volunteer')}  className={sidebar==='volunteer' && 'sidebar_active'}>
                     <img src={userIcon} alt="" />
                     <span>Volunteer Register List</span>
                 </Button>
-                <Button variant="default" onClick={() => sidebarNav('addEvent')}>
+                <Button variant="default" onClick={() => sidebarNav('addEvent')} className={sidebar==='addEvent' && 'sidebar_active'}>
                     <img src={plusIcon} alt="" />
                     <span>Add Event</span>
                 </Button>

@@ -4,7 +4,7 @@ import deleteIcon from "../../../images/trash-2 9.png"
 
 const VolunteerList = ({ registations }) => {
 
-    
+
     const tableHeading = ["Name", "Email ID", "Registation Date", "Volunteer Task", "Action"];
 
     const handleVolunteerDelete = (id) => {
@@ -28,27 +28,29 @@ const VolunteerList = ({ registations }) => {
                 <h1>Volunteer Registar List</h1>
             </div>
             <article className="sec_content">
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            {tableHeading.map((tHead, i) => <th key={i}>{tHead}</th>)}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            registations.length > 0 && registations.map(registation =>
-                                <tr key={registation._id}>
-                                    <td>{registation.name}</td>
-                                    <td>{registation.email}</td>
-                                    <td>{registation.date}</td>
-                                    <td>{registation.organization}</td>
-                                    <td><img src={deleteIcon} alt="" onClick={() => handleVolunteerDelete(`${registation._id}`)} /></td>
-                                </tr>
-                            )
-                        }
+                <div className="event_form">
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                {tableHeading.map((tHead, i) => <th key={i}>{tHead}</th>)}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                registations.length > 0 && registations.map(registation =>
+                                    <tr key={registation._id}>
+                                        <td>{registation.name}</td>
+                                        <td>{registation.email}</td>
+                                        <td>{registation.date}</td>
+                                        <td>{registation.organization}</td>
+                                        <td><img src={deleteIcon} alt="" onClick={() => handleVolunteerDelete(`${registation._id}`)} /></td>
+                                    </tr>
+                                )
+                            }
 
-                    </tbody>
-                </Table>
+                        </tbody>
+                    </Table>
+                </div>
             </article>
         </div>
     );
