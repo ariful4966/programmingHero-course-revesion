@@ -1,5 +1,4 @@
 
-import { signInWithGoogle } from "../components/pages/Login/LoginManager";
 import { ALL_CATEGORIS, ALL_RERISTATIONS, DATA_BLUR, GOOGLE_SIGN_IN, SIDE_BAR_NAV } from "./actions";
 
 const initialState = {

@@ -31,9 +31,6 @@ const Login = (props) => {
 
 
 
-
-    console.log(props);
-
     return (
         <div className="Login_area">
             <Container>

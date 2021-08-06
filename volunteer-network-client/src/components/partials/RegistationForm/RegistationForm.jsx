@@ -13,7 +13,7 @@ const RegistationForm = (props) => {
         e.preventDefault();
 
 
-        axios.post('http://localhost:2400/registation', {...registation , img: paramCategory.img})
+        axios.post('https://volunteer-network-server82.herokuapp.com/registation', {...registation , img: paramCategory.img})
 
           .then(function (response) {
             console.log(response);

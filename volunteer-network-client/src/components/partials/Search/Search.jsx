@@ -18,14 +18,14 @@ const Search = ({ allCategory }) => {
 
     useEffect(() => {
         if (search.length > 0) {
-            axios.get('http://localhost:2400/search?filter=' + search)
+            axios.get('https://volunteer-network-server82.herokuapp.com/search?filter=' + search)
                 .then(res => {
                     allCategory(res.data)
                 })
 
 
         } else {
-            axios.get('http://localhost:2400/')
+            axios.get('https://volunteer-network-server82.herokuapp.com/')
                 .then(res => {
                     allCategory(res.data)
                 })

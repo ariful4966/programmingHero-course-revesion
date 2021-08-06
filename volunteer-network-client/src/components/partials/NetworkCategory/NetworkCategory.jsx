@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
+
 import { Container, Row } from 'react-bootstrap';
-import axios from 'axios';
 import './NetworkCategory.css'
 import CategoryItem from '../CategoryItem/CategoryItem';
-import { allCategory } from '../../../redux/actions';
 import { connect } from 'react-redux';
 
 
 const NetworkCategory = (props) => {
-    const { categoris, allCategory, colors } = props
+    const { categoris, colors } = props
 
     
 
@@ -31,8 +29,6 @@ const NetworkCategory = (props) => {
 const mapStateToProps = state => {
     return state
 }
-const mapDispatchToProps = {
-    allCategory
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(NetworkCategory);
+
+export default connect(mapStateToProps, null)(NetworkCategory);

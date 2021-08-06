@@ -29,7 +29,7 @@ const EventAdd = ({ user }) => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        axios.post("http://localhost:2400/addEvent?email=" + user.email, event,
+        axios.post("https://volunteer-network-server82.herokuapp.com/addEvent?email=" + user.email, event,
             {
                 headers: {
                     authorization: `Bearer ${sessionStorage.getItem('token')}`
@@ -79,7 +79,7 @@ const EventAdd = ({ user }) => {
                         </Form.Group>
                         <Form.Group className="mb-3 col-md-6" controlId="formBasicCheckbox">
                             <Form.Label>Banner</Form.Label>
-                            <Form.Control type="text" name="img" onBlur={handleEventBlur}></Form.Control>
+                            <Form.Control type="text" name="img" onBlur={handleEventBlur} placeholder="Post The Image Link"></Form.Control>
                         </Form.Group>
                         <Button variant="primary" type="submit" style={{ width: '100px' }}>
                             Submit

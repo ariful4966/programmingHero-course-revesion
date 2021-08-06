@@ -11,7 +11,7 @@ import './Volunteers.css'
 const Volunteers = ({sidebar, user, allRegistations, registations}) => {
 
     useEffect(() => {
-        axios.get('http://localhost:2400/registations?email=' + user.email, {
+        axios.get('https://volunteer-network-server82.herokuapp.com/registations?email=' + user.email, {
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem('token')}`,
                 isAdmin: user.isAdmin

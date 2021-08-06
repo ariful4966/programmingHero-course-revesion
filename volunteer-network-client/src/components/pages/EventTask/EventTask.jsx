@@ -12,34 +12,29 @@ const EventTask = ({ allRegistations, registations, user }) => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:2400/registation?email=' + user.email,
+        axios.get('https://volunteer-network-server82.herokuapp.com/registation?email=' + user.email,
             {
                 headers: {
                     authorization: `Bearer ${sessionStorage.getItem('token')}`
                 }
             })
             .then(response => {
-                alert('delete Successfully')
                 allRegistations(response.data);
             })
             .catch((error) => {
                 console.log('error ' + error);
             });
 
-    }, []);
+    }, [user]);
 
     const eventDelete = id => {
         // const selectedEvent = registations.find(event => event._id === id);
-        axios.delete(`http://localhost:2400/events/${id}`)
+        axios.delete(`https://volunteer-network-server82.herokuapp.com/events/${id}`)
             .then(res => {
                 if (res.data.deletedCount > 0) {
-                    axios.get('http://localhost:2400/registation?email=' + user.email)
-                        .then(res => {
-                            allRegistations(res.data)
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        })
+
+                    alert('Delete Item is Successfully')
+
                 }
             })
             .catch(err => {

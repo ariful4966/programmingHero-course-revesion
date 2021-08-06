@@ -19,10 +19,11 @@ import PrivateRoute from './components/pages/Login/LoginManager';
 import Volunteers from './components/pages/Volunteers/Volunteers';
 import NoMatch from './components/pages/NoMatch/NoMatch';
 
-function App({ allCategory, organizations }) {
+function App(props) {
 
+  const { allCategory, registations } = props
   useEffect(() => {
-    axios.get('http://localhost:2400/')
+    axios.get('https://volunteer-network-server82.herokuapp.com/')
       .then(res => {
         const data = res.data
         allCategory(data)
@@ -30,7 +31,7 @@ function App({ allCategory, organizations }) {
       .catch(err => {
         console.log(err);
       })
-  }, [organizations])
+  }, [registations])
 
   return (
     <Router>

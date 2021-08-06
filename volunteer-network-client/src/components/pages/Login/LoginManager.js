@@ -18,7 +18,7 @@ export const signInWithGoogle = () => {
         .signInWithPopup(provider)
         .then((result) => {
             const { displayName, email } = result.user;
-            if (email == 'ariful4966@gmail.com') {
+            if (email === 'ariful4966@gmail.com') {
                 const adminUser = {
                     name: displayName,
                     email,

@@ -8,7 +8,7 @@ const VolunteerList = ({ registations }) => {
     const tableHeading = ["Name", "Email ID", "Registation Date", "Volunteer Task", "Action"];
 
     const handleVolunteerDelete = (id) => {
-        axios.delete(`http://localhost:2400/events/${id}`)
+        axios.delete(`https://volunteer-network-server82.herokuapp.com/events/${id}`)
             .then(res => {
                 if (res.data.deletedCount > 0) {
 
