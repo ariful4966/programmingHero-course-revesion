@@ -80,6 +80,7 @@ client.connect(err => {
         if (email === userMail) {
 
             const bearer = req.headers.authorization;
+
             if (bearer && bearer.startsWith('Bearer ')) {
                 const idToken = bearer.split(' ')[1];
 
@@ -127,17 +128,43 @@ client.connect(err => {
     })
 
     app.post('/addEvent', (req, res) => {
-        const email = req.query.email;
+        const eventEmail = req.query.email;
+        const adminEmail = `ariful4966@gmail.com`;
+
         const eventData = req.body
 
-        categoryCollection.insertOne(eventData)
-            .then(result => {
-                res.send(result)
-            })
-        // if (email === 'ariful4966@gmail.com') {
 
-        // }
-    })
+        if (eventEmail === adminEmail) {
+
+            const beaRer = req.headers.authorization;
+
+            if (beaRer && beaRer.startsWith('Bearer ')) {
+                const eventIdToken = beaRer.split(' ')[1];
+                admin
+                    .auth()
+                    .verifyIdToken(eventIdToken)
+                    .then((decodedToken) => {
+                        const jWtToken = decodedToken.email;
+
+                        if (eventEmail === jWtToken) {
+                            categoryCollection.insertOne(eventData)
+                                .then(result => {
+                                    res.send(result)
+                                })
+                        }
+                    })
+
+
+
+            }
+
+
+        } else {
+            res.send({ message: 'You are not Admin' })
+        }
+
+    });
+
 
 });
 

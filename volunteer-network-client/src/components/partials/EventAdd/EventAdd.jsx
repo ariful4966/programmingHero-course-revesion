@@ -29,7 +29,12 @@ const EventAdd = ({ user }) => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        axios.post("http://localhost:2400/addEvent?email" + user.email, event)
+        axios.post("http://localhost:2400/addEvent?email=" + user.email, event,
+            {
+                headers: {
+                    authorization: `Bearer ${sessionStorage.getItem('token')}`
+                }
+            })
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
