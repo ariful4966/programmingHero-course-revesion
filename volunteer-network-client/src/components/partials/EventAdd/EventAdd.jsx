@@ -23,7 +23,7 @@ const EventAdd = ({ user }) => {
 
     }
 
-    console.log(event);
+    // console.log(event);
 
 
     const handleSubmit = e => {
@@ -35,7 +35,22 @@ const EventAdd = ({ user }) => {
                     authorization: `Bearer ${sessionStorage.getItem('token')}`
                 }
             })
-            .then(res => console.log(res))
+            .then(res => {
+                if (res.data.acknowledged === true) {
+                    alert('Successfully Post Event')
+                    const postedEvent = {
+                        name: '',
+                        description: '',
+                        img: '',
+                        date: ''
+                    }
+                    setEvent(postedEvent)
+                } else {
+                    alert(res.data.message)
+                }
+
+
+            })
             .catch(err => console.log(err))
     }
 

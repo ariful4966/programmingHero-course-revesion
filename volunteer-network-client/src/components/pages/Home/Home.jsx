@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../partials/Header/Header';
 import NetworkCategory from '../../partials/NetworkCategory/NetworkCategory';
 import Search from '../../partials/Search/Search';
+import './Home.css'
 
 const Home = () => {
     return (

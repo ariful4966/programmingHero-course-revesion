@@ -22,7 +22,7 @@ client.connect(err => {
     const categoryCollection = client.db(`${process.env.DB_NAME}`).collection("categoris");
     const registationCollection = client.db(`${process.env.DB_NAME}`).collection("registations");
 
-    console.log('Database connection Successfully');
+    // console.log('Database connection Successfully');
 
 
     // app.post('/', (req, res) => {
@@ -58,7 +58,6 @@ client.connect(err => {
                 .auth()
                 .verifyIdToken(idToken)
                 .then((decodedToken) => {
-                    console.log(decodedToken);
                     const tokenEmail = decodedToken.email;
                     const usrEmail = req.query.email;
                     if (tokenEmail == usrEmail) {
@@ -169,6 +168,4 @@ client.connect(err => {
 });
 
 
-app.listen(2400, () => {
-    console.log("Server started at port 2400");
-});
+app.listen(2400);

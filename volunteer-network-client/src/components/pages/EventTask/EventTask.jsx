@@ -19,7 +19,7 @@ const EventTask = ({ allRegistations, registations, user }) => {
                 }
             })
             .then(response => {
-                // If request is good...
+                alert('delete Successfully')
                 allRegistations(response.data);
             })
             .catch((error) => {
