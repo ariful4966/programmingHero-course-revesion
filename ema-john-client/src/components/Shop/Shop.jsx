@@ -7,6 +7,8 @@ import Cart from '../Cart/Cart';
 import { useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
+import Preloader from '../Preloader/Preloader';
+
 
 const Shop = (props) => {
     const { cart, setCart, products } = props;
@@ -27,7 +29,7 @@ const Shop = (props) => {
                     })
                     setCart(previousCart);
                 }
-                
+
             })
 
 
@@ -55,17 +57,18 @@ const Shop = (props) => {
     }
 
 
-
+    
     return (
         <div className="shop-container container">
             <div className="product-container">
                 {
-                    products.map((product, id) => <Product
-                        key={id}
-                        showBtn={true}
-                        product={product}
-                        handleAddProduct={handleAddProduct}
-                    ></Product>)
+                    products.length === 0 ? <Preloader /> :
+                        products.map((product, id) => <Product
+                            key={id}
+                            showBtn={true}
+                            product={product}
+                            handleAddProduct={handleAddProduct}
+                        ></Product>)
                 }
             </div>
             <div className="card-container">

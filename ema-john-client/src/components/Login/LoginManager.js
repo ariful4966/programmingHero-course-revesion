@@ -19,7 +19,8 @@ export const handleGoogleLogin = (user) => {
                 name: displayName,
                 email: email,
                 photo: photoURL,
-                isLogin: true
+                isLogin: true,
+                isSuccess: true,
             }
             return getUser;
         })
@@ -39,7 +40,8 @@ export const handleFacebookLogin = (user) => {
                 name: displayName,
                 email: email,
                 photo: photoURL,
-                isLogin: true
+                isLogin: true,
+                isSuccess:true
             }
             return getUser
         })
@@ -80,7 +82,7 @@ export const createUserWithEmailAndPassword = (user) => {
                 name: displayName,
                 email: email,
                 photo: photoURL,
-                isSuccess: true
+                isSuccess: false
             }
             verifyEmail()
             return newUserInfo

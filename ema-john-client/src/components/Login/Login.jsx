@@ -47,8 +47,8 @@ const Login = () => {
             })
     }
     const handleResponse = (res, redirect) => {
-        setUser(res)
-        setLoggedInUser(res)
+        setUser({ ...user, ...res })
+        setLoggedInUser({ ...user, ...res })
         if (redirect) {
             history.replace(from);
         }
