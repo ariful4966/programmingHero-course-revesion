@@ -10,7 +10,7 @@ const location = {
     lat: 23.792495,
     lng: 90.404542
 };
-function Direction() {
+function Direction({ origin, destination }) {
 
     const [directionResponse, setDirectionResponse] = useState(null)
     return (
@@ -22,21 +22,24 @@ function Direction() {
                 center={location}
                 zoom={14}
             >
-                <DirectionsService
-                    // required
-                    options={{
-                        destination: "United Hospital Dhaka Bangladesh",
-                        origin: "Gulshan 1 Circle Dhaka Bangladesh",
-                        travelMode: "DRIVING"
-                    }}
-                    // required
-                    callback={res => {
-                        if (res !== null) {
-                            setDirectionResponse(res)
-                        }
-                    }}
+                {
+                    origin !== "" && destination !== "" &&
+                    <DirectionsService
+                        // required
+                        options={{
+                            destination: destination,
+                            origin: origin,
+                            travelMode: "DRIVING"
+                        }}
+                        // required
+                        callback={res => {
+                            if (res !== null) {
+                                setDirectionResponse(res)
+                            }
+                        }}
 
-                />
+                    />
+                }
                 {
                     directionResponse &&
                     <DirectionsRenderer
