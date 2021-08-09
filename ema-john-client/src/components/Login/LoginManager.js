@@ -2,12 +2,23 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
+const admin = require('firebase-admin');
+
+const serviceAccount = require("./ema-john-simple-2bc72-firebase-adminsdk-1l979-92f240fa51.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 export const initializeLoginFramework = () => {
     if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
     }
 }
+
+
+
+
 
 export const handleGoogleLogin = (user) => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -22,6 +33,7 @@ export const handleGoogleLogin = (user) => {
                 isLogin: true,
                 isSuccess: true,
             }
+            setuserToken()
             return getUser;
         })
         .catch(err => {
@@ -41,7 +53,7 @@ export const handleFacebookLogin = (user) => {
                 email: email,
                 photo: photoURL,
                 isLogin: true,
-                isSuccess:true
+                isSuccess: true
             }
             return getUser
         })
@@ -75,7 +87,7 @@ export const handleLogout = (user) => {
 export const createUserWithEmailAndPassword = (user) => {
     return firebase.auth().createUserWithEmailAndPassword(user.email, user.confirmPassword)
         .then(res => {
-            
+
             updateProfile(user)
             const { displayName, email, photoURL } = res.user;
             const newUserInfo = {
@@ -103,7 +115,7 @@ export const singInWithEmailAndPassword = (user) => {
             const newUserInfo = {
                 name: displayName,
                 email,
-                photo:photoURL,
+                photo: photoURL,
                 isLogin: true,
                 isSuccess: true
             }
@@ -150,4 +162,25 @@ const updateProfile = (newUser) => {
     }).catch(function (error) {
         console.log(error.message);
     });
+}
+
+const setuserToken = () => {
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function (idToken) {
+        sessionStorage.setItem('userInfo', idToken)
+    }).catch(function (error) {
+        // Handle error
+    });
+}
+
+export const getTokenFromSessionStorage = () => {
+    const userToken = sessionStorage.getItem('userInfo')
+
+    admin
+        .auth()
+        .verifyIdToken(userToken)
+        .then((decodedToken) => {
+            console.log(decodedToken);
+        })
+        .catch((error) => {
+        });
 }

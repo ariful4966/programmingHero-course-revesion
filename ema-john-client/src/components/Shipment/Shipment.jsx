@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Container } from 'react-bootstrap';
+import { Button, Container, FormControl } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../App';
 import { getDatabaseCart, processOrder } from '../../utilities/databaseManager';
@@ -43,16 +43,16 @@ const Shipment = () => {
 
           <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
 
-            <input defaultValue={loggedInUser.name} {...register("name", { required: true })} placeholder="Your Name" />
+            <FormControl defaultValue={loggedInUser.name} {...register("name", { required: true })} placeholder="Your Name" />
             {errors.name && <span className="error">This field is required</span>}
-            <input defaultValue={loggedInUser.email} {...register("email", { required: true })} placeholder="Your Email" />
+            <FormControl defaultValue={loggedInUser.email} {...register("email", { required: true })} placeholder="Your Email" />
             {errors.email && <span className="error">This field is required</span>}
-            <input {...register("address", { required: true })} placeholder="Your Address" />
+            <FormControl {...register("address", { required: true })} placeholder="Your Address" />
             {errors.address && <span className="error">This field is required</span>}
-            <input defaultValue={loggedInUser.phoneNumber} {...register("phone", { required: true })} placeholder="Your Phone Number" />
+            <FormControl defaultValue={loggedInUser.phoneNumber} {...register("phone", { required: true })} placeholder="Your Phone Number" />
             {errors.phone && <span className="error">This field is required</span>}
 
-            <input type="submit" className="shipment-btn" />
+            <Button type="submit" className="shipment-btn" >Submit</Button>
           </form>
         </div>
         <div className="shipment_item col-md-6">

@@ -40,7 +40,9 @@ function App() {
 
         shuffle(data);
         setProducts(data)
-      })
+      });
+
+
 
   }, [])
   const product10 = products.slice(0, 10)

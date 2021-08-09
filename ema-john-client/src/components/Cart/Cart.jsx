@@ -30,8 +30,8 @@ const Cart = (props) => {
     console.log(cart);
     return (
         <>
-            <h1>Order Summary</h1>
-            <h3>Items Ordered: {cart.length}</h3>
+            <h3>Order Summary</h3>
+            <h4>Items Ordered: {cart.length}</h4>
             <div className="amount">
                 <p><span>Product Price :</span> <span>${formateNumber(total)}</span></p>
                 <p><span>Shipping Cost:</span> <span> ${formateNumber(shipping)}</span></p>

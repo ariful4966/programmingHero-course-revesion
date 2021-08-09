@@ -21,8 +21,7 @@
 }
 
 input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
-    width: 95%;
-    height: 20px;
+    max-width: 100%;
     border-radius: 10px;
     outline: none;
     border: none;

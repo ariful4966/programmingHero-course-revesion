@@ -1,4 +1,5 @@
 
+import { FormControl } from 'react-bootstrap';
 import './Search.css';
 
 const SearchArea = (props) => {
@@ -7,7 +8,7 @@ const SearchArea = (props) => {
         <div className="search-bg">
             <div className="search-section">
                 <div className="search-area">
-                    <input type="text" placeholder="Type Any product name"  />
+                    <FormControl className="form-controll" type="text" placeholder="Type Any product name"  />
                 </div>
                 <div className="header-cart">
                     🛒 <span>{props.cart.length}</span>
