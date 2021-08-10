@@ -7,10 +7,10 @@ import SpliteCardForm from './SpliteCardForm';
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe('pk_test_51JM4OyEZ2Er3eAJmVM5XQZh5riwnOfQyhTD6RQHfP94rkWtb2wJiZLBmtNZtNhn6Jd4oat4WRFcnt92NzTwHMLrS005INPWW1a');
 
-const PaymentProcess = () => {
+const PaymentProcess = ({ handlePayment }) => {
     return (
         <Elements stripe={stripePromise}>
-            <SpliteCardForm />
+            <SpliteCardForm handlePayment={handlePayment} />
         </Elements>
     );
 };

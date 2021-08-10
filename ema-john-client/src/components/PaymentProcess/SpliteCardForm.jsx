@@ -35,7 +35,7 @@ const useOptions = () => {
     return options;
 };
 
-const SpliteCardForm = () => {
+const SpliteCardForm = ({ handlePayment }) => {
 
     const [paymentError, setPaymentError] = useState('')
     const [paymentSuccess, setPaymentSuccess] = useState('')
@@ -67,8 +67,9 @@ const SpliteCardForm = () => {
             setPaymentError(error.message)
             setPaymentSuccess('')
         } else {
-           setPaymentSuccess(paymentMethod.id);
-           setPaymentError('')
+            setPaymentSuccess(paymentMethod.id);
+            setPaymentError('')
+            handlePayment(paymentMethod.id)
         }
     };
 
@@ -135,10 +136,10 @@ const SpliteCardForm = () => {
                 </button>
             </form>
             {
-                paymentError && <p style={{color:'red'}}>{paymentError}</p>
+                paymentError && <p style={{ color: 'red' }}>{paymentError}</p>
             }
             {
-                paymentSuccess && <p style={{color:'green'}}>Your Payment was Successfully</p>
+                paymentSuccess && <p style={{ color: 'green' }}>Your Payment was Successfully</p>
             }
         </div>
     );

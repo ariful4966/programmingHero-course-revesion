@@ -55,6 +55,7 @@ export const handleFacebookLogin = (user) => {
                 isLogin: true,
                 isSuccess: true
             }
+            setuserToken()
             return getUser
         })
         .catch(err => {
@@ -97,6 +98,7 @@ export const createUserWithEmailAndPassword = (user) => {
                 isSuccess: false
             }
             verifyEmail()
+            
             return newUserInfo
 
         })
@@ -119,6 +121,7 @@ export const singInWithEmailAndPassword = (user) => {
                 isLogin: true,
                 isSuccess: true
             }
+            setuserToken()
             return newUserInfo
 
         })

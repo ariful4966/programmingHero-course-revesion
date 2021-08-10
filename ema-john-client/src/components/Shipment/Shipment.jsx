@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, FormControl } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../App';
@@ -9,13 +9,23 @@ import PaymentProcess from '../PaymentProcess/PaymentProcess'
 const Shipment = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+  const [shippingData, setShippingData] = useState(null)
   const onSubmit = data => {
+    setShippingData(data)
+  };
+
+  const handlePaymentSuccess = paymentId => {
     const savedCart = getDatabaseCart();
     const dateTime = {
       date: new Date().toLocaleDateString(),
       time: new Date().toLocaleTimeString()
     }
-    const ordersDetails = { ...loggedInUser, products: savedCart, shipment: data, orderTime: dateTime };
+    const ordersDetails = {
+      products: savedCart,
+      shipment: shippingData,
+      paymentId,
+      orderTime: dateTime
+    };
 
     fetch('https://ema-john-server4082.herokuapp.com/addOrder', {
       method: 'POST',
@@ -29,17 +39,16 @@ const Shipment = () => {
 
         if (data) {
           processOrder()
-          alert('Your Order Submit Successfully')
         }
       });
 
-  };
+  }
   // watch input value by passing the name of it
   console.log(loggedInUser);
   return (
     <Container>
       <div className="shipment_area row">
-        <div className="shipment_item col-md-6">
+        <div style={{ display: shippingData ? "none" : "block" }} className="shipment_item col-md-6">
 
           <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
 
@@ -55,8 +64,8 @@ const Shipment = () => {
             <Button type="submit" className="shipment-btn" >Submit</Button>
           </form>
         </div>
-        <div className="shipment_item col-md-6">
-          <PaymentProcess />
+        <div className="shipment_item col-md-6" style={{ display: shippingData ? "block" : "none" }}>
+          <PaymentProcess handlePayment={handlePaymentSuccess}/>
         </div>
       </div>
     </Container>
