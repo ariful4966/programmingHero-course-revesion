@@ -47,7 +47,7 @@ function App() {
   }, [])
   const product10 = products.slice(0, 10)
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser, products, setProducts]}>
       <Router >
         <Header cart={cart} products={products} />
         <Switch>
