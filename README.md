@@ -5,8 +5,8 @@
 ***React APP***
 
 ### Directory
-  [x] Doctors-Portal Client
-  [x] Doctors-Portal Server
+- [x] Doctors-Portal Client
+- [x] Doctors-Portal Server
 
 ##### Common File
 .gitignore
