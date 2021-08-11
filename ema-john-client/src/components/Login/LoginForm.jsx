@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormControl } from 'react-bootstrap';
 import { resetPassword } from './LoginManager';
 
 const LoginForm = ({ userState }) => {
@@ -9,11 +10,11 @@ const LoginForm = ({ userState }) => {
             <form action="" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Your Email Address</label>
-                    <input type="email" name="email" onBlur={handleBlur} id="email" />
+                    <FormControl type="email" name="email" onBlur={handleBlur} id="email" />
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" onBlur={handleBlur} id="password" />
+                    <FormControl type="password" name="password" onBlur={handleBlur} id="password" />
                 </div>
                 <p onClick={() => setNewUser(!newUser)}>Create A New Account</p>
                 <input type="submit" value="Login" />

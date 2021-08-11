@@ -2,13 +2,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
-const admin = require('firebase-admin');
 
-const serviceAccount = require("./ema-john-simple-2bc72-firebase-adminsdk-1l979-92f240fa51.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
 
 export const initializeLoginFramework = () => {
     if (firebase.apps.length === 0) {
@@ -173,17 +167,4 @@ const setuserToken = () => {
     }).catch(function (error) {
         // Handle error
     });
-}
-
-export const getTokenFromSessionStorage = () => {
-    const userToken = sessionStorage.getItem('userInfo')
-
-    admin
-        .auth()
-        .verifyIdToken(userToken)
-        .then((decodedToken) => {
-            console.log(decodedToken);
-        })
-        .catch((error) => {
-        });
 }
