@@ -1,0 +1,18 @@
+footer {
+    background: url('../../../images/footerBg.jpeg') no-repeat ;
+    background-size: cover;
+}
+
+.social-area a {
+    padding: 10px;
+    margin: 5px;
+    background: #fff;
+    border: 1px solid #1CC7C1;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 20px;
+    color: #1CC7C1;
+}
