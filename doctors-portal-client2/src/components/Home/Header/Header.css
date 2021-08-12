@@ -3,6 +3,8 @@
     position: relative;
     background-image: url('../../../images/chairBg.png');
     background-size: cover;
+    z-index: 1;
+
 
 }
 
