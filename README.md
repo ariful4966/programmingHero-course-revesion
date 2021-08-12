@@ -3,7 +3,7 @@
 ## Doctors-Portal
 
 - [x] Branch 0ne 
-    Home Page UI Design
+    > Home Page UI Design
 - [x] Branch Two
 
 ***React APP***
@@ -13,5 +13,5 @@
 - [x] Doctors-Portal Server
 
 ##### Common File
-.gitignore
-README.md
+01. .gitignore
+02. README.md
