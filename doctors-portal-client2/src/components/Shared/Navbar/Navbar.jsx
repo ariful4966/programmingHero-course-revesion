@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = ({home}) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light ">
             <div className="container-fluid">
@@ -10,7 +10,7 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link mx-5 active" aria-current="page" href="#">Home</a>
+                            <a className="nav-link mx-5 active" aria-current="page" href="/">Home</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link mx-5" href="#">About</a>
@@ -19,13 +19,13 @@ const Navbar = () => {
                             <a className="nav-link mx-5" href="#">Dental Services</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link mx-5 text-white" href="#">Reviews</a>
+                            <a className={`nav-link mx-5 ${home && 'text-white'}`} href="#">Reviews</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link mx-5 text-white" href="#">Blogs</a>
+                            <a className={`nav-link mx-5 ${home && 'text-white'}`} href="#">Blogs</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link mx-5 text-white" href="#">Contact us</a>
+                            <a className={`nav-link mx-5 ${home && 'text-white'}`} href="#">Contact us</a>
                         </li>
                     </ul>
 
