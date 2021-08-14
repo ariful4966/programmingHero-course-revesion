@@ -11,7 +11,7 @@ app.use(cors())
 app.use(bodyParser.json())
 const port = 5000
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.PASS}@cluster0.nine7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.nine7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
     const appointmentCollection = client.db(`${process.env.DB_NAME}`).collection('appointments');
@@ -19,10 +19,11 @@ client.connect(err => {
     console.log('databse connection Successfully');
 
     app.post('/addAppointment', (req, res) => {
+        
         const appointment = req.body;
         appointmentCollection.insertOne(appointment)
             .then(result => {
-                res.send(result.insertedCount > 0)
+                res.send(result.acknowledged)
             })
 
     })
