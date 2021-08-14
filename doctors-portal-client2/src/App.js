@@ -10,6 +10,8 @@ import './App.css';
 import Appoinment from "./components/Appointment/Appoinment/Appoinment";
 import Home from "./components/Home/Home/Home";
 import Login from "./components/Login/Login/Login";
+import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
+import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 
 export const UserContext = createContext()
 function App() {
@@ -18,24 +20,15 @@ function App() {
     email: '',
     isLogin: false
   })
-  useEffect(() => {
-    const userToken = sessionStorage.getItem('userToken')
-    if (userToken) {
-      const { name, email } = jwt_decode(userToken)
-      setExistingUser({
-        email,
-        name,
-        isLogin: true
-      })
-    }
-
-  }, [])
-  console.log(existingUser);
-
+  
+ 
   return (
-    <UserContext.Provider value={existingUser} >
+    <UserContext.Provider value={[existingUser, setExistingUser]} >
       <Router>
         <Switch>
+          <PrivateRoute path="/dashboard/appointment">
+            <Dashboard />
+          </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>

@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import loginImg from '../../../images/loginPage.png'
 import LoginForm from './LoginForm';
+import jwt_decode from 'jwt-decode';
 import './Login.css'
 import { createNewUser, firebaseInitializationFramwork, loginUser, resetUserPassword } from './manageLogin';
 import SignupForm from './SignupForm';
+import { useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../../App';
 
 const Login = () => {
+    const [existingUser, setExistingUser] = useContext(UserContext)
 
     const [user, setUser] = useState({
         name: '',
@@ -18,7 +22,10 @@ const Login = () => {
     })
 
     const [newUser, setnewUser] = useState(false)
+    const location = useLocation();
+    const history = useHistory()
     firebaseInitializationFramwork()
+    let { from } = location.state || { from: { pathname: "/" } };
 
     const hnadleBlur = (e) => {
         let isValied = true;
@@ -58,6 +65,16 @@ const Login = () => {
                         isSuccess: true
                     }
                     setUser(userInfo)
+                    const userToken = sessionStorage.getItem('userToken')
+                    if (userToken) {
+                        const { name, email } = jwt_decode(userToken)
+                        setExistingUser({
+                            email,
+                            name,
+                            isLogin: true
+                        })
+                    }
+                    history.replace(from)
                 })
 
         } else {
@@ -77,6 +94,19 @@ const Login = () => {
     const forgotPassword = () => {
         resetUserPassword(user)
     }
+
+    useEffect(() => {
+        const userToken = sessionStorage.getItem('userToken')
+        if (userToken) {
+            const { name, email } = jwt_decode(userToken)
+            setExistingUser({
+                email,
+                name,
+                isLogin: true
+            })
+        }
+
+    }, [])
 
     return (
         <main>
