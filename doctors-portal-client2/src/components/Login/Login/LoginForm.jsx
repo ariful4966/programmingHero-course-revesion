@@ -9,7 +9,7 @@ const LoginForm = ({hnadleBlur, forgotPassword, user}) => {
             <div className="mb-3">
                 <input type="password" name="password"  className="form-control" placeholder="********" onBlur={hnadleBlur} />
             </div>
-            <p style={{ color: 'red' }} className="text-start" onClick={forgotPassword}>Are You Forgote Your Password?</p>
+            <p style={{ color: 'red' }} className="text-start forgot" onClick={forgotPassword}>Are You Forgote Your Password?</p>
         </>
     );
 };

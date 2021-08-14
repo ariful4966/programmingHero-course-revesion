@@ -29,7 +29,8 @@ function App() {
       })
     }
 
-  }, [existingUser])
+  }, [])
+  console.log(existingUser);
 
   return (
     <UserContext.Provider value={existingUser} >
