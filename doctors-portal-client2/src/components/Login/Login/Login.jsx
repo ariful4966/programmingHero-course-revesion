@@ -95,19 +95,7 @@ const Login = () => {
         resetUserPassword(user)
     }
 
-    useEffect(() => {
-        const userToken = sessionStorage.getItem('userToken')
-        if (userToken) {
-            const { name, email } = jwt_decode(userToken)
-            setExistingUser({
-                email,
-                name,
-                isLogin: true
-            })
-        }
-
-    }, [])
-
+   
     return (
         <main>
             <div className="container">
