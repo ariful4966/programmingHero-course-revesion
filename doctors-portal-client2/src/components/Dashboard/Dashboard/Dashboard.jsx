@@ -30,21 +30,17 @@ const Dashboard = () => {
     }, [selectedDate])
 
     return (
-        <section>
-            <div style={containerStyle} className="conatiner-fluid">
-                <div className="row">
-                    <div className="col-md-2">
-                        <Sidebar />
-                    </div>
-                    <div className="col-md-5">
-                        <Calendar
-                            onChange={handleDateChange}
-                            value={new Date()}
-                        />
-                    </div>
-                    <div className="col-md-5">
-                        <AppointmentByDate appointments={appointments} />
-                    </div>
+        <section className="container-fluid">
+            <div style={containerStyle} className="row">
+                <Sidebar />
+                <div className="col-md-5">
+                    <Calendar
+                        onChange={handleDateChange}
+                        value={new Date()}
+                    />
+                </div>
+                <div className="col-md-5">
+                    <AppointmentByDate appointments={appointments} />
                 </div>
             </div>
         </section>

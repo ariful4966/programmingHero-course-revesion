@@ -33,6 +33,12 @@ client.connect(err => {
                 res.send(result)
             })
     })
+    app.get('/appointments', (req, res)=>{
+        appointmentCollection.find({})
+        .toArray((err,documents)=>{
+            res.send(documents)
+        })
+    })
 
 
 });
