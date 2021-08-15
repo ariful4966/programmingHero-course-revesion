@@ -16,10 +16,9 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 client.connect(err => {
     const appointmentCollection = client.db(`${process.env.DB_NAME}`).collection('appointments');
 
-    console.log('databse connection Successfully');
 
     app.post('/addAppointment', (req, res) => {
-        
+
         const appointment = req.body;
         appointmentCollection.insertOne(appointment)
             .then(result => {
@@ -27,6 +26,14 @@ client.connect(err => {
             })
 
     })
+    app.post('/appointmentByDate', (req, res) => {
+        const date = req.body;
+        appointmentCollection.find(date)
+            .toArray((err, result) => {
+                res.send(result)
+            })
+    })
+
 
 });
 

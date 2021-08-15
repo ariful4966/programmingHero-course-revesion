@@ -6,7 +6,7 @@ import './MakeAppoinment.css'
 const MakeAppoinment = () => {
     let history = useHistory();
     const handleAppointmentPage= ()=>{
-        history.push('/appoinment')
+        history.push('/appointment')
     }
     return (
         <section className="make-appointment">
