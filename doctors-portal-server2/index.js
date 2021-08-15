@@ -18,6 +18,7 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
     const appointmentCollection = client.db(`${process.env.DB_NAME}`).collection('appointments');
+    const doctorsCollection = client.db(`${process.env.DB_NAME}`).collection('doctors');
 
 
     app.post('/addAppointment', (req, res) => {
@@ -44,10 +45,33 @@ client.connect(err => {
     })
     app.post('/addDoctor', function (req, res) {
         const file = req.files.file;
-        const name = req.files.name;
-        const email = req.files.email
-        console.log(file, name, email);
+        const name = req.body.name;
+        const email = req.body.email
+
+
+        file.mv(`${__dirname}/doctors/${file.name}`, err => {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({ msg: 'Failed to upload Image' })
+            }
+            // return res.send({ name: file.name, path: `/${file.name}` })
+            const newDoctor = {
+                name,
+                email,
+                img: file.name
+            }
+            doctorsCollection.insertOne(newDoctor)
+                .then(result => {
+                    console.log(result);
+                })
+        })
     });
+    app.get('/doctors', (req, res) => {
+        doctorsCollection.find({})
+            .toArray((err, documents) => {
+                res.send(documents)
+            })
+    })
 
 
 });
