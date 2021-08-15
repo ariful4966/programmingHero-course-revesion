@@ -1,15 +1,21 @@
-.btn{
-  background:linear-gradient(45deg, #18D3B3, #10CFE7);
+.btn {
+  background: linear-gradient(45deg, #18D3B3, #10CFE7);
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 0%;
-  border:none;
+  border: none;
   color: #fff
 }
 
-.text-brand{
+.text-brand {
   color: #1CC7C1;
 }
-a{
+
+a {
   text-decoration: none;
+}
+
+.dashbard-bg {
+  background-color: #f4fdfb;
+  height: 100%
 }

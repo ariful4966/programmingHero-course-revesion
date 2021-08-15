@@ -1,8 +1,8 @@
-import { Fragment } from 'react'
+
 
 const AppointmentTable = ({ data, heading, dateAppointment, patientAll }) => {
     return (
-        <table className="table table-borderless">
+        <table className="table table-borderless shadow p-5">
             <thead>
                 <tr>
                     {

@@ -3,12 +3,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
+const fileUpload = require('express-fileupload');
 
 
 
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
+app.use(express.static('doctors'))
+app.use(fileUpload())
 const port = 5000
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.nine7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
@@ -33,12 +36,18 @@ client.connect(err => {
                 res.send(result)
             })
     })
-    app.get('/appointments', (req, res)=>{
+    app.get('/appointments', (req, res) => {
         appointmentCollection.find({})
-        .toArray((err,documents)=>{
-            res.send(documents)
-        })
+            .toArray((err, documents) => {
+                res.send(documents)
+            })
     })
+    app.post('/addDoctor', function (req, res) {
+        const file = req.files.file;
+        const name = req.files.name;
+        const email = req.files.email
+        console.log(file, name, email);
+    });
 
 
 });

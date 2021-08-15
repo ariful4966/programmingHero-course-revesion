@@ -13,6 +13,7 @@ import Login from "./components/Login/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import Allpatients from "./components/Dashboard/AllPatients/Allpatients";
+import Doctor from "./components/Dashboard/Doctor/Doctor";
 
 export const UserContext = createContext()
 function App() {
@@ -27,6 +28,9 @@ function App() {
     <UserContext.Provider value={[existingUser, setExistingUser]} >
       <Router>
         <Switch>
+          <PrivateRoute path="/dashboard/doctor">
+            <Doctor/>
+          </PrivateRoute>
           <PrivateRoute path="/dashboard/appointment">
             <Dashboard />
           </PrivateRoute>

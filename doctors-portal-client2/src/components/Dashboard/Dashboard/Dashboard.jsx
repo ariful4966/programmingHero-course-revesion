@@ -4,10 +4,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-const containerStyle = {
-    backgroundColor: '#f4fdfb',
-    height: '100%'
-}
+
 
 const Dashboard = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -31,12 +28,13 @@ const Dashboard = () => {
 
     return (
         <section className="container-fluid">
-            <div style={containerStyle} className="row">
+            <div className="row dashboard-bg">
                 <Sidebar />
                 <div className="col-md-5">
                     <Calendar
                         onChange={handleDateChange}
                         value={new Date()}
+                        className="w-100 shadow"
                     />
                 </div>
                 <div className="col-md-5">
