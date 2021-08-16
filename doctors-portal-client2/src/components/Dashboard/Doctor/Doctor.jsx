@@ -21,6 +21,7 @@ const Doctor = () => {
         formData.append('file', file)
         formData.append('name', info.name)
         formData.append('email', info.email)
+        formData.append('phone', info.phone)
 
         fetch('http://localhost:5000/addDoctor', {
             method: 'POST',
@@ -28,7 +29,9 @@ const Doctor = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                if(data){
+                    alert('Doctor Information Post Successfully')
+                }
             })
             .catch(error => {
                 console.error(error)
@@ -49,6 +52,10 @@ const Doctor = () => {
                         <div className="mb-3">
                             <label for="inputEmail" className="form-label">Email</label>
                             <input type="email" className="form-control" name="email" id="inputEmail" placeholder="Enter Email" onBlur={handleBlur} />
+                        </div>
+                        <div className="mb-3">
+                            <label for="inputPhone" className="form-label">Email</label>
+                            <input type="tel" className="form-control" name="phone" id="inputPhone" placeholder="Enter Phone" onBlur={handleBlur} />
                         </div>
                         <div className="mb-3 ">
                             <label for="imgUpdoad" className="form-label">Upload Image</label>

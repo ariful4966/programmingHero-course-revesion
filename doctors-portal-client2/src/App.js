@@ -1,11 +1,10 @@
 import { createContext, useEffect, useState } from "react";
+import jwt_decode from 'jwt-decode'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-import jwt_decode from "jwt-decode";
 import './App.css';
 import Appoinment from "./components/Appointment/Appoinment/Appoinment";
 import Home from "./components/Home/Home/Home";
@@ -14,33 +13,50 @@ import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import Allpatients from "./components/Dashboard/AllPatients/Allpatients";
 import Doctor from "./components/Dashboard/Doctor/Doctor";
+import Appointment from "./components/Dashboard/Appointment/Appointment";
 
 export const UserContext = createContext()
 function App() {
   const [existingUser, setExistingUser] = useState({
     name: '',
-    email: '',
+    email:'',
     isLogin: false
   })
-  
- 
+  useEffect(()=>{
+    if(existingUser.isLogin === false){
+      const token = sessionStorage.getItem('userToken');
+      if(token){
+        const {name, email} = jwt_decode(token)
+        setExistingUser({
+          name,
+          email,
+          isLogin: true
+        })
+      }
+    }
+  }, [existingUser])
+
+
   return (
     <UserContext.Provider value={[existingUser, setExistingUser]} >
       <Router>
         <Switch>
           <PrivateRoute path="/dashboard/doctor">
-            <Doctor/>
+            <Doctor />
           </PrivateRoute>
           <PrivateRoute path="/dashboard/appointment">
-            <Dashboard />
+            <Appointment />
           </PrivateRoute>
           <PrivateRoute path="/dashboard/patients">
-            <Allpatients/>
+            <Allpatients />
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard">
+            <Dashboard />
           </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/appointment">
+          <Route path="/patient/appointment">
             <Appoinment />
           </Route>
           <Route exact path="/">

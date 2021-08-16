@@ -32,10 +32,22 @@ client.connect(err => {
     })
     app.post('/appointmentByDate', (req, res) => {
         const date = req.body;
-        appointmentCollection.find(date)
-            .toArray((err, result) => {
-                res.send(result)
+        const email = req.body.email;
+
+        doctorsCollection.find({ email: email })
+            .toArray((err, doctors) => {
+                const filter = { date: date.date }
+                if (doctors.length === 0) {
+                    filter.email = email
+
+                }
+                appointmentCollection.find(filter)
+                    .toArray((err, result) => {
+                        res.send(result)
+                    })
             })
+
+
     })
     app.get('/appointments', (req, res) => {
         appointmentCollection.find({})
@@ -45,8 +57,8 @@ client.connect(err => {
     })
     app.post('/addDoctor', function (req, res) {
         const file = req.files.file;
-        const name = req.body.name;
-        const email = req.body.email
+        const { name, email, phone } = req.body
+
 
 
         file.mv(`${__dirname}/doctors/${file.name}`, err => {
@@ -58,11 +70,12 @@ client.connect(err => {
             const newDoctor = {
                 name,
                 email,
+                phone,
                 img: file.name
             }
             doctorsCollection.insertOne(newDoctor)
                 .then(result => {
-                    console.log(result);
+                    res.send(result.acknowledged)
                 })
         })
     });

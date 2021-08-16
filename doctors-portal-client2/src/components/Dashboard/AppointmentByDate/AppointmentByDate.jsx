@@ -2,7 +2,6 @@ import React from 'react';
 import AppointmentTable from '../AppointmentTable/AppointmentTable';
 
 const AppointmentByDate = ({ appointments }) => {
-    console.log(appointments);
     const heading = ['Name', 'Phone', 'Email']
     return (
         <div>

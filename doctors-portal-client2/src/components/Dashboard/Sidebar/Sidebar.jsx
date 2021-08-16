@@ -1,15 +1,17 @@
 import { faCalendar, faCog, faFileAlt, faGripHorizontal, faSignOutAlt,  faUserFriends, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import './Sidebar.css'
 
 const Sidebar = () => {
+    const [existingUser]=useContext(UserContext)
     return (
        <div className="sidebar d-flex flex-column justify-content-between col-md-2 p-5" style={{height:'100vh'}}>
            <ul className="list-unstyled">
                <li>
-                   <Link to="/dashboard/dashboard" className="text-white">
+                   <Link to="/dashboard" className="text-white">
                     <FontAwesomeIcon icon={faGripHorizontal}/> <span>Dashboard</span>
                    </Link>
                </li>
@@ -39,6 +41,9 @@ const Sidebar = () => {
                    </Link>
                </li>
            </ul>
+           <div>
+               <h6>{existingUser.name}</h6>
+           </div>
            <div>
                <Link to="/" className="text-white">
                 <FontAwesomeIcon icon={faSignOutAlt}/> <span>Logout</span>

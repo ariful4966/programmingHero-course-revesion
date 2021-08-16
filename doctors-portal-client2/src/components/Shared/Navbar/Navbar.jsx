@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({home}) => {
     return (
@@ -10,22 +11,22 @@ const Navbar = ({home}) => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link mx-5 active" aria-current="page" href="/">Home</a>
+                            <Link className="nav-link mx-5 active" aria-current="page" href="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link mx-5" href="#">About</a>
+                            <Link className="nav-link mx-5" to="/patient/appointment">Patient</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link mx-5" href="#">Dental Services</a>
+                            <Link className="nav-link mx-5" to="/dashboard">Dashboard</Link>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link mx-5 ${home && 'text-white'}`} href="#">Reviews</a>
+                            <Link className={`nav-link mx-5 ${home && 'text-white'}`} to="/admin">Admin</Link>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link mx-5 ${home && 'text-white'}`} href="#">Blogs</a>
+                            <Link className={`nav-link mx-5 ${home && 'text-white'}`} href="#blog">Blogs</Link>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link mx-5 ${home && 'text-white'}`} href="#">Contact us</a>
+                            <Link className={`nav-link mx-5 ${home && 'text-white'}`} href="#contact">Contact us</Link>
                         </li>
                     </ul>
 

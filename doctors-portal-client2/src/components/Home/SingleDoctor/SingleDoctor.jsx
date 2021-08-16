@@ -9,7 +9,7 @@ const SingleDoctor = ({doctor}) => {
                 <img src={`http://localhost:5000/${doctor.img}`} class="card-img-top" alt="..." style={{height: '300px'}}/>
                 <div class="card-body text-center">
                     <h5 class="card-title">{doctor.name}</h5>
-                    <p class="card-text"><FontAwesomeIcon style={{color: '#1CC7C1'}} icon={faPhoneAlt}/> <span className="text-secondary">+880-188-1854082</span></p>
+                    <p class="card-text"><FontAwesomeIcon style={{color: '#1CC7C1'}} icon={faPhoneAlt}/> <span className="text-secondary">{doctor.phone}</span></p>
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@ const Doctors = () => {
         fetch('http://localhost:5000/doctors')
             .then(res => res.json())
             .then(data => setDoctors(data))
-    }, [doctors])
+    }, [])
     return (
         <section className="serces-container my-5">
             <div className="container">
