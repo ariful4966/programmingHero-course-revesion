@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const fs = require('fs-extra');
 const MongoClient = require('mongodb').MongoClient;
 const fileUpload = require('express-fileupload');
 
@@ -59,23 +60,42 @@ client.connect(err => {
         const file = req.files.file;
         const { name, email, phone } = req.body
 
+        const filePath = `${__dirname}/doctors/${file.name}`
 
 
-        file.mv(`${__dirname}/doctors/${file.name}`, err => {
+        file.mv(filePath, err => {
             if (err) {
                 console.log(err);
-                return res.status(500).send({ msg: 'Failed to upload Image' })
+                res.status(500).send({ msg: 'Failed to upload Image' })
             }
-            // return res.send({ name: file.name, path: `/${file.name}` })
+
+
+            const newImg = fs.readFileSync(filePath);
+            const encImg = newImg.toString('base64')
+
+            const image = {
+                contentType: req.files.file.mimetype,
+                size: req.files.file.size,
+                img: Buffer(encImg, 'base64')
+            }
             const newDoctor = {
                 name,
                 email,
                 phone,
-                img: file.name
+                image
             }
+
+
             doctorsCollection.insertOne(newDoctor)
                 .then(result => {
-                    res.send(result.acknowledged)
+                    fs.remove(filePath, error => {
+                        if (error) {
+                            console.log(error);
+                            res.status(500).send({ msg: 'Failed to upload Image' })
+                        }
+                        res.send(result.acknowledged)
+                    })
+
                 })
         })
     });

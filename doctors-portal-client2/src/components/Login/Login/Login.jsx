@@ -62,19 +62,11 @@ const Login = () => {
                         name: res.displayName,
                         email: res.email,
                         newUser: true,
-                        isSuccess: true
+                        isSuccess: true,
+                        isLogin: true
                     }
                     setUser(userInfo)
-                    const userToken = sessionStorage.getItem('userToken')
-                    if (userToken) {
-                        const { name, email } = jwt_decode(userToken)
-                        setExistingUser({
-                            email,
-                            name,
-                            isLogin: true
-                        })
-                        history.replace(from)
-                    }
+                    setExistingUser(userInfo)
 
                 })
 
