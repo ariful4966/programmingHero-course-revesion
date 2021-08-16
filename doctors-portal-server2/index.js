@@ -84,6 +84,17 @@ client.connect(err => {
             .toArray((err, documents) => {
                 res.send(documents)
             })
+    });
+    app.post('/isDoctor', (req, res) => {
+        const date = req.body;
+        const email = req.body.email;
+
+        doctorsCollection.find({ email: email })
+            .toArray((err, doctors) => {
+                res.send(doctors.length > 0)
+            })
+
+
     })
 
 
