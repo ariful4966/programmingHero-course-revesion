@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 
 const Doctor = () => {
+    const [existingUser, setExistiongUser] = useContext(UserContext)
     const [info, setInfo] = useState({});
     const [file, setFile] = useState(null)
     const handleBlur = e => {
@@ -22,15 +24,19 @@ const Doctor = () => {
         formData.append('name', info.name)
         formData.append('email', info.email)
         formData.append('phone', info.phone)
+        formData.append('userEmail', existingUser.email)
 
-        fetch('http://localhost:5000/addDoctor', {
+        fetch('https://doctors-portal-server2-ph.herokuapp.com/addDoctor', {
             method: 'POST',
-            body: formData
+            body: formData 
         })
             .then(response => response.json())
             .then(data => {
-                if(data){
+                if (data) {
                     alert('Doctor Information Post Successfully')
+                } 
+                else{
+                    alert('You are not Doctor')
                 }
             })
             .catch(error => {

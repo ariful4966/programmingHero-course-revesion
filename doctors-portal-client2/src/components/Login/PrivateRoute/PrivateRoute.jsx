@@ -26,7 +26,7 @@ function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={({ location }) =>
-        existingUser.isLogin || extUserToken ? (
+        existingUser.isLogin  ? (
           children
         ) : (
           <Redirect

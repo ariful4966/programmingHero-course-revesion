@@ -7,7 +7,7 @@ const SingleDoctor = ({ doctor }) => {
         <div class="col-md-4 col-sm-6">
             <div class="card">
                 {doctor.image ? <img src={`data:image/jpeg;base64,${doctor.image.img}`} class="card-img-top" alt="..." style={{ height: '300px' }} /> :
-                    <img src={`http://localhost:5000/${doctor.img}`} class="card-img-top" alt="..." style={{ height: '300px' }} />
+                    <img src={`https://doctors-portal-server2-ph.herokuapp.com/${doctor.img}`} class="card-img-top" alt="..." style={{ height: '300px' }} />
                 }
                 <div class="card-body text-center">
                     <h5 class="card-title">{doctor.name}</h5>

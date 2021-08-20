@@ -15,6 +15,7 @@ import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import Allpatients from "./components/Dashboard/AllPatients/Allpatients";
 import Doctor from "./components/Dashboard/Doctor/Doctor";
 import Appointment from "./components/Dashboard/Appointment/Appointment";
+import NotMatch from "./components/Shared/NotMatch/NotMatch";
 
 export const UserContext = createContext()
 function App() {
@@ -62,6 +63,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="*">
+            <NotMatch/>
           </Route>
         </Switch>
       </Router>

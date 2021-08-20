@@ -10,7 +10,7 @@ const containerStyle = {
 const Allpatients = () => {
     const [patients, setPatients] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/appointments')
+        fetch('https://doctors-portal-server2-ph.herokuapp.com/appointments')
             .then(res => res.json())
             .then(appointment => {
                 setPatients(appointment)

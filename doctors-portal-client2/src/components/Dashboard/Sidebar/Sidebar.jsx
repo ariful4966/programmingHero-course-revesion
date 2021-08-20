@@ -1,6 +1,6 @@
 import { faCalendar, faCog, faFileAlt, faGripHorizontal, faSignOutAlt, faUserFriends, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../../../App';
@@ -8,8 +8,9 @@ import './Sidebar.css'
 import { firebaseInitializationFramwork, signOutUser } from '../../Login/Login/manageLogin';
 
 const Sidebar = () => {
-    const [existingUser, setExistingUser] = useContext(UserContext)
     const [isDoctor, setIsDoctor] = useState(false);
+    const [existingUser, setExistingUser] = useContext(UserContext)
+    
     const history = useHistory()
 
     firebaseInitializationFramwork();
@@ -21,7 +22,7 @@ const Sidebar = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/isDoctor', {
+        fetch('https://doctors-portal-server2-ph.herokuapp.com/isDoctor', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ email: existingUser.email })

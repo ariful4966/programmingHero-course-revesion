@@ -57,7 +57,7 @@ client.connect(err => {
                 .toArray((err, documents) => {
                     res.send(documents)
                 })
-        } else{
+        } else {
             appointmentCollection.find({})
                 .toArray((err, documents) => {
                     res.send(documents)
@@ -67,9 +67,24 @@ client.connect(err => {
 
     })
     app.post('/addDoctor', function (req, res) {
-        const file = req.files.file;
-        const { name, email, phone } = req.body
 
+        const file = req.files.file;
+        const { name, email, phone, userEmail } = req.body;
+
+        const newImg = file.data;
+        const encImg = newImg.toString('base64')
+
+        const image = {
+            contentType: file.mimetype,
+            size: file.size,
+            img: Buffer.from(encImg, 'base64')
+        }
+        const newDoctor = {
+            name,
+            email,
+            phone,
+            image
+        }
         // const filePath = `${__dirname}/doctors/${file.name}`
 
 
@@ -80,36 +95,35 @@ client.connect(err => {
         //     }
 
 
-            // const newImg = fs.readFileSync(filePath);
-            // const encImg = newImg.toString('base64')
-
-            const newImg = file.data;
-            const encImg = newImg.toString('base64')
-
-            const image = {
-                contentType: file.mimetype,
-                size: file.size,
-                img: Buffer.from(encImg, 'base64')
-            }
-            const newDoctor = {
-                name,
-                email,
-                phone,
-                image
-            }
+        // const newImg = fs.readFileSync(filePath);
+        // const encImg = newImg.toString('base64')
 
 
-            doctorsCollection.insertOne(newDoctor)
-                .then(result => {
-                    // fs.remove(filePath, error => {
-                    //     if (error) {
-                    //         console.log(error);
-                    //         res.status(500).send({ msg: 'Failed to upload Image' })
-                    //     }
-                    //     res.send(result.acknowledged)
-                    // })
-                    res.send(result.acknowledged)
-                })
+
+        doctorsCollection.find({ email: userEmail })
+            .toArray((err, doctors) => {
+
+
+                if (doctors.length > 0) {
+
+                    doctorsCollection.insertOne(newDoctor)
+                        .then(result => {
+                    //         // fs.remove(filePath, error => {
+                    //         //     if (error) {
+                    //         //         console.log(error);
+                    //         //         res.status(500).send({ msg: 'Failed to upload Image' })
+                    //         //     }
+                    //         //     res.send(result.acknowledged)
+                    //         // })
+                            res.send(result.acknowledged)
+                        })
+                }
+                res.send(false)
+
+            })
+
+
+
         // })
     });
     app.get('/doctors', (req, res) => {
@@ -119,14 +133,12 @@ client.connect(err => {
             })
     });
     app.post('/isDoctor', (req, res) => {
-        const date = req.body;
         const email = req.body.email;
 
         doctorsCollection.find({ email: email })
             .toArray((err, doctors) => {
                 res.send(doctors.length > 0)
             })
-
 
     })
 

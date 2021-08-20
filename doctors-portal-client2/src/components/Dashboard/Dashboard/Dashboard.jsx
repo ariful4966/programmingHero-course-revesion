@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 import { UserContext } from '../../../App';
 import Allpatients from '../AllPatients/Allpatients';
 import AppointmentTable from '../AppointmentTable/AppointmentTable';
@@ -8,21 +9,21 @@ import './Dashboard.css'
 const Dashboard = () => {
     const [existingUser] = useContext(UserContext)
     const [allPatients, setAllPatients] = useState([])
-    const [allAppointment, setAllAppointment]= useState([])
+    const [allAppointment, setAllAppointment] = useState([])
     const [dateData, setDateData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/appointments')
+        fetch('https://doctors-portal-server2-ph.herokuapp.com/appointments')
             .then(res => res.json())
             .then(data => {
-                
+
                 setAllPatients(data)
 
             });
 
-        fetch('http://localhost:5000/appointments?email=' + existingUser.email)
+        fetch('https://doctors-portal-server2-ph.herokuapp.com/appointments?email=' + existingUser.email)
             .then(res => res.json())
             .then(data => {
-              
+
                 setAllAppointment(data)
 
             })
@@ -86,8 +87,11 @@ const Dashboard = () => {
                         <div className="row shadow">
                             <div className="col-md-12">
                                 <h5 className="text-brand">Recent Appointments</h5>
-                            </div>
-                            <AppointmentTable heading={dashboardTableHeading} data={allAppointment} dashboard />
+                            </div>{
+                                allAppointment.length === 0 ? <Spinner className="text-center" animation="border" variant="success" /> :
+                                    <AppointmentTable heading={dashboardTableHeading} data={allAppointment} dashboard />
+                            }
+
                         </div>
                     </div>
                 </div>

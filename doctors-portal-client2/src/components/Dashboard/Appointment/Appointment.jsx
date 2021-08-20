@@ -17,7 +17,7 @@ const Appointment = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/appointmentByDate', {
+        fetch('https://doctors-portal-server2-ph.herokuapp.com/appointmentByDate', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ date: selectedDate, email: existingUser.email })
