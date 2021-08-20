@@ -70,23 +70,26 @@ client.connect(err => {
         const file = req.files.file;
         const { name, email, phone } = req.body
 
-        const filePath = `${__dirname}/doctors/${file.name}`
+        // const filePath = `${__dirname}/doctors/${file.name}`
 
 
-        file.mv(filePath, err => {
-            if (err) {
-                console.log(err);
-                res.status(500).send({ msg: 'Failed to upload Image' })
-            }
+        // file.mv(filePath, err => {
+        //     if (err) {
+        //         console.log(err);
+        //         res.status(500).send({ msg: 'Failed to upload Image' })
+        //     }
 
 
-            const newImg = fs.readFileSync(filePath);
+            // const newImg = fs.readFileSync(filePath);
+            // const encImg = newImg.toString('base64')
+
+            const newImg = file.data;
             const encImg = newImg.toString('base64')
 
             const image = {
-                contentType: req.files.file.mimetype,
-                size: req.files.file.size,
-                img: Buffer(encImg, 'base64')
+                contentType: file.mimetype,
+                size: file.size,
+                img: Buffer.from(encImg, 'base64')
             }
             const newDoctor = {
                 name,
@@ -98,16 +101,16 @@ client.connect(err => {
 
             doctorsCollection.insertOne(newDoctor)
                 .then(result => {
-                    fs.remove(filePath, error => {
-                        if (error) {
-                            console.log(error);
-                            res.status(500).send({ msg: 'Failed to upload Image' })
-                        }
-                        res.send(result.acknowledged)
-                    })
-
+                    // fs.remove(filePath, error => {
+                    //     if (error) {
+                    //         console.log(error);
+                    //         res.status(500).send({ msg: 'Failed to upload Image' })
+                    //     }
+                    //     res.send(result.acknowledged)
+                    // })
+                    res.send(result.acknowledged)
                 })
-        })
+        // })
     });
     app.get('/doctors', (req, res) => {
         doctorsCollection.find({})
