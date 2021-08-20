@@ -49,7 +49,7 @@ export const signOutUser = () => {
     return firebase.auth()
         .signOut()
         .then(() => {
-            // Sign-out successful.
+            sessionStorage.removeItem('userToken')
         }).catch((error) => {
             // An error happened.
         });

@@ -29,13 +29,13 @@ const blogPost = [
 
 const Blogs = () => {
     return (
-        <section className="serces-container my-5">
+        <section className="serces-container my-5" id="blog">
             <div className="container">
                 <div className="section-header text-center">
                     <h5 style={{ color: '#1CC7C1', textTransform: 'uppercase' }}>Our Blogs</h5>
                     <h2>From Our Blog News</h2>
                 </div>
-                <div className="row row-cols-1 row-cols-md-3 g-4 my-5 blog">
+                <div className="row  g-4 my-5 blog">
                     {
                         blogPost.map((post, index) => <BlogPost key={index} post={post} />)
                     }

@@ -37,7 +37,7 @@ const Doctors = () => {
                 <div className="section-header text-center">
                     <h5 style={{ color: '#1CC7C1', textTransform: 'uppercase' }}>Our Doctors</h5>
                 </div>
-                <div className="row row-cols-1 row-cols-md-3 g-4 my-5 doctor">
+                <div className="row  g-4 my-5 doctor">
                     {
                         doctors.map((doctor, index) => <SingleDoctor key={index} doctor={doctor} />)
                     }

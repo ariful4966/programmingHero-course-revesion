@@ -23,13 +23,13 @@ const serviceData = [
 ];
 const Services = () => {
     return (
-        <section className="serces-container my-5">
+        <section className="serces-container my-5 container">
             <div className="text-center">
                 <h5 style={{ color: '#1CC7C1', textTransform:'uppercase' }}>Our Services</h5>
                 <h2>Services We Provide</h2>
             </div>
-            <section className="d-flex justify-content-center">
-                <div className="w-75 row py-5">
+            <section className="">
+                <div className=" row py-5">
                     {
                         serviceData.map((service, index) => <ServiceDetail key={index} service={service}/>)
                     }

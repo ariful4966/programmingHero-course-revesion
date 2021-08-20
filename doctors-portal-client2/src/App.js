@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import jwt_decode from 'jwt-decode'
 import {
   BrowserRouter as Router,

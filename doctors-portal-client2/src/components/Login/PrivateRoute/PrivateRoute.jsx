@@ -7,10 +7,10 @@ import jwt_decode from 'jwt-decode'
 function PrivateRoute({ children, ...rest }) {
 
   const [existingUser, setExistingUser] = useContext(UserContext)
-
+  const extUserToken = sessionStorage.getItem('userToken')
   useEffect(() => {
     if (existingUser.isLogin === false) {
-      const extUserToken = sessionStorage.getItem('userToken')
+
       if (existingUser === true) {
         const { name, email } = jwt_decode(extUserToken);
         setExistingUser({
@@ -26,7 +26,7 @@ function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={({ location }) =>
-        existingUser.isLogin ? (
+        existingUser.isLogin || extUserToken ? (
           children
         ) : (
           <Redirect

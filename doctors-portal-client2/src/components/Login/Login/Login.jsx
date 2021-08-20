@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import loginImg from '../../../images/loginPage.png'
 import LoginForm from './LoginForm';
-import jwt_decode from 'jwt-decode';
 import './Login.css'
-import { createNewUser, firebaseInitializationFramwork, loginUser, resetUserPassword } from './manageLogin';
+import { createNewUser, firebaseInitializationFramwork, loginUser, resetUserPassword, signOutUser } from './manageLogin';
 import SignupForm from './SignupForm';
 import { useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../../App';
@@ -67,7 +66,7 @@ const Login = () => {
                     }
                     setUser(userInfo)
                     setExistingUser(userInfo)
-
+                    history.replace(from)
                 })
 
         } else {
@@ -87,6 +86,14 @@ const Login = () => {
     const forgotPassword = () => {
         resetUserPassword(user)
     }
+    
+
+    useEffect(()=>{
+        const getUserToken = sessionStorage.getItem('userToken');
+        if(getUserToken){
+            history.replace(from)
+        }
+    },[existingUser])
 
 
     return (

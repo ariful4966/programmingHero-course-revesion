@@ -33,7 +33,7 @@ const Testimonials = () => {
                     <h5 style={{ color: '#1CC7C1', textTransform: 'uppercase' }}>Testimonial</h5>
                     <h2>What Our Patients Says</h2>
                 </div>
-                <div className="row row-cols-1 row-cols-md-3 g-4 my-5">
+                <div className="row  g-4 my-5">
                     {
                         testimonialData.map((testimonial, index)=><TestimonialCard key={index} testimonial={testimonial}/>)
                     }

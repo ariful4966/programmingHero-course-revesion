@@ -4,7 +4,7 @@ import './BlogPost.css'
 const BlogPost = ({ post }) => {
     return (
 
-        <div className="col">
+        <div className="col-md-6 col-lg-4 col-xl-4">
             <div className="card h-100 p-3">
                 <div className=" d-flex align-items-center p-4">
                     <img src={post.photo} className="w-15 me-3" alt="" />

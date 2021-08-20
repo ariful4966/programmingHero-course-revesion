@@ -2,7 +2,7 @@ import React from 'react';
 
 const TestimonialCard = ({ testimonial }) => {
     return (
-        <div className="col">
+        <div className="col-md-6 col-lg-4">
             <div className="card">
                 <div className="card-body">
                     <p className="card-text text-center">{testimonial.quote}</p>

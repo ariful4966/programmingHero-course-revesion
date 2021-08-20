@@ -1,0 +1,10 @@
+.action-pending{
+    background: linear-gradient(40deg, rgb(6, 2, 247), rgb(0, 204, 255));
+}
+.action-icon{
+    background:orange;
+    
+}
+.action button, .prescrip button{
+    border-radius: 5px;
+}

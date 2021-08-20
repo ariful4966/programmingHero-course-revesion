@@ -1,39 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav, Container } from 'react-bootstrap'
 
-const Navbar = ({home}) => {
+const Navigation = ({ home }) => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light ">
-            <div className="container-fluid">
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link className="nav-link mx-5 active" aria-current="page" href="/">Home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link mx-5" to="/patient/appointment">Patient</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link mx-5" to="/dashboard">Dashboard</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className={`nav-link mx-5 ${home && 'text-white'}`} to="/admin">Admin</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className={`nav-link mx-5 ${home && 'text-white'}`} href="#blog">Blogs</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className={`nav-link mx-5 ${home && 'text-white'}`} href="#contact">Contact us</Link>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
+        <Navbar expand="lg">
+            <Container>
+                <Navbar.Toggle aria-controls="basic-navbar-nav ms-auto" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ms-auto">
+                        <Link className="nav-link mx-4" to="/">Home</Link>
+                        <Link className="nav-link mx-4" to="/patients">Patients</Link>
+                        <Link className="nav-link mx-4" to="/dashboard">Dashboard</Link>
+                        <Link className={`nav-link mx-4 ${home && 'text-white'}`} to="/dashboard">Admin</Link>
+                        <Nav.Link className={` mx-4 ${home && 'text-white'}`} href="#blog">Blog</Nav.Link>
+                        <Nav.Link className={` mx-5 ${home && 'text-white'}`} href="#contact">Contact Us</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 };
 
-export default Navbar;
+export default Navigation;

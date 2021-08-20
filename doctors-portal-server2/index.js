@@ -51,10 +51,20 @@ client.connect(err => {
 
     })
     app.get('/appointments', (req, res) => {
-        appointmentCollection.find({})
-            .toArray((err, documents) => {
-                res.send(documents)
-            })
+        const email = req.query.email;
+        if (email) {
+            appointmentCollection.find({ email })
+                .toArray((err, documents) => {
+                    res.send(documents)
+                })
+        } else{
+            appointmentCollection.find({})
+                .toArray((err, documents) => {
+                    res.send(documents)
+                    console.log(documents);
+                })
+        }
+
     })
     app.post('/addDoctor', function (req, res) {
         const file = req.files.file;
