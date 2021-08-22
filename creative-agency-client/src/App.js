@@ -3,11 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import './App.css';
 import Home from "./components/Home/Home/Home";
+import Login from './components/Login/Login';
 import NoMatch from "./components/NoMatch/NoMatch";
 
 
@@ -20,6 +20,9 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/login">
+          <Login/>
+        </Route>
         <Route exact path="/">
           <Home />
         </Route>

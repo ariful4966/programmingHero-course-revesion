@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import logo from '../../../images/logos/logo.png';
 import './Navigation.css'
 
 const Navigation = () => {
+    const history = useHistory();
     return (
         <Navbar expand="lg">
             <Container>
@@ -18,7 +19,7 @@ const Navigation = () => {
                         <Link className="nav-link mx-4" to="/">Our Protfolio</Link>
                         <Link className="nav-link mx-4" to="/">Our Teem</Link>
                         <Link className="nav-link mx-4" to="/">Contact Us</Link>
-                        <Button className="bg-master mx-4">Login</Button>
+                        <Button className="bg-master mx-4" onClick={()=>history.push('/login')}>Login</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

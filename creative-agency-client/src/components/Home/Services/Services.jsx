@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import graphic from '../../../images/icons/service2.png';
 import mobile from '../../../images/icons/service1.png';
 import web from '../../../images/icons/service3.png';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import slack from '../../../images/logos/slack.png'
 import google from '../../../images/logos/google.png'
 import uber from '../../../images/logos/uber.png'
@@ -17,7 +17,7 @@ const Brand = () => {
                     {
                         slideItems.map((item, idx) =>
                             <div className="brand-logo-item mx-3" key={idx}>
-                                <img src={item} alt="" className="w-100" style={{height:'75px'}}/>
+                                <img src={item} alt="" className="w-100" style={{ height: '75px' }} />
                             </div>
                         )
                     }

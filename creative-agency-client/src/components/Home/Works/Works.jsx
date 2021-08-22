@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 import slide1 from '../../../images/carousel-1.png';
 import slide2 from '../../../images/carousel-2.png';
 import slide3 from '../../../images/carousel-3.png';
