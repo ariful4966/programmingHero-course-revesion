@@ -1,0 +1,14 @@
+
+.carousel-indicators {
+    bottom: -40px;
+}
+.carousel-indicators [data-bs-target] {
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background: #FBD062;
+   border: 0;
+}
+.carousel-indicators .active {
+    opacity: 1;
+}
