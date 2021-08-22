@@ -1,11 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-doctors-portal-client2/src/firebase.config.js
-doctors-portal-client2/node_modules
-doctors-portal-client2/build
-doctors-portal-server2/node_modules
-doctors-portal-server2/.env
+creative-agency-client/src/firebase.config.js
+creative-agency-client/node_modules
+creative-agency-client/build
+creative-agency-server/node_modules
+creative-agency-server/.env
 /.pnp
 .pnp.js
 
