@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../images/logos/logo.png'
 import google from '../../images/google.png';
 import './Login.css'
-import { handleSignWithGoogle } from './loginManeger';
+import { firebaseInitializationFramwork, handleSignWithGoogle } from './loginManeger';
 
 const Login = () => {
     const handleSignIn = ()=>{
@@ -16,6 +16,7 @@ const Login = () => {
     const hanldeLogout = ()=>{
 
     }
+    firebaseInitializationFramwork()
     return (
         <main className="login_area ">
             <Container>

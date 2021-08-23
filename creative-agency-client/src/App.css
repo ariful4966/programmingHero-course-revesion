@@ -1,11 +1,19 @@
-.text_brand{
+* {
+  margin: 0;
+  padding: 0;
+}
+#root{
+  height: 100%;
+}
+.text_brand {
   color: #7AB259;
 }
 
-.bg-master{
+.bg-master {
   background: #111430;
   color: #fff;
 }
-.yalow-bg{
+
+.yalow-bg {
   background: #FBD062;
 }
