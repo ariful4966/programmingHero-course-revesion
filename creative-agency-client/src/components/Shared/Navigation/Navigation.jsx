@@ -1,11 +1,13 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import logo from '../../../images/logos/logo.png';
 import './Navigation.css'
 
-const Navigation = () => {
+const Navigation = ({ user }) => {
     const history = useHistory();
+    console.log(user);
     return (
         <Navbar expand="lg">
             <Container>
@@ -19,12 +21,18 @@ const Navigation = () => {
                         <Link className="nav-link mx-4" to="/">Our Protfolio</Link>
                         <Link className="nav-link mx-4" to="/">Our Teem</Link>
                         <Link className="nav-link mx-4" to="/">Contact Us</Link>
-                        <Button className="bg-master mx-4" onClick={()=>history.push('/login')}>Login</Button>
+                        {
+                            user.isLogin ? <Link className="nav-link mx-4" to="/dashboard">{user.name}</Link> :
+                                <Button className="bg-master mx-4" onClick={() => history.push('/login')}>Login</Button>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
     );
 };
+const mapStateToProps = state => {
+    return state
+}
 
-export default Navigation;
+export default connect(mapStateToProps, null)(Navigation);

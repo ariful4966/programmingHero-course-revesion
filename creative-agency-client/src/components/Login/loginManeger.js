@@ -21,11 +21,20 @@ export const handleSignWithGoogle = () => {
         });
 
 }
+export const createToken = () => {
+    return firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+        .then(function (idToken) {
+            sessionStorage.setItem('userToken', idToken)
+        }).catch(function (error) {
+            // Handle error
+        });
+}
 
 export const logOut = () => {
-   return firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-    }).catch((error) => {
-        // An error happened.
-    });
+    return firebase.auth().signOut()
+        .then(() => {
+            return true
+        }).catch((error) => {
+            // An error happened.
+        });
 }

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Spinner } from 'react-bootstrap';
 import graphic from '../../../images/icons/service2.png';
 import mobile from '../../../images/icons/service1.png';
 import web from '../../../images/icons/service3.png';
 import ServiceCard from '../ServiceCard/ServiceCard';
+import { connect } from 'react-redux';
 const serviceData = [
     {
         name: 'Web & Mobile design',
@@ -22,7 +23,8 @@ const serviceData = [
     },
 ]
 
-const Services = () => {
+const Services = ({ services }) => {
+    console.log(services);
     return (
         <section className="service_area my-5">
             <div className="section-heading text-center mb-5">
@@ -32,7 +34,8 @@ const Services = () => {
                 <Row>
 
                     {
-                        serviceData.map((service, idx) => <ServiceCard service={service} key={idx} />)
+                        services.length === 0 ? <Spinner animation="border" variant="success" /> :
+                            services.map((service) => <ServiceCard service={service} key={service._id} />)
                     }
                 </Row>
             </Container>
@@ -40,4 +43,8 @@ const Services = () => {
     );
 };
 
-export default Services;
+const mapStateToProps = state => {
+    return state
+}
+
+export default connect(mapStateToProps, null)(Services);
