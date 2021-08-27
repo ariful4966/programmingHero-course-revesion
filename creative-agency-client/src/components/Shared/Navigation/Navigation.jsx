@@ -7,7 +7,6 @@ import './Navigation.css'
 
 const Navigation = ({ user }) => {
     const history = useHistory();
-    console.log(user);
     return (
         <Navbar expand="lg">
             <Container>

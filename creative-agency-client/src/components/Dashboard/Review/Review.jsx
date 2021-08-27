@@ -1,12 +1,14 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const Review = () => {
+    const user = useSelector(state=>state.user)
     return (
         <div className="review_area p-5">
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicName">
-                    <Form.Control type="text" placeholder="Your Name" />
+                    <Form.Control type="text" placeholder="Your Name" defaultValue={user.name} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCompany">
                     <Form.Control type="text" placeholder="Company Name" />

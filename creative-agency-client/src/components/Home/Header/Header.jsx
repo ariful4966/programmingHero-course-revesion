@@ -3,8 +3,10 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import Navigation from '../../Shared/Navigation/Navigation';
 import banner  from '../../../images/Frame.png';
 import './Header.css'
+import { useHistory } from 'react-router-dom';
 
 const Header = () => {
+    const history = useHistory();
     return (
         <header className=" mb-5">
             <Navigation/>
@@ -17,7 +19,7 @@ const Header = () => {
                                 <p>
                                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda quos consequatur fugiat aliquam totam deserunt dolorum, at, illo nemo quis provident blanditiis sequi ipsum suscipit consequuntur aliquid, rem maxime perferendis.
                                 </p>
-                                <Button className="bg-master">Hire Us</Button>
+                                <Button className="bg-master" onClick={()=>history.push('/dashboard')}>Hire Us</Button>
                             </article>
                         </Col>
                         <Col md={7}>

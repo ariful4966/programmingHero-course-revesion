@@ -1,5 +1,4 @@
 
-import env from 'react-dotenv'
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
@@ -8,6 +7,7 @@ const AddService = () => {
     const [icon, setIcon] = useState(null)
     const [service, setService] = useState({
         name: '',
+        price: 0,
         body: ''
     });
     const handleService = (e) => {
@@ -55,15 +55,20 @@ const AddService = () => {
             })
 
     }
+    console.log(service)
     return (
         <div className="addService_area p-5">
             <div className="addService_form bg-light p-5">
                 <Form onSubmit={handleSubmit}>
+                    <Form.Group>
+                        <Form.Label>Service Title</Form.Label>
+                        <Form.Control type="text" placeholder="Service title" name="name" onBlur={handleService} />
+                    </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicTitle">
                         <Row>
                             <Col>
-                                <Form.Label>Service Title</Form.Label>
-                                <Form.Control type="text" placeholder="Service title" name="name" onBlur={handleService} />
+                                <Form.Label>Service Price</Form.Label>
+                                <Form.Control type="number" placeholder="Service Price" name="price" onBlur={handleService} />
                             </Col>
                             <Col>
                                 <Form.Label>Icon</Form.Label>

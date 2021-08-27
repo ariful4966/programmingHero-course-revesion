@@ -5,10 +5,11 @@ import logo from '../../images/logos/logo.png'
 import google from '../../images/google.png';
 import './Login.css'
 import { createToken, firebaseInitializationFramwork, handleSignWithGoogle } from './loginManeger';
-import { connect } from 'react-redux';
-import { loginUser } from '../../redux/action';
+import { connect, useDispatch } from 'react-redux';
+import { LOGEDINUSER, loginUser } from '../../redux/action';
 
 const Login = (props) => {
+    const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
@@ -16,14 +17,20 @@ const Login = (props) => {
         handleSignWithGoogle()
             .then(res => {
                 createToken()
+
                 if (res) {
+                    const newuser = {
+                        name: res.displayName,
+                        email: res.email,
+                        photo: res.photoURL,
+                        isLogin: true
+                    }
+                    dispatch({type: LOGEDINUSER, data: newuser})
                     history.replace(from);
                 }
             })
     }
-    const hanldeLogout = () => {
-
-    }
+    
     firebaseInitializationFramwork()
     return (
         <main className="login_area ">
@@ -56,7 +63,7 @@ const mapStateToProps = state => {
     return state
 }
 const mapDispatchToProps = {
-    loginUser: loginUser
+    loginUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -5,44 +5,50 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { connect } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 import Home from "./components/Home/Home/Home";
 import Login from './components/Login/Login';
 import NoMatch from "./components/NoMatch/NoMatch";
-import { loginUser, serviceData } from './redux/action';
+import {  loginUser,  serviceData } from './redux/action';
 import { useEffect } from 'react';
 import jwt_decode from "jwt-decode";
 import PrivateRoute from './components/Login/PrivateRoute';
+import Order from './components/Dashboard/Order/Order';
 
 
 
 
-function App(props) {
+function App() {
+const dispatch = useDispatch();
 
-  const { user, loginUser, serviceData } = props;
 
-  const lodaData = user.name.length > 0 ? true : false
+
   useEffect(() => {
     const userToken = sessionStorage.getItem('userToken');
     if (userToken) {
       const decodeToken = jwt_decode(userToken);
-      loginUser(decodeToken)
+      const getTokenUser = {
+        name: decodeToken.name,
+        email: decodeToken.email,
+        photo: decodeToken.picture,
+        isLogin: true
+      }
+      dispatch(loginUser(getTokenUser))
     }
-
 
     fetch('http://localhost:5000/service')
       .then(res => res.json())
       .then(services => {
-        serviceData(services)
+        dispatch(serviceData(services))
       })
-  }, [])
+  }, [dispatch])
 
   return (
     <Router>
       <Switch>
-        <PrivateRoute path="/Dashboard">
+        <PrivateRoute path="/dashboard">
           <Dashboard />
         </PrivateRoute>
         <Route path="/login">
@@ -59,13 +65,6 @@ function App(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return state
-}
-const mapDispatchToProps = {
-  loginUser,
-  serviceData
 
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

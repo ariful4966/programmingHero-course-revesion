@@ -24,9 +24,8 @@ const serviceData = [
 ]
 
 const Services = ({ services }) => {
-    console.log(services);
     return (
-        <section className="service_area my-5">
+        <section className="service_area my-5" id="service">
             <div className="section-heading text-center mb-5">
                 <h3>Provide Awesome <span className="text_brand">Service</span></h3>
             </div>

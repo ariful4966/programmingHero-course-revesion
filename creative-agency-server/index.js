@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser')
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 
 const app = express();
 
@@ -18,6 +18,8 @@ const uri = `mongodb+srv://${process.env.USER_DB}:${process.env.PASS_DB}@cluster
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
     const serviceCollection = client.db(`${process.env.DATABASE_NAME}`).collection("services");
+    const orderCollection = client.db(`${process.env.DATABASE_NAME}`).collection("orders");
+    const adminCollection = client.db(`${process.env.DATABASE_NAME}`).collection("admins");
 
     app.post('/service', (req, res) => {
         const service = req.body;
@@ -30,6 +32,70 @@ client.connect(err => {
     })
     app.get('/service', (req, res) => {
         serviceCollection.find({})
+            .toArray((err, document) => {
+                res.send(document)
+            })
+    })
+
+    app.post('/order', (req, res) => {
+        const order = req.body;
+        orderCollection.insertOne(order)
+            .then(result => {
+                if (result) {
+                    res.send(result.acknowledged)
+                }
+            })
+    })
+    app.get('/order', (req, res) => {
+        const email = req.query.email
+        adminCollection.find({ email: email })
+            .toArray((err, document) => {
+                if (document.length > 0) {
+                    orderCollection.find()
+                        .toArray((err, doc) => {
+                            res.send(doc)
+                        })
+                } else {
+                    orderCollection.find({ email: email })
+                        .toArray((err, doc) => {
+                            res.send(doc)
+                        })
+                }
+            })
+
+
+    })
+    app.put('/order', (req, res) => {
+        const { id, status } = req.body;
+        orderCollection.updateOne(
+            { _id: ObjectId(`${id}`) },
+            { $set: { status: `${status}` } }
+        )
+            .then(result => {
+                res.send(result.acknowledged);
+            })
+    })
+    app.post('/admin', (req, res) => {
+        const admin = req.body;
+        adminCollection.find(admin)
+            .toArray((err, document) => {
+                if (document.length === 0) {
+                    adminCollection.insertOne(admin)
+                        .then(result => {
+                            if (result.acknowledged) {
+                                res.send('Successfully Add a Admin')
+                            }
+                        })
+                } else {
+                    res.send('This Admin Already Added')
+                }
+
+            })
+
+    })
+    app.get('/admin', (req, res) => {
+        const email = req.query.email;
+        adminCollection.find({ email: email })
             .toArray((err, document) => {
                 res.send(document)
             })
@@ -48,4 +114,4 @@ client.connect(err => {
 
 
 
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port);

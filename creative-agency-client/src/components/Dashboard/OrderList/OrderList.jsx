@@ -1,41 +1,41 @@
-import React from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
-import mobile from '../../../images/icons/service1.png';
-import graphic from '../../../images/icons/service2.png';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import {  Card, Col, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
-const orderService = [
-    {
-        name: 'Web & Mobile design',
-        body: 'We craft stunning and amazing web UI, using a well drrafted UX to fit your product.',
-        icon: mobile,
-        status: 'Pending'
-    },
-    {
-        name: 'Graphic design',
-        body: 'Amazing flyers, social media posts and brand representations that would make your brand stand out.',
-        icon: graphic,
-        status: 'Done'
-    },
-]
 
 const OrderList = () => {
+    const user = useSelector(state => state.user)
+    const [submitOrder, setSubmitOrder] = useState([]);
+    const orderFilter = submitOrder.filter(order => order.email === user.email)
+    useEffect(() => {
+
+        axios.get('http://localhost:5000/order?email=' + user.email)
+            .then(data => {
+                setSubmitOrder(data.data)
+            })
+    }, [setSubmitOrder, user])
     return (
         <div className="orderList_area p-5" >
             <Row>
                 {
-                    orderService.map((service, idx) =>
-                        <Col md={6}>
+                    orderFilter.map((service, idx) =>
+                        <Col md={6} className="mb-4" key={idx}>
                             <Card className="w-100 p-5">
                                 <Card.Header className="d-flex justify-content-between">
                                     <Card.Img variant="top" src={service.icon} className="w-25" />
                                     <div>
-                                        <Button className=''>{service.status}</Button>
+                                        <div className={
+                                            `${(service.status === 'Pending' && 'bg-danger') ||
+                                             (service.status === 'Ongoing' && 'bg-warning') ||
+                                              (service.status === 'Done' && 'bg-success')}
+                                               text-center text-white `} style={{ width: '100px' }}>{service.status}</div>
                                     </div>
                                 </Card.Header>
                                 <Card.Body>
-                                    <Card.Title>{service.name}</Card.Title>
+                                    <Card.Title>{service.design}</Card.Title>
                                     <Card.Text>
-                                        {service.body}
+                                        {service.description}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
