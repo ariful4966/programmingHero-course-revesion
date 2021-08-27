@@ -38,7 +38,7 @@ const dispatch = useDispatch();
       dispatch(loginUser(getTokenUser))
     }
 
-    fetch('http://localhost:5000/service')
+    fetch('https://creative-agency-server82.herokuapp.com/service')
       .then(res => res.json())
       .then(services => {
         dispatch(serviceData(services))

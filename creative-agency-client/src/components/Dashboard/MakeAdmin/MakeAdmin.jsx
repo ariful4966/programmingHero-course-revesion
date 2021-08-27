@@ -16,7 +16,7 @@ const MakeAdmin = () => {
     }
     const handleAdminSubmit = e => {
         e.preventDefault();
-        axios.post('http://localhost:5000/admin', admin)
+        axios.post('https://creative-agency-server82.herokuapp.com/admin', admin)
         .then(data=>{
             alert(data.data)
         })

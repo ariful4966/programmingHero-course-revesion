@@ -38,13 +38,13 @@ const ServiceList = () => {
     const user = useSelector(state => state.user)
 
     useEffect(() => {
-        axios.get('http://localhost:5000/order?email=' + user.email)
+        axios.get('https://creative-agency-server82.herokuapp.com/order?email=' + user.email)
             .then(res => {
                 setGetOrder(res.data)
             })
     }, [ user, setGetOrder])
     const statusChange = (e, id) => {
-        axios.put('http://localhost:5000/order', {
+        axios.put('https://creative-agency-server82.herokuapp.com/order', {
             id: id,
             status: e.target.value
         })

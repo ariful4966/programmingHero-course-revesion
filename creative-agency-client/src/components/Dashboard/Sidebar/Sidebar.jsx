@@ -37,7 +37,7 @@ const Sidebar = ({ setSidebar, sidebar, url }) => {
     }
     useEffect(() => {
 
-        axios.get('http://localhost:5000/admin?email=' + user.email,)
+        axios.get('https://creative-agency-server82.herokuapp.com/admin?email=' + user.email,)
             .then(data => {
                 if (data.data.length > 0) {
                     setAdmin(true)

@@ -44,7 +44,7 @@ const AddService = () => {
         event.preventDefault();
         service.icon = icon
 
-        fetch('http://localhost:5000/service', {
+        fetch('https://creative-agency-server82.herokuapp.com/service', {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(service)

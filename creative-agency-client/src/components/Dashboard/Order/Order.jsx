@@ -38,7 +38,7 @@ const Order = () => {
         postOrder.icon = selectService.icon
         postOrder.picture = picture
 
-        axios.post('http://localhost:5000/order', postOrder)
+        axios.post('https://creative-agency-server82.herokuapp.com/order', postOrder)
             .then(data => {
                 if(data.data){
                     alert('Yor Order has been post successfully')
