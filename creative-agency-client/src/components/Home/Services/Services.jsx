@@ -1,27 +1,7 @@
 import React from 'react';
 import { Container, Row, Spinner } from 'react-bootstrap';
-import graphic from '../../../images/icons/service2.png';
-import mobile from '../../../images/icons/service1.png';
-import web from '../../../images/icons/service3.png';
 import ServiceCard from '../ServiceCard/ServiceCard';
 import { connect } from 'react-redux';
-const serviceData = [
-    {
-        name: 'Web & Mobile design',
-        body: 'We craft stunning and amazing web UI, using a well drrafted UX to fit your product.',
-        icon: mobile
-    },
-    {
-        name: 'Graphic design',
-        body: 'Amazing flyers, social media posts and brand representations that would make your brand stand out.',
-        icon: graphic
-    },
-    {
-        name: 'Web development',
-        body: 'With well written codes, we build amazing apps for all platforms, mobile and web apps in general.',
-        icon: web
-    },
-]
 
 const Services = ({ services }) => {
     return (

@@ -1,37 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Collapse, Form, Table } from 'react-bootstrap';
+import {  Form, Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 const tblHeading = [
     'Name', 'Email ID', 'Service', 'Project', 'Status'
 ];
-const tblData = [
-    {
-        name: 'Sufi Ahmed Hamim',
-        email: 'sufi@gmail.com',
-        service: 'Mobile App',
-        details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        status: 'Pending'
-    }, {
-        name: 'Sufi Ahmed Hamim',
-        email: 'sufi@gmail.com',
-        service: 'Mobile App',
-        details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        status: 'Done'
-    }, {
-        name: 'Sufi Ahmed Hamim',
-        email: 'sufi@gmail.com',
-        service: 'Mobile App',
-        details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        status: 'Ongoin'
-    }, {
-        name: 'Sufi Ahmed Hamim',
-        email: 'sufi@gmail.com',
-        service: 'Mobile App',
-        details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        status: 'Pending'
-    },
-]
 
 const ServiceList = () => {
     const [getOrder, setGetOrder] = useState([]);

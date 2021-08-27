@@ -1,10 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import OrderForm from '../OrderForm/OrderForm';
-import Sidebar from '../Sidebar/Sidebar';
 
 const Order = () => {
     const { orderId } = useParams();

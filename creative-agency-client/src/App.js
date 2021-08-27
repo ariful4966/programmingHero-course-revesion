@@ -15,7 +15,6 @@ import {  loginUser,  serviceData } from './redux/action';
 import { useEffect } from 'react';
 import jwt_decode from "jwt-decode";
 import PrivateRoute from './components/Login/PrivateRoute';
-import Order from './components/Dashboard/Order/Order';
 
 
 
