@@ -12,3 +12,10 @@
     - [x] single linked_list
     - [x] Doble linked_list
     - [x] Cercular linked_list
+
+
+#### Need to get own
+
+- [5] Tree
+    - [x] Depth-first Search
+    - [x] Breadth-first Search
