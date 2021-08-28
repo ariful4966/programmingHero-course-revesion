@@ -1,6 +1,6 @@
 # Programming Hero Course Revision
 
-## Data Stracture and Algorithom
+## Data Stracture 
 
 - [1] Stack
     * Frist in Last Out
@@ -19,3 +19,6 @@
 - [5] Tree
     - [x] Depth-first Search
     - [x] Breadth-first Search
+- [6] Graph
+
+## Algorithom
