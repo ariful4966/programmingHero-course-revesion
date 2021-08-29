@@ -26,3 +26,5 @@
 - [1] Linear Search
 - [1] Binary Search
 - [3] Buble Sort
+- [3] Selection Sort
+- [3] Quick Sort
