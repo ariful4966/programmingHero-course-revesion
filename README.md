@@ -22,3 +22,7 @@
 - [6] Graph
 
 ## Algorithom
+
+- [1] Linear Search
+- [1] Binary Search
+- [3] Buble Sort
